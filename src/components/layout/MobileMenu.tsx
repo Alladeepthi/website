@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const MobileMenu: React.FC = () => {
@@ -7,7 +7,7 @@ export const MobileMenu: React.FC = () => {
             <div id="side-bar" className="side-bar header-two">
                 <div className="rts-sidebar-menu-desktop">
                     <div className="logo-area">
-                        <Link className="logo" to="/"><img src="/assets/images/logo/04.svg" alt="logo" /></Link>
+                        <Link className="logo" to="/"><img src="/assets/images/logo/neuraltrix-logo-white.svg" alt="NeuralTrix AI" style={{ height: '45px', width: 'auto' }} /></Link>
                         <button className="close-icon-menu" aria-label="footer_Button" onClick={() => {
                             document.getElementById('side-bar')?.classList.remove('show');
                             document.getElementById('anywhere-home')?.classList.remove('bgshow');
@@ -64,47 +64,39 @@ export const MobileMenu: React.FC = () => {
                     <nav className="nav-main mainmenu-nav mt--30">
                         <ul className="mainmenu metismenu" id="mobile-menu-active">
                             <li className="has-droupdown">
-                                <Link to="#" className="main">Home</Link>
-                                <ul className="submenu mm-collapse">
-                                    <li><Link to="/">IT Services</Link></li>
-                                    <li><Link to="/">IT Agency</Link></li>
-                                    <li><Link to="/">IT Solutions</Link></li>
-                                    <li><Link to="/">Software Company</Link></li>
-                                    <li><Link to="/">Digital Agency</Link></li>
-                                    <li><Link to="/">App Company</Link></li>
-                                    <li><Link to="/">Cybersecurity Company</Link></li>
-                                    <li><Link to="/">Machine Learning</Link></li>
-                                    <li><Link to="/">Data Science</Link></li>
-                                    <li><Link to="/">Marketing Automation</Link></li>
-                                    <li><Link to="/">Saas Landing</Link></li>
-                                </ul>
-                            </li>
-                            <li><Link to="/about" className="main">About</Link></li>
-                            <li className="has-droupdown">
-                                <Link to="#" className="main">Pages</Link>
-                                <ul className="submenu mm-collapse">
-                                    <li><Link to="/about">About Company</Link></li>
-                                    <li><Link to="/case-studies">Case Studies</Link></li>
-                                    <li><Link to="/pricing">Pricing</Link></li>
-                                    <li><Link to="/service-details">Service Details</Link></li>
-                                    <li><Link to="/contact">Contact</Link></li>
-                                </ul>
-                            </li>
-                            <li className="has-droupdown">
                                 <Link to="#" className="main">Services</Link>
                                 <ul className="submenu mm-collapse">
-                                    <li><Link to="/services">Service</Link></li>
-                                    <li><Link to="/service-details">Service Details</Link></li>
+                                    <li><Link to="/service-details">AI Solutions</Link></li>
+                                    <li><Link to="/service-details">Machine Learning</Link></li>
+                                    <li><Link to="/service-details">Data Science</Link></li>
+                                    <li><Link to="/service-details">Cloud Solutions</Link></li>
+                                    <li><Link to="/service-details">AI Consulting</Link></li>
+                                    <li><Link to="/service-details">Process Automation</Link></li>
                                 </ul>
                             </li>
+                            <li><Link to="/pricing" className="main">Platforms</Link></li>
                             <li className="has-droupdown">
-                                <Link to="#" className="main">Blog</Link>
+                                <Link to="/industry" className="main">Industry</Link>
                                 <ul className="submenu mm-collapse">
-                                    <li><Link to="/blog">Blog</Link></li>
-                                    <li><Link to="/blog-details">Blog Details</Link></li>
+                                    <li><Link to="/industry#healthcare">Healthcare</Link></li>
+                                    <li><Link to="/industry#finance">Finance</Link></li>
+                                    <li><Link to="/industry#retail">Retail</Link></li>
+                                    <li><Link to="/industry#manufacturing">Manufacturing</Link></li>
+                                    <li><Link to="/industry#technology">Technology</Link></li>
                                 </ul>
                             </li>
-                            <li><Link to="/contact" className="main">Contact</Link></li>
+                            <li><Link to="/case-studies" className="main">Our Work</Link></li>
+                            <li><Link to="/about" className="main">About</Link></li>
+                            <li className="has-droupdown">
+                                <Link to="#" className="main">Products</Link>
+                                <ul className="submenu mm-collapse">
+                                    <li><Link to="/pricing">AI Platform</Link></li>
+                                    <li><Link to="/pricing">ML Studio</Link></li>
+                                    <li><Link to="/pricing">Data Analytics Suite</Link></li>
+                                    <li><Link to="/pricing">Automation Tools</Link></li>
+                                </ul>
+                            </li>
+                            <li><Link to="/contact" className="main">Contact Us</Link></li>
                         </ul>
                     </nav>
                 </div>
@@ -116,3 +108,4 @@ export const MobileMenu: React.FC = () => {
         </>
     );
 };
+
