@@ -44,7 +44,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ title, links }) => {
                                     </div>
                                     <div className="details">
                                         <div className="sign"><img src="/assets/images/others/sign-2.svg" alt="" /></div>
-                                        <p>CEO of Digix</p>
+                                        <p>CEO of NeuralTrix AI</p>
                                     </div>
                                 </div>
                             </div>

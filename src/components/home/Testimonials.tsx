@@ -19,7 +19,7 @@ export const Testimonials: React.FC = () => {
                                     <div className="body">
                                         <img src="/assets/images/testimonials/quote2.svg" alt="" />
                                         <p className="disc">
-                                            Partnering with Digix has completely transformed how we handle our data. Their machine learning solutions helped us uncover actionable insights we never thought possible, boosting our efficiency by 30%.
+                                            Partnering with NeuralTrix AI has completely transformed how we handle our data. Their machine learning solutions helped us uncover actionable insights we never thought possible, boosting our efficiency by 30%.
                                         </p>
                                         <div className="autohr-area">
                                             <div className="avatar-area">
