@@ -124,7 +124,7 @@ export const Team: React.FC = () => {
                                                             </div>
                                                             <div className="content">
                                                                 <p className="disc">
-                                                                    "Working with Digix has been a game-changer for our business.
+                                                                    "Working with NeuralTrix AI has been a game-changer for our business.
                                                                     Their strategic insights and innovative solutions have significantly
                                                                     boosted our growth. The professionalism and dedication are unmatched. Highly recommend!"
                                                                 </p>

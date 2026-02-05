@@ -29,7 +29,7 @@ export const ContactFormArea: React.FC = () => {
                                 <p className="disc">
                                     Our support team is here to assist you
                                 </p>
-                                <a href="mailto:support@Digix.com">support@Digix.com</a>
+                                <a href="mailto:support@neuraltrixai.com">support@neuraltrixai.com</a>
                             </div>
                             <div className="signle-contact-card">
                                 <div className="top-area">

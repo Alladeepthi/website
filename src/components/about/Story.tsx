@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 export const Story: React.FC = () => {
     return (
@@ -10,7 +10,7 @@ export const Story: React.FC = () => {
                 <div className="section-inner">
                     <h2 className="title rts-text-anime-style-1">Our Story</h2>
                     <p className="disc">
-                        Founded in 2006, Digix was established with a clear vision: to help businesses navigate the digital landscape with confidence and ease. Over the years, we’ve grown from a small startup to a trusted partner for clients across various industries, from finance and healthcare to retail and education. Our journey has been one of continuous learning and adaptation, allowing us to stay at the forefront of industry trends and technological advancements.
+                        Founded in 2006, NeuralTrix AI was established with a clear vision: to help businesses navigate the digital landscape with confidence and ease. Over the years, weâ€™ve grown from a small startup to a trusted partner for clients across various industries, from finance and healthcare to retail and education. Our journey has been one of continuous learning and adaptation, allowing us to stay at the forefront of industry trends and technological advancements.
                     </p>
                 </div>
                 <div className="bottom-image-area">
@@ -59,3 +59,4 @@ export const Story: React.FC = () => {
         </div>
     );
 };
+

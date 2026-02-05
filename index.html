@@ -4,36 +4,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Digix – A modern and responsive HTML template for It Solution">
-  <title>Digix - Machine Learning Platform</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="NeuralTrix AI - Advanced Machine Learning Platform for AI Solutions, Data Science, and Intelligent Automation">
+  <meta name="keywords" content="machine learning, AI, artificial intelligence, data science, ML platform">
+  <meta name="author" content="NeuralTrix AI">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="NeuralTrix AI - Machine Learning Platform">
+  <meta property="og:description"
+    content="Advanced Machine Learning Platform for AI Solutions, Data Science, and Intelligent Automation">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourwebsite.com">
+  <meta property="og:image" content="/assets/images/og-image.jpg">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NeuralTrix AI - Machine Learning Platform">
+  <meta name="twitter:description" content="Advanced Machine Learning Platform for AI Solutions">
+  <meta name="twitter:image" content="/assets/images/og-image.jpg">
+
+  <title>NeuralTrix AI - Machine Learning Platform | AI Solutions & Data Science</title>
   <link rel="shortcut icon" type="image/x-icon" href="/assets/images/fav.png">
 
-  <!-- Template CSS -->
-  <link rel="stylesheet" href="/assets/css/plugins/fontawesome.css">
-  <link rel="stylesheet" href="/assets/css/plugins/swiper.css">
-  <link rel="stylesheet" href="/assets/css/plugins/metismenu.css">
-  <link rel="stylesheet" href="/assets/css/plugins/magnifying-popup.css">
-  <link rel="stylesheet" href="/assets/css/plugins/odometer.css">
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="preload" href="/assets/css/vendor/bootstrap.min.css" as="style">
+
+  <!-- Template CSS - Critical First -->
   <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css">
   <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- Non-Critical CSS - Can be loaded async -->
+  <link rel="stylesheet" href="/assets/css/plugins/fontawesome.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/assets/css/plugins/swiper.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/assets/css/plugins/metismenu.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/assets/css/plugins/magnifying-popup.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/assets/css/plugins/odometer.css" media="print" onload="this.media='all'">
 </head>
 
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 
-  <!-- Template Scripts -->
-  <script src="/assets/js/plugins/jquery.js"></script>
-  <script src="/assets/js/plugins/jquery-appear.js"></script>
-  <script src="/assets/js/plugins/odometer.js"></script>
-  <script src="/assets/js/plugins/gsap.js"></script>
-  <script src="/assets/js/plugins/split-text.js"></script>
-  <script src="/assets/js/plugins/scroll-trigger.js"></script>
-  <script src="/assets/js/plugins/smooth-scroll.js"></script>
-  <script src="/assets/js/plugins/metismenu.js"></script>
-  <script src="/assets/js/plugins/popup.js"></script>
-  <script src="/assets/js/vendor/bootstrap.min.js"></script>
-  <script src="/assets/js/plugins/swiper.js"></script>
+  <!-- Template Scripts - Deferred for better performance -->
+  <script src="/assets/js/plugins/jquery.js" defer></script>
+  <script src="/assets/js/plugins/jquery-appear.js" defer></script>
+  <script src="/assets/js/plugins/odometer.js" defer></script>
+  <script src="/assets/js/plugins/gsap.js" defer></script>
+  <script src="/assets/js/plugins/split-text.js" defer></script>
+  <script src="/assets/js/plugins/scroll-trigger.js" defer></script>
+  <script src="/assets/js/plugins/smooth-scroll.js" defer></script>
+  <script src="/assets/js/plugins/metismenu.js" defer></script>
+  <script src="/assets/js/plugins/popup.js" defer></script>
+  <script src="/assets/js/vendor/bootstrap.min.js" defer></script>
+  <script src="/assets/js/plugins/swiper.js" defer></script>
 </body>
 
 </html>

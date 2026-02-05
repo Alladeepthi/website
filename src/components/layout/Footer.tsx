@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
                     <div className="col-lg-3">
                         <div className="left-wiget">
                             <Link className="logo" to="/">
-                                <img src="/assets/images/logo/04.svg" alt="logo" />
+                                <img src="/assets/images/logo/neuraltrix-logo-white.svg" alt="NeuralTrix AI" style={{ height: '45px', width: 'auto' }} />
                             </Link>
                             <p className="disc">Subscribe our newsletter to get the latest news and updates!</p>
                             <form action="#" className="footer-form" onClick={(e) => e.preventDefault()}>
@@ -82,3 +82,4 @@ export const Footer: React.FC = () => {
         </div>
     );
 };
+
