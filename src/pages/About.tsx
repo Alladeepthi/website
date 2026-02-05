@@ -7,9 +7,162 @@ export const About: React.FC = () => {
         script.src = "/assets/js/main.js?t=" + new Date().getTime();
         script.async = true;
         document.body.appendChild(script);
+
+        // Add modern styles
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes fadeInUp {
+                from { opacity: 0; transform: translateY(30px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+            main {
+                background: radial-gradient(circle at 10% 20%, rgba(0, 50, 100, 0.03) 0%, transparent 40%),
+                            radial-gradient(circle at 90% 80%, rgba(100, 0, 100, 0.03) 0%, transparent 40%);
+                position: relative;
+            }
+
+            .modern-container { perspective: 1000px; }
+            
+            .modern-card {
+                background: rgba(255, 255, 255, 0.02);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                border-top: 1px solid rgba(255, 255, 255, 0.15);
+                border-left: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 32px;
+                padding: 40px;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+                transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+                position: relative;
+                overflow: hidden;
+                animation: fadeInUp 1s ease-out forwards;
+            }
+
+            .modern-card:hover {
+                transform: translateY(-8px);
+                background: rgba(255, 255, 255, 0.05);
+                box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+                border-color: rgba(255, 255, 255, 0.2);
+            }
+
+            /* Image Height Fix & Modern Styling */
+            .modern-image-wrapper {
+                border-radius: 24px;
+                overflow: hidden;
+                height: 400px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                transition: transform 0.5s ease;
+            }
+            .modern-image-wrapper img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.8s ease;
+            }
+            .modern-image-wrapper:hover {
+                transform: translateY(-5px);
+            }
+            .modern-image-wrapper:hover img {
+                transform: scale(1.05);
+            }
+
+            /* Stats Cards */
+            .stat-card {
+                background: rgba(255, 255, 255, 0.04);
+                padding: 40px 30px;
+                border-radius: 24px;
+                text-align: center;
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                transition: all 0.4s ease;
+                backdrop-filter: blur(10px);
+            }
+            .stat-card:hover {
+                background: rgba(255, 255, 255, 0.08);
+                transform: translateY(-5px) scale(1.03);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            }
+
+            .team-card {
+                padding: 0;
+                border-radius: 28px;
+                background: rgba(255,255,255,0.03);
+                border: 1px solid rgba(255,255,255,0.05);
+                transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+                overflow: hidden;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+            
+            .team-card:hover {
+                transform: translateY(-12px);
+                box-shadow: 0 40px 80px rgba(0,0,0,0.25);
+                border-color: rgba(255,255,255,0.2);
+            }
+
+            .team-card .thumbnail {
+                overflow: hidden;
+                border-radius: 28px 28px 0 0;
+                position: relative;
+            }
+            
+            .team-card .thumbnail::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 50%;
+                background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+                opacity: 0.6;
+                transition: opacity 0.3s;
+            }
+            
+            .team-card:hover .thumbnail::after {
+                opacity: 0.8;
+            }
+
+            .team-card img {
+                transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                width: 100%;
+                display: block;
+            }
+
+            .team-card:hover img {
+                transform: scale(1.15);
+            }
+
+            .team-card .inner-content {
+                padding: 25px;
+                text-align: center;
+                background: rgba(255,255,255,0.02);
+                backdrop-filter: blur(10px);
+                border-top: 1px solid rgba(255,255,255,0.05);
+            }
+            
+            .team-card .title {
+                background: linear-gradient(to right, #ffffff, #a8b2d1);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-weight: 800;
+                font-size: 1.25rem;
+                margin-bottom: 8px;
+            }
+            
+            .team-card .designation {
+                font-size: 0.9rem;
+                opacity: 0.8;
+                color: #ccc;
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+            }
+        `;
+        document.head.appendChild(style);
+
         return () => {
             document.body.className = "";
             document.body.removeChild(script);
+            document.head.removeChild(style);
         };
     }, []);
 
@@ -20,29 +173,35 @@ export const About: React.FC = () => {
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-7">
-                            <div className="rts-about-breadcrumb-content">
+                            <div className="rts-about-breadcrumb-content modern-container">
                                 <ul>
                                     <li><a href="/">Home</a></li>
                                     <li><i className="fa fa-chevron-right"></i></li>
                                     <li className="active"><a href="#">About</a></li>
                                 </ul>
-                                <h1 className="title rts-text-anime-style-1">Empowering Businesses through Innovative Software Solutions</h1>
-                                <p className="disc">Since our inception, we have been committed to delivering cutting-edge software solutions that drive innovation and success. From small startups to global enterprises we have partnered with clients across industries, helping them navigate complexities of the digital world with custom, scalable technology.</p>
-                                <div className="author-area">
-                                    <div className="stars-main-wrapper">
-                                        <div className="wrapper">
-                                            <img src="/assets/images/others/stars-02.svg" alt="stars" />
-                                            <img src="/assets/images/others/star-02.svg" alt="stars" />
+                                <div className="modern-card">
+                                    <h1 className="title rts-text-anime-style-1">NeuralTrix AI - Pioneering the Future of Intelligence</h1>
+                                    <p className="disc">
+                                        NeuralTrix AI - IT Corporation Private Limited is a premier AI solutions provider, incorporated in 2026.
+                                        We specialize in delivering end-to-end AI ecosystems, LLM solutions, and engineering automation.
+                                        Our mission is to democratize advanced AI for businesses of all sizes, ensuring ethical and intuitive technology that enhances human potential.
+                                    </p>
+                                    <div className="author-area">
+                                        <div className="stars-main-wrapper">
+                                            <div className="wrapper">
+                                                <img src="/assets/images/others/stars-02.svg" alt="stars" />
+                                                <img src="/assets/images/others/star-02.svg" alt="stars" />
+                                            </div>
+                                            <p className="disc1">TrustScore 4.8 2k reviews</p>
                                         </div>
-                                        <p className="disc1">TrustScore 4.8 2k reviews</p>
-                                    </div>
-                                    <div className="author-wrapper">
-                                        <div className="image">
-                                            <img src="/assets/images/others/04.svg" alt="" />
-                                        </div>
-                                        <div className="details">
-                                            <div className="sign"><img src="/assets/images/others/sign-2.svg" alt="" /></div>
-                                            <p>CEO of NeuralTrix AI</p>
+                                        <div className="author-wrapper">
+                                            <div className="image">
+                                                <img src="/assets/images/others/04.svg" alt="" />
+                                            </div>
+                                            <div className="details">
+                                                <div className="sign"><img src="/assets/images/others/sign-2.svg" alt="" /></div>
+                                                <p>Founder & CEO</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -61,9 +220,9 @@ export const About: React.FC = () => {
             {/* rts mission areas start */}
             <div className="rts-mission-area demo-4">
                 <div className="container">
-                    <div className="section-inner">
+                    <div className="section-inner modern-card">
                         <h2 className="title rts-text-anime-style-1">Our Mission</h2>
-                        <p className="disc">To enable businesses of all sizes to harness the full potential of technology by delivering reliable, efficient, and scalable software solutions that create meaningful value and lasting impact.</p>
+                        <p className="disc">To enable businesses of all sizes to harness the full potential of technology by delivering reliable, efficient, and scalable software solutions that create meaningful value and lasting impact. We strive to build next-generation AI systems that empower organizations through actionable insights.</p>
                     </div>
                 </div>
             </div>
@@ -73,50 +232,49 @@ export const About: React.FC = () => {
             <div className="rts-story-area demo-4">
                 <div className="container">
                     <div className="image-area">
-                        <img src="/assets/images/about/10.webp" alt="" />
+                        <img src="/assets/images/about/16.webp" alt="" />
                     </div>
-                    <div className="section-inner">
+                    <div className="section-inner modern-card">
                         <h2 className="title rts-text-anime-style-1">Our Story</h2>
-                        <p className="disc">Founded in 2006, NeuralTrix AI was established with a clear vision: to help businesses navigate the digital landscape with confidence and ease. Over the years, weâ€™ve grown from a small startup to a trusted partner for clients across various industries, from finance and healthcare to retail and education. Our journey has been one of continuous learning and adaptation, allowing us to stay at the forefront of indu stry trends and technological advancements.</p>
+                        <p className="disc">
+                            Established in 2026 in Andhra Pradesh, India, NeuralTrix AI was founded with a clear vision: to bridge the gap between complex AI technologies and practical business applications.
+                            From our headquarters, we serve a global clientele, offering cutting-edge services in AI & LLM Solutions, Engineering & Automation, and Data & Cloud Services.
+                            Our philosophy is rooted in creating ethical, intuitive AI that drives decision-making and innovation.
+                        </p>
                     </div>
                     <div className="bottom-image-area">
                         <div className="row g-5">
                             <div className="col-lg-4">
-                                <div className="image-one"><img src="/assets/images/about/11.webp" alt="" /></div>
+                                <div className="modern-image-wrapper">
+                                    <img src="/assets/images/about/18.webp" alt="success" />
+                                </div>
                             </div>
                             <div className="col-lg-8">
-                                <div className="image-two"><img src="/assets/images/about/12.webp" alt="" /></div>
+                                <div className="modern-image-wrapper">
+                                    <img src="/assets/images/about/22.webp" alt="teamwork" />
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div className="section-inner bottom">
-                        <h2 className="title rts-text-anime-style-1">Number</h2>
-                        <div className="funfacts-area-counter-up-mission">
-                            <div className="single-funfacts-area-counter-up-mission">
-                                <div className="icon">
-                                    <img src="/assets/images/about/icons/09.svg" alt="icons" />
-                                </div>
-                                <div className="content">
+                        <h2 className="title rts-text-anime-style-1 mb--40">Impact in Numbers</h2>
+                        <div className="row g-5">
+                            <div className="col-lg-4">
+                                <div className="stat-card">
                                     <h2 className="counter title"><span className="odometer" data-count="25">00</span>+</h2>
-                                    <p className="disc2">Year IT Experience</p>
+                                    <p className="disc2">Years Combined Exp.</p>
                                 </div>
                             </div>
-                            <div className="single-funfacts-area-counter-up-mission">
-                                <div className="icon">
-                                    <img src="/assets/images/about/icons/10.svg" alt="icons" />
-                                </div>
-                                <div className="content">
+                            <div className="col-lg-4">
+                                <div className="stat-card">
                                     <h2 className="counter title"><span className="odometer" data-count="23">00</span>K</h2>
-                                    <p className="disc2">Wonderful Client</p>
+                                    <p className="disc2">Happy Clients</p>
                                 </div>
                             </div>
-                            <div className="single-funfacts-area-counter-up-mission">
-                                <div className="icon">
-                                    <img src="/assets/images/about/icons/11.svg" alt="icons" />
-                                </div>
-                                <div className="content">
+                            <div className="col-lg-4">
+                                <div className="stat-card">
                                     <h2 className="counter title"><span className="odometer" data-count="5">00</span>M</h2>
-                                    <p className="disc2">Project Done</p>
+                                    <p className="disc2">Solutions Delivered</p>
                                 </div>
                             </div>
                         </div>
@@ -142,35 +300,24 @@ export const About: React.FC = () => {
                         </div>
                     </div>
                     <div className="row g-5 mt--20">
-                        <div className="col-lg-12">
-                            <div className="team-swiper-area">
-                                <div className="swiper mySwiper-team-one">
-                                    <div className="swiper-wrapper">
-                                        {[
-                                            { name: 'Daniel Brown', role: 'Chief Executive Officer', img: '01.webp' },
-                                            { name: 'Christopher Henry', role: 'Chief Executive Officer', img: '02.webp' },
-                                            { name: 'Marketing Director', role: 'Senior Developer', img: '03.webp' },
-                                            { name: 'John Smith', role: 'Senior Developer', img: '04.webp' },
-                                        ].map((member, i) => (
-                                            <div className="swiper-slide" key={i}>
-                                                <div className="single-team-style-one">
-                                                    <div className="thumbnail">
-                                                        <img src={`/assets/images/team/${member.img}`} alt="team" />
-                                                    </div>
-                                                    <div className="inner-content">
-                                                        <h5 className="title">{member.name}</h5>
-                                                        <span className="designation">{member.role}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        ))}
+                        {[
+                            { name: 'Dr. Deepak Chowdary Edara', role: 'Founder & CEO', img: '01.webp' },
+                            { name: 'Dr. K V Krishna Kishore', role: 'President & Managing Director', img: '02.webp' },
+                            { name: 'Dr. V Phani Kumar S.', role: 'Vice President & CTO', img: '03.webp' },
+                            { name: 'Mr. Venkatesh Addagadda', role: 'Client Solutions & Delivery Manager', img: '04.webp' },
+                        ].map((member, i) => (
+                            <div className="col-lg-3 col-md-6 col-sm-12" key={i}>
+                                <div className="single-team-style-one modern-card team-card">
+                                    <div className="thumbnail">
+                                        <img src={`/assets/images/team/${member.img}`} alt="team" />
                                     </div>
-                                    <div className="swiper-pagination"></div>
+                                    <div className="inner-content">
+                                        <h5 className="title">{member.name}</h5>
+                                        <span className="designation">{member.role}</span>
+                                    </div>
                                 </div>
-                                <div className="swiper-button-next"><i className="fa-solid fa-chevron-right"></i></div>
-                                <div className="swiper-button-prev"><i className="fa-solid fa-chevron-left"></i></div>
                             </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>
