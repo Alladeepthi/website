@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 export const Header: React.FC = () => {
@@ -23,219 +23,20 @@ export const Header: React.FC = () => {
 
   return (
     <header className={`header-one machine-learning header--sticky ${!isHome ? 'header-relative' : ''}`}>
-      <div className="container">
+      <div className="container" style={{ maxWidth: '1400px' }}>
         <div className="row">
           <div className="col-lg-12">
-            <div className="header-wrapper-main">
+            <div className="header-wrapper-main" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '30px', flexWrap: 'nowrap' }}>
               <div className="logo-area">
                 <Link to="/">
-                  <img src="/assets/images/logo/04.svg" alt="logo" />
+                  <img src="/assets/images/logo/neuraltrix-logo-white.svg" alt="NeuralTrix AI" style={{ height: '55px', width: 'auto' }} />
                 </Link>
               </div>
-              <div className="nav-area">
-                <ul className="">
-                  <li className="main-nav has-dropdown mega-menu project-a-after">
-                    <Link to="/">Home</Link>
-                    <div className="rts-mega-menu with-home-demos">
-                      <div className="wrapper">
-                        <div className="container p-0">
-                          <div className="row g-0">
-                            <div className="col-lg-6">
-                              <ul className="mega-menu-item with-list parent-nav">
-                                <li className="hega-menu-head-wrapper">
-                                  <p className="hega-menu-head">
-                                    <i className="fa-regular fa-folder-open"></i> Demo
-                                  </p>
-                                </li>
-                                <li>
-                                  <Link to="/">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i> IT Services
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i> IT Agency
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i> IT Solutions
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i> Software company
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i> Digital Agency
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i> App Company
-                                  </Link>
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="col-lg-6">
-                              <ul className="mega-menu-item with-list parent-nav">
-                                <li className="hega-menu-head-wrapper">
-                                  <p className="hega-menu-head">
-                                    <i className="fa-regular fa-folder-open"></i> Demo
-                                  </p>
-                                </li>
-                                <li>
-                                  <Link to="/">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i> Cybersecurity Company
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i> Machine Learning
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i> Data Science
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i> Marketing Automation <span className="new-badge">New</span>
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i> Saas Landing <span className="new-badge">New</span>
-                                  </Link>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="main-nav">
-                    <Link to="/about">About</Link>
-                  </li>
-
-                  <li className="main-nav has-dropdown mega-menu project-a-after">
-                    <Link to="#">Pages</Link>
-                    <div className="rts-mega-menu">
-                      <div className="wrapper">
-                        <div className="container">
-                          <div className="row g-0">
-                            <div className="col-lg-3">
-                              <ul className="mega-menu-item with-list parent-nav">
-                                <li>
-                                  <Link to="/about">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i>About Company
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/services">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i>Service
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/service-details">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i>Service Details
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/case-studies">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i>Project Details
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/about">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i>Why Choose Us
-                                  </Link>
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="col-lg-3">
-                              <ul className="mega-menu-item with-list parent-nav">
-                                <li>
-                                  <Link to="/team">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i>Team
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/team">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i> Team Single
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/blog">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i>Blog
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/blog">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i>Blog Details
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/about">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i>Partner
-                                  </Link>
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="col-lg-3">
-                              <ul className="mega-menu-item with-list parent-nav">
-                                <li>
-                                  <Link to="/about">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i>Industry
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/faq">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i>FAQ'S
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/contact">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i>Contact
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/about">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i>Career
-                                  </Link>
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="col-lg-3">
-                              <ul className="mega-menu-item with-list parent-nav">
-                                <li>
-                                  <Link to="/about">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i>Career Single
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/about">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i>Award
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/contact">
-                                    <i className="fa-sharp fa-regular fa-chevron-right"></i>Consultation
-                                  </Link>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
+              <div className="nav-area" style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+                <ul className="" style={{ display: 'flex', flexWrap: 'nowrap', gap: '35px', alignItems: 'center', margin: 0, padding: 0, listStyle: 'none' }}>
+                  {/* Services - With Dropdown */}
                   <li className="main-nav has-dropdown mega-menu">
-                    <Link to="/services">Service</Link>
+                    <Link to="/service-details">Services</Link>
                     <div className="rts-mega-menu service-mega-menu-style">
                       <div className="wrapper">
                         <div className="container">
@@ -246,11 +47,11 @@ export const Header: React.FC = () => {
                                   <Link to="/service-details">
                                     <div className="single-service-menu">
                                       <div className="icon">
-                                        <img src="/assets/images/feature/01.svg" alt="service" />
+                                        <img src="/assets/images/feature/01.svg" alt="AI Solutions" />
                                       </div>
                                       <div className="info">
-                                        <h5 className="title">IT Consulting</h5>
-                                        <p className="details">Once planning is complete, site preparation begins.</p>
+                                        <h5 className="title">AI Solutions</h5>
+                                        <p className="details">Advanced artificial intelligence solutions for your business.</p>
                                       </div>
                                     </div>
                                   </Link>
@@ -259,11 +60,11 @@ export const Header: React.FC = () => {
                                   <Link to="/service-details">
                                     <div className="single-service-menu">
                                       <div className="icon">
-                                        <img src="/assets/images/feature/02.svg" alt="service" />
+                                        <img src="/assets/images/feature/02.svg" alt="Machine Learning" />
                                       </div>
                                       <div className="info">
-                                        <h5 className="title">Cloud Migration</h5>
-                                        <p className="details">Quis nulla blandit vulputate morbi adipiscing sem vestibulum. Nulla turpis</p>
+                                        <h5 className="title">Machine Learning</h5>
+                                        <p className="details">Intelligent ML models for predictive analytics and automation.</p>
                                       </div>
                                     </div>
                                   </Link>
@@ -272,11 +73,11 @@ export const Header: React.FC = () => {
                                   <Link to="/service-details">
                                     <div className="single-service-menu">
                                       <div className="icon">
-                                        <img src="/assets/images/feature/03.svg" alt="service" />
+                                        <img src="/assets/images/feature/03.svg" alt="Data Science" />
                                       </div>
                                       <div className="info">
-                                        <h5 className="title">Cyber Security</h5>
-                                        <p className="details">Quis nulla blandit vulputate morbi adipiscing sem vestibulum. Nulla turpis</p>
+                                        <h5 className="title">Data Science</h5>
+                                        <p className="details">Transform data into actionable insights and decisions.</p>
                                       </div>
                                     </div>
                                   </Link>
@@ -289,11 +90,11 @@ export const Header: React.FC = () => {
                                   <Link to="/service-details">
                                     <div className="single-service-menu">
                                       <div className="icon">
-                                        <img src="/assets/images/feature/04.svg" alt="service" />
+                                        <img src="/assets/images/feature/04.svg" alt="Cloud Solutions" />
                                       </div>
                                       <div className="info">
-                                        <h5 className="title">Software Development</h5>
-                                        <p className="details">We provide best IT solutions for any type of business.</p>
+                                        <h5 className="title">Cloud Solutions</h5>
+                                        <p className="details">Scalable cloud infrastructure and migration services.</p>
                                       </div>
                                     </div>
                                   </Link>
@@ -302,11 +103,11 @@ export const Header: React.FC = () => {
                                   <Link to="/service-details">
                                     <div className="single-service-menu">
                                       <div className="icon">
-                                        <img src="/assets/images/feature/05.svg" alt="service" />
+                                        <img src="/assets/images/feature/05.svg" alt="Consulting" />
                                       </div>
                                       <div className="info">
-                                        <h5 className="title">Managed IT Services</h5>
-                                        <p className="details">We provide best IT solutions for any type of business as.</p>
+                                        <h5 className="title">AI Consulting</h5>
+                                        <p className="details">Expert guidance for your AI transformation journey.</p>
                                       </div>
                                     </div>
                                   </Link>
@@ -315,11 +116,11 @@ export const Header: React.FC = () => {
                                   <Link to="/service-details">
                                     <div className="single-service-menu">
                                       <div className="icon">
-                                        <img src="/assets/images/feature/06.svg" alt="service" />
+                                        <img src="/assets/images/feature/06.svg" alt="Automation" />
                                       </div>
                                       <div className="info">
-                                        <h5 className="title">IT Infrastructure Setup</h5>
-                                        <p className="details">We provide best IT solutions for any type of business as.</p>
+                                        <h5 className="title">Process Automation</h5>
+                                        <p className="details">Streamline operations with intelligent automation.</p>
                                       </div>
                                     </div>
                                   </Link>
@@ -328,16 +129,16 @@ export const Header: React.FC = () => {
                             </div>
                             <div className="col-lg-4">
                               <div className="menu-list">
-                                <h4>Working Process</h4>
+                                <h4>Our Approach</h4>
                                 <ul>
-                                  <li>Initial Consultation</li>
-                                  <li>Developing & strategy</li>
+                                  <li>Discovery & Analysis</li>
+                                  <li>Strategy Development</li>
+                                  <li>Solution Design</li>
                                   <li>Implementation</li>
-                                  <li>Ongoing Monitoring</li>
-                                  <li>Assessment</li>
-                                  <li>Planning</li>
-                                  <li>Implementation</li>
-                                  <li>Support</li>
+                                  <li>Testing & Validation</li>
+                                  <li>Deployment</li>
+                                  <li>Ongoing Support</li>
+                                  <li>Optimization</li>
                                 </ul>
                               </div>
                             </div>
@@ -346,15 +147,48 @@ export const Header: React.FC = () => {
                       </div>
                     </div>
                   </li>
+
+                  {/* Platforms */}
+                  <li className="main-nav">
+                    <Link to="/pricing">Platforms</Link>
+                  </li>
+
+                  {/* Industry */}
                   <li className="main-nav has-dropdown project-a-after">
-                    <Link to="/blog">Blog</Link>
+                    <Link to="/industry">Industry</Link>
                     <ul className="submenu parent-nav">
-                      <li><Link to="/blog">Blog</Link></li>
-                      <li><Link to="/blog">Blog Details</Link></li>
+                      <li><Link to="/industry#healthcare">Healthcare</Link></li>
+                      <li><Link to="/industry#finance">Finance</Link></li>
+                      <li><Link to="/industry#retail">Retail</Link></li>
+                      <li><Link to="/industry#manufacturing">Manufacturing</Link></li>
+                      <li><Link to="/industry#technology">Technology</Link></li>
                     </ul>
                   </li>
+
+                  {/* Our Work */}
                   <li className="main-nav">
-                    <Link to="/contact">Contact</Link>
+                    <Link to="/case-studies">Our Work</Link>
+                  </li>
+
+                  {/* About */}
+                  <li className="main-nav">
+                    <Link to="/about">About</Link>
+                  </li>
+
+                  {/* Products */}
+                  <li className="main-nav has-dropdown project-a-after">
+                    <Link to="#">Products</Link>
+                    <ul className="submenu parent-nav">
+                      <li><Link to="/pricing">AI Platform</Link></li>
+                      <li><Link to="/pricing">ML Studio</Link></li>
+                      <li><Link to="/pricing">Data Analytics Suite</Link></li>
+                      <li><Link to="/pricing">Automation Tools</Link></li>
+                    </ul>
+                  </li>
+
+                  {/* Contact Us */}
+                  <li className="main-nav">
+                    <Link to="/contact">Contact Us</Link>
                   </li>
                 </ul>
               </div>
@@ -371,7 +205,7 @@ export const Header: React.FC = () => {
                     </li>
                   </ul>
                 </div>
-                <Link to="/contact" className="rts-btn btn-primary with-arrow">Get Started <i className="fa-regular fa-arrow-up up-right"></i></Link>
+                <Link to="/contact" className="rts-btn btn-primary with-arrow">Let's Connect <i className="fa-regular fa-arrow-up up-right"></i></Link>
                 <div className="menu-btn-toggle white" onClick={() => {
                   document.getElementById('side-bar')?.classList.add('show');
                   document.getElementById('anywhere-home')?.classList.add('bgshow');
@@ -390,3 +224,4 @@ export const Header: React.FC = () => {
     </header>
   );
 };
+

@@ -94,7 +94,7 @@ export const Services: React.FC = () => {
                         <div className="col-lg-5">
                             <div className="why-choose-left-content">
                                 <div className="title-left-wrapper">
-                                    <h2 className="title rts-text-anime-style-1">The Digix Business <br /> Agency Difference</h2>
+                                    <h2 className="title rts-text-anime-style-1">The NeuralTrix AI <br /> Agency Difference</h2>
                                 </div>
                                 <p className="disc">
                                     We provide a wide range of customized solutions designed to meet the unique challenges of
