@@ -1,17 +1,20 @@
 ﻿import React from 'react';
 import { Link } from 'react-router-dom';
+import { servicesData } from '../../data/services';
 
 export const MobileMenu: React.FC = () => {
+    const closeMenu = () => {
+        document.getElementById('side-bar')?.classList.remove('show');
+        document.getElementById('anywhere-home')?.classList.remove('bgshow');
+    };
+
     return (
         <>
             <div id="side-bar" className="side-bar header-two">
                 <div className="rts-sidebar-menu-desktop">
                     <div className="logo-area">
                         <Link className="logo" to="/"><img src="/assets/images/logo/neuraltrix-logo-white.svg" alt="NeuralTrix AI" style={{ height: '45px', width: 'auto' }} /></Link>
-                        <button className="close-icon-menu" aria-label="footer_Button" onClick={() => {
-                            document.getElementById('side-bar')?.classList.remove('show');
-                            document.getElementById('anywhere-home')?.classList.remove('bgshow');
-                        }}><i className="far fa-times"></i></button>
+                        <button className="close-icon-menu" aria-label="footer_Button" onClick={closeMenu}><i className="far fa-times"></i></button>
                     </div>
                     <div className="body d-none d-xl-block">
                         <div className="about-us">
@@ -24,11 +27,11 @@ export const MobileMenu: React.FC = () => {
                         <div className="menu-list">
                             <h4>Useful Links</h4>
                             <ul>
-                                <li><Link to="/about">About Company</Link></li>
-                                <li><Link to="/service-details">Service</Link></li>
-                                <li><Link to="/case-studies">Project Details</Link></li>
-                                <li><Link to="/pricing">Pricing</Link></li>
-                                <li><Link to="/contact">Contact</Link></li>
+                                <li><Link to="/about" onClick={closeMenu}>About Company</Link></li>
+                                <li><Link to="/service-details" onClick={closeMenu}>Service</Link></li>
+                                <li><Link to="/case-studies" onClick={closeMenu}>Project Details</Link></li>
+                                <li><Link to="/pricing" onClick={closeMenu}>Pricing</Link></li>
+                                <li><Link to="/contact" onClick={closeMenu}>Contact</Link></li>
                             </ul>
                         </div>
                         <div className="get-in-touch">
@@ -66,37 +69,38 @@ export const MobileMenu: React.FC = () => {
                             <li className="has-droupdown">
                                 <Link to="#" className="main">Services</Link>
                                 <ul className="submenu mm-collapse">
-                                    <li><Link to="/service-details">AI Solutions</Link></li>
-                                    <li><Link to="/service-details">Machine Learning</Link></li>
-                                    <li><Link to="/service-details">Data Science</Link></li>
-                                    <li><Link to="/service-details">Cloud Solutions</Link></li>
-                                    <li><Link to="/service-details">AI Consulting</Link></li>
-                                    <li><Link to="/service-details">Process Automation</Link></li>
+                                    {servicesData.map((service) => (
+                                        <li key={service.id}>
+                                            <Link to="/service-details" state={{ service }} onClick={closeMenu}>
+                                                {service.title}
+                                            </Link>
+                                        </li>
+                                    ))}
                                 </ul>
                             </li>
-                            <li><Link to="/pricing" className="main">Platforms</Link></li>
+                            <li><Link to="/pricing" className="main" onClick={closeMenu}>Platforms</Link></li>
                             <li className="has-droupdown">
                                 <Link to="/industry" className="main">Industry</Link>
                                 <ul className="submenu mm-collapse">
-                                    <li><Link to="/industry#healthcare">Healthcare</Link></li>
-                                    <li><Link to="/industry#finance">Finance</Link></li>
-                                    <li><Link to="/industry#retail">Retail</Link></li>
-                                    <li><Link to="/industry#manufacturing">Manufacturing</Link></li>
-                                    <li><Link to="/industry#technology">Technology</Link></li>
+                                    <li><Link to="/industry#healthcare" onClick={closeMenu}>Healthcare</Link></li>
+                                    <li><Link to="/industry#finance" onClick={closeMenu}>Finance</Link></li>
+                                    <li><Link to="/industry#retail" onClick={closeMenu}>Retail</Link></li>
+                                    <li><Link to="/industry#manufacturing" onClick={closeMenu}>Manufacturing</Link></li>
+                                    <li><Link to="/industry#technology" onClick={closeMenu}>Technology</Link></li>
                                 </ul>
                             </li>
-                            <li><Link to="/case-studies" className="main">Our Work</Link></li>
-                            <li><Link to="/about" className="main">About</Link></li>
+
+                            <li><Link to="/about" className="main" onClick={closeMenu}>About</Link></li>
                             <li className="has-droupdown">
                                 <Link to="#" className="main">Products</Link>
                                 <ul className="submenu mm-collapse">
-                                    <li><Link to="/pricing">AI Platform</Link></li>
-                                    <li><Link to="/pricing">ML Studio</Link></li>
-                                    <li><Link to="/pricing">Data Analytics Suite</Link></li>
-                                    <li><Link to="/pricing">Automation Tools</Link></li>
+                                    <li><Link to="/pricing" onClick={closeMenu}>AI Platform</Link></li>
+                                    <li><Link to="/pricing" onClick={closeMenu}>ML Studio</Link></li>
+                                    <li><Link to="/pricing" onClick={closeMenu}>Data Analytics Suite</Link></li>
+                                    <li><Link to="/pricing" onClick={closeMenu}>Automation Tools</Link></li>
                                 </ul>
                             </li>
-                            <li><Link to="/contact" className="main">Contact Us</Link></li>
+
                         </ul>
                     </nav>
                 </div>

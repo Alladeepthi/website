@@ -1,7 +1,17 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export const ServiceDetails: React.FC = () => {
+    const location = useLocation();
+    const service = location.state?.service || {
+        title: 'Empowering Businesses through Innovative Software',
+        subCategories: [
+            'Initial Consultation & Needs Assessment',
+            'Strategy Development & Roadmap Creation',
+            'Implementation & Integration'
+        ]
+    };
+
     useEffect(() => {
         document.body.className = "radious-4 demo-machine-learning";
         const script = document.createElement('script');
@@ -27,7 +37,7 @@ export const ServiceDetails: React.FC = () => {
                                     <li><i className="fa fa-chevron-right"></i></li>
                                     <li><a href="#" className="active">Service Details</a></li>
                                 </ul>
-                                <h1 className="title rts-text-anime-style-1">Empowering Businesses through Innovative Software</h1>
+                                <h1 className="title rts-text-anime-style-1" dangerouslySetInnerHTML={{ __html: service.title }}></h1>
                             </div>
                         </div>
                     </div>
@@ -73,18 +83,13 @@ export const ServiceDetails: React.FC = () => {
                         </div>
                         <div className="col-lg-6 mt_md--50 mt_sm--50">
                             <div className="working-process-list-wrapper">
-                                {[
-                                    { title: 'Initial Consultation & Needs Assessment', tags: ['IT Consulting', 'IT Solutions', 'Consulting Services'] },
-                                    { title: 'Strategy Development & Roadmap Creation', tags: ['Risk Assessment', 'IT Solutions', 'Consulting Services'] },
-                                    { title: 'Implementation & Integration', tags: ['IT Consulting', 'Infrastructure Design', 'Consulting Services'] },
-                                ].map((process, i) => (
+                                {service.subCategories.map((subCat: string, i: number) => (
                                     <div className="single-working-process-area" key={i}>
-                                        <h5 className="title">{process.title}</h5>
-                                        <p className="disc">We assess your current IT environment and create a customized roadmap that aligns technology with your business objectives.</p>
+                                        <h5 className="title">{subCat}</h5>
+                                        <p className="disc">Comprehensive solution designed to meet your business needs.</p>
                                         <div className="tag-area-wrapper">
-                                            {process.tags.map((tag, j) => (
-                                                <span className="tag-area" key={j}>{tag}</span>
-                                            ))}
+                                            <span className="tag-area">Service</span>
+                                            <span className="tag-area">Solution</span>
                                         </div>
                                     </div>
                                 ))}
