@@ -16,7 +16,7 @@ export const CaseStudies: React.FC = () => {
                     <div className="product-wrapper">
                         <div className="inner one">
                             <div className="image-area">
-                                <img src="/assets/images/project/33.webp" width="521" alt="" />
+                                <img src="/assets/images/project/healthcare-predictive.png" width="521" alt="" />
                             </div>
                             <div className="left-content">
                                 <h3 className="title">Revolutionizing Healthcare with Predictive Analytics</h3>
@@ -33,7 +33,7 @@ export const CaseStudies: React.FC = () => {
                     <div className="product-wrapper">
                         <div className="inner two">
                             <div className="image-area">
-                                <img src="/assets/images/project/34.webp" width="521" alt="" />
+                                <img src="/assets/images/project/fraud-detection.png" width="521" alt="" />
                             </div>
                             <div className="left-content">
                                 <h3 className="title">Enhancing Fraud Detection for Financial Institutions</h3>
@@ -50,7 +50,7 @@ export const CaseStudies: React.FC = () => {
                     <div className="product-wrapper">
                         <div className="inner three">
                             <div className="image-area">
-                                <img src="/assets/images/project/35.webp" width="521" alt="" />
+                                <img src="/assets/images/project/fraud-detection.png" width="521" alt="" />
                             </div>
                             <div className="left-content">
                                 <h3 className="title">Enhancing Fraud Detection for Financial Institutions</h3>
