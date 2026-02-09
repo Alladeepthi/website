@@ -37,7 +37,7 @@ export const Header: React.FC = () => {
                 </Link>
               </div>
               <div className="nav-area" style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
-                <ul className="" style={{ display: 'flex', flexWrap: 'nowrap', gap: '35px', alignItems: 'center', margin: 0, padding: 0, listStyle: 'none' }}>
+                <ul className="" style={{ display: 'flex', flexWrap: 'nowrap', gap: '45px', alignItems: 'center', margin: 0, padding: 0, listStyle: 'none' }}>
                   {/* Services - With Dropdown */}
                   <li className="main-nav has-dropdown mega-menu">
                     <Link to="/service-details">Services</Link>
@@ -105,8 +105,56 @@ export const Header: React.FC = () => {
                   </li>
 
                   {/* Platforms */}
-                  <li className="main-nav">
-                    <Link to="/pricing">Platforms</Link>
+                  <li className="main-nav has-dropdown mega-menu">
+                    <Link to="/platforms">Platforms</Link>
+                    <div className="rts-mega-menu service-mega-menu-style">
+                      <div className="wrapper">
+                        <div className="container">
+                          <div className="row g-5">
+                            <div className="col-lg-3">
+                              <div className="menu-list">
+                                <h4 className="title">Data & Storage</h4>
+                                <ul>
+                                  <li><Link to="/platforms">Cloud Data Warehouses</Link></li>
+                                  <li><Link to="/platforms">Streaming & Ingestion</Link></li>
+                                  <li><Link to="/platforms">Observability Tools</Link></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div className="col-lg-3">
+                              <div className="menu-list">
+                                <h4 className="title">AI & RAG</h4>
+                                <ul>
+                                  <li><Link to="/platforms">Retrieval-Augmented Gen</Link></li>
+                                  <li><Link to="/platforms">Orchestration Frameworks</Link></li>
+                                  <li><Link to="/platforms">Document Pipelines</Link></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div className="col-lg-3">
+                              <div className="menu-list">
+                                <h4 className="title">Vector & Search</h4>
+                                <ul>
+                                  <li><Link to="/platforms">Semantic Search Engines</Link></li>
+                                  <li><Link to="/platforms">Vector Storage Systems</Link></li>
+                                  <li><Link to="/platforms">Hybrid Search Solutions</Link></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div className="col-lg-3">
+                              <div className="menu-list">
+                                <h4 className="title">Model Ecosystem</h4>
+                                <ul>
+                                  <li><Link to="/platforms">Large Language Models</Link></li>
+                                  <li><Link to="/platforms">Open Source Models</Link></li>
+                                  <li><Link to="/platforms">Multimodal Platforms</Link></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </li>
 
                   {/* Industry */}

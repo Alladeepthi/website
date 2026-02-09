@@ -61,6 +61,22 @@
   <script src="/assets/js/plugins/popup.js" defer></script>
   <script src="/assets/js/vendor/bootstrap.min.js" defer></script>
   <script src="/assets/js/plugins/swiper.js" defer></script>
+
+  <script>
+    // Safety timeout to ensure preloader is removed
+    function removePreloader() {
+      document.body.classList.add('loaded');
+    }
+
+    if (document.readyState === 'complete') {
+      removePreloader();
+    } else {
+      window.addEventListener('load', removePreloader);
+    }
+
+    // Fallback: If window.load doesn't fire or is missed, force remove after 2 seconds
+    setTimeout(removePreloader, 2000);
+  </script>
 </body>
 
 </html>
