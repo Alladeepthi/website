@@ -78,7 +78,15 @@ export const MobileMenu: React.FC = () => {
                                     ))}
                                 </ul>
                             </li>
-                            <li><Link to="/pricing" className="main" onClick={closeMenu}>Platforms</Link></li>
+                            <li className="has-droupdown">
+                                <Link to="/platforms" className="main">Platforms</Link>
+                                <ul className="submenu mm-collapse">
+                                    <li><Link to="/platforms" onClick={closeMenu}>Data & Storage</Link></li>
+                                    <li><Link to="/platforms" onClick={closeMenu}>AI & RAG</Link></li>
+                                    <li><Link to="/platforms" onClick={closeMenu}>Vector & Search</Link></li>
+                                    <li><Link to="/platforms" onClick={closeMenu}>Model Ecosystem</Link></li>
+                                </ul>
+                            </li>
                             <li className="has-droupdown">
                                 <Link to="/industry" className="main">Industry</Link>
                                 <ul className="submenu mm-collapse">

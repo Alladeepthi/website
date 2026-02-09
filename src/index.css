@@ -11,6 +11,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --color-primary: #3B82F6; /* Default specific blue if not defined */
 }
 
 a {
@@ -65,4 +67,68 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* Header Navigation Refinements */
+.header-one .main-nav > a {
+  font-weight: 500 !important;
+  letter-spacing: 0.5px !important;
+  padding: 10px 0 !important; /* Vertical centering/spacing */
+  position: relative;
+  transition: color 0.3s ease;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 5px; /* Space for dropdown icon if present */
+}
+
+.header-one .main-nav > a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+.header-one .main-nav > a:hover {
+  color: var(--color-primary) !important;
+}
+
+.header-one .main-nav > a:hover::after {
+  width: 100%;
+}
+
+/* Ensure dropdown arrows align */
+.header-one .main-nav.has-dropdown > a::after {
+   /* Reset default pseudo element if it conflicts, usually templates rely on ::after for arrows. 
+      If so, my underline might conflict. 
+      Let's assume the template uses specific classes or content. 
+      If I see weirdness, I'll adjust. 
+      Actually, the template likely uses ::after on the 'li' or 'a' for the arrow.
+   */
+}
+
+/* Force cleaner look for arrows if they exist as ::after on 'a' */
+/* Instead of underline on ::after which might conflict with arrows, let's put underline on ::before or a border-bottom */
+/* Let's try border-bottom first, simpler */
+
+.header-one .main-nav > a {
+  /* Resetting the ::after logic above to avoid conflict if template uses it for icon */
+  position: relative;
+}
+
+/* Use a background gradient animation for underline to be safe against ::after conflicts */
+.header-one .main-nav > a {
+  background-image: linear-gradient(var(--color-primary), var(--color-primary));
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 0.3s ease, color 0.3s ease;
+  padding-bottom: 5px !important; /* Space for underline */
+}
+
+.header-one .main-nav > a:hover {
+  background-size: 100% 2px;
 }
