@@ -9,10 +9,10 @@ export const WhyChooseUs: React.FC = () => {
                     <div className="col-lg-6">
                         <div className="thumbnail-machine-choose-area">
                             <div className="left-thumbnail">
-                                <img src="/assets/images/why-choose/03.webp" alt="whu" />
+                                <img src="/assets/images/why-choose/ai-2.jpg" alt="whu" />
                             </div>
                             <div className="left-thumbnail last">
-                                <img src="/assets/images/why-choose/04.webp" alt="whu" />
+                                <img src="/assets/images/why-choose/home-ai.jpg" alt="whu" />
                             </div>
                         </div>
                     </div>
