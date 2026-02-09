@@ -1,9 +1,13 @@
 ﻿import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { servicesData } from '../../data/services';
 
 export const Header: React.FC = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
+
+  const leftServices = servicesData.slice(0, 4);
+  const rightServices = servicesData.slice(4, 8);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,88 +47,40 @@ export const Header: React.FC = () => {
                           <div className="row g-5">
                             <div className="col-lg-4">
                               <ul className="mega-menu-item parent-nav">
-                                <li>
-                                  <Link to="/service-details">
-                                    <div className="single-service-menu">
-                                      <div className="icon">
-                                        <img src="/assets/images/feature/01.svg" alt="AI Solutions" />
+                                {leftServices.map((service) => (
+                                  <li key={service.id}>
+                                    <Link to="/service-details" state={{ service }}>
+                                      <div className="single-service-menu">
+                                        <div className="icon">
+                                          <img src={`/assets/images/feature/${service.icon}`} alt={service.title} />
+                                        </div>
+                                        <div className="info">
+                                          <h5 className="title">{service.title}</h5>
+                                          <p className="details">{service.subtitle}</p>
+                                        </div>
                                       </div>
-                                      <div className="info">
-                                        <h5 className="title">AI Solutions</h5>
-                                        <p className="details">Advanced artificial intelligence solutions for your business.</p>
-                                      </div>
-                                    </div>
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/service-details">
-                                    <div className="single-service-menu">
-                                      <div className="icon">
-                                        <img src="/assets/images/feature/02.svg" alt="Machine Learning" />
-                                      </div>
-                                      <div className="info">
-                                        <h5 className="title">Machine Learning</h5>
-                                        <p className="details">Intelligent ML models for predictive analytics and automation.</p>
-                                      </div>
-                                    </div>
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/service-details">
-                                    <div className="single-service-menu">
-                                      <div className="icon">
-                                        <img src="/assets/images/feature/03.svg" alt="Data Science" />
-                                      </div>
-                                      <div className="info">
-                                        <h5 className="title">Data Science</h5>
-                                        <p className="details">Transform data into actionable insights and decisions.</p>
-                                      </div>
-                                    </div>
-                                  </Link>
-                                </li>
+                                    </Link>
+                                  </li>
+                                ))}
                               </ul>
                             </div>
                             <div className="col-lg-4">
                               <ul className="mega-menu-item parent-nav">
-                                <li>
-                                  <Link to="/service-details">
-                                    <div className="single-service-menu">
-                                      <div className="icon">
-                                        <img src="/assets/images/feature/04.svg" alt="Cloud Solutions" />
+                                {rightServices.map((service) => (
+                                  <li key={service.id}>
+                                    <Link to="/service-details" state={{ service }}>
+                                      <div className="single-service-menu">
+                                        <div className="icon">
+                                          <img src={`/assets/images/feature/${service.icon}`} alt={service.title} />
+                                        </div>
+                                        <div className="info">
+                                          <h5 className="title">{service.title}</h5>
+                                          <p className="details">{service.subtitle}</p>
+                                        </div>
                                       </div>
-                                      <div className="info">
-                                        <h5 className="title">Cloud Solutions</h5>
-                                        <p className="details">Scalable cloud infrastructure and migration services.</p>
-                                      </div>
-                                    </div>
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/service-details">
-                                    <div className="single-service-menu">
-                                      <div className="icon">
-                                        <img src="/assets/images/feature/05.svg" alt="Consulting" />
-                                      </div>
-                                      <div className="info">
-                                        <h5 className="title">AI Consulting</h5>
-                                        <p className="details">Expert guidance for your AI transformation journey.</p>
-                                      </div>
-                                    </div>
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="/service-details">
-                                    <div className="single-service-menu">
-                                      <div className="icon">
-                                        <img src="/assets/images/feature/06.svg" alt="Automation" />
-                                      </div>
-                                      <div className="info">
-                                        <h5 className="title">Process Automation</h5>
-                                        <p className="details">Streamline operations with intelligent automation.</p>
-                                      </div>
-                                    </div>
-                                  </Link>
-                                </li>
+                                    </Link>
+                                  </li>
+                                ))}
                               </ul>
                             </div>
                             <div className="col-lg-4">
@@ -165,10 +121,7 @@ export const Header: React.FC = () => {
                     </ul>
                   </li>
 
-                  {/* Our Work */}
-                  <li className="main-nav">
-                    <Link to="/case-studies">Our Work</Link>
-                  </li>
+
 
                   {/* About */}
                   <li className="main-nav">
@@ -186,10 +139,7 @@ export const Header: React.FC = () => {
                     </ul>
                   </li>
 
-                  {/* Contact Us */}
-                  <li className="main-nav">
-                    <Link to="/contact">Contact Us</Link>
-                  </li>
+
                 </ul>
               </div>
               <div className="button-wrapper-flex">
