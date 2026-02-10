@@ -5,7 +5,7 @@ export const Services: React.FC = () => {
     const services = [
         {
             id: 1,
-            img: '19.webp',
+            img: 'api-integration.jpeg',
             title: 'API & Integration Services',
             subCategories: [
                 'Telephony APIs (Telecalling, IVR, Voice Bots)',
@@ -19,7 +19,7 @@ export const Services: React.FC = () => {
         },
         {
             id: 2,
-            img: '20.webp',
+            img: 'enterprise.jpg',
             title: 'Enterprise Product Solutions',
             subCategories: [
                 'CRM Platforms',
@@ -47,7 +47,7 @@ export const Services: React.FC = () => {
         },
         {
             id: 4,
-            img: '22.webp',
+            img: 'growth.jpg',
             title: 'Growth & Automation',
             subCategories: [
                 'Marketing Automation Workflows',
@@ -61,7 +61,7 @@ export const Services: React.FC = () => {
         },
         {
             id: 5,
-            img: '19.webp', // Using recycled image as placeholder
+            img: 'mobile-erp.jpg', // Using recycled image as placeholder
             title: 'Mobile & App Engineering',
             subCategories: [
                 'Android App Development',
@@ -75,7 +75,7 @@ export const Services: React.FC = () => {
         },
         {
             id: 6,
-            img: '20.webp', // Using recycled image as placeholder
+            img: 'ai-machine.jpeg', // Using recycled image as placeholder
             title: 'AI & Machine Intelligence',
             subCategories: [
                 'Predictive Intelligence Models',
