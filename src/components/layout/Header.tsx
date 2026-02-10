@@ -56,7 +56,6 @@ export const Header: React.FC = () => {
                                         </div>
                                         <div className="info">
                                           <h5 className="title">{service.title}</h5>
-                                          <p className="details">{service.subtitle}</p>
                                         </div>
                                       </div>
                                     </Link>
@@ -75,7 +74,6 @@ export const Header: React.FC = () => {
                                         </div>
                                         <div className="info">
                                           <h5 className="title">{service.title}</h5>
-                                          <p className="details">{service.subtitle}</p>
                                         </div>
                                       </div>
                                     </Link>
@@ -83,6 +81,7 @@ export const Header: React.FC = () => {
                                 ))}
                               </ul>
                             </div>
+
                             <div className="col-lg-4">
                               <div className="menu-list">
                                 <h4>Our Approach</h4>
@@ -98,6 +97,7 @@ export const Header: React.FC = () => {
                                 </ul>
                               </div>
                             </div>
+
                           </div>
                         </div>
                       </div>
@@ -172,18 +172,23 @@ export const Header: React.FC = () => {
 
 
                   {/* About */}
-                  <li className="main-nav">
+                  <li className="main-nav has-dropdown project-a-after">
                     <Link to="/about">About</Link>
+                    <ul className="submenu parent-nav">
+                      <li><Link to="/about">About Us</Link></li>
+                      <li><Link to="/team">Our Team</Link></li>
+                      <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+                    </ul>
                   </li>
 
                   {/* Products */}
                   <li className="main-nav has-dropdown project-a-after">
-                    <Link to="#">Products</Link>
+                    <Link to="/products">Products</Link>
                     <ul className="submenu parent-nav">
-                      <li><Link to="/pricing">AI Platform</Link></li>
-                      <li><Link to="/pricing">ML Studio</Link></li>
-                      <li><Link to="/pricing">Data Analytics Suite</Link></li>
-                      <li><Link to="/pricing">Automation Tools</Link></li>
+                      <li><Link to="/products">AI Platform</Link></li>
+                      <li><Link to="/products">ML Studio</Link></li>
+                      <li><Link to="/products">Data Analytics Suite</Link></li>
+                      <li><Link to="/products">Automation Tools</Link></li>
                     </ul>
                   </li>
 
@@ -203,7 +208,7 @@ export const Header: React.FC = () => {
                     </li>
                   </ul>
                 </div>
-                <Link to="/contact" className="rts-btn btn-primary with-arrow">Let's Connect <i className="fa-regular fa-arrow-up up-right"></i></Link>
+                <Link to="/contact" className="rts-btn btn-primary with-arrow">Let's Connect <i className="fa-regular fa-arrow-right"></i></Link>
                 <div className="menu-btn-toggle white" onClick={() => {
                   document.getElementById('side-bar')?.classList.add('show');
                   document.getElementById('anywhere-home')?.classList.add('bgshow');
@@ -219,7 +224,7 @@ export const Header: React.FC = () => {
           </div>
         </div>
       </div>
-    </header>
+    </header >
   );
 };
 

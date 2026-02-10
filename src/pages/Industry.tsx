@@ -35,7 +35,7 @@ export const Industry: React.FC = () => {
                         </div>
                         <div className="col-lg-6 mt_md--30 mt_sm--30">
                             <div className="thumbnail-top">
-                                <img src="/assets/images/industry/tailored-solutions.png" alt="career" />
+                                <img src="/assets/images/industry/tailored-solutions1.png" alt="career" />
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@ export const Industry: React.FC = () => {
                         <div className="row align-items-center">
                             <div className="col-lg-6 pr--40 pr_md--10 pr_sm--10 mb_md--30 mb_sm--25">
                                 <div className="thumbnail-consultancy">
-                                    <img src="/assets/images/industry/patient-care.png" alt="consultancy" />
+                                    <img src="/assets/images/industry/patient-care1.png" alt="consultancy" />
                                 </div>
                             </div>
                             <div className="col-lg-6">
@@ -128,7 +128,7 @@ export const Industry: React.FC = () => {
                             </div>
                             <div className="col-lg-6 pl--40 pl_md--15 pl_sm--10 mt_md--30 mt_sm--30">
                                 <div className="thumbnail-consultancy">
-                                    <img src="/assets/images/industry/smart-manufacturing.png" alt="consultancy" />
+                                    <img src="/assets/images/industry/smart-manufacturing1.png" alt="consultancy" />
                                 </div>
                             </div>
                         </div>
@@ -172,7 +172,7 @@ export const Industry: React.FC = () => {
                         <div className="col-lg-7 pl--40 pl_md--15 pl_sm--10 mt_md--30 mt_sm--30">
                             <div className="thumbnail-consultancy-bottom">
                                 <div className="single-consultancyimage-0top one">
-                                    <img src="/assets/images/industry/industrial-benefits.png" alt="consultancy" />
+                                    <img src="/assets/images/industry/industrial-benefits1.png" alt="consultancy" />
                                 </div>
                             </div>
                         </div>

@@ -13,7 +13,8 @@ export const Platforms: React.FC = () => {
             subtitle: "The Brain of Your AI Operations",
             description: "A centralized command center designed to orchestrate machine learning models, manage data pipelines, and monitor AI performance in real-time.",
             features: ["Real-time Model Monitoring", "Automated Retraining", "Scalable Infrastructure", "Secure Data Handling"],
-            icon: "01.svg"
+            icon: "01.svg",
+            image: "1a.png"
         },
         {
             id: 2,
@@ -21,7 +22,8 @@ export const Platforms: React.FC = () => {
             subtitle: "Seamless Data Processing",
             description: "Efficiently ingest, process, and transform massive datasets with our high-throughput data processing platform, ready for AI consumption.",
             features: ["ETL Automation", "Data Quality Checks", "Real-time Streaming", "Multi-source Integration"],
-            icon: "02.svg"
+            icon: "02.svg",
+            image: "1b.png"
         },
         {
             id: 3,
@@ -29,7 +31,8 @@ export const Platforms: React.FC = () => {
             subtitle: "Computer Vision Made Easy",
             description: "Deploy advanced computer vision models for object detection, facial recognition, and image analysis with our drag-and-drop interface.",
             features: ["Object Detection", "Facial Recognition", "Image Segmentation", "Video Analytics"],
-            icon: "03.svg"
+            icon: "03.svg",
+            image: "1c.png"
         },
         {
             id: 4,
@@ -37,7 +40,8 @@ export const Platforms: React.FC = () => {
             subtitle: "Intelligent Conversational AI",
             description: "Build, train, and deploy sophisticated chatbots and voice assistants that understand nuance and context better than ever before.",
             features: ["NLP/NLU Engine", "Voice Interaction", "Sentiment Analysis", "Multi-lingual Support"],
-            icon: "04.svg"
+            icon: "04.svg",
+            image: "1d.png"
         },
         {
             id: 5,
@@ -45,7 +49,8 @@ export const Platforms: React.FC = () => {
             subtitle: "Predictive Analytics Engine",
             description: "Empower your business with foresight. AutoPredict uses historical data to forecast trends, sales, and risks with high accuracy.",
             features: ["Trend Forecasting", "Risk Assessment", "Sales Prediction", "Demand Planning"],
-            icon: "05.svg"
+            icon: "05.svg",
+            image: "1e.png"
         },
         {
             id: 6,
@@ -53,7 +58,8 @@ export const Platforms: React.FC = () => {
             subtitle: "AI-Powered Cyber Security",
             description: "Protect your digital assets with an AI watchdog that detects anomalies, prevents breaches, and responds to threats automatically.",
             features: ["Anomaly Detection", "Threat Prevention", "Automated Response", "Compliance Monitoring"],
-            icon: "06.svg"
+            icon: "06.svg",
+            image: "1f.png"
         }
     ];
 
@@ -81,6 +87,19 @@ export const Platforms: React.FC = () => {
             {/* Platforms Grid Section */}
             <div className="rts-service-area rts-section-gap">
                 <div className="container">
+                    {/* Add Inline Style for Floating Animation */}
+                    <style>
+                        {`
+                            @keyframes float-platform {
+                                0% { transform: translateY(0px); }
+                                50% { transform: translateY(-10px); }
+                                100% { transform: translateY(0px); }
+                            }
+                            .platform-image-animate {
+                                animation: float-platform 4s ease-in-out infinite;
+                            }
+                        `}
+                    </style>
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="title-center-area-main-two">
@@ -98,12 +117,15 @@ export const Platforms: React.FC = () => {
                                 <div className="service-one-inner-four">
                                     <div className="big-thumbnail-area">
                                         <a href="#" className="thumbnail">
-                                            <img src={`/assets/images/service/0${(index % 6) + 1}.jpg`} alt={platform.name} style={{ minHeight: "250px", objectFit: "cover" }} />
+                                            <img
+                                                src={`/assets/images/service/${platform.image}`}
+                                                alt={platform.name}
+                                                className="platform-image-animate"
+                                                style={{ minHeight: "250px", objectFit: "contain", maxHeight: "300px", width: "100%", background: "#f8f9fa", borderRadius: "10px", padding: "10px" }}
+                                            />
                                         </a>
                                         <div className="content">
-                                            <div className="icon">
-                                                <img src={`/assets/images/service/icon/${platform.icon}`} alt={platform.name} />
-                                            </div>
+
                                             <h5 className="title">{platform.name}</h5>
                                             <span className="subtitle" style={{ display: "block", marginBottom: "10px", fontSize: "14px", color: "var(--color-primary)" }}>{platform.subtitle}</span>
                                             <p className="disc">{platform.description}</p>

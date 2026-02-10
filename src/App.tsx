@@ -15,6 +15,8 @@ import { Blog } from './pages/Blog';
 import { FAQ } from './pages/FAQ';
 import { Industry } from './pages/Industry';
 import { Platforms } from './pages/Platforms';
+import { Products } from './pages/Products';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
 
 function App() {
   useEffect(() => {
@@ -39,6 +41,8 @@ function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/industry" element={<Industry />} />
         <Route path="/platforms" element={<Platforms />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
       <Footer />
 
