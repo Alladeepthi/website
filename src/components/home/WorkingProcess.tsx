@@ -16,28 +16,28 @@ export const WorkingProcess: React.FC = () => {
                     <div className="col-lg-3 col-md-6">
                         <div className="process-style-machine">
                             <div className="thumbnail">
-                                <img src="/assets/images/process/02.webp" alt="" />
+                                <img src="/assets/images/process/consultation.png" alt="" />
                             </div>
                         </div>
                     </div>
                     <div className="col-lg-3 col-md-6">
                         <div className="process-style-machine">
                             <div className="thumbnail">
-                                <img src="/assets/images/process/03.webp" alt="" />
+                                <img src="/assets/images/process/design.png" alt="" />
                             </div>
                         </div>
                     </div>
                     <div className="col-lg-3 col-md-6">
                         <div className="process-style-machine">
                             <div className="thumbnail">
-                                <img src="/assets/images/process/04.webp" alt="" />
+                                <img src="/assets/images/process/development.png" alt="" />
                             </div>
                         </div>
                     </div>
                     <div className="col-lg-3 col-md-6">
                         <div className="process-style-machine">
                             <div className="thumbnail">
-                                <img src="/assets/images/process/01.webp" alt="" />
+                                <img src="/assets/images/process/deployment.png" alt="" />
                             </div>
                         </div>
                     </div>
