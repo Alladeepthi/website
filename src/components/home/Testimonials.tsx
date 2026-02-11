@@ -13,13 +13,13 @@ export const Testimonials: React.FC = () => {
                                 </div>
                                 <div className="content">
                                     <div className="top-head">
-                                        <span>Testimonials</span>
-                                        <h2 className="title">Our Clients Speak</h2>
+                                        <span>Client Success</span>
+                                        <h2 className="title">Trusted by Industry Leaders</h2>
                                     </div>
                                     <div className="body">
                                         <img src="/assets/images/testimonials/quote2.svg" alt="" />
                                         <p className="disc">
-                                            Partnering with NeuralTrix AI has completely transformed how we handle our data. Their machine learning solutions helped us uncover actionable insights we never thought possible, boosting our efficiency by 30%.
+                                            "NeuraltrixAI didn't just build us a platform; they re-engineered our entire data strategy. The predictive models they deployed have optimized our supply chain, reducing waste by 25% in the first quarter."
                                         </p>
                                         <div className="autohr-area">
                                             <div className="avatar-area">
@@ -37,6 +37,6 @@ export const Testimonials: React.FC = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };

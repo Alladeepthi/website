@@ -14,6 +14,7 @@ import { Team } from './pages/Team';
 import { Blog } from './pages/Blog';
 import { FAQ } from './pages/FAQ';
 import { Industry } from './pages/Industry';
+import { IndustryDetails } from './pages/IndustryDetails';
 import { PlatformDetails } from './pages/PlatformDetails';
 import { Products } from './pages/Products';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
@@ -40,7 +41,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/industry" element={<Industry />} />
-        <Route path="/industry" element={<Industry />} />
+        <Route path="/industry/:id" element={<IndustryDetails />} />
         {/* <Route path="/platforms" element={<Platforms />} /> */}
         <Route path="/platform/:id" element={<PlatformDetails />} />
         <Route path="/products" element={<Products />} />

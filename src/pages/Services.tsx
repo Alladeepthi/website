@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { servicesData } from '../data/services';
 
 export const Services: React.FC = () => {
     useEffect(() => {
@@ -14,15 +15,6 @@ export const Services: React.FC = () => {
         };
     }, []);
 
-    const serviceList = [
-        { title: 'IT Consulting', icon: '/assets/images/feature/01.svg', tech: 'Tailored IT strategies to improve business efficiency.' },
-        { title: 'Cloud Migration', icon: '/assets/images/feature/02.svg', tech: 'Helping businesses move their operations to the cloud.' },
-        { title: 'Cyber security', icon: '/assets/images/feature/03.svg', tech: 'Protection against cyber threats with advanced security systems.' },
-        { title: 'Software Development', icon: '/assets/images/feature/04.svg', tech: 'Custom software solutions for business needs.' },
-        { title: 'Managed IT Services', icon: '/assets/images/feature/05.svg', tech: 'Complete IT support, from monitoring to maintenance.' },
-        { title: 'IT Infrastructure Setup', icon: '/assets/images/feature/06.svg', tech: 'Building and managing the physical and virtual IT infrastructure' },
-    ];
-
     return (
         <main>
             {/* rts about-breadcrumb-area-start */}
@@ -36,7 +28,7 @@ export const Services: React.FC = () => {
                                     <li><i className="fa fa-chevron-right"></i></li>
                                     <li className="active"><a href="#" className="active">Services</a></li>
                                 </ul>
-                                <h1 className="title rts-text-anime-style-1">Unlock the Potential of Advanced IT Services</h1>
+                                <h1 className="title rts-text-anime-style-1">Engineering Digital Excellence</h1>
                             </div>
                         </div>
                         <div className="col-lg-6 pl--50 pl_md--10 pl_sm--10">
@@ -53,29 +45,36 @@ export const Services: React.FC = () => {
             <div className="rts-feature-area-three rts-section-gap">
                 <div className="container">
                     <div className="row g-5">
-                        <div className="col-lg-6">
-                            <div className="feature-area-left-three">
+                        <div className="col-lg-12 mb--50">
+                            <div className="feature-area-left-three text-center">
                                 <div className="title-left-wrapper">
-                                    <span className="pre">Features</span>
-                                    <h2 className="title rts-text-anime-style-1">Expert Solutions to Power Your Business Growth</h2>
+                                    <span className="pre">Our Expertise</span>
+                                    <h2 className="title rts-text-anime-style-1">End-to-End Product Engineering</h2>
                                 </div>
-                                <p className="disc mb--20">
-                                    Fuel your business growth with our expert IT services. We provide innovative, cost-effective
-                                    solutions that streamline your operations, enhance security, and boost overall productivity.
+                                <p className="disc mb--20 mx-auto" style={{ maxWidth: '800px' }}>
+                                    We deliver comprehensive technology solutions that span the entire digital lifecycle.
+                                    From robust backend architectures to intuitive frontend experiences, our engineering teams build systems that scale.
                                 </p>
-                                <a href="#" className="btn-line"><span>View All Service</span> <i className="fa-solid fa-chevron-right"></i></a>
                             </div>
                         </div>
-                        {serviceList.map((service, index) => (
-                            <div className="col-lg-3 col-md-6" key={index}>
-                                <div className="single-feature-area-three">
+                        {servicesData.map((service) => (
+                            <div className="col-lg-4 col-md-6" key={service.id}>
+                                <div className="single-feature-area-three" style={{ height: '100%' }}>
                                     <div className="icon">
-                                        <img src={service.icon} alt={service.title} />
+                                        <img src={`/assets/images/feature/${service.icon}`} alt={service.title} />
                                     </div>
                                     <div className="content">
                                         <h3 className="title">{service.title}</h3>
-                                        <p className="disc">{service.tech}</p>
-                                        <Link to="/service-details" className="round-btn">
+                                        <p className="disc" style={{ marginBottom: '15px' }}>{service.description}</p>
+                                        <ul style={{ listStyle: 'none', padding: 0, marginBottom: '20px' }}>
+                                            {service.subCategories.slice(0, 3).map((sub, i) => (
+                                                <li key={i} style={{ fontSize: '14px', marginBottom: '5px', color: '#5D666F' }}>
+                                                    <i className="fa-solid fa-check" style={{ marginRight: '8px', color: '#3A70FF' }}></i>
+                                                    {sub}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <Link to="/service-details" state={{ service }} className="round-btn">
                                             <i className="fa-sharp-duotone fa-light fa-arrow-right"></i>
                                         </Link>
                                     </div>
@@ -94,25 +93,25 @@ export const Services: React.FC = () => {
                         <div className="col-lg-5">
                             <div className="why-choose-left-content">
                                 <div className="title-left-wrapper">
-                                    <h2 className="title rts-text-anime-style-1">The Digix Business <br /> Agency Difference</h2>
+                                    <h2 className="title rts-text-anime-style-1">The Neuraltrix Advantage</h2>
                                 </div>
                                 <p className="disc">
-                                    We provide a wide range of customized solutions designed to meet the unique challenges of
-                                    your business. Whether you're looking to enhance your brand, streamline operations
+                                    We are more than just developers; we are strategic partners in your digital transformation.
+                                    Our focus on engineering rigor and business outcomes ensures that every solution we build delivers real value.
                                 </p>
                                 <div className="reason-wrapper">
                                     {[
-                                        { title: 'Expertise Team Member', icon: '/assets/images/why-choose/01.svg' },
-                                        { title: 'Commitment to Excellence', icon: '/assets/images/why-choose/02.svg' },
-                                        { title: '100% Client satisfaction', icon: '/assets/images/why-choose/03.svg' },
-                                        { title: 'Dedicated Support', icon: '/assets/images/why-choose/04.svg' },
+                                        { title: 'Industry Experts', icon: '/assets/images/why-choose/01.svg' },
+                                        { title: 'Proven Methodology', icon: '/assets/images/why-choose/02.svg' },
+                                        { title: 'Transparent Process', icon: '/assets/images/why-choose/03.svg' },
+                                        { title: 'Long-term Support', icon: '/assets/images/why-choose/04.svg' },
                                     ].map((reason, i) => (
                                         <div className="single-reason" key={i}>
                                             <div className="icon">
                                                 <img src={reason.icon} alt="choose" />
                                             </div>
                                             <h5 className="title" style={{ fontFamily: '"Inter Tight", sans-serif' }}>
-                                                {reason.title.split(' ').slice(0, 2).join(' ')} <br /> {reason.title.split(' ').slice(2).join(' ')}
+                                                {reason.title}
                                             </h5>
                                         </div>
                                     ))}
@@ -136,9 +135,9 @@ export const Services: React.FC = () => {
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="call-to-action-wrapper-three">
-                                <h3 className="title rts-text-anime-style-1">No long-term contracts. No catches. Simple.</h3>
-                                <p className="disc">Start your 30-day free trial. Cancel anytime. View demo Start free trial</p>
-                                <Link to="/contact" className="rts-btn btn-primary">Started for Trial</Link>
+                                <h3 className="title rts-text-anime-style-1">Ready to build something extraordinary?</h3>
+                                <p className="disc">Partner with our engineering team to turn your vision into a scalable reality.</p>
+                                <Link to="/contact" className="rts-btn btn-primary">Start Your Project</Link>
                             </div>
                         </div>
                     </div>

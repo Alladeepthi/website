@@ -174,11 +174,11 @@ export const Header: React.FC = () => {
                   <li className="main-nav has-dropdown project-a-after">
                     <Link to="/industry">Industry</Link>
                     <ul className="submenu parent-nav">
-                      <li><Link to="/industry#healthcare">Healthcare</Link></li>
-                      <li><Link to="/industry#finance">Finance</Link></li>
-                      <li><Link to="/industry#retail">Retail</Link></li>
-                      <li><Link to="/industry#manufacturing">Manufacturing</Link></li>
-                      <li><Link to="/industry#technology">Technology</Link></li>
+                      <li><Link to="/industry/healthcare">Healthcare</Link></li>
+                      <li><Link to="/industry/finance">Finance</Link></li>
+                      <li><Link to="/industry/retail">Retail</Link></li>
+                      <li><Link to="/industry/manufacturing">Manufacturing</Link></li>
+                      <li><Link to="/industry/technology">Technology</Link></li>
                     </ul>
                   </li>
 

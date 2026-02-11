@@ -8,7 +8,7 @@ export const WorkingProcess: React.FC = () => {
                     <div className="col-lg-12">
                         <div className="title-center-wrapper">
                             <span className="pre">How It Works</span>
-                            <h2 className="title rts-text-anime-style-1">How We Innovate with <br /> Machine Learning</h2>
+                            <h2 className="title rts-text-anime-style-1">Our Engineering <br /> Lifecycle</h2>
                         </div>
                     </div>
                 </div>
@@ -46,26 +46,26 @@ export const WorkingProcess: React.FC = () => {
                             <div className="row g-5">
                                 <div className="col-lg-3 col-md-6 col-sm-12">
                                     <div className="working-process-wrapper-three">
-                                        <h5 className="title">Consultation & Research</h5>
-                                        <p className="disc">We start by thoroughly understanding your business needs, challenges</p>
+                                        <h5 className="title">Discovery & Strategy</h5>
+                                        <p className="disc">We dive deep into your business requirements to define a clear technical roadmap.</p>
                                     </div>
                                 </div>
                                 <div className="col-lg-3 col-md-6 col-sm-12">
                                     <div className="working-process-wrapper-three">
-                                        <h5 className="title">Design & Prototyping</h5>
-                                        <p className="disc">We start by thoroughly understanding your business needs, challenges</p>
+                                        <h5 className="title">Architecture & Design</h5>
+                                        <p className="disc">Blueprint your system for performance, security, and scalability before writing code.</p>
                                     </div>
                                 </div>
                                 <div className="col-lg-3 col-md-6 col-sm-12">
                                     <div className="working-process-wrapper-three">
-                                        <h5 className="title">Development & Testing</h5>
-                                        <p className="disc">We start by thoroughly understanding your business needs, challenges</p>
+                                        <h5 className="title">Agile Development</h5>
+                                        <p className="disc">Iterative development with rigorous testing ensures high-quality deliverables.</p>
                                     </div>
                                 </div>
                                 <div className="col-lg-3 col-md-6 col-sm-12">
                                     <div className="working-process-wrapper-three">
-                                        <h5 className="title">Deployment & Support</h5>
-                                        <p className="disc">We start by thoroughly understanding your business needs, challenges</p>
+                                        <h5 className="title">Deployment & Scale</h5>
+                                        <p className="disc">Seamless launch and ongoing optimization to grow with your business.</p>
                                     </div>
                                 </div>
                             </div>

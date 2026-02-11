@@ -9,8 +9,8 @@ export const HomeBlog: React.FC = () => {
                     <div className="col-lg-12">
                         <div className="title-area-between">
                             <div className="title-left-wrapper">
-                                <h2 className="title rts-text-anime-style-1">Our Article</h2>
-                                <p>our success is reflected in the satisfaction of our clients</p>
+                                <h2 className="title rts-text-anime-style-1">Engineering Insights</h2>
+                                <p>Latest thoughts on system architecture, data engineering, and automation.</p>
                             </div>
                             <div className="right-area">
                                 <Link to="#" className="rts-btn btn-primary btn-border">View All Article</Link>
@@ -30,7 +30,7 @@ export const HomeBlog: React.FC = () => {
                                     <span className="tag">James Henry</span>
                                 </div>
                                 <Link to="#">
-                                    <h3 className="title">With Context Windows Expanding So Rapidly, Is RAG Obsolete?</h3>
+                                    <h3 className="title">Scaling Microservices: Best Practices for High Throughput</h3>
                                 </Link>
                             </div>
                         </div>
@@ -43,10 +43,10 @@ export const HomeBlog: React.FC = () => {
                             <div className="inner-content">
                                 <div className="tag-wrapper">
                                     <span className="tag">19 October 2024</span>
-                                    <span className="tag">James Henry</span>
+                                    <span className="tag">Engineering Team</span>
                                 </div>
                                 <Link to="#">
-                                    <h3 className="title">Custom Labeling and Quality Control With Free-Text Annotation</h3>
+                                    <h3 className="title">Architecting Resilient Data Pipelines for Real-Time Analytics</h3>
                                 </Link>
                             </div>
                         </div>
