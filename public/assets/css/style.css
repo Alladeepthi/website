@@ -24119,9 +24119,12 @@ button {
 .demo-machine-learning .rts-product-area.bg_light .stok-text .title {
   font-size: 160px;
   text-transform: uppercase;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke-color: rgba(255, 255, 255, 0.1);
-  -webkit-text-stroke-width: 1px;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  -webkit-text-stroke-color: transparent;
+  -webkit-text-stroke-width: 0;
+  opacity: 0.3;
+  /* Increased visibility but kept as background element */
   font-family: var(--font-4);
   font-weight: 700;
   margin: 0;
@@ -25294,6 +25297,92 @@ header .menu-item-open.project-a-after>a::after {
 
 .mega-menu-item.with-list {
   gap: 0;
+}
+
+/* Platforms Mega Menu Custom Styles */
+
+/* 1. Positioning: Allow dropdown to position relative to the main header container, not the LI */
+li.main-nav.has-dropdown.mega-menu.platforms-parent {
+  position: static !important;
+}
+
+/* 2. Dropdown Container: Centered, Fixed Width, Shadow */
+.rts-mega-menu.service-mega-menu-style.platforms-menu-style {
+  width: 1140px !important;
+  /* Broad standard width */
+  max-width: 98vw;
+  left: 50% !important;
+  transform: translateX(-50%) scaleY(0);
+  padding: 40px 30px !important;
+  transform-origin: top center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  border-top: 3px solid var(--color-primary);
+  /* Optional top accent */
+}
+
+/* Hover State */
+.platforms-parent.has-dropdown.mega-menu:hover .rts-mega-menu.service-mega-menu-style.platforms-menu-style {
+  transform: translateX(-50%) scaleY(1);
+}
+
+/* 3. Reset Internal Spacing for Columns */
+.rts-mega-menu.service-mega-menu-style.platforms-menu-style .menu-list {
+  border: none;
+  padding: 0 20px;
+  /* Internal spacing */
+  margin: 0;
+  height: 100%;
+}
+
+/* 4. Vertical Dividers */
+/* Target the columns to add borders. We use :not(:last-child) to exclude the last one */
+.rts-mega-menu.service-mega-menu-style.platforms-menu-style .row>div:not(:last-child) {
+  border-right: 1px solid #eee;
+}
+
+/* 5. Headers: Blue Color & Bold */
+.rts-mega-menu.service-mega-menu-style.platforms-menu-style .title {
+  color: #2563eb !important;
+  /* Bright Blue (Tailwind Blue-600 approx) or var(--color-primary) */
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-transform: capitalize;
+  letter-spacing: -0.5px;
+}
+
+/* 6. List Items & Links */
+.rts-mega-menu.service-mega-menu-style.platforms-menu-style ul {
+  gap: 15px !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.rts-mega-menu.service-mega-menu-style.platforms-menu-style li {
+  margin-bottom: 0 !important;
+  width: 100%;
+}
+
+.rts-mega-menu.service-mega-menu-style.platforms-menu-style li a {
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333 !important;
+  /* Dark Gray text */
+  display: block;
+  background: transparent !important;
+  width: auto !important;
+  transition: 0.2s ease;
+}
+
+.rts-mega-menu.service-mega-menu-style.platforms-menu-style li a:hover {
+  color: var(--color-primary) !important;
+  padding-left: 5px !important;
+  /* Subtle shift */
+  background: transparent !important;
 }
 
 .mega-menu-item.with-list li a {
