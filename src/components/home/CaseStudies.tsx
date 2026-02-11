@@ -7,8 +7,13 @@ export const CaseStudies: React.FC = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12">
-                        <div className="stok-text">
-                            <h2 className="title">Case Studies</h2>
+                        <div className="stok-text marquee-wrapper" style={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
+                            <div className="marquee-content" style={{ display: 'inline-block', animation: 'marquee 30s linear infinite' }}>
+                                <h2 className="title" style={{ display: 'inline-block', paddingRight: '50px', fontSize: '80px' }}>Case Studies</h2>
+                                <h2 className="title" style={{ display: 'inline-block', paddingRight: '50px', fontSize: '80px' }}>Case Studies</h2>
+                                <h2 className="title" style={{ display: 'inline-block', paddingRight: '50px', fontSize: '80px' }}>Case Studies</h2>
+                                <h2 className="title" style={{ display: 'inline-block', paddingRight: '50px', fontSize: '80px' }}>Case Studies</h2>
+                            </div>
                         </div>
                     </div>
                 </div>

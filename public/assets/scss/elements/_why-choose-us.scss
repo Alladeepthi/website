@@ -33,9 +33,11 @@
     align-items: flex-start;
     gap: 30px;
     justify-content: flex-end;
+
     @media #{$mdsm-layout} {
         justify-content: flex-start;
     }
+
     @media #{$large-mobile} {
         flex-wrap: wrap;
         justify-content: flex-start;
@@ -48,6 +50,7 @@
     align-items: center;
     gap: 30px;
     margin-bottom: 50px;
+
     @media #{$sm-layout} {
         flex-wrap: wrap;
     }
@@ -121,72 +124,86 @@
     }
 }
 
-.rts-why-choose-us-area-matchin{
+.rts-why-choose-us-area-matchin {
     background-image: url(../images/why-choose/02.webp);
-    .why-choose-us-right-area-machine .title-left-wrapper{
-        .title{
+
+    .why-choose-us-right-area-machine .title-left-wrapper {
+        .title {
             color: #fff;
             margin-bottom: 35px;
         }
     }
 }
+
 .demo-machine-learning .title-left-wrapper,
-.demo-machine-learning .title-center-wrapper{
-    span.pre{
+.demo-machine-learning .title-center-wrapper {
+    span.pre {
         border: none;
         padding: 0;
     }
 }
-.thumbnail-machine-choose-area{
+
+.thumbnail-machine-choose-area {
     display: flex;
     align-items: flex-start;
     gap: 30px;
-    .left-thumbnail{
-        &.last{
+
+    .left-thumbnail {
+        &.last {
             margin-top: 60px;
         }
     }
 }
-.single-why-choose-wrapper-machine{
-    .signle-why-choose{
+
+.single-why-choose-wrapper-machine {
+    .signle-why-choose {
         display: flex;
         align-items: flex-start;
         gap: 30px;
         margin-bottom: 30px;
-        .title{
+
+        .title {
             margin-bottom: 5px;
             color: #fff;
             font-size: 20px;
         }
-        p.disc{
+
+        p.disc {
             max-width: 241px;
         }
     }
-    .rts-btn{
+
+    .rts-btn {
         margin-top: 30px;
     }
 }
-.ai-platform-wrapper{
+
+.ai-platform-wrapper {
     background: #132A64;
     display: flex;
     align-items: center;
     gap: 50px;
-    padding: 75px;
-    .left-wrapper{
-        .title{
-            font-size: 48px;
+    padding: 40px;
+
+    .left-wrapper {
+        .title {
+            font-size: 40px;
             color: #fff;
         }
-        p.disc{
+
+        p.disc {
             color: #F4F4F4;
         }
     }
-    .right-img{
+
+    .right-img {
         position: relative;
-        img{
+
+        img {
             max-width: 651px;
         }
-        &::after{
+
+        &::after {
             position: absolute;
             content: '';
             left: 0;
@@ -196,7 +213,8 @@
             transform: matrix(-1, 0, 0, 1, 0, 0);
 
         }
-        &::before{
+
+        &::before {
             position: absolute;
             content: '';
             right: 0;
@@ -207,53 +225,68 @@
     }
 }
 
-.ai-platform-single-card{
+.ai-platform-single-card {
     background: #2D1067;
-    padding: 60px 54px;
-    &.primary{
+    padding: 35px 30px;
+
+    &.primary {
         background: var(--color-primary);
-        .rts-btn{
+
+        .rts-btn {
             background: #fff;
             color: var(--color-primary);
-            &::after{
+
+            &::after {
                 background: #2D1067;
             }
-            &:hover{
+
+            &:hover {
                 color: #fff;
             }
         }
     }
-    .thumbnail{
+
+    .thumbnail {
         display: block;
         overflow: hidden;
-        img{
+        text-align: center;
+
+        img {
             transition: .4s;
+            max-width: 300px;
+            margin: 0 auto;
         }
     }
-    &:hover{
-        .thumbnail{
-            img{
+
+    &:hover {
+        .thumbnail {
+            img {
                 transform: scale(1.1);
             }
         }
     }
-    .inner{
+
+    .inner {
         text-align: center;
         margin-top: 40px;
-        .title{
+
+        .title {
             font-size: 32px;
             color: #fff;
         }
-        p.disc{
+
+        p.disc {
             color: #FFFFFF;
             font-weight: 400;
             margin-bottom: 30px;
         }
-        .rts-btn{
+
+        .rts-btn {
             margin: auto;
         }
     }
 }
-.demo-machine-learning{
+
+.demo-machine-learning {
     overflow-x: visible;
 }

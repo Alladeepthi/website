@@ -51,9 +51,6 @@ export const Header: React.FC = () => {
                                   <li key={service.id}>
                                     <Link to="/service-details" state={{ service }}>
                                       <div className="single-service-menu">
-                                        <div className="icon">
-                                          <img src={`/assets/images/feature/${service.icon}`} alt={service.title} />
-                                        </div>
                                         <div className="info">
                                           <h5 className="title">{service.title}</h5>
                                         </div>
@@ -69,9 +66,6 @@ export const Header: React.FC = () => {
                                   <li key={service.id}>
                                     <Link to="/service-details" state={{ service }}>
                                       <div className="single-service-menu">
-                                        <div className="icon">
-                                          <img src={`/assets/images/feature/${service.icon}`} alt={service.title} />
-                                        </div>
                                         <div className="info">
                                           <h5 className="title">{service.title}</h5>
                                         </div>
@@ -107,62 +101,245 @@ export const Header: React.FC = () => {
                   {/* Platforms */}
                   <li className="main-nav has-dropdown mega-menu platforms-parent">
                     <Link to="#" onClick={(e) => e.preventDefault()}>Platforms</Link>
-                    <div className="rts-mega-menu service-mega-menu-style platforms-menu-style">
+                    <div className="rts-mega-menu service-mega-menu-style">
                       <div className="wrapper">
                         <div className="container">
                           <div className="row g-5">
                             <div className="col-lg-3">
-                              <div className="menu-list">
-                                <h4 className="title">DataLakes</h4>
-                                <ul>
-                                  <li><Link to="/platform/snowflake">Snowflake</Link></li>
-                                  <li><Link to="/platform/redshift">RedShift</Link></li>
-                                  <li><Link to="/platform/databricks">Databricks</Link></li>
-                                  <li><Link to="/platform/mongodb">MongoDB</Link></li>
-                                  <li><Link to="/platform/datadog">Datadog</Link></li>
-
-                                </ul>
-                              </div>
+                              <h4 className="title mb--20" style={{ fontSize: '18px', fontWeight: 600, color: '#050D20', marginBottom: '20px' }}>DataLakes</h4>
+                              <ul className="mega-menu-item parent-nav">
+                                <li>
+                                  <Link to="/platform/snowflake">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">Snowflake</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link to="/platform/redshift">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">RedShift</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link to="/platform/databricks">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">Databricks</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link to="/platform/mongodb">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">MongoDB</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link to="/platform/datadog">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">Datadog</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                              </ul>
                             </div>
                             <div className="col-lg-3">
-                              <div className="menu-list">
-                                <h4 className="title">RAG Tools</h4>
-                                <ul>
-                                  <li><Link to="/platform/unstructured">Unstructured</Link></li>
-                                  <li><Link to="/platform/airbyte">Airbyte</Link></li>
-                                  <li><Link to="/platform/llamaindex">LlamaIndex</Link></li>
-                                  <li><Link to="/platform/langchain">LangChain</Link></li>
-                                </ul>
-                              </div>
+                              <h4 className="title mb--20" style={{ fontSize: '18px', fontWeight: 600, color: '#050D20', marginBottom: '20px' }}>RAG Tools</h4>
+                              <ul className="mega-menu-item parent-nav">
+                                <li>
+                                  <Link to="/platform/unstructured">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">Unstructured</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link to="/platform/airbyte">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">Airbyte</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link to="/platform/llamaindex">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">LlamaIndex</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link to="/platform/langchain">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">LangChain</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                              </ul>
                             </div>
                             <div className="col-lg-3">
-                              <div className="menu-list">
-                                <h4 className="title">Vector Database</h4>
-                                <ul>
-                                  <li><Link to="/platform/pinecone">Pinecone</Link></li>
-                                  <li><Link to="/platform/weaviate">Weaviate</Link></li>
-                                  <li><Link to="/platform/zilliz">Zilliz</Link></li>
-                                  <li><Link to="/platform/milvus">Milvus</Link></li>
-                                  <li><Link to="/platform/supabase">Supabase</Link></li>
-                                </ul>
-                              </div>
+                              <h4 className="title mb--20" style={{ fontSize: '18px', fontWeight: 600, color: '#050D20', marginBottom: '20px' }}>Vector Database</h4>
+                              <ul className="mega-menu-item parent-nav">
+                                <li>
+                                  <Link to="/platform/pinecone">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">Pinecone</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link to="/platform/weaviate">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">Weaviate</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link to="/platform/zilliz">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">Zilliz</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link to="/platform/milvus">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">Milvus</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link to="/platform/supabase">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">Supabase</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                              </ul>
                             </div>
                             <div className="col-lg-3">
-                              <div className="menu-list">
-                                <h4 className="title">Model Ecosystem</h4>
-                                <ul>
-                                  <li><Link to="/platform/openai">OpenAI</Link></li>
-                                  <li><Link to="/platform/gemini">Gemini</Link></li>
-                                  <li><Link to="/platform/llama-3.2">Llama 3.2</Link></li>
-                                  <li><Link to="/platform/bert">BERT</Link></li>
-                                  <li><Link to="/platform/lamda">LaMDA</Link></li>
-                                  <li><Link to="/platform/orca">Orca</Link></li>
-                                  <li><Link to="/platform/mistral">Mistral</Link></li>
-                                  <li><Link to="/platform/palm2">PaLM2</Link></li>
-                                  <li><Link to="/platform/claude">Claude</Link></li>
-                                  <li><Link to="/platform/hugging-face">Hugging Face</Link></li>
-                                </ul>
-                              </div>
+                              <h4 className="title mb--20" style={{ fontSize: '18px', fontWeight: 600, color: '#050D20', marginBottom: '20px' }}>Model Ecosystem</h4>
+                              <ul className="mega-menu-item parent-nav">
+                                <li>
+                                  <Link to="/platform/openai">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">OpenAI</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link to="/platform/gemini">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">Gemini</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link to="/platform/llama-3.2">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">Llama 3.2</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link to="/platform/bert">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">BERT</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link to="/platform/lamda">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">LaMDA</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link to="/platform/orca">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">Orca</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link to="/platform/mistral">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">Mistral</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link to="/platform/palm2">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">PaLM2</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link to="/platform/claude">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">Claude</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link to="/platform/hugging-face">
+                                    <div className="single-service-menu">
+                                      <div className="info">
+                                        <h5 className="title">Hugging Face</h5>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                              </ul>
                             </div>
                           </div>
                         </div>
