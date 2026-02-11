@@ -25,18 +25,17 @@ export const Services: React.FC = () => {
                                         alignItems: 'center',
                                         justifyContent: 'center',
                                         backgroundColor: '#F6F7F9',
-                                        borderRadius: '10px'
+                                        borderRadius: '10px',
+                                        overflow: 'hidden',
+                                        padding: '20px'
                                     }}>
-                                        <img src={`/assets/images/feature/${service.icon}`} alt={service.title} style={{ width: '60px', height: '60px' }} />
+                                        <img src={`/assets/images/service/${service.icon}`} alt={service.title} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                                     </div>
                                 </Link>
                                 <div className="content">
                                     <h5 className="title">
                                         <Link to="/service-details" state={{ service }}>{service.title}</Link>
                                     </h5>
-                                    <p className="disc" style={{ fontSize: '14px', lineHeight: '1.6' }}>
-                                        {service.description.substring(0, 80)}...
-                                    </p>
                                 </div>
                             </div>
                         </div>
