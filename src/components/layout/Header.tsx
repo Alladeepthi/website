@@ -105,39 +105,45 @@ export const Header: React.FC = () => {
                   </li>
 
                   {/* Platforms */}
-                  <li className="main-nav has-dropdown mega-menu">
-                    <Link to="/platforms">Platforms</Link>
-                    <div className="rts-mega-menu service-mega-menu-style">
+                  <li className="main-nav has-dropdown mega-menu platforms-parent">
+                    <Link to="#" onClick={(e) => e.preventDefault()}>Platforms</Link>
+                    <div className="rts-mega-menu service-mega-menu-style platforms-menu-style">
                       <div className="wrapper">
                         <div className="container">
                           <div className="row g-5">
                             <div className="col-lg-3">
                               <div className="menu-list">
-                                <h4 className="title">Data & Storage</h4>
+                                <h4 className="title">DataLakes</h4>
                                 <ul>
-                                  <li><Link to="/platforms">Cloud Data Warehouses</Link></li>
-                                  <li><Link to="/platforms">Streaming & Ingestion</Link></li>
-                                  <li><Link to="/platforms">Observability Tools</Link></li>
+                                  <li><Link to="/platform/snowflake">Snowflake</Link></li>
+                                  <li><Link to="/platform/redshift">RedShift</Link></li>
+                                  <li><Link to="/platform/databricks">Databricks</Link></li>
+                                  <li><Link to="/platform/mongodb">MongoDB</Link></li>
+                                  <li><Link to="/platform/datadog">Datadog</Link></li>
+
                                 </ul>
                               </div>
                             </div>
                             <div className="col-lg-3">
                               <div className="menu-list">
-                                <h4 className="title">AI & RAG</h4>
+                                <h4 className="title">RAG Tools</h4>
                                 <ul>
-                                  <li><Link to="/platforms">Retrieval-Augmented Gen</Link></li>
-                                  <li><Link to="/platforms">Orchestration Frameworks</Link></li>
-                                  <li><Link to="/platforms">Document Pipelines</Link></li>
+                                  <li><Link to="/platform/unstructured">Unstructured</Link></li>
+                                  <li><Link to="/platform/airbyte">Airbyte</Link></li>
+                                  <li><Link to="/platform/llamaindex">LlamaIndex</Link></li>
+                                  <li><Link to="/platform/langchain">LangChain</Link></li>
                                 </ul>
                               </div>
                             </div>
                             <div className="col-lg-3">
                               <div className="menu-list">
-                                <h4 className="title">Vector & Search</h4>
+                                <h4 className="title">Vector Database</h4>
                                 <ul>
-                                  <li><Link to="/platforms">Semantic Search Engines</Link></li>
-                                  <li><Link to="/platforms">Vector Storage Systems</Link></li>
-                                  <li><Link to="/platforms">Hybrid Search Solutions</Link></li>
+                                  <li><Link to="/platform/pinecone">Pinecone</Link></li>
+                                  <li><Link to="/platform/weaviate">Weaviate</Link></li>
+                                  <li><Link to="/platform/zilliz">Zilliz</Link></li>
+                                  <li><Link to="/platform/milvus">Milvus</Link></li>
+                                  <li><Link to="/platform/supabase">Supabase</Link></li>
                                 </ul>
                               </div>
                             </div>
@@ -145,9 +151,16 @@ export const Header: React.FC = () => {
                               <div className="menu-list">
                                 <h4 className="title">Model Ecosystem</h4>
                                 <ul>
-                                  <li><Link to="/platforms">Large Language Models</Link></li>
-                                  <li><Link to="/platforms">Open Source Models</Link></li>
-                                  <li><Link to="/platforms">Multimodal Platforms</Link></li>
+                                  <li><Link to="/platform/openai">OpenAI</Link></li>
+                                  <li><Link to="/platform/gemini">Gemini</Link></li>
+                                  <li><Link to="/platform/llama-3.2">Llama 3.2</Link></li>
+                                  <li><Link to="/platform/bert">BERT</Link></li>
+                                  <li><Link to="/platform/lamda">LaMDA</Link></li>
+                                  <li><Link to="/platform/orca">Orca</Link></li>
+                                  <li><Link to="/platform/mistral">Mistral</Link></li>
+                                  <li><Link to="/platform/palm2">PaLM2</Link></li>
+                                  <li><Link to="/platform/claude">Claude</Link></li>
+                                  <li><Link to="/platform/hugging-face">Hugging Face</Link></li>
                                 </ul>
                               </div>
                             </div>
