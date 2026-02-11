@@ -13,7 +13,7 @@ export const AIPlatform: React.FC = () => {
                                 <a href="#" className="rts-btn btn-primary">Explore Capability </a>
                             </div>
                             <div className="right-img">
-                                <img src="/assets/images/why-choose/08.webp" alt="" />
+                                <img src="/assets/images/why-choose/innovation.png" alt="" />
                             </div>
                         </div>
                     </div>
@@ -22,7 +22,7 @@ export const AIPlatform: React.FC = () => {
                     <div className="col-lg-6">
                         <div className="ai-platform-single-card">
                             <a href="#" className="thumbnail">
-                                <img src="/assets/images/ai/machine-learning-card.png" alt="ai" />
+                                <img src="/assets/images/ai/cloud.png" alt="ai" />
                             </a>
                             <div className="inner">
                                 <h5 className="title">Machine Learning</h5>
@@ -34,7 +34,7 @@ export const AIPlatform: React.FC = () => {
                     <div className="col-lg-6">
                         <div className="ai-platform-single-card primary">
                             <a href="#" className="thumbnail">
-                                <img src="/assets/images/ai/data-preparation-card.png" alt="ai" />
+                                <img src="/assets/images/ai/programming.png" alt="ai" />
                             </a>
                             <div className="inner">
                                 <h5 className="title">Data preparation</h5>

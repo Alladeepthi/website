@@ -5,7 +5,7 @@ export const Services: React.FC = () => {
     const services = [
         {
             id: 1,
-            img: 'api-integration.jpeg',
+            img: 'service-enterprise.png',
             title: 'API & Integration Services',
             subCategories: [
                 'Telephony APIs (Telecalling, IVR, Voice Bots)',
@@ -19,7 +19,7 @@ export const Services: React.FC = () => {
         },
         {
             id: 2,
-            img: 'enterprise.jpg',
+            img: 'Business.png',
             title: 'Enterprise Product Solutions',
             subCategories: [
                 'CRM Platforms',
@@ -33,7 +33,7 @@ export const Services: React.FC = () => {
         },
         {
             id: 3,
-            img: '21.webp',
+            img: 'service-digital.png',
             title: 'Digital Experience Studio',
             subCategories: [
                 'UI/UX Design Systems',
@@ -47,7 +47,7 @@ export const Services: React.FC = () => {
         },
         {
             id: 4,
-            img: 'growth.jpg',
+            img: 'service-stats.png',
             title: 'Growth & Automation',
             subCategories: [
                 'Marketing Automation Workflows',
@@ -61,7 +61,7 @@ export const Services: React.FC = () => {
         },
         {
             id: 5,
-            img: 'mobile-erp.jpg', // Using recycled image as placeholder
+            img: 'Memory.png',
             title: 'Mobile & App Engineering',
             subCategories: [
                 'Android App Development',
@@ -75,7 +75,7 @@ export const Services: React.FC = () => {
         },
         {
             id: 6,
-            img: 'ai-machine.jpeg', // Using recycled image as placeholder
+            img: 'service-ai.png',
             title: 'AI & Machine Intelligence',
             subCategories: [
                 'Predictive Intelligence Models',
@@ -89,7 +89,7 @@ export const Services: React.FC = () => {
         },
         {
             id: 7,
-            img: '21.webp', // Using recycled image as placeholder
+            img: 'Onconsulting.png',
             title: 'Data & Insight Services',
             subCategories: [
                 'Data Engineering & Preparation',
@@ -103,7 +103,7 @@ export const Services: React.FC = () => {
         },
         {
             id: 8,
-            img: '22.webp', // Using recycled image as placeholder
+            img: 'world.png',
             title: 'SaaS Demo & Launch Systems',
             subCategories: [
                 'SaaS Landing Page Design',

@@ -22,7 +22,7 @@ export const HomeBlog: React.FC = () => {
                     <div className="col-lg-6">
                         <div className="rts-single-blog-card-m">
                             <Link to="#" className="thumbnail">
-                                <img src="/assets/images/blog/13.webp" alt="blog" />
+                                <img src="/assets/images/blog/blog.png" alt="blog" />
                             </Link>
                             <div className="inner-content">
                                 <div className="tag-wrapper">
@@ -38,7 +38,7 @@ export const HomeBlog: React.FC = () => {
                     <div className="col-lg-6">
                         <div className="rts-single-blog-card-m">
                             <Link to="#" className="thumbnail">
-                                <img src="/assets/images/blog/14.webp" alt="blog" />
+                                <img src="/assets/images/blog/webinar.png" alt="blog" />
                             </Link>
                             <div className="inner-content">
                                 <div className="tag-wrapper">
