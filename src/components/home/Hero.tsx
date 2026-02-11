@@ -27,7 +27,7 @@ export const Hero: React.FC = () => {
                     </div>
                     <div className="col-xl-6">
                         <div className="hero-area">
-                            <img src="/assets/images/banner/hero.webp" width="1132" alt="" />
+                            <img src="/assets/images/banner/hero.webp" width="1132" alt="Hero Banner" loading="eager" fetchPriority="high" />
                         </div>
                     </div>
                 </div>

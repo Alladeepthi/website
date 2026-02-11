@@ -112,7 +112,7 @@ export const Platforms: React.FC = () => {
                         </div>
                     </div>
                     <div className="row g-5 mt--20">
-                        {platforms.map((platform, index) => (
+                        {platforms.map((platform) => (
                             <div key={platform.id} className="col-xl-4 col-lg-4 col-md-6 col-sm-12">
                                 <div className="service-one-inner-four">
                                     <div className="big-thumbnail-area">

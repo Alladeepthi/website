@@ -15,15 +15,8 @@ export const Home: React.FC = () => {
     useEffect(() => {
         document.body.className = "demo-machine-learning";
 
-        // Re-initialize main.js for animations and plugins
-        const script = document.createElement('script');
-        script.src = "/assets/js/main.js?t=" + new Date().getTime();
-        script.async = true;
-        document.body.appendChild(script);
-
         return () => {
             document.body.className = "";
-            document.body.removeChild(script);
         };
     }, []);
 

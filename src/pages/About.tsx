@@ -3,10 +3,7 @@
 export const About: React.FC = () => {
     useEffect(() => {
         document.body.className = "demo-machine-learning";
-        const script = document.createElement('script');
-        script.src = "/assets/js/main.js?t=" + new Date().getTime();
-        script.async = true;
-        document.body.appendChild(script);
+
 
         // Add modern styles
         const style = document.createElement('style');
@@ -161,7 +158,7 @@ export const About: React.FC = () => {
 
         return () => {
             document.body.className = "";
-            document.body.removeChild(script);
+
             document.head.removeChild(style);
         };
     }, []);
@@ -209,7 +206,7 @@ export const About: React.FC = () => {
                         </div>
                         <div className="col-lg-5">
                             <div className="rts-about-breadcrumb-image">
-                                <img src="/assets/images/banner/breadcrumb-01.webp" width="520" alt="about" />
+                                <img src="/assets/images/about/storyset_hero.svg" width="520" alt="NeuralTrix AI Innovation" style={{ maxWidth: '350px', width: '100%', height: 'auto' }} />
                             </div>
                         </div>
                     </div>
@@ -232,7 +229,7 @@ export const About: React.FC = () => {
             <div className="rts-story-area demo-4">
                 <div className="container">
                     <div className="image-area">
-                        <img src="/assets/images/about/16.webp" alt="" />
+                        <img src="/assets/images/about/storyset_story.svg" alt="Company Timeline" style={{ maxWidth: '500px', width: '100%', height: 'auto', margin: '0 auto', display: 'block' }} />
                     </div>
                     <div className="section-inner modern-card">
                         <h2 className="title rts-text-anime-style-1">Our Story</h2>
@@ -246,12 +243,12 @@ export const About: React.FC = () => {
                         <div className="row g-5">
                             <div className="col-lg-4">
                                 <div className="modern-image-wrapper">
-                                    <img src="/assets/images/about/18.webp" alt="success" />
+                                    <img src="/assets/images/about/storyset_impact.svg" alt="Business Impact" style={{ maxWidth: '280px', width: '100%', height: 'auto' }} />
                                 </div>
                             </div>
                             <div className="col-lg-8">
                                 <div className="modern-image-wrapper">
-                                    <img src="/assets/images/about/22.webp" alt="teamwork" />
+                                    <img src="/assets/images/about/storyset_team.svg" alt="Team Collaboration" style={{ maxWidth: '450px', width: '100%', height: 'auto' }} />
                                 </div>
                             </div>
                         </div>

@@ -47,67 +47,67 @@
       rtsJs.smoothScroll();
     },
     fonklsAnimation: function () {
-          let endTl = gsap.timeline({
-              repeat: -1,
-              delay: 0.2,
-              scrollTrigger: {
-                  trigger: '.end',
-                  start: 'bottom 100%-=50px'
-              }
-          });
-          gsap.set('.end', {
-              opacity: 0
-          });
-          gsap.to('.end', {
-              opacity: 1,
-              duration: 1,
-              ease: 'power2.out',
-              scrollTrigger: {
-                  trigger: '.end',
-                  start: 'bottom 100%-=50px',
-                  once: true
-              }
-          });
-          let mySplitText = new SplitText(".end", {
-              type: "words,chars"
-          });
-          let chars = mySplitText.chars;
-          endTl.to(chars, {
-              duration: 0.5,
-              scaleY: 0.9,
-              ease: "power3.out",
-              stagger: 0.04,
-              transformOrigin: 'center bottom'
-          });
-          endTl.to(chars, {
-              yPercent: -10,
-              ease: "elastic",
-              stagger: 0.03,
-              duration: 0.8
-          }, 0.5);
-          endTl.to(chars, {
-              scaleY: 1,
-              ease: "elastic.out(2.5, 0.2)",
-              stagger: 0.03,
-              duration: 1.5
-          }, 0.5);
-          endTl.to(chars, {
+      let endTl = gsap.timeline({
+        repeat: -1,
+        delay: 0.2,
+        scrollTrigger: {
+          trigger: '.end',
+          start: 'bottom 100%-=50px'
+        }
+      });
+      gsap.set('.end', {
+        opacity: 0
+      });
+      gsap.to('.end', {
+        opacity: 1,
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.end',
+          start: 'bottom 100%-=50px',
+          once: true
+        }
+      });
+      let mySplitText = new SplitText(".end", {
+        type: "words,chars"
+      });
+      let chars = mySplitText.chars;
+      endTl.to(chars, {
+        duration: 0.5,
+        scaleY: 0.9,
+        ease: "power3.out",
+        stagger: 0.04,
+        transformOrigin: 'center bottom'
+      });
+      endTl.to(chars, {
+        yPercent: -10,
+        ease: "elastic",
+        stagger: 0.03,
+        duration: 0.8
+      }, 0.5);
+      endTl.to(chars, {
+        scaleY: 1,
+        ease: "elastic.out(2.5, 0.2)",
+        stagger: 0.03,
+        duration: 1.5
+      }, 0.5);
+      endTl.to(chars, {
 
-              ease: "power2.out",
-              stagger: 0.03,
-              duration: 0.3
-          }, 0.5);
-          endTl.to(chars, {
-              yPercent: 0,
-              ease: "back",
-              stagger: 0.03,
-              duration: 0.8
-          }, 0.7);
-          endTl.to(chars, {
-              // color: '#b19777',
-              duration: 1.4,
-              stagger: 0.05
-          });
+        ease: "power2.out",
+        stagger: 0.03,
+        duration: 0.3
+      }, 0.5);
+      endTl.to(chars, {
+        yPercent: 0,
+        ease: "back",
+        stagger: 0.03,
+        duration: 0.8
+      }, 0.7);
+      endTl.to(chars, {
+        // color: '#b19777',
+        duration: 1.4,
+        stagger: 0.05
+      });
     },
     preloader: function () {
       window.addEventListener('load', function () {
@@ -724,7 +724,7 @@
     },
 
     stickyHeader: function (e) {
-      
+
       $(window).scroll(function () {
         if ($(this).scrollTop() > 150) {
           $('.header--sticky').addClass('sticky')
@@ -795,39 +795,42 @@
     }
   }
 
+  // Expose rtsJs to window for React re-initialization
+  window.rtsJs = rtsJs;
+
   rtsJs.m();
 
   $(document).ready(function () {
-      $('#ce-toggle').change(function () {
-        const isChecked = $(this).is(':checked');
+    $('#ce-toggle').change(function () {
+      const isChecked = $(this).is(':checked');
 
-        // Toggle active class based on checked state
-        if (isChecked) {
-          $('.plan-toggle-wrap').removeClass('active');
-          $('#monthly').show();
-          $('#yearly').hide();
-        } else {
-          $('.plan-toggle-wrap').addClass('active');
-          $('#monthly').hide();
-          $('#yearly').show();
-        }
-      });
-
-      // Optional: Set initial state on page load
-      $('#ce-toggle').trigger('change');
+      // Toggle active class based on checked state
+      if (isChecked) {
+        $('.plan-toggle-wrap').removeClass('active');
+        $('#monthly').show();
+        $('#yearly').hide();
+      } else {
+        $('.plan-toggle-wrap').addClass('active');
+        $('#monthly').hide();
+        $('#yearly').show();
+      }
     });
+
+    // Optional: Set initial state on page load
+    $('#ce-toggle').trigger('change');
+  });
 
   document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('[data-bg-src]').forEach(function (el) {
-        const bg = el.getAttribute('data-bg-src');
-        if (bg) {
-          el.style.backgroundImage = `url(${bg})`;
-          el.style.backgroundSize = 'cover';        // Optional
-          el.style.backgroundPosition = 'center';   // Optional
-          el.style.backgroundRepeat = 'no-repeat';  // Optional
-        }
-      });
+    document.querySelectorAll('[data-bg-src]').forEach(function (el) {
+      const bg = el.getAttribute('data-bg-src');
+      if (bg) {
+        el.style.backgroundImage = `url(${bg})`;
+        el.style.backgroundSize = 'cover';        // Optional
+        el.style.backgroundPosition = 'center';   // Optional
+        el.style.backgroundRepeat = 'no-repeat';  // Optional
+      }
     });
+  });
 })(jQuery, window)
 
 

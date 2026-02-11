@@ -5,6 +5,7 @@ import { servicesData } from '../../data/services';
 export const Header: React.FC = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
+  const [isSticky, setIsSticky] = React.useState(false);
 
   const leftServices = servicesData.slice(0, 4);
   const rightServices = servicesData.slice(4, 8);
@@ -15,8 +16,10 @@ export const Header: React.FC = () => {
       if (header) {
         if (window.scrollY > 150) {
           header.classList.add('sticky');
+          setIsSticky(true);
         } else {
           header.classList.remove('sticky');
+          setIsSticky(false);
         }
       }
     };
@@ -33,7 +36,11 @@ export const Header: React.FC = () => {
             <div className="header-wrapper-main" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '30px', flexWrap: 'nowrap' }}>
               <div className="logo-area">
                 <Link to="/">
-                  <img src="/assets/images/logo/neuraltrix-logo-white.svg" alt="NeuralTrix AI" style={{ height: '55px', width: 'auto' }} />
+                  <img
+                    src={isHome && !isSticky ? "/assets/images/logo/neuraltrix-logo-white.svg" : "/assets/images/logo/neuraltrix-logo.svg"}
+                    alt="NeuralTrix AI"
+                    style={{ height: '55px', width: 'auto' }}
+                  />
                 </Link>
               </div>
               <div className="nav-area" style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
@@ -162,10 +169,12 @@ export const Header: React.FC = () => {
                     <Link to="/industry">Industry</Link>
                     <ul className="submenu parent-nav">
                       <li><Link to="/industry#healthcare">Healthcare</Link></li>
-                      <li><Link to="/industry#finance">Finance</Link></li>
-                      <li><Link to="/industry#retail">Retail</Link></li>
                       <li><Link to="/industry#manufacturing">Manufacturing</Link></li>
-                      <li><Link to="/industry#technology">Technology</Link></li>
+                      <li><Link to="/industry#finance">Finance & Banking</Link></li>
+                      <li><Link to="/industry#retail">Retail & E-commerce</Link></li>
+                      <li><Link to="/industry#education">Education</Link></li>
+                      <li><Link to="/industry#logistics">Logistics</Link></li>
+                      <li><Link to="/industry#benefits">Benefits</Link></li>
                     </ul>
                   </li>
 

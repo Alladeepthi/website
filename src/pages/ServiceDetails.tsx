@@ -14,13 +14,8 @@ export const ServiceDetails: React.FC = () => {
 
     useEffect(() => {
         document.body.className = "radious-4 demo-machine-learning";
-        const script = document.createElement('script');
-        script.src = "/assets/js/main.js?t=" + new Date().getTime();
-        script.async = true;
-        document.body.appendChild(script);
         return () => {
             document.body.className = "";
-            document.body.removeChild(script);
         };
     }, []);
 

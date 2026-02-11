@@ -91,10 +91,12 @@ export const MobileMenu: React.FC = () => {
                                 <Link to="/industry" className="main">Industry</Link>
                                 <ul className="submenu mm-collapse">
                                     <li><Link to="/industry#healthcare" onClick={closeMenu}>Healthcare</Link></li>
-                                    <li><Link to="/industry#finance" onClick={closeMenu}>Finance</Link></li>
-                                    <li><Link to="/industry#retail" onClick={closeMenu}>Retail</Link></li>
                                     <li><Link to="/industry#manufacturing" onClick={closeMenu}>Manufacturing</Link></li>
-                                    <li><Link to="/industry#technology" onClick={closeMenu}>Technology</Link></li>
+                                    <li><Link to="/industry#finance" onClick={closeMenu}>Finance & Banking</Link></li>
+                                    <li><Link to="/industry#retail" onClick={closeMenu}>Retail & E-commerce</Link></li>
+                                    <li><Link to="/industry#education" onClick={closeMenu}>Education</Link></li>
+                                    <li><Link to="/industry#logistics" onClick={closeMenu}>Logistics</Link></li>
+                                    <li><Link to="/industry#benefits" onClick={closeMenu}>Benefits</Link></li>
                                 </ul>
                             </li>
 

@@ -1,0 +1,6 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f0f4f8"/>
+  <circle cx="400" cy="300" r="150" fill="#e1e8ef"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#334155">AI Hero Illustration</text>
+  <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#64748b">(Placeholder for Storyset AI Brain)</text>
+</svg>
