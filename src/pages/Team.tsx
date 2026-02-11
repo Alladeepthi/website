@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './team-styles.css';
 
 export const Team: React.FC = () => {
     useEffect(() => {
@@ -15,186 +16,252 @@ export const Team: React.FC = () => {
     }, []);
 
     const teamMembers = [
-        { name: 'Daniel Brown', role: 'Chief Executive Officer', img: '/assets/images/team/01.webp' },
-        { name: 'Christopher Henry', role: 'Chief Executive Officer', img: '/assets/images/team/02.webp' },
-        { name: 'Marketing Director', role: 'Chief Executive Officer', img: '/assets/images/team/03.webp' },
-        { name: 'John Smith', role: 'Senior Developer', img: '/assets/images/team/04.webp' },
+        {
+            name: 'Dr. Sarah Chen',
+            role: 'Chief Executive Officer',
+            img: '/assets/images/team/01.webp',
+            bio: 'Former VP at Google AI with 15+ years pioneering ML research',
+            linkedin: '#'
+        },
+        {
+            name: 'Michael Rodriguez',
+            role: 'Chief Technology Officer',
+            img: '/assets/images/team/02.webp',
+            bio: 'Ex-Amazon Web Services architect, cloud infrastructure expert',
+            linkedin: '#'
+        },
+        {
+            name: 'Emily Thompson',
+            role: 'Head of Product',
+            img: '/assets/images/team/03.webp',
+            bio: 'Product visionary from Microsoft Azure AI division',
+            linkedin: '#'
+        },
+        {
+            name: 'David Park',
+            role: 'Lead AI Engineer',
+            img: '/assets/images/team/04.webp',
+            bio: 'PhD in Deep Learning, published researcher at MIT',
+            linkedin: '#'
+        },
+    ];
+
+    const stats = [
+        { number: '50+', label: 'Team Members' },
+        { number: '15+', label: 'Countries' },
+        { number: '98%', label: 'Client Satisfaction' },
+        { number: '10+', label: 'Years Experience' },
+    ];
+
+    const values = [
+        {
+            icon: 'fa-light fa-rocket-launch',
+            title: 'Innovation First',
+            desc: 'We push boundaries and embrace cutting-edge technologies to deliver transformative AI solutions that redefine industries.'
+        },
+        {
+            icon: 'fa-light fa-users',
+            title: 'Collaborative Culture',
+            desc: 'Cross-functional teams working together seamlessly to achieve extraordinary results and exceed expectations.'
+        },
+        {
+            icon: 'fa-light fa-chart-line-up',
+            title: 'Continuous Growth',
+            desc: 'We invest heavily in learning, development, and career advancement opportunities for every team member.'
+        },
+        {
+            icon: 'fa-light fa-handshake',
+            title: 'Integrity & Trust',
+            desc: 'Building lasting relationships through transparency, ethical practices, and unwavering commitment to excellence.'
+        },
     ];
 
     return (
-        <main>
-            <div className="rts-career-banner-area rts-section-gap">
+        <main className="team-page-modern">
+            {/* Hero Section */}
+            <section className="team-hero-section">
                 <div className="container">
                     <div className="row align-items-center">
-                        <div className="col-lg-5">
-                            <div className="career-banner-wrapper">
-                                <h1 className="title">Meet Our Creative Team Members</h1>
-                                <p className="disc">
-                                    Our team is a group of skilled and dedicated professionals who bring their expertise,
-                                    creativity, and commitment to every project. We believe that great work stems from
-                                    collaboration
+                        <div className="col-lg-6">
+                            <div className="team-hero-content">
+                                <div className="hero-badge">
+                                    <i className="fa-light fa-sparkles"></i>
+                                    <span>Meet Our Team</span>
+                                </div>
+                                <h1 className="hero-title">
+                                    The Minds Behind <br />
+                                    <span className="gradient-text">NeuralTrix Innovation</span>
+                                </h1>
+                                <p className="hero-description">
+                                    We're a diverse team of world-class engineers, designers, and strategists united by a passion for
+                                    building AI solutions that transform businesses and empower people worldwide.
                                 </p>
+                                <div className="hero-actions">
+                                    <Link to="/contact" className="rts-btn btn-primary">
+                                        Join Our Team
+                                        <i className="fa-light fa-arrow-right"></i>
+                                    </Link>
+                                    <Link to="/about" className="btn-link">
+                                        <span>View Open Positions</span>
+                                        <i className="fa-light fa-chevron-right"></i>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
-                        <div className="col-lg-7 mt_md--30 mt_sm--30">
-                            <div className="thumbnail-top">
-                                <img src="/assets/images/team/05.webp" alt="career" />
+                        <div className="col-lg-6">
+                            <div className="team-hero-image">
+                                <div className="image-glow"></div>
+                                <img src="/assets/images/team/At the office-pana.png" alt="Our Team" />
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            {/* rts team members area start */}
-            <div className="rts-team-members rts-section-gapBottom">
+            {/* Stats Section */}
+            <section className="team-stats-section">
                 <div className="container">
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <div className="title-area-between">
-                                <div className="title-left-wrapper">
-                                    <span className="pre">Team Member</span>
-                                    <h2 className="title rts-text-anime-style-1">The People Behind <br /> Our Success</h2>
-                                </div>
-                                <div className="right-area">
-                                    <p className="disc">
-                                        our success is driven by a dedicated team of IT professionals who bring their expertise,
-                                        creativity, and passion to every project.
-                                    </p>
-                                    <Link to="/about" className="btn-line"><span>We are hiring</span> <i className="fa-solid fa-chevron-right"></i></Link>
-                                </div>
+                    <div className="stats-grid">
+                        {stats.map((stat, i) => (
+                            <div className="stat-card" key={i}>
+                                <div className="stat-number">{stat.number}</div>
+                                <div className="stat-label">{stat.label}</div>
                             </div>
-                        </div>
-                    </div>
-                    <div className="row g-5 mt--20">
-                        <div className="col-lg-12">
-                            <div className="team-swiper-area">
-                                <div className="swiper mySwiper-team-one">
-                                    <div className="swiper-wrapper">
-                                        {teamMembers.concat(teamMembers).map((member, i) => (
-                                            <div className="swiper-slide" key={i}>
-                                                <div className="single-team-style-one">
-                                                    <div className="thumbnail">
-                                                        <img src={member.img} alt="team" />
-                                                    </div>
-                                                    <div className="inner-content">
-                                                        <h5 className="title">{member.name}</h5>
-                                                        <span className="designation">{member.role}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <div className="swiper-pagination"></div>
-                                </div>
-                                <div className="swiper-button-next"><i className="fa-solid fa-chevron-right"></i></div>
-                                <div className="swiper-button-prev"><i className="fa-solid fa-chevron-left"></i></div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
-            </div>
+            </section>
 
-            {/* rts testimoanials area start */}
-            <div className="rts-testimonials-style-three rts-section-gap">
-                <div className="container pb--50">
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <div className="title-center-wrapper">
-                                <span className="pre">Testimonials</span>
-                                <h2 className="title rts-text-anime-style-1">What clients said</h2>
-                            </div>
-                        </div>
-                        <div className="col-lg-12 pt--60">
-                            <div className="testimominas-single-wrapper-three">
-                                <div className="swiper mySwiper-testimonials-three">
-                                    <div className="swiper-wrapper">
-                                        {[1, 2, 3].map((_, i) => (
-                                            <div className="swiper-slide" key={i}>
-                                                <div className="single-testimonails-three">
-                                                    <div className="left-thumbnmail">
-                                                        <img src="/assets/images/testimonials/06.webp" alt="testimonial" />
-                                                        <div className="small-image">
-                                                            <img src="/assets/images/testimonials/07.webp" alt="testimonial" />
-                                                        </div>
-                                                    </div>
-                                                    <div className="right-content">
-                                                        <div className="top">
-                                                            <div className="brand">
-                                                                <img src="/assets/images/testimonials/08.webp" alt="testimonial" />
-                                                            </div>
-                                                            <div className="content">
-                                                                <p className="disc">
-                                                                    "Working with NeuralTrix AI has been a game-changer for our business.
-                                                                    Their strategic insights and innovative solutions have significantly
-                                                                    boosted our growth. The professionalism and dedication are unmatched. Highly recommend!"
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="bottom">
-                                                            <h5 className="title">John Smith</h5>
-                                                            <span>CEO of Tech Innovations Inc.</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <div className="swiper-button-next"><i className="fa-solid fa-chevron-right"></i></div>
-                                    <div className="swiper-button-prev"><i className="fa-solid fa-chevron-left"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* why work with us area start */}
-            <div className="rts-work-with-us-area rts-section-gap">
+            {/* Team Members Section */}
+            <section className="team-members-section">
                 <div className="container">
-                    <div className="row">
-                        <div className="col-lg-5">
-                            <div className="luminos-main-solutioin-key">
-                                <h3 className="title">Why Work With Us</h3>
-                                <p className="disc">Partner with us to drive innovation and create cutting-edge solutions in technology</p>
-                                <div className="check-wrapper">
+                    <div className="section-header-modern">
+                        <div className="section-tag">Leadership</div>
+                        <h2 className="section-title">Meet Our Leadership Team</h2>
+                        <p className="section-description">
+                            Industry veterans and visionaries with decades of combined experience driving our mission forward
+                        </p>
+                    </div>
+
+                    <div className="team-grid">
+                        {teamMembers.map((member, i) => (
+                            <div className="team-member-card" key={i}>
+                                <div className="member-image-wrapper">
+                                    <img src={member.img} alt={member.name} />
+                                    <div className="member-overlay">
+                                        <a href={member.linkedin} className="social-link">
+                                            <i className="fa-brands fa-linkedin"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div className="member-info">
+                                    <h4 className="member-name">{member.name}</h4>
+                                    <p className="member-role">{member.role}</p>
+                                    <p className="member-bio">{member.bio}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Values Section */}
+            <section className="team-values-section">
+                <div className="container">
+                    <div className="section-header-modern">
+                        <div className="section-tag">Our Values</div>
+                        <h2 className="section-title">What Drives Us Forward</h2>
+                        <p className="section-description">
+                            Core principles that shape our culture, guide our decisions, and define who we are
+                        </p>
+                    </div>
+
+                    <div className="values-grid">
+                        {values.map((value, i) => (
+                            <div className="value-card" key={i}>
+                                <div className="value-icon">
+                                    <i className={value.icon}></i>
+                                </div>
+                                <h4 className="value-title">{value.title}</h4>
+                                <p className="value-desc">{value.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Why Join Us Section */}
+            <section className="team-join-section">
+                <div className="container">
+                    <div className="row align-items-center">
+                        <div className="col-lg-6">
+                            <div className="join-content">
+                                <div className="section-tag">Careers</div>
+                                <h2 className="join-title">Why Join NeuralTrix?</h2>
+                                <p className="join-description">
+                                    Be part of a team that's shaping the future of AI and making a real impact on businesses worldwide.
+                                    We offer more than just a job—we offer a career-defining opportunity.
+                                </p>
+
+                                <div className="benefits-list">
                                     {[
-                                        'A dynamic and collaborative work environment.',
-                                        'Opportunities to work on cutting-edge projects.',
-                                        'A culture of continuous learning and growth.',
-                                        'Competitive compensation and benefits.',
-                                    ].map((text, i) => (
-                                        <div className="single-check" key={i}>
-                                            <img src="/assets/images/why-choose/05.svg" alt="service" />
-                                            <p>{text}</p>
+                                        { icon: 'fa-light fa-globe', text: 'Remote-first culture with global flexibility' },
+                                        { icon: 'fa-light fa-graduation-cap', text: 'Unlimited learning & development budget' },
+                                        { icon: 'fa-light fa-heart-pulse', text: 'Comprehensive health & wellness benefits' },
+                                        { icon: 'fa-light fa-coins', text: 'Competitive salary with equity options' },
+                                        { icon: 'fa-light fa-calendar-days', text: 'Flexible PTO and work-life balance' },
+                                        { icon: 'fa-light fa-rocket', text: 'Work on cutting-edge AI projects' },
+                                    ].map((benefit, i) => (
+                                        <div className="benefit-item" key={i}>
+                                            <div className="benefit-icon">
+                                                <i className={benefit.icon}></i>
+                                            </div>
+                                            <p>{benefit.text}</p>
                                         </div>
                                     ))}
                                 </div>
-                                <Link to="/contact" className="rts-btn btn-primary mt--40">Apply Now</Link>
-                            </div>
-                        </div>
-                        <div className="offset-lg-1 col-lg-6 mt_sm--50">
-                            <div className="thumbnail">
-                                <img src="/assets/images/team/06.webp" alt="team" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            {/* rts call to action area start */}
-            <div className="rts-call-to-action-area rts-section-gapBottom">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <div className="call-to-action-wrapper-three">
-                                <h3 className="title rts-text-anime-style-1">No long-term contracts. No catches. Simple.</h3>
-                                <p className="disc">Start your 30-day free trial. Cancel anytime. View demo Start free trial</p>
-                                <Link to="/about" className="rts-btn btn-primary">Started for Trial</Link>
+                                <Link to="/contact" className="rts-btn btn-primary mt--40">
+                                    Explore Opportunities
+                                    <i className="fa-light fa-arrow-right"></i>
+                                </Link>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="join-image">
+                                <img src="/assets/images/why-choose/At the office-rafiki.png" alt="Join Our Team" />
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            {/* CTA Section */}
+            <section className="team-cta-section">
+                <div className="container">
+                    <div className="cta-card-modern">
+                        <div className="cta-content">
+                            <h2 className="cta-title">Ready to Make an Impact?</h2>
+                            <p className="cta-description">
+                                Join a team of innovators, builders, and dreamers who are redefining what's possible with artificial intelligence.
+                                Your next career breakthrough starts here.
+                            </p>
+                        </div>
+                        <div className="cta-actions">
+                            <Link to="/contact" className="rts-btn btn-primary-large">
+                                View Open Positions
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <style>{`
+                @keyframes floatHero {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-20px); }
+                }
+            `}</style>
         </main>
     );
 };

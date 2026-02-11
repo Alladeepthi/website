@@ -110,12 +110,8 @@ button:focus-visible {
 
 /* Ensure dropdown arrows align */
 .header-one .main-nav.has-dropdown>a::after {
-  /* Reset default pseudo element if it conflicts, usually templates rely on ::after for arrows. 
-      If so, my underline might conflict. 
-      Let's assume the template uses specific classes or content. 
-      If I see weirdness, I'll adjust. 
-      Actually, the template likely uses ::after on the 'li' or 'a' for the arrow.
-   */
+  display: inline-block;
+  margin-left: 5px;
 }
 
 /* Force cleaner look for arrows if they exist as ::after on 'a' */
@@ -140,4 +136,406 @@ button:focus-visible {
 
 .header-one .main-nav>a:hover {
   background-size: 100% 2px;
+}
+
+/* Privacy Policy Ultra-Modern Styles */
+.privacy-policy-wrapper {
+  background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 50%, #f1f5f9 100%);
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.privacy-policy-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(15, 98, 254, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  animation: floatGlow 15s ease-in-out infinite;
+}
+
+.privacy-policy-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(15, 98, 254, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+  animation: floatGlow 20s ease-in-out infinite reverse;
+}
+
+@keyframes floatGlow {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(50px, 50px);
+  }
+}
+
+/* Sidebar Navigation */
+.privacy-sidebar {
+  position: sticky;
+  top: 120px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(30px);
+  padding: 40px;
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.privacy-sidebar:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.privacy-sidebar .title {
+  position: relative;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.privacy-sidebar .title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 4px;
+  background: linear-gradient(90deg, #0F62FE 0%, transparent 100%);
+  border-radius: 2px;
+}
+
+.privacy-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.privacy-sidebar ul li {
+  margin-bottom: 8px;
+}
+
+.privacy-sidebar ul li a {
+  color: #64748b;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.privacy-sidebar ul li a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(15, 98, 254, 0.08) 0%, transparent 100%);
+  transition: width 0.4s ease;
+  z-index: -1;
+}
+
+.privacy-sidebar ul li a i {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fff 0%, #f8fafc 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 16px;
+}
+
+.privacy-sidebar ul li a:hover {
+  color: #0F62FE;
+  transform: translateX(6px);
+}
+
+.privacy-sidebar ul li a:hover::before {
+  width: 100%;
+}
+
+.privacy-sidebar ul li a:hover i {
+  background: linear-gradient(135deg, #0F62FE 0%, #0843ae 100%);
+  color: #fff;
+  transform: scale(1.1) rotate(-5deg);
+  box-shadow: 0 8px 20px rgba(15, 98, 254, 0.3);
+}
+
+.privacy-sidebar ul li a.active {
+  color: #0F62FE;
+  background: rgba(15, 98, 254, 0.05);
+}
+
+.privacy-sidebar ul li a.active i {
+  background: linear-gradient(135deg, #0F62FE 0%, #0843ae 100%);
+  color: #fff;
+}
+
+/* Content Card */
+.privacy-content-card {
+  background: #ffffff;
+  padding: 70px;
+  border-radius: 48px;
+  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  position: relative;
+  overflow: hidden;
+}
+
+.privacy-content-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(15, 98, 254, 0.3) 50%, transparent 100%);
+}
+
+/* Policy Sections */
+.policy-section {
+  margin-bottom: 70px;
+  padding-bottom: 70px;
+  border-bottom: 1px solid #f1f5f9;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s forwards;
+}
+
+.policy-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.policy-section:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.policy-section:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.policy-section:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.policy-section:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.policy-section:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.policy-section .section-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.policy-section .section-header i {
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  background: linear-gradient(135deg, rgba(15, 98, 254, 0.12) 0%, rgba(15, 98, 254, 0.04) 100%);
+  color: #0F62FE;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  border: 1px solid rgba(15, 98, 254, 0.15);
+  box-shadow: 0 8px 24px rgba(15, 98, 254, 0.1);
+  transition: all 0.3s ease;
+}
+
+.policy-section:hover .section-header i {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(15, 98, 254, 0.15);
+}
+
+.policy-section .section-title {
+  font-size: 32px;
+  font-weight: 900;
+  color: #0c1c3d;
+  margin: 0;
+  letter-spacing: -0.8px;
+  line-height: 1.3;
+}
+
+.policy-section .disc {
+  font-size: 18px;
+  line-height: 2;
+  color: #475569;
+  margin-bottom: 0;
+}
+
+/* Highlight boxes for important info */
+.policy-highlight {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border-left: 4px solid #0F62FE;
+  padding: 24px 28px;
+  border-radius: 16px;
+  margin: 28px 0;
+}
+
+.policy-highlight p {
+  margin: 0;
+  color: #1e40af;
+  font-weight: 500;
+}
+
+/* Badges */
+.last-updated-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 22px;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  color: #475569;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 35px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.last-updated-badge::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #0F62FE;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+  box-shadow: 0 0 0 0 rgba(15, 98, 254, 0.7);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(15, 98, 254, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 12px rgba(15, 98, 254, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(15, 98, 254, 0);
+  }
+}
+
+/* Hero Section */
+.rts-about-breadcrumb-area {
+  padding: 140px 0 100px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  position: relative;
+}
+
+.policy-main-title {
+  font-size: 56px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #0c1c3d 0%, #0F62FE 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 28px;
+  line-height: 1.2;
+  letter-spacing: -1.5px;
+}
+
+/* Responsive Design */
+@media (max-width: 1199px) {
+  .policy-main-title {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 991px) {
+  .privacy-sidebar {
+    position: relative;
+    top: 0;
+    margin-bottom: 50px;
+    padding: 30px;
+  }
+
+  .privacy-content-card {
+    padding: 40px 30px;
+  }
+
+  .policy-section .section-title {
+    font-size: 26px;
+  }
+
+  .policy-main-title {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .privacy-policy-wrapper {
+    padding: 80px 0;
+  }
+
+  .privacy-content-card {
+    padding: 30px 20px;
+    border-radius: 32px;
+  }
+
+  .policy-section {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+  }
+
+  .policy-section .section-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .policy-section .section-title {
+    font-size: 24px;
+  }
+
+  .policy-main-title {
+    font-size: 32px;
+  }
+
+  .rts-about-breadcrumb-area {
+    padding: 100px 0 60px;
+  }
 }
