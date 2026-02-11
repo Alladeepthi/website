@@ -12,7 +12,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --color-primary: #3B82F6; /* Default specific blue if not defined */
+  --color-primary: #3B82F6;
+  /* Default specific blue if not defined */
 }
 
 a {
@@ -20,6 +21,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -48,9 +50,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -61,27 +65,31 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
 }
 
 /* Header Navigation Refinements */
-.header-one .main-nav > a {
+.header-one .main-nav>a {
   font-weight: 500 !important;
   letter-spacing: 0.5px !important;
-  padding: 10px 0 !important; /* Vertical centering/spacing */
+  padding: 10px 0 !important;
+  /* Vertical centering/spacing */
   position: relative;
   transition: color 0.3s ease;
   display: inline-flex !important;
   align-items: center;
-  gap: 5px; /* Space for dropdown icon if present */
+  gap: 5px;
+  /* Space for dropdown icon if present */
 }
 
-.header-one .main-nav > a::after {
+.header-one .main-nav>a::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -92,17 +100,17 @@ button:focus-visible {
   transition: width 0.3s ease;
 }
 
-.header-one .main-nav > a:hover {
+.header-one .main-nav>a:hover {
   color: var(--color-primary) !important;
 }
 
-.header-one .main-nav > a:hover::after {
+.header-one .main-nav>a:hover::after {
   width: 100%;
 }
 
 /* Ensure dropdown arrows align */
-.header-one .main-nav.has-dropdown > a::after {
-   /* Reset default pseudo element if it conflicts, usually templates rely on ::after for arrows. 
+.header-one .main-nav.has-dropdown>a::after {
+  /* Reset default pseudo element if it conflicts, usually templates rely on ::after for arrows. 
       If so, my underline might conflict. 
       Let's assume the template uses specific classes or content. 
       If I see weirdness, I'll adjust. 
@@ -114,21 +122,22 @@ button:focus-visible {
 /* Instead of underline on ::after which might conflict with arrows, let's put underline on ::before or a border-bottom */
 /* Let's try border-bottom first, simpler */
 
-.header-one .main-nav > a {
+.header-one .main-nav>a {
   /* Resetting the ::after logic above to avoid conflict if template uses it for icon */
   position: relative;
 }
 
 /* Use a background gradient animation for underline to be safe against ::after conflicts */
-.header-one .main-nav > a {
+.header-one .main-nav>a {
   background-image: linear-gradient(var(--color-primary), var(--color-primary));
   background-size: 0% 2px;
   background-repeat: no-repeat;
   background-position: left bottom;
   transition: background-size 0.3s ease, color 0.3s ease;
-  padding-bottom: 5px !important; /* Space for underline */
+  padding-bottom: 5px !important;
+  /* Space for underline */
 }
 
-.header-one .main-nav > a:hover {
+.header-one .main-nav>a:hover {
   background-size: 100% 2px;
 }

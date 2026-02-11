@@ -9,11 +9,12 @@ export const WhyChooseUs: React.FC = () => {
                     <div className="col-lg-6">
                         <div className="thumbnail-machine-choose-area">
                             <div className="left-thumbnail">
-                                <img src="/assets/images/why-choose/ai-2.jpg" alt="whu" />
+                                <img src="/assets/images/why-choose/new-robot-collab.png" alt="AI Collaboration" />
                             </div>
                             <div className="left-thumbnail last">
-                                <img src="/assets/images/why-choose/home-ai.jpg" alt="whu" />
+                                <img src="/assets/images/why-choose/new-man-suit.png" alt="Man in Suit" />
                             </div>
+
                         </div>
                     </div>
                     <div className="col-lg-6 pl--60 pl_sm--10">
