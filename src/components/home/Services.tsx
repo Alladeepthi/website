@@ -27,7 +27,7 @@ export const Services: React.FC = () => {
                                         backgroundColor: '#F6F7F9',
                                         borderRadius: '10px',
                                         overflow: 'hidden',
-                                        padding: '20px'
+                                        padding: '10px'
                                     }}>
                                         <img src={`/assets/images/service/${service.icon}`} alt={service.title} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                                     </div>

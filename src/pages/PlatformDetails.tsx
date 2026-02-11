@@ -7,179 +7,118 @@ export const PlatformDetails: React.FC = () => {
     const platform = platformsData.find(p => p.slug === id);
 
     useEffect(() => {
-        window.scrollTo(0, 0);
+        document.body.className = "radious-4 demo-machine-learning";
+        const script = document.createElement('script');
+        script.src = "/assets/js/main.js?t=" + new Date().getTime();
+        script.async = true;
+        document.body.appendChild(script);
+        return () => {
+            document.body.className = "";
+            document.body.removeChild(script);
+        };
     }, [id]);
 
     if (!platform) {
-        return <Navigate to="/platforms" replace />;
+        return <Navigate to="/" replace />;
     }
 
     return (
-        <div className="platform-details-page">
-            {/* Hero Section */}
-            <div className="rts-breadcrumb-area breadcrumb-bg bg_image" style={platform.hero.image ? { backgroundImage: `url(${platform.hero.image})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}>
-                <div className="container">
-                    <div className="row align-items-center">
-                        <div className="col-12 breadcrumb-1 text-center">
-                            <div className="bread-tag" style={{ justifyContent: 'center', marginBottom: '20px', display: 'flex', gap: '5px' }}>
-                                <Link to="/">Home</Link>
-                                <span> / </span>
-                                <span className={platform.hero.title ? "" : "active"}>Platforms</span>
-                                <span> / </span>
-                                <span className="active">{platform.name}</span>
-                            </div>
-                            <h1 className="title" style={{ marginBottom: '20px' }}>{platform.hero.title}</h1>
-                            <p className="disc mx-auto" style={{ fontSize: '18px', maxWidth: '800px', marginBottom: '30px' }}>
-                                {platform.hero.description}
-                            </p>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Platform Overview */}
-            <div className="rts-section-gap">
-                <div className="container">
-                    <div className="row align-items-center">
-                        <div className="col-lg-6">
-                            <div className="thumbnail">
-                                <img
-                                    src={platform.overview.image || "https://placehold.co/600x400?text=Platform+Overview"}
-                                    alt={platform.name}
-                                    style={{ borderRadius: '15px' }}
-                                />
-                            </div>
-                        </div>
-                        <div className="col-lg-6 mt_md--40 mt_sm--40">
-                            <div className="about-inner-two">
-                                <div className="title-area-one-left">
-                                    <h2 className="title">{platform.overview.heading}</h2>
-                                    <p className="disc">
-                                        {platform.overview.content}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Solutions Section */}
-            <div className="rts-service-area rts-section-gap bg-light">
+        <main>
+            {/* rts service-details-breadcrumb-area-start */}
+            <div className="rts-service-details-breadcrumb-area">
                 <div className="container">
                     <div className="row">
-                        <div className="col-12 text-center">
-                            <h2 className="title mb--50">{platform.solutions.title || `Our ${platform.name} Solutions`}</h2>
-                        </div>
-                    </div>
-                    <div className="row g-5">
-                        <div className="col-lg-4">
-                            <div className="service-list-wrapper">
-                                {platform.solutions.items.map((item, index) => (
-                                    <div key={index} className="service-item mb--30" style={{ padding: '20px', background: 'white', borderRadius: '10px', boxShadow: '0 5px 15px rgba(0,0,0,0.05)' }}>
-                                        <h4 className="title">{item.title}</h4>
-                                        <p>{item.description}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        <div className="col-lg-8">
-                            <div className="thumbnail text-center">
-                                <img
-                                    src={platform.solutions.image || "https://placehold.co/800x500?text=Solutions"}
-                                    alt="Solutions"
-                                    style={{ borderRadius: '10px', maxWidth: '100%' }}
-                                />
+                        <div className="col-lg-12">
+                            <div className="breadcrumb-area">
+                                <ul>
+                                    <li><Link to="/">Home</Link></li>
+                                    <li><i className="fa fa-chevron-right"></i></li>
+                                    <li><Link to="#" onClick={(e) => e.preventDefault()}>Platforms</Link></li>
+                                    <li><i className="fa fa-chevron-right"></i></li>
+                                    <li><span className="active">{platform.name}</span></li>
+                                </ul>
+                                <h1 className="title rts-text-anime-style-1" dangerouslySetInnerHTML={{ __html: platform.hero.title }}></h1>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {/* rts service-details-breadcrumb-area-end */}
 
-            {/* Case Studies */}
-            {platform.caseStudies.items.length > 0 && (
-                <div className="rts-section-gap">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-12 text-center">
-                                <h2 className="title mb--40">{platform.caseStudies.title}</h2>
-                            </div>
-                        </div>
-                        <div className="row g-5">
-                            {platform.caseStudies.items.map((item, index) => (
-                                <div key={index} className="col-lg-6">
-                                    <div className="case-study-item" style={{ border: '1px solid #eee', borderRadius: '15px', overflow: 'hidden' }}>
-                                        <div className="thumbnail">
-                                            <img src={item.image || "https://placehold.co/600x300"} alt={item.title} style={{ width: '100%', height: '300px', objectFit: 'cover' }} />
-                                        </div>
-                                        <div className="content" style={{ padding: '30px' }}>
-                                            <h4 className="title">{item.title}</h4>
-                                            <p>{item.description}</p>
-                                            <Link to="/case-studies" className="rts-btn btn-border mt--20">Read Case Study</Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            )}
-
-            {/* Why Choose Us */}
-            <div className="rts-section-gap bg-light">
+            {/* service details video area start */}
+            <div className="rts-service-details-video-area rts-section-gapBottom">
                 <div className="container">
-                    <div className="row align-items-center">
-                        <div className="col-lg-6">
-                            <h2 className="title mb--40">{platform.whyChoose.title || `Why Choose Us for ${platform.name}?`}</h2>
-                            <div className="row g-4">
-                                {platform.whyChoose.items.map((item, index) => (
-                                    <div key={index} className="col-md-6">
-                                        <div className="feature-item" style={{ background: 'white', padding: '25px', borderRadius: '10px' }}>
-                                            <h5 className="title">{item.title}</h5>
-                                            <p className="mb-0">{item.description}</p>
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <div className="service-details-video-wrapper">
+                                <div className="service-details-video-image">
+                                    <img src="/assets/images/service/23.webp" alt="service" />
+                                </div>
+                                <div className="vedio-icone">
+                                    <a className="video-play-button play-video popup-video" href="https://www.youtube.com/watch?v=vZE0j_WCRvI">
+                                        <span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* service details video area end */}
+
+            {/* rts work-process-area-start */}
+            <div className="rts-work-process-area rts-section-gapBottom">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-6 pr--70 pr_md--10 pr_sm--10">
+                            <div className="work-process-content">
+                                <div className="title-left-wrapper">
+                                    <span className="pre">Platform Overview</span>
+                                    <h2 className="title rts-text-anime-style-1">{platform.overview.heading}</h2>
+                                </div>
+                                <p className="disc mt--20">
+                                    {platform.overview.content}
+                                </p>
+                                <div className="thumbnail-plunning-service-detials mt--60">
+                                    <img src={platform.overview.image || "/assets/images/service/24.webp"} alt="process" />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-6 mt_md--50 mt_sm--50">
+                            <div className="working-process-list-wrapper">
+                                {platform.solutions.items.map((solution, i) => (
+                                    <div className="single-working-process-area" key={i}>
+                                        <div className="icon">
+                                            <i className="fa-regular fa-check-circle" style={{ fontSize: '24px', color: '#3A70FF' }}></i>
+                                        </div>
+                                        <div className="content">
+                                            <h5 className="title" style={{ marginBottom: 0 }}>{solution.title}</h5>
+                                            <p className="desc" style={{ fontSize: '14px', color: '#5D666F', marginTop: '5px' }}>{solution.description}</p>
                                         </div>
                                     </div>
                                 ))}
-                            </div>
-                        </div>
-                        <div className="col-lg-6 mt_md--40 mt_sm--40">
-                            <div className="thumbnail pl--30">
-                                <img src="/assets/images/platform/Innovation-rafiki.png" alt="Why Choose Us" style={{ borderRadius: '15px', width: '100%', height: 'auto' }} />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Testimonials (Static for now, can be dynamic later) */}
-            {/* ... */}
-
-            {/* FAQ Section */}
-            {platform.faq.length > 0 && (
-                <div className="rts-section-gap">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-12 text-center">
-                                <h2 className="title mb--50">{platform.name} Platform FAQs</h2>
-                            </div>
-                        </div>
-                        <div className="row justify-content-center">
-                            <div className="col-lg-10">
-                                <div className="accordion-wrapper">
-                                    {platform.faq.map((item, index) => (
-                                        <div key={index} className="accordion-item mb--20" style={{ borderBottom: '1px solid #eee', paddingBottom: '20px' }}>
-                                            <h5 className="title mb--10">{item.question}</h5>
-                                            <p>{item.answer}</p>
-                                        </div>
-                                    ))}
-                                </div>
+            <div className="rts-call-to-action-area rts-section-gap demo-app-development">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <div className="call-to-action-wrapper-three">
+                                <h3 className="title rts-text-anime-style-1">Ready to Scale Your Technology?</h3>
+                                <p className="disc">Partner with NeuraltrixAI to build the systems that will drive your future growth.</p>
+                                <Link to="/contact" className="rts-btn btn-primary with-arrow btn-white">Schedule a Consultation <i className="fa-regular fa-arrow-up up-right"></i></Link>
+                                <div className="round one"></div>
+                                <div className="round two"></div>
+                                <div className="round three"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-            )}
-
-        </div>
+            </div>
+        </main>
     );
 };
