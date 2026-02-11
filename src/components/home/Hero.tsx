@@ -7,10 +7,13 @@ export const Hero: React.FC = () => {
                 <div className="row">
                     <div className="col-xl-6 col-lg-8 lg_order-change">
                         <div className="machine-learning-content-banner">
-                            <span className="pre">Machine learning</span>
-                            <h1 className="title">Business with Smart <span>machine</span> Learning</h1>
+                            <span className="pre">Product Engineering & Intelligent Automation</span>
+                            <h1 className="title">Building Scalable <span>Digital</span> Systems</h1>
+                            <p className="disc" style={{ fontSize: '18px', maxWidth: '600px', marginBottom: '30px', color: '#5D666F' }}>
+                                We engineer high-performance software, data platforms, and automated workflows that drive real business growth.
+                            </p>
                             <div className="button-wrapper">
-                                <a href="#" className="rts-btn btn-primary">Get Started</a>
+                                <a href="/contact" className="rts-btn btn-primary">Schedule a Consultation</a>
                                 <div className="video-btn-area">
                                     <div className="vedio-icone">
                                         <a className="video-play-button play-video popup-video" href="https://www.youtube.com/watch?v=vZE0j_WCRvI">
@@ -20,7 +23,7 @@ export const Hero: React.FC = () => {
                                             <a href="#section1" className="video-overlay-close">×</a>
                                         </div>
                                     </div>
-                                    <span>Watch Video</span>
+                                    <span>Watch Our Process</span>
                                 </div>
                             </div>
                         </div>
@@ -37,9 +40,19 @@ export const Hero: React.FC = () => {
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="main--wrapper-tt">
-                                {[...Array(11)].map((_, i) => (
+                                {[
+                                    "Product Engineering",
+                                    "Cloud Architecture",
+                                    "Intelligent Automation",
+                                    "Data Platforms",
+                                    "System Integration",
+                                    "Product Engineering",
+                                    "Cloud Architecture",
+                                    "Intelligent Automation",
+                                    "Data Platforms"
+                                ].map((text, i) => (
                                     <div className="single-inner-marquree" key={i}>
-                                        <h2>Machine Learning</h2>
+                                        <h2>{text}</h2>
                                     </div>
                                 ))}
                             </div>

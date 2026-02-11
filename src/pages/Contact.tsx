@@ -21,7 +21,7 @@ export const Contact: React.FC = () => {
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="breadcrumb-area">
-                                <h1 className="title rts-text-anime-style-1">Get in Touch</h1>
+                                <h1 className="title rts-text-anime-style-1">Get in Touch</h1>
                                 <p className="disc" style={{ maxWidth: '384px', margin: 'auto', marginTop: '25px' }}>
                                     If you have any questions or require assistance, please complete the form on this page.
                                 </p>
@@ -45,7 +45,7 @@ export const Contact: React.FC = () => {
                                         </div>
                                         <h4 className="title">Our Location</h4>
                                     </div>
-                                    <p className="disc">123 Main Street, Apt 4B Springfield, IL 62704, UK</p>
+                                    <p className="disc">VFSTR, N block, Guntur,Andhra Pradesh,India</p>
                                 </div>
                                 <div className="signle-contact-card">
                                     <div className="top-area">
@@ -55,7 +55,7 @@ export const Contact: React.FC = () => {
                                         <h4 className="title">Email Us</h4>
                                     </div>
                                     <p className="disc">Our support team is here to assist you</p>
-                                    <a href="mailto:support@neuraltrixai.com">support@neuraltrixai.com</a>
+                                    <a href="mailto:info@neuraltrixai.com">info@neuraltrixai.com</a>
                                 </div>
                                 <div className="signle-contact-card">
                                     <div className="top-area">
@@ -65,7 +65,7 @@ export const Contact: React.FC = () => {
                                         <h4 className="title">Call Us</h4>
                                     </div>
                                     <p className="disc">Our customer support team is available</p>
-                                    <a href="tel:+111112542174">+1 (111) 125- 42174</a>
+                                    <a href="tel:+918142438759">+918142438759</a>
                                 </div>
                             </div>
                         </div>

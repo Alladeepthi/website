@@ -10,130 +10,122 @@ export interface ServiceItem {
 export const servicesData: ServiceItem[] = [
     {
         id: 1,
-        title: "API & Integration Services",
-        subtitle: "(Earlier: IT Services for API development)",
-        description: "We build scalable, secure, and high-performance APIs to connect your applications and services seamlessly. Our expertise ensures reliable data exchange and smooth system interoperability.",
+        title: "API & Integration Ecosystems",
+        subtitle: "Seamless Connectivity for Modern Enterprises",
+        description: "We architect high-performance API layers that serve as the backbone of your digital infrastructure. Our solutions ensure secure, reliable data flow between your internal systems, partners, and third-party platforms, eliminating silos and enabling real-time operational visibility.",
         icon: "01.svg",
         subCategories: [
-            "Telephony APIs (Telecalling, IVR, Voice Bots)",
-            "Messaging APIs (WhatsApp, SMS, Email)",
-            "Payment & Billing APIs",
-            "Authentication & Identity APIs",
-            "Analytics & Webhook APIs",
-            "Third-Party System Integrations",
-            "Secure REST & GraphQL Services"
+            "Unified System Architecture",
+            "Real-time Data Synchronization",
+            "Secure Third-party Integrations",
+            "Legacy System Modernization",
+            "High-Throughput API Gateways",
+            "Automated Event Workflows"
         ]
     },
     {
         id: 2,
-        title: "Enterprise Product Solutions",
-        subtitle: "(Earlier: IT Solutions for product development)",
-        description: "Comprehensive software solutions tailored for enterprise needs, focusing on efficiency, automation, and scalability to drive business growth.",
+        title: "Enterprise Software Engineering",
+        subtitle: "Robust Licensing & Operational Platforms",
+        description: "We build mission-critical software tailored to your specific business logic and operational needs. Our engineering team delivers scalable, secure applications that streamline complex workflows, reduce manual overhead, and support your organization’s growth without technical debt.",
         icon: "02.svg",
         subCategories: [
-            "CRM Platforms",
-            "ERP Systems",
-            "HRMS & Payroll Systems",
-            "Workflow & Process Automation",
-            "Learning & Training Platforms (LMS)",
-            "Admin & Control Dashboards",
-            "Multi-Tenant SaaS Platforms"
+            "Optimized Operational Workflows",
+            "Scalable Cloud-Native Architecture",
+            "Bank-Grade Security Standards",
+            "Custom ERP & CRM Solutions",
+            "SaaS Tenant Management",
+            "Automated Compliance and Reporting"
         ]
     },
     {
         id: 3,
-        title: "Digital Experience Studio",
-        subtitle: "(Earlier: Digital Agency)",
-        description: "Identify and define your brand's unique digital footprint. We craft engaging, user-centric designs that elevate your brand and deliver exceptional user experiences.",
+        title: "Digital Product Design",
+        subtitle: "User-Centric Interfaces that Convert",
+        description: "Our design process balances aesthetic excellence with functional precision. We create intuitive, accessible, and engaging digital experiences that reduce user friction, increase adoption rates, and directly support your core business metrics and conversion goals.",
         icon: "03.svg",
         subCategories: [
-            "UI/UX Design Systems",
-            "Corporate Website Design",
-            "Product & Brand Identity",
-            "Landing Page Design",
-            "SEO-Optimized Web Builds",
-            "Performance & Accessibility Optimization",
-            "Interaction & Motion Design"
+            "Higher User Adoption Rates",
+            "Streamlined User Journeys",
+            "Brand-Consistent Design Systems",
+            "Accessibility (WCAG) Compliance",
+            "Rapid Interactive Prototyping",
+            "Data-Driven UX Optimization"
         ]
     },
     {
         id: 4,
-        title: "Growth & Automation",
-        subtitle: "(Earlier: Marketing & Automation)",
-        description: "Accelerate your business growth with automated marketing strategies and data-driven campaigns designed to maximize retention and ROI.",
+        title: "Growth & Marketing Automation",
+        subtitle: "Automated Systems for Customer Acquisition",
+        description: "Scale your marketing efforts without increasing headcount. We implement intelligent automation frameworks that track user behavior, manage customer lifecycles, and deliver personalized experiences at scale, ensuring you capture and retain value at every touchpoint.",
         icon: "04.svg",
         subCategories: [
-            "Marketing Automation Workflows",
-            "Lead Scoring & Segmentation",
-            "Campaign Management Systems",
-            "CRM-Driven Growth Funnels",
-            "Customer Journey Automation",
-            "Conversion & ROI Analytics",
-            "Forecasted Growth Systems"
+            "Increased Lead Conversion",
+            "Automated Customer Retention",
+            "Data-Driven Campaign Optimization",
+            "Cross-Channel Attribution",
+            "Dynamic Personalization Engines",
+            "CRM & Pipeline Integration"
         ]
     },
     {
         id: 5,
-        title: "Mobile & App Engineering",
-        subtitle: "(Earlier: App Development)",
-        description: "From concept to deployment, we engineer robust mobile applications for iOS, Android, and cross-platform ecosystems that delight users.",
+        title: "Mobile Application Development",
+        subtitle: "High-Performance Native & Cross-Platform Apps",
+        description: "We engineer responsive, feature-rich mobile applications that extend your business capabilities to the edge. Whether for consumer engagement or enterprise mobility, our apps are built for speed, stability, and seamless performance across all devices.",
         icon: "05.svg",
         subCategories: [
-            "Android App Development",
-            "iOS App Development",
-            "Cross-Platform Apps (Flutter / React Native)",
-            "Enterprise Mobile Apps",
-            "Backend & API Integration",
-            "App Analytics & Deployment",
-            "Mobile App UI/UX Engineering"
+            "Native-Like Performance",
+            "Offline-First Capabilities",
+            "Seamless Backward Compatibility",
+            "Secure Biometric Authentication",
+            "Real-time Push Notifications",
+            "Integrated Analytics SDKs"
         ]
     },
     {
         id: 6,
-        title: "AI & Machine Intelligence",
-        subtitle: "(Earlier: Machine Learning)",
-        description: "Harness the power of Artificial Intelligence and Machine Learning to unlock actionable insights, automate decisions, and gain a competitive edge.",
+        title: "Intelligent Automation & AI",
+        subtitle: "Practical AI for Measurable Efficiency",
+        description: "We move beyond hype to deploy functional machine learning models that solve specific operational bottlenecks. From automating repetitive tasks to predicting resource needs, our AI solutions are designed to deliver tangible ROI and operational cost reductions.",
         icon: "06.svg",
         subCategories: [
-            "Predictive Intelligence Models",
-            "Recommendation Engines",
-            "Anomaly & Risk Detection",
-            "Custom ML Model Development",
-            "Model Deployment & MLOps",
-            "Explainable & Trusted AI",
-            "AI Automation"
+            "Reduced Operational Costs",
+            "Automated Decision Support",
+            "Predictive Resource Planning",
+            "Natural Language Processing (NLP)",
+            "Intelligent Document Processing",
+            "Computer Vision Quality Control"
         ]
     },
     {
         id: 7,
-        title: "Data & Insight Services",
-        subtitle: "(Earlier: Data Science)",
-        description: "Transform raw data into meaningful insights. We help you collect, process, and analyze data to make informed strategic decisions.",
+        title: "Data Engineering & Analytics",
+        subtitle: "Turning Raw Data into Strategic Assets",
+        description: "We design robust data pipelines and warehousing architectures that centralize your information for accurate analysis. Our systems provide stakeholders with real-time, actionable insights, enabling evidence-based decision-making and precise performance tracking.",
         icon: "07.svg",
         subCategories: [
-            "Data Engineering & Preparation",
-            "Exploratory Data Analysis",
-            "Statistical & Business Modeling",
-            "BI Dashboards & Reports",
-            "Decision Intelligence Systems",
-            "Executive Analytics",
-            "Predictive Analytics"
+            "Single Source of Truth",
+            "Real-time Business Intelligence",
+            "Scalable Data Warehousing",
+            "ETL/ELT Pipeline Automation",
+            "Data Governance Frameworks",
+            "Custom Executive Dashboards"
         ]
     },
     {
         id: 8,
-        title: "SaaS Demo & Launch Systems",
-        subtitle: "(Earlier: SaaS Landing for Product Demo)",
-        description: "Optimize your product launch with high-converting SaaS landing pages and interactive demos that effectively communicate your value proposition.",
+        title: "Product Launch & Go-to-Market",
+        subtitle: "Technical Infrastructure for Successful Launches",
+        description: "We provide the technical backbone for your go-to-market strategy. From high-converting landing pages to stable beta environments and launch analytics, we ensure your product enters the market smoothly and gains traction immediately.",
         icon: "08.svg",
         subCategories: [
-            "SaaS Landing Page Design",
-            "Interactive Product Demos",
-            "Feature & Pricing Pages",
-            "Trial & Onboarding Flows",
-            "Conversion-Focused UI",
-            "Hosting & Deployment Support",
-            "SEO & Content"
+            "Accelerated Time-to-Market",
+            "High-Conversion Technical Setup",
+            "Stable Beta Environments",
+            "Launch Traffic Management",
+            "A/B Testing Infrastructure",
+            "User Onboarding Automation"
         ]
     }
 ];

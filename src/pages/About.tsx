@@ -180,11 +180,10 @@ export const About: React.FC = () => {
                                     <li className="active"><a href="#">About</a></li>
                                 </ul>
                                 <div className="modern-card">
-                                    <h1 className="title rts-text-anime-style-1">NeuralTrix AI - Pioneering the Future of Intelligence</h1>
+                                    <h1 className="title rts-text-anime-style-1">Strategic Engineering for the Digital Age</h1>
                                     <p className="disc">
-                                        NeuralTrix AI - IT Corporation Private Limited is a premier AI solutions provider, incorporated in 2026.
-                                        We specialize in delivering end-to-end AI ecosystems, LLM solutions, and engineering automation.
-                                        Our mission is to democratize advanced AI for businesses of all sizes, ensuring ethical and intuitive technology that enhances human potential.
+                                        NeuraltrixAI is a product engineering and technology consulting firm. We partner with ambitious organizations to build scalable digital platforms, automate complex workflows, and unlock the value of data.
+                                        We are not just a service provider; we are your strategic engineering partner committed to delivering measurable business outcomes.
                                     </p>
                                     <div className="author-area">
                                         <div className="stars-main-wrapper">
@@ -192,7 +191,7 @@ export const About: React.FC = () => {
                                                 <img src="/assets/images/others/stars-02.svg" alt="stars" />
                                                 <img src="/assets/images/others/star-02.svg" alt="stars" />
                                             </div>
-                                            <p className="disc1">TrustScore 4.8 2k reviews</p>
+                                            <p className="disc1">Enterprise-Grade Solutions</p>
                                         </div>
                                         <div className="author-wrapper">
                                             <div className="image">
@@ -222,7 +221,7 @@ export const About: React.FC = () => {
                 <div className="container">
                     <div className="section-inner modern-card">
                         <h2 className="title rts-text-anime-style-1">Our Mission</h2>
-                        <p className="disc">To enable businesses of all sizes to harness the full potential of technology by delivering reliable, efficient, and scalable software solutions that create meaningful value and lasting impact. We strive to build next-generation AI systems that empower organizations through actionable insights.</p>
+                        <p className="disc">To empower businesses with robust, scalable, and intelligent technology infrastructure. We believe in engineering excellence that drives efficiency, innovation, and sustainable growth. Our goal is to bridge the gap between complex technology and practical business application.</p>
                     </div>
                 </div>
             </div>
@@ -235,11 +234,11 @@ export const About: React.FC = () => {
                         <img src="/assets/images/about/16.webp" alt="" />
                     </div>
                     <div className="section-inner modern-card">
-                        <h2 className="title rts-text-anime-style-1">Our Story</h2>
+                        <h2 className="title rts-text-anime-style-1">Who We Are</h2>
                         <p className="disc">
-                            Established in 2026 in Andhra Pradesh, India, NeuralTrix AI was founded with a clear vision: to bridge the gap between complex AI technologies and practical business applications.
-                            From our headquarters, we serve a global clientele, offering cutting-edge services in AI & LLM Solutions, Engineering & Automation, and Data & Cloud Services.
-                            Our philosophy is rooted in creating ethical, intuitive AI that drives decision-making and innovation.
+                            NeuraltrixAI was founded on the principle that technology should solve real-world problems, not just create buzz.
+                            We are a team of seasoned engineers, architects, and strategists with deep expertise in full-stack development, cloud infrastructure, and intelligent automation.
+                            We work side-by-side with our clients to design, build, and deploy systems that are secure, scalable, and future-proof.
                         </p>
                     </div>
                     <div className="bottom-image-area">

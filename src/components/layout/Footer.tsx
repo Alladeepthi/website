@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
                             <Link className="logo" to="/">
                                 <img src="/assets/images/logo/neuraltrix-logo-white.svg" alt="NeuralTrix AI" style={{ height: '45px', width: 'auto' }} />
                             </Link>
-                            <p className="disc">Subscribe our newsletter to get the latest news and updates!</p>
+                            <p className="disc">We engineer high-performance software, data platforms, and automated workflows that drive real business growth.</p>
                             <form action="#" className="footer-form" onClick={(e) => e.preventDefault()}>
                                 <input type="text" placeholder="Enter your email..." required />
                                 <button className="rts-btn btn-primary" type="submit">Send Now</button>

@@ -19,14 +19,14 @@ export const CaseStudies: React.FC = () => {
                                 <img src="/assets/images/project/Laboratory-pana.png" width="521" alt="" />
                             </div>
                             <div className="left-content">
-                                <h3 className="title">Revolutionizing Healthcare with Predictive Analytics</h3>
-                                <p className="disc">Our machine learning models are used to detect anomalies in medical images, predict disease progression, and personalize treatment plans.</p>
+                                <h3 className="title">Scaling Fintech Infrastructure for High-Volume Trading</h3>
+                                <p className="disc">We re-architected a legacy trading platform into a microservices-based system, handling 10x transaction volume with sub-millisecond latency.</p>
                                 <ul className="feature-list">
-                                    <li><i className="fa-regular fa-check"></i>Data-Driven Decision Making</li>
-                                    <li><i className="fa-regular fa-check"></i>Optimize your website</li>
-                                    <li><i className="fa-regular fa-check"></i>Customer Support Channels</li>
+                                    <li><i className="fa-regular fa-check"></i>99.99% System Uptime</li>
+                                    <li><i className="fa-regular fa-check"></i>Real-time Data Processing</li>
+                                    <li><i className="fa-regular fa-check"></i>Automated Compliance Reporting</li>
                                 </ul>
-                                <Link to="/case-studies" className="rts-btn btn-primary">Discover More</Link>
+                                <Link to="/case-studies" className="rts-btn btn-primary">Read Case Study</Link>
                             </div>
                         </div>
                     </div>
@@ -36,14 +36,14 @@ export const CaseStudies: React.FC = () => {
                                 <img src="/assets/images/project/Emails-amico.png" width="521" alt="" />
                             </div>
                             <div className="left-content">
-                                <h3 className="title">Enhancing Fraud Detection for Financial Institutions</h3>
-                                <p className="disc">Machine learning helps banks and financial institutions identify fraudulent transactions in real-time and automate risk assessments.</p>
+                                <h3 className="title">Automating Healthcare Operations</h3>
+                                <p className="disc">Developed an intelligent patient management system that reduced administrative overhead by 40% through automated scheduling and billing workflows.</p>
                                 <ul className="feature-list">
-                                    <li><i className="fa-regular fa-check"></i>Algorithmic trading</li>
-                                    <li><i className="fa-regular fa-check"></i>Personalized financial advice</li>
-                                    <li><i className="fa-regular fa-check"></i>Fraud prevention</li>
+                                    <li><i className="fa-regular fa-check"></i>HIPAA Compliant Architecture</li>
+                                    <li><i className="fa-regular fa-check"></i>Seamless EMR Integration</li>
+                                    <li><i className="fa-regular fa-check"></i>Predictive Staffing Models</li>
                                 </ul>
-                                <Link to="/case-studies" className="rts-btn btn-primary">Discover More</Link>
+                                <Link to="/case-studies" className="rts-btn btn-primary">Read Case Study</Link>
                             </div>
                         </div>
                     </div>
@@ -53,14 +53,14 @@ export const CaseStudies: React.FC = () => {
                                 <img src="/assets/images/project/Tax-bro.png" width="521" alt="" />
                             </div>
                             <div className="left-content">
-                                <h3 className="title">Enhancing Fraud Detection for Financial Institutions</h3>
-                                <p className="disc">Our machine learning solutions predict equipment failure before it happens, reducing downtime and repair costs. Quality control automation, predictive maintenance.</p>
+                                <h3 className="title">Supply Chain Optimization for Retail Giant</h3>
+                                <p className="disc">Implemented a predictive inventory management system using AI to forecast demand, reducing overstock costs by 25% within the first year.</p>
                                 <ul className="feature-list">
-                                    <li><i className="fa-regular fa-check"></i> Quality control automation</li>
-                                    <li><i className="fa-regular fa-check"></i>Predictive Maintenance</li>
-                                    <li><i className="fa-regular fa-check"></i>Supply Chain Optimization</li>
+                                    <li><i className="fa-regular fa-check"></i>Demand Forecasting</li>
+                                    <li><i className="fa-regular fa-check"></i>Route Optimization</li>
+                                    <li><i className="fa-regular fa-check"></i>Vendor Portal Integration</li>
                                 </ul>
-                                <Link to="/case-studies" className="rts-btn btn-primary">Discover More</Link>
+                                <Link to="/case-studies" className="rts-btn btn-primary">Read Case Study</Link>
                             </div>
                         </div>
                     </div>

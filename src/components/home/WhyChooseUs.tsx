@@ -20,8 +20,8 @@ export const WhyChooseUs: React.FC = () => {
                     <div className="col-lg-6 pl--60 pl_sm--10">
                         <div className="why-choose-us-right-area-machine">
                             <div className="title-left-wrapper">
-                                <span className="pre">Why Choose Us</span>
-                                <h2 className="title rts-text-anime-style-1">Advanced Machine Learning Solutions</h2>
+                                <span className="pre">Why Partner With NeuraltrixAI</span>
+                                <h2 className="title rts-text-anime-style-1">Engineering Excellence Meets Business Strategy</h2>
                             </div>
                             <div className="single-why-choose-wrapper-machine">
                                 <div className="signle-why-choose">
@@ -29,8 +29,8 @@ export const WhyChooseUs: React.FC = () => {
                                         <img src="/assets/images/why-choose/06.svg" alt="why-choose" />
                                     </div>
                                     <div className="content-wrapper">
-                                        <h5 className="title">Cutting-Edge Expertise</h5>
-                                        <p className="disc">engineers are at the forefront of machine learning technology,</p>
+                                        <h5 className="title">Proven Technical Expertise</h5>
+                                        <p className="disc">A team of senior engineers and architects dedicated to building robust, scalable systems.</p>
                                     </div>
                                 </div>
                                 <div className="signle-why-choose">
@@ -38,11 +38,11 @@ export const WhyChooseUs: React.FC = () => {
                                         <img src="/assets/images/why-choose/07.svg" alt="why-choose" />
                                     </div>
                                     <div className="content-wrapper">
-                                        <h5 className="title">Support & Maintenance</h5>
-                                        <p className="disc">we partner with you for long-term success</p>
+                                        <h5 className="title">ROI-Driven Approach</h5>
+                                        <p className="disc">We focus on technology investments that deliver measurable business value and efficiency.</p>
                                     </div>
                                 </div>
-                                <Link to="/contact" className="rts-btn btn-primary">Start Project</Link>
+                                <Link to="/contact" className="rts-btn btn-primary">Start Your Project</Link>
                             </div>
                         </div>
                     </div>
