@@ -247,7 +247,8 @@ export const PlatformDetails = () => {
             </div>
 
             {/* Case Studies - Dark Section */}
-            <div className="rts-keyfeature-area" style={{ padding: '60px 0', background: '#000000' }}>
+            {/* Key Features (prev. Case Studies) - Dark Section */}
+            <div className="rts-keyfeature-area" style={{ padding: '80px 0', background: '#000000' }}>
                 <div className="container-full-bg-dark" style={{ background: 'transparent' }}>
                     <div className="row rts-section-gap" style={{ padding: '0' }}>
                         <div className="col-lg-12">
@@ -255,7 +256,7 @@ export const PlatformDetails = () => {
                                 <div className="row">
                                     <div className="col-lg-12">
                                         <div className="title-center-wrapper text-center">
-                                            <span className="pre" style={{ color: '#94a3b8' }}>Success Stories</span>
+                                            <span className="pre" style={{ color: '#94a3b8' }}>Key Features</span>
                                             <h2 className="title rts-text-anime-style-1" style={{
                                                 fontSize: '3.5rem',
                                                 fontWeight: 800,
@@ -268,14 +269,14 @@ export const PlatformDetails = () => {
                                                     WebkitTextFillColor: 'transparent',
                                                     backgroundClip: 'text'
                                                 }}>
-                                                    {platform.caseStudies.title}
+                                                    {platform.whyChoose.title}
                                                 </span>
                                             </h2>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="row g-5 mt--40">
-                                    {platform.caseStudies.items.map((study, index) => (
+                                    {platform.whyChoose.items.map((item, index) => (
                                         <div key={index} className="col-xl-4 col-lg-6 col-md-6">
                                             <div className="single-service-security" style={{
                                                 background: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)',
@@ -292,14 +293,14 @@ export const PlatformDetails = () => {
                                                     color: 'white',
                                                     letterSpacing: '-0.01em'
                                                 }}>
-                                                    {study.title}
+                                                    {item.title}
                                                 </h5>
                                                 <p className="disc" style={{
                                                     fontSize: '1.5rem',
                                                     color: '#a8a8a8',
                                                     lineHeight: 1.7
                                                 }}>
-                                                    {study.description}
+                                                    {item.description}
                                                 </p>
                                             </div>
                                         </div>
@@ -311,262 +312,250 @@ export const PlatformDetails = () => {
                 </div>
             </div>
 
-            {/* Why Choose + Metrics Section */}
-            <div className="rts-about-area rts-section-gap bg_light" style={{ padding: '60px 0' }}>
+            {/* Case Studies (prev. Why Choose Us) - Light Accordion Section */}
+            <div className="rts-case-studies rts-section-gap" style={{ padding: '80px 0' }}>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
-                            <div className="title-center-wrapper text-center mb--40">
-                                <span className="pre">Why Choose Us</span>
-                                <h2 className="title rts-text-anime-style-1" style={{
-                                    fontSize: '3.5rem',
-                                    fontWeight: 800,
-                                    marginTop: '20px'
-                                }}>
-                                    {platform.whyChoose.title}
-                                </h2>
+                            <div className="title-area-between">
+                                <div className="title-left-wrapper">
+                                    <span className="pre">Case Studies</span>
+                                    <h2 className="title rts-text-anime-style-1" style={{
+                                        fontSize: '3.5rem',
+                                        fontWeight: 800,
+                                        marginTop: '10px'
+                                    }}>
+                                        Real-World Success <br /> Stories
+                                    </h2>
+                                </div>
+                                <div className="right-area">
+                                    <p className="disc" style={{ maxWidth: '400px', color: '#475569', fontSize: '1.125rem' }}>
+                                        We deliver results. Our success is measured by the impact we create for our clients across industries.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div className="row g-5">
-                        <div className="col-lg-6">
-                            {platform.whyChoose.items.map((item, index) => (
-                                <div key={index} className="mb--40">
-                                    <h3 style={{
-                                        fontSize: '1.875rem',
-                                        fontWeight: 700,
-                                        color: '#0f172a',
-                                        marginBottom: '14px'
-                                    }}>
-                                        {item.title}
-                                    </h3>
-                                    <p style={{
-                                        fontSize: '1.5rem',
-                                        color: '#475569',
-                                        lineHeight: 1.75
-                                    }}>
-                                        {item.description}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                        {platform.metrics && (
-                            <div className="col-lg-6">
-                                <div className="row g-4">
-                                    {platform.metrics.items.map((metric, index) => (
-                                        <div key={index} className="col-md-6">
-                                            <div className="single-service-security text-center" style={{
-                                                background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
-                                                border: '1px solid #e2e8f0',
-                                                borderRadius: '20px',
-                                                padding: '40px',
-                                                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
-                                            }}>
-                                                <h2 style={{
-                                                    fontSize: '4rem',
-                                                    fontWeight: 800,
-                                                    background: 'linear-gradient(135deg, #3B82F6 0%, #4F46E5 100%)',
-                                                    WebkitBackgroundClip: 'text',
-                                                    WebkitTextFillColor: 'transparent',
-                                                    marginBottom: '12px'
-                                                }}>
-                                                    {metric.number}{metric.suffix}
-                                                </h2>
-                                                <p style={{
-                                                    fontSize: '1.25rem',
-                                                    fontWeight: 600,
-                                                    color: '#64748b',
-                                                    textTransform: 'uppercase',
-                                                    letterSpacing: '0.8px'
-                                                }}>
-                                                    {metric.label}
-                                                </p>
+                    <div className="row mt--70">
+                        <div className="col-lg-12">
+                            <div className="accordion-faq-one in-working-process in-case-cyber">
+                                <div className="accordion" id="caseStudiesAccordion">
+                                    {platform.caseStudies.items.map((study, index) => (
+                                        <div className="accordion-item" key={index}>
+                                            <h2 className="accordion-header" id={`caseHeading${index}`}>
+                                                <button
+                                                    className={`accordion-button ${index !== 0 ? 'collapsed' : ''}`}
+                                                    type="button"
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target={`#caseCollapse${index}`}
+                                                    aria-expanded={index === 0 ? 'true' : 'false'}
+                                                    aria-controls={`caseCollapse${index}`}
+                                                >
+                                                    <span>{2021 + index}. </span> {study.title}
+                                                </button>
+                                            </h2>
+                                            <div
+                                                id={`caseCollapse${index}`}
+                                                className={`accordion-collapse collapse ${index === 0 ? 'show' : ''}`}
+                                                aria-labelledby={`caseHeading${index}`}
+                                                data-bs-parent="#caseStudiesAccordion"
+                                            >
+                                                <div className="accordion-body">
+                                                    <p className="disc" style={{ fontSize: '1.25rem', color: '#475569' }}>
+                                                        {study.description}
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     ))}
                                 </div>
                             </div>
-                        )}
+                        </div>
                     </div>
                 </div>
             </div>
 
-            {/* Testimonials Section */}
-            {platform.testimonials && (
-                <div className="rts-service-area rts-section-gap" style={{
-                    background: 'linear-gradient(180deg, #f8fafc 0%, #ffffff 100%)',
-                    padding: '60px 0'
-                }}>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-12">
-                                <div className="title-center-wrapper text-center">
-                                    <span className="pre">Testimonials</span>
-                                    <h2 className="title rts-text-anime-style-1" style={{
-                                        fontSize: '2.75rem',
-                                        fontWeight: 800,
-                                        marginTop: '20px'
-                                    }}>
-                                        {platform.testimonials.title}
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row mt--60">
-                            <div className="col-lg-10 offset-lg-1">
-                                <div className="single-service-security" style={{
-                                    background: 'white',
-                                    borderRadius: '24px',
-                                    padding: '60px',
-                                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
-                                    border: '1px solid #e2e8f0',
-                                    position: 'relative'
-                                }}>
-                                    <div style={{
-                                        fontSize: '5rem',
-                                        color: '#3B82F6',
-                                        opacity: 0.15,
-                                        position: 'absolute',
-                                        top: '30px',
-                                        left: '40px',
-                                        fontFamily: 'Georgia, serif',
-                                        lineHeight: 1
-                                    }}>"</div>
-                                    <p style={{
-                                        fontSize: '1.625rem',
-                                        color: '#1e293b',
-                                        lineHeight: 1.85,
-                                        marginBottom: '36px',
-                                        fontStyle: 'italic'
-                                    }}>
-                                        {platform.testimonials.items[currentTestimonial].quote}
-                                    </p>
-                                    <div>
-                                        <h5 style={{
-                                            fontSize: '1.5rem',
-                                            fontWeight: 700,
-                                            color: '#0f172a',
-                                            marginBottom: '6px'
-                                        }}>
-                                            {platform.testimonials.items[currentTestimonial].author}
-                                        </h5>
-                                        <p style={{
-                                            fontSize: '1.375rem',
-                                            color: '#64748b',
-                                            fontWeight: 500
-                                        }}>
-                                            {platform.testimonials.items[currentTestimonial].role}, {platform.testimonials.items[currentTestimonial].company}
-                                        </p>
-                                    </div>
-                                    <div style={{
-                                        display: 'flex',
-                                        justifyContent: 'center',
-                                        gap: '14px',
-                                        marginTop: '40px'
-                                    }}>
-                                        {platform.testimonials.items.map((_, index) => (
-                                            <button
-                                                key={index}
-                                                onClick={() => setCurrentTestimonial(index)}
-                                                style={{
-                                                    width: currentTestimonial === index ? '36px' : '12px',
-                                                    height: '12px',
-                                                    borderRadius: currentTestimonial === index ? '6px' : '50%',
-                                                    background: currentTestimonial === index ? '#3B82F6' : '#cbd5e1',
-                                                    border: 'none',
-                                                    cursor: 'pointer',
-                                                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-                                                }}
-                                            />
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
 
-            {/* Resources/Blog Section */}
-            {platform.resources && (
-                <div className="rts-service-area rts-section-gap bg_light" style={{ padding: '60px 0' }}>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-12">
-                                <div className="title-center-wrapper text-center">
-                                    <span className="pre">Resources</span>
-                                    <h2 className="title rts-text-anime-style-1" style={{
-                                        fontSize: '2.75rem',
-                                        fontWeight: 800,
-                                        marginTop: '20px'
-                                    }}>
-                                        {platform.resources.title}
-                                    </h2>
+            {/* Testimonials Section */}
+            {
+                platform.testimonials && (
+                    <div className="rts-service-area rts-section-gap" style={{
+                        background: 'linear-gradient(180deg, #f8fafc 0%, #ffffff 100%)',
+                        padding: '60px 0'
+                    }}>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-lg-12">
+                                    <div className="title-center-wrapper text-center">
+                                        <span className="pre">Testimonials</span>
+                                        <h2 className="title rts-text-anime-style-1" style={{
+                                            fontSize: '2.75rem',
+                                            fontWeight: 800,
+                                            marginTop: '20px'
+                                        }}>
+                                            {platform.testimonials.title}
+                                        </h2>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="row g-5 mt--40">
-                            {platform.resources.items.map((resource, index) => (
-                                <div key={index} className="col-xl-4 col-lg-6 col-md-6">
+                            <div className="row mt--60">
+                                <div className="col-lg-10 offset-lg-1">
                                     <div className="single-service-security" style={{
                                         background: 'white',
+                                        borderRadius: '24px',
+                                        padding: '60px',
+                                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
                                         border: '1px solid #e2e8f0',
-                                        borderRadius: '20px',
-                                        overflow: 'hidden',
-                                        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                                        height: '100%'
+                                        position: 'relative'
                                     }}>
                                         <div style={{
-                                            width: '100%',
-                                            height: '220px',
-                                            overflow: 'hidden',
-                                            position: 'relative'
+                                            fontSize: '5rem',
+                                            color: '#3B82F6',
+                                            opacity: 0.15,
+                                            position: 'absolute',
+                                            top: '30px',
+                                            left: '40px',
+                                            fontFamily: 'Georgia, serif',
+                                            lineHeight: 1
+                                        }}>"</div>
+                                        <p style={{
+                                            fontSize: '1.625rem',
+                                            color: '#1e293b',
+                                            lineHeight: 1.85,
+                                            marginBottom: '36px',
+                                            fontStyle: 'italic'
                                         }}>
-                                            <img
-                                                src={`/assets/images/platform/${index === 0 ? 'Video files-rafiki.png' :
-                                                    index === 1 ? 'Social tree-rafiki.png' :
-                                                        'Computer login-rafiki.png'
-                                                    }`}
-                                                alt={resource.title}
-                                                style={{
-                                                    width: '100%',
-                                                    height: '100%',
-                                                    objectFit: 'cover',
-                                                    transition: 'transform 0.4s ease'
-                                                }}
-                                                onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-                                                onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
-                                            />
-                                        </div>
-                                        <div style={{ padding: '36px' }}>
-                                            <h5 className="title" style={{
-                                                fontSize: '1.625rem',
+                                            {platform.testimonials.items[currentTestimonial].quote}
+                                        </p>
+                                        <div>
+                                            <h5 style={{
+                                                fontSize: '1.5rem',
                                                 fontWeight: 700,
                                                 color: '#0f172a',
-                                                marginBottom: '14px',
-                                                lineHeight: 1.4
+                                                marginBottom: '6px'
                                             }}>
-                                                {resource.title}
+                                                {platform.testimonials.items[currentTestimonial].author}
                                             </h5>
-                                            <p className="disc" style={{
-                                                fontSize: '1.5rem',
-                                                color: '#475569',
-                                                lineHeight: 1.7,
-                                                marginBottom: '24px'
+                                            <p style={{
+                                                fontSize: '1.375rem',
+                                                color: '#64748b',
+                                                fontWeight: 500
                                             }}>
-                                                {resource.excerpt}
+                                                {platform.testimonials.items[currentTestimonial].role}, {platform.testimonials.items[currentTestimonial].company}
                                             </p>
-                                            <a href={resource.link || '#'} className="rts-btn btn-primary with-arrow btn-white btn-border">
-                                                Continue Reading <i className="fa-regular fa-arrow-up-right"></i>
-                                            </a>
+                                        </div>
+                                        <div style={{
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                            gap: '14px',
+                                            marginTop: '40px'
+                                        }}>
+                                            {platform.testimonials.items.map((_, index) => (
+                                                <button
+                                                    key={index}
+                                                    onClick={() => setCurrentTestimonial(index)}
+                                                    style={{
+                                                        width: currentTestimonial === index ? '36px' : '12px',
+                                                        height: '12px',
+                                                        borderRadius: currentTestimonial === index ? '6px' : '50%',
+                                                        background: currentTestimonial === index ? '#3B82F6' : '#cbd5e1',
+                                                        border: 'none',
+                                                        cursor: 'pointer',
+                                                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                                                    }}
+                                                />
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
-                            ))}
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
+                )
+            }
+
+            {/* Resources/Blog Section */}
+            {
+                platform.resources && (
+                    <div className="rts-service-area rts-section-gap bg_light" style={{ padding: '60px 0' }}>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-lg-12">
+                                    <div className="title-center-wrapper text-center">
+                                        <span className="pre">Resources</span>
+                                        <h2 className="title rts-text-anime-style-1" style={{
+                                            fontSize: '2.75rem',
+                                            fontWeight: 800,
+                                            marginTop: '20px'
+                                        }}>
+                                            {platform.resources.title}
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row g-5 mt--40">
+                                {platform.resources.items.map((resource, index) => (
+                                    <div key={index} className="col-xl-4 col-lg-6 col-md-6">
+                                        <div className="single-service-security" style={{
+                                            background: 'white',
+                                            border: '1px solid #e2e8f0',
+                                            borderRadius: '20px',
+                                            overflow: 'hidden',
+                                            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                                            height: '100%'
+                                        }}>
+                                            <div style={{
+                                                width: '100%',
+                                                height: '220px',
+                                                overflow: 'hidden',
+                                                position: 'relative'
+                                            }}>
+                                                <img
+                                                    src={`/assets/images/platform/${index === 0 ? 'Video files-rafiki.png' :
+                                                        index === 1 ? 'Social tree-rafiki.png' :
+                                                            'Computer login-rafiki.png'
+                                                        }`}
+                                                    alt={resource.title}
+                                                    style={{
+                                                        width: '100%',
+                                                        height: '100%',
+                                                        objectFit: 'cover',
+                                                        transition: 'transform 0.4s ease'
+                                                    }}
+                                                    onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                                                    onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                                                />
+                                            </div>
+                                            <div style={{ padding: '36px' }}>
+                                                <h5 className="title" style={{
+                                                    fontSize: '1.625rem',
+                                                    fontWeight: 700,
+                                                    color: '#0f172a',
+                                                    marginBottom: '14px',
+                                                    lineHeight: 1.4
+                                                }}>
+                                                    {resource.title}
+                                                </h5>
+                                                <p className="disc" style={{
+                                                    fontSize: '1.5rem',
+                                                    color: '#475569',
+                                                    lineHeight: 1.7,
+                                                    marginBottom: '24px'
+                                                }}>
+                                                    {resource.excerpt}
+                                                </p>
+                                                <a href={resource.link || '#'} className="rts-btn btn-primary with-arrow btn-white btn-border">
+                                                    Continue Reading <i className="fa-regular fa-arrow-up-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
 
             {/* FAQ Section */}
             <div className="rts-service-area rts-section-gap" style={{
