@@ -39,9 +39,9 @@ export const PlatformDetails = () => {
             {/* Banner/Hero Section */}
             <div className="banner-area-cyber-security bg_image" style={{
                 background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 100%)',
-                paddingTop: '0px',
+                paddingTop: '180px',
                 marginTop: '-120px',
-                paddingBottom: '0px'
+                paddingBottom: '60px'
             }}>
                 <div className="container">
                     <div className="row">
@@ -51,12 +51,12 @@ export const PlatformDetails = () => {
                                     <span className="pre">Home / Platforms / {platform.name}</span>
                                 </div>
                                 <h1 className="title rts-text-anime-style-1" style={{
-                                    fontSize: '5.5rem',
+                                    fontSize: '4rem',
                                     fontWeight: 800,
-                                    lineHeight: 1.15,
-                                    marginBottom: '28px',
-                                    letterSpacing: '-0.03em',
-                                    background: 'linear-gradient(135deg, #3B82F6 0%, #4F46E5 100%)',
+                                    lineHeight: 1.2,
+                                    marginBottom: '24px',
+                                    letterSpacing: '-0.02em',
+                                    background: 'linear-gradient(135deg, #0f172a 0%, #334155 100%)',
                                     WebkitBackgroundClip: 'text',
                                     WebkitTextFillColor: 'transparent',
                                     backgroundClip: 'text'
@@ -279,12 +279,14 @@ export const PlatformDetails = () => {
                                     {platform.whyChoose.items.map((item, index) => (
                                         <div key={index} className="col-xl-4 col-lg-6 col-md-6">
                                             <div className="single-service-security" style={{
-                                                background: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)',
-                                                borderRadius: '20px',
+                                                background: 'rgba(255, 255, 255, 0.03)',
+                                                borderRadius: '24px',
                                                 padding: '40px',
-                                                border: '1px solid #2a2a2a',
+                                                border: '1px solid rgba(255, 255, 255, 0.1)',
+                                                backdropFilter: 'blur(10px)',
                                                 transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                                                height: '100%'
+                                                height: '100%',
+                                                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
                                             }}>
                                                 <h5 className="title" style={{
                                                     fontSize: '1.875rem',
