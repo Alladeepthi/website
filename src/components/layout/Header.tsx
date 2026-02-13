@@ -46,13 +46,55 @@ export const Header: React.FC = () => {
                         <div className="container">
                           <div className="row g-5">
                             <div className="col-lg-4">
-                              <ul className="mega-menu-item parent-nav">
-                                {leftServices.map((service) => (
-                                  <li key={service.id}>
-                                    <Link to="/service-details" state={{ service }}>
-                                      <div className="single-service-menu">
+                              <ul className="mega-menu-item parent-nav" style={{ padding: 0, margin: 0 }}>
+                                {leftServices.map((service, idx) => (
+                                  <li key={service.id} style={{ marginBottom: '4px' }}>
+                                    <Link to="/service-details" state={{ service }} style={{ textDecoration: 'none' }}>
+                                      <div className="single-service-menu-compact" style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '12px',
+                                        padding: '8px 12px',
+                                        borderRadius: '8px',
+                                        transition: 'all 0.3s ease',
+                                        background: 'transparent'
+                                      }}
+                                        onMouseEnter={(e) => {
+                                          e.currentTarget.style.background = '#EFF6FF';
+                                          const title = e.currentTarget.querySelector('.title') as HTMLElement;
+                                          if (title) title.style.color = '#3B82F6';
+                                          const icon = e.currentTarget.querySelector('.nav-icon') as HTMLElement;
+                                          if (icon) icon.style.transform = 'scale(1.1)';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                          e.currentTarget.style.background = 'transparent';
+                                          const title = e.currentTarget.querySelector('.title') as HTMLElement;
+                                          if (title) title.style.color = '#0F172A';
+                                          const icon = e.currentTarget.querySelector('.nav-icon') as HTMLElement;
+                                          if (icon) icon.style.transform = 'scale(1)';
+                                        }}>
+                                        <div className="nav-icon" style={{
+                                          width: '32px',
+                                          height: '32px',
+                                          background: '#EFF6FF',
+                                          borderRadius: '6px',
+                                          display: 'flex',
+                                          alignItems: 'center',
+                                          justifyContent: 'center',
+                                          color: '#3B82F6',
+                                          fontSize: '14px',
+                                          transition: 'all 0.3s ease'
+                                        }}>
+                                          <i className={idx === 0 ? 'fa-solid fa-plug' : idx === 1 ? 'fa-solid fa-building' : idx === 2 ? 'fa-solid fa-palette' : 'fa-solid fa-chart-line'}></i>
+                                        </div>
                                         <div className="info">
-                                          <h5 className="title">{service.title}</h5>
+                                          <h5 className="title" style={{
+                                            fontSize: '14px',
+                                            fontWeight: 600,
+                                            margin: 0,
+                                            color: '#0F172A',
+                                            transition: 'color 0.3s ease'
+                                          }}>{service.title}</h5>
                                         </div>
                                       </div>
                                     </Link>
@@ -61,13 +103,55 @@ export const Header: React.FC = () => {
                               </ul>
                             </div>
                             <div className="col-lg-4">
-                              <ul className="mega-menu-item parent-nav">
-                                {rightServices.map((service) => (
-                                  <li key={service.id}>
-                                    <Link to="/service-details" state={{ service }}>
-                                      <div className="single-service-menu">
+                              <ul className="mega-menu-item parent-nav" style={{ padding: 0, margin: 0 }}>
+                                {rightServices.map((service, idx) => (
+                                  <li key={service.id} style={{ marginBottom: '4px' }}>
+                                    <Link to="/service-details" state={{ service }} style={{ textDecoration: 'none' }}>
+                                      <div className="single-service-menu-compact" style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '12px',
+                                        padding: '8px 12px',
+                                        borderRadius: '8px',
+                                        transition: 'all 0.3s ease',
+                                        background: 'transparent'
+                                      }}
+                                        onMouseEnter={(e) => {
+                                          e.currentTarget.style.background = '#EFF6FF';
+                                          const title = e.currentTarget.querySelector('.title') as HTMLElement;
+                                          if (title) title.style.color = '#3B82F6';
+                                          const icon = e.currentTarget.querySelector('.nav-icon') as HTMLElement;
+                                          if (icon) icon.style.transform = 'scale(1.1)';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                          e.currentTarget.style.background = 'transparent';
+                                          const title = e.currentTarget.querySelector('.title') as HTMLElement;
+                                          if (title) title.style.color = '#0F172A';
+                                          const icon = e.currentTarget.querySelector('.nav-icon') as HTMLElement;
+                                          if (icon) icon.style.transform = 'scale(1)';
+                                        }}>
+                                        <div className="nav-icon" style={{
+                                          width: '32px',
+                                          height: '32px',
+                                          background: '#EFF6FF',
+                                          borderRadius: '6px',
+                                          display: 'flex',
+                                          alignItems: 'center',
+                                          justifyContent: 'center',
+                                          color: '#3B82F6',
+                                          fontSize: '14px',
+                                          transition: 'all 0.3s ease'
+                                        }}>
+                                          <i className={idx === 0 ? 'fa-solid fa-mobile-screen' : idx === 1 ? 'fa-solid fa-brain' : idx === 2 ? 'fa-solid fa-database' : 'fa-solid fa-rocket'}></i>
+                                        </div>
                                         <div className="info">
-                                          <h5 className="title">{service.title}</h5>
+                                          <h5 className="title" style={{
+                                            fontSize: '14px',
+                                            fontWeight: 600,
+                                            margin: 0,
+                                            color: '#0F172A',
+                                            transition: 'color 0.3s ease'
+                                          }}>{service.title}</h5>
                                         </div>
                                       </div>
                                     </Link>
@@ -78,16 +162,49 @@ export const Header: React.FC = () => {
 
                             <div className="col-lg-4">
                               <div className="menu-list">
-                                <h4>Our Approach</h4>
-                                <ul>
-                                  <li>Discovery & Analysis</li>
-                                  <li>Strategy Development</li>
-                                  <li>Solution Design</li>
-                                  <li>Implementation</li>
-                                  <li>Testing & Validation</li>
-                                  <li>Deployment</li>
-                                  <li>Ongoing Support</li>
-                                  <li>Optimization</li>
+                                <h4 style={{
+                                  fontSize: '16px',
+                                  fontWeight: 700,
+                                  marginBottom: '15px',
+                                  color: '#0F172A'
+                                }}>Our Approach</h4>
+                                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                  {[
+                                    { title: 'Discovery & Analysis', icon: 'fa-magnifying-glass' },
+                                    { title: 'Strategy Development', icon: 'fa-lightbulb' },
+                                    { title: 'Solution Design', icon: 'fa-pen-ruler' },
+                                    { title: 'Implementation', icon: 'fa-code' },
+                                    { title: 'Testing & Validation', icon: 'fa-flask' },
+                                    { title: 'Deployment', icon: 'fa-rocket' },
+                                    { title: 'Ongoing Support', icon: 'fa-headset' },
+                                    { title: 'Optimization', icon: 'fa-chart-line' }
+                                  ].map((item, idx) => (
+                                    <li key={idx} style={{
+                                      fontSize: '14px',
+                                      padding: '8px 12px',
+                                      marginBottom: '4px',
+                                      borderRadius: '6px',
+                                      transition: 'all 0.3s ease',
+                                      cursor: 'pointer',
+                                      display: 'flex',
+                                      alignItems: 'center',
+                                      gap: '10px',
+                                      color: '#64748B'
+                                    }}
+                                      onMouseEnter={(e) => {
+                                        e.currentTarget.style.background = '#EFF6FF';
+                                        e.currentTarget.style.color = '#3B82F6';
+                                        e.currentTarget.style.paddingLeft = '16px';
+                                      }}
+                                      onMouseLeave={(e) => {
+                                        e.currentTarget.style.background = 'transparent';
+                                        e.currentTarget.style.color = '#64748B';
+                                        e.currentTarget.style.paddingLeft = '12px';
+                                      }}>
+                                      <i className={`fa-solid ${item.icon}`} style={{ fontSize: '12px', width: '16px' }}></i>
+                                      {item.title}
+                                    </li>
+                                  ))}
                                 </ul>
                               </div>
                             </div>
@@ -100,13 +217,13 @@ export const Header: React.FC = () => {
 
                   {/* Platforms */}
                   <li className="main-nav has-dropdown mega-menu platforms-parent">
-                    <Link to="#" onClick={(e) => e.preventDefault()}>Platforms</Link>
+                    <Link to="/platforms">Platforms</Link>
                     <div className="rts-mega-menu service-mega-menu-style">
                       <div className="wrapper">
                         <div className="container">
                           <div className="row g-5">
                             <div className="col-lg-3">
-                              <h4 className="title mb--20" style={{ fontSize: '18px', fontWeight: 600, color: '#050D20', marginBottom: '20px' }}>DataLakes</h4>
+                              <h4 className="title mb--20">DataLakes</h4>
                               <ul className="mega-menu-item parent-nav">
                                 <li>
                                   <Link to="/platform/snowflake">
@@ -156,7 +273,7 @@ export const Header: React.FC = () => {
                               </ul>
                             </div>
                             <div className="col-lg-3">
-                              <h4 className="title mb--20" style={{ fontSize: '18px', fontWeight: 600, color: '#050D20', marginBottom: '20px' }}>RAG Tools</h4>
+                              <h4 className="title mb--20">RAG Tools</h4>
                               <ul className="mega-menu-item parent-nav">
                                 <li>
                                   <Link to="/platform/unstructured">
@@ -197,7 +314,7 @@ export const Header: React.FC = () => {
                               </ul>
                             </div>
                             <div className="col-lg-3">
-                              <h4 className="title mb--20" style={{ fontSize: '18px', fontWeight: 600, color: '#050D20', marginBottom: '20px' }}>Vector Database</h4>
+                              <h4 className="title mb--20">Vector Database</h4>
                               <ul className="mega-menu-item parent-nav">
                                 <li>
                                   <Link to="/platform/pinecone">
@@ -247,7 +364,7 @@ export const Header: React.FC = () => {
                               </ul>
                             </div>
                             <div className="col-lg-3">
-                              <h4 className="title mb--20" style={{ fontSize: '18px', fontWeight: 600, color: '#050D20', marginBottom: '20px' }}>Model Ecosystem</h4>
+                              <h4 className="title mb--20">Model Ecosystem</h4>
                               <ul className="mega-menu-item parent-nav">
                                 <li>
                                   <Link to="/platform/openai">

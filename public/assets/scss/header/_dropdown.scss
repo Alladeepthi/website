@@ -426,6 +426,28 @@ header.header-three .rts-mega-menu.service-mega-menu-style {
         }
     }
 
+    // Compact styling for platforms dropdown
+    .platforms-parent & {
+        li {
+            margin-bottom: 12px;
+
+            a {
+                padding: 10px 15px !important;
+
+                .single-service-menu .title {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .title.mb--20 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #050D20;
+            margin-bottom: 15px;
+        }
+    }
+
     .mega-menu-item.parent-nav {
         max-height: 480px;
         overflow-y: auto;
