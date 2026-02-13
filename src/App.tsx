@@ -19,6 +19,8 @@ import { PlatformDetails } from './pages/PlatformDetails';
 import { Products } from './pages/Products';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 
+import { Platforms } from './pages/Platforms';
+
 function App() {
   useEffect(() => {
     // Force preloader removal in case main.js misses the window.load event
@@ -42,7 +44,7 @@ function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/industry" element={<Industry />} />
         <Route path="/industry/:id" element={<IndustryDetails />} />
-        {/* <Route path="/platforms" element={<Platforms />} /> */}
+        <Route path="/platforms" element={<Platforms />} />
         <Route path="/platform/:id" element={<PlatformDetails />} />
         <Route path="/products" element={<Products />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />

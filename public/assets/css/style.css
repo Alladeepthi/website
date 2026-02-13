@@ -17718,50 +17718,63 @@ body.demo-app-development .rts-mega-menu.sm-mega-70 {
 .single-service-wrapper-machine {
   position: relative;
   z-index: 1;
-  display: block;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
-  transition: 0.5s;
+  transition: all 0.4s ease;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  height: 100%;
+  min-height: 280px;
+}
+
+.single-service-wrapper-machine .thumbnail {
+  flex-shrink: 0;
 }
 
 .single-service-wrapper-machine .thumbnail img {
-  transition: 0.5s;
+  transition: transform 0.4s ease;
   width: 100%;
-  height: 250px;
-  object-fit: cover;
 }
 
 .single-service-wrapper-machine:hover {
-  transform: translateY(-10px);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
 }
 
 .single-service-wrapper-machine:hover .thumbnail img {
-  transform: scale(1.15);
+  transform: scale(1.05);
 }
 
 .single-service-wrapper-machine::after {
-  position: absolute;
-  content: "";
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(360deg, #0C1018 0%, rgba(8, 11, 16, 0) 103.57%);
-  z-index: 0;
-  pointer-events: none;
+  display: none;
 }
 
 .single-service-wrapper-machine .content {
-  position: absolute;
-  left: 30px;
-  bottom: 40px;
+  position: relative;
+  padding: 20px 25px 25px;
   z-index: 2;
-  pointer-events: none;
+  background: #fff;
+  border-radius: 0 0 16px 16px;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  min-height: 90px;
 }
 
 .single-service-wrapper-machine .content .title {
-  font-size: 24px;
+  font-size: 18px;
   margin: 0;
-  color: #fff;
+  color: #1E293B;
+  font-weight: 700;
+  transition: color 0.3s ease;
+  line-height: 1.4;
+  width: 100%;
+}
+
+.single-service-wrapper-machine:hover .content .title {
+  color: #3B82F6;
 }
 
 .rts-service-area .title-area-between .right-area {
@@ -20075,13 +20088,6 @@ button {
 
 .thumbnail-machine-choose-area .left-thumbnail.last {
   margin-top: 60px;
-}
-
-.thumbnail-machine-choose-area .left-thumbnail img {
-  width: 280px;
-  height: 380px;
-  object-fit: cover;
-  border-radius: 15px;
 }
 
 .single-why-choose-wrapper-machine .signle-why-choose {
@@ -23663,11 +23669,11 @@ button {
 }
 
 .product-wrapper:nth-child(2) {
-  top: 220px;
+  top: 120px;
 }
 
 .product-wrapper:nth-child(3) {
-  top: 320px;
+  top: 120px;
 }
 
 .product-wrapper .inner {
@@ -23678,7 +23684,7 @@ button {
   gap: 50px;
   justify-content: space-between;
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 60vh;
 }
 
 @media only screen and (max-width: 575px) {
@@ -23697,6 +23703,7 @@ button {
 
 .product-wrapper .inner.three {
   background: #0E2250;
+  margin-bottom: 0;
 }
 
 .product-wrapper .inner .left-content {
@@ -24119,12 +24126,9 @@ button {
 .demo-machine-learning .rts-product-area.bg_light .stok-text .title {
   font-size: 160px;
   text-transform: uppercase;
-  color: #ffffff;
-  -webkit-text-fill-color: #ffffff;
-  -webkit-text-stroke-color: transparent;
-  -webkit-text-stroke-width: 0;
-  opacity: 0.3;
-  /* Increased visibility but kept as background element */
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-color: rgba(255, 255, 255, 0.1);
+  -webkit-text-stroke-width: 1px;
   font-family: var(--font-4);
   font-weight: 700;
   margin: 0;
@@ -25223,15 +25227,34 @@ header.header-three .rts-mega-menu.service-mega-menu-style {
 
 .rts-mega-menu.service-mega-menu-style li a .single-service-menu {
   display: flex;
+  align-items: flex-start;
+}
+
+.rts-mega-menu.service-mega-menu-style li a .single-service-menu .icon {
+  border-radius: 4px;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.rts-mega-menu.service-mega-menu-style li a .single-service-menu .icon img {
+  background: none;
+  padding: 0;
+  max-width: 40px;
+  margin: auto;
 }
 
 .rts-mega-menu.service-mega-menu-style li a .single-service-menu .title {
   color: var(--color-title);
-  margin-bottom: 0px;
+  margin-bottom: 11px;
   line-height: 1.3;
-  font-size: 16px;
-  font-weight: 600;
+}
+
+.rts-mega-menu.service-mega-menu-style li a .single-service-menu p.details {
+  max-width: 100%;
+  font-size: 14px;
+  color: var(--color-body);
 }
 
 .rts-mega-menu.service-mega-menu-style .menu-thumb {
@@ -25259,6 +25282,57 @@ header.header-three .rts-mega-menu.service-mega-menu-style {
   margin-bottom: 0;
 }
 
+
+/* Compact styling for platforms dropdown */
+.platforms-parent .rts-mega-menu.service-mega-menu-style {
+  max-height: 500px;
+  overflow: visible;
+}
+
+.platforms-parent .rts-mega-menu.service-mega-menu-style li {
+  margin-bottom: 8px;
+}
+
+.platforms-parent .rts-mega-menu.service-mega-menu-style li a {
+  padding: 8px 12px !important;
+}
+
+.platforms-parent .rts-mega-menu.service-mega-menu-style li a .single-service-menu .title {
+  font-size: 13px;
+}
+
+.platforms-parent .rts-mega-menu.service-mega-menu-style .title.mb--20 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #050D20;
+  margin-bottom: 12px;
+}
+
+.platforms-parent .rts-mega-menu.service-mega-menu-style .mega-menu-item.parent-nav {
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.platforms-parent .rts-mega-menu.service-mega-menu-style .mega-menu-item.parent-nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+.platforms-parent .rts-mega-menu.service-mega-menu-style .mega-menu-item.parent-nav::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.platforms-parent .rts-mega-menu.service-mega-menu-style .mega-menu-item.parent-nav::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.platforms-parent .rts-mega-menu.service-mega-menu-style .mega-menu-item.parent-nav::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+
 header .menu-item-open>a {
   color: var(--color-primary) !important;
 }
@@ -25278,92 +25352,6 @@ header .menu-item-open.project-a-after>a::after {
 
 .mega-menu-item.with-list {
   gap: 0;
-}
-
-/* Platforms Mega Menu Custom Styles */
-
-/* 1. Positioning: Allow dropdown to position relative to the main header container, not the LI */
-li.main-nav.has-dropdown.mega-menu.platforms-parent {
-  position: static !important;
-}
-
-/* 2. Dropdown Container: Centered, Fixed Width, Shadow */
-.rts-mega-menu.service-mega-menu-style.platforms-menu-style {
-  width: 1140px !important;
-  /* Broad standard width */
-  max-width: 98vw;
-  left: 50% !important;
-  transform: translateX(-50%) scaleY(0);
-  padding: 40px 30px !important;
-  transform-origin: top center;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-  background: #fff;
-  border-top: 3px solid var(--color-primary);
-  /* Optional top accent */
-}
-
-/* Hover State */
-.platforms-parent.has-dropdown.mega-menu:hover .rts-mega-menu.service-mega-menu-style.platforms-menu-style {
-  transform: translateX(-50%) scaleY(1);
-}
-
-/* 3. Reset Internal Spacing for Columns */
-.rts-mega-menu.service-mega-menu-style.platforms-menu-style .menu-list {
-  border: none;
-  padding: 0 20px;
-  /* Internal spacing */
-  margin: 0;
-  height: 100%;
-}
-
-/* 4. Vertical Dividers */
-/* Target the columns to add borders. We use :not(:last-child) to exclude the last one */
-.rts-mega-menu.service-mega-menu-style.platforms-menu-style .row>div:not(:last-child) {
-  border-right: 1px solid #eee;
-}
-
-/* 5. Headers: Blue Color & Bold */
-.rts-mega-menu.service-mega-menu-style.platforms-menu-style .title {
-  color: #2563eb !important;
-  /* Bright Blue (Tailwind Blue-600 approx) or var(--color-primary) */
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 25px;
-  text-transform: capitalize;
-  letter-spacing: -0.5px;
-}
-
-/* 6. List Items & Links */
-.rts-mega-menu.service-mega-menu-style.platforms-menu-style ul {
-  gap: 15px !important;
-  display: flex;
-  flex-direction: column;
-}
-
-.rts-mega-menu.service-mega-menu-style.platforms-menu-style li {
-  margin-bottom: 0 !important;
-  width: 100%;
-}
-
-.rts-mega-menu.service-mega-menu-style.platforms-menu-style li a {
-  padding: 0 !important;
-  border: none !important;
-  border-radius: 0;
-  font-size: 15px;
-  font-weight: 500;
-  color: #333 !important;
-  /* Dark Gray text */
-  display: block;
-  background: transparent !important;
-  width: auto !important;
-  transition: 0.2s ease;
-}
-
-.rts-mega-menu.service-mega-menu-style.platforms-menu-style li a:hover {
-  color: var(--color-primary) !important;
-  padding-left: 5px !important;
-  /* Subtle shift */
-  background: transparent !important;
 }
 
 .mega-menu-item.with-list li a {
@@ -27473,80 +27461,6 @@ header.header-three .sub-dropdown .submenu.third-lvl.base {
   .brand-area-wrapper-app-development .title {
     font-size: 22px;
   }
-}
-
-
-/* AI Platform Container Overrides */
-.ai-platform-wrapper {
-  padding: 40px !important;
-}
-
-.ai-platform-wrapper .left-wrapper .title {
-  font-size: 40px !important;
-}
-
-.ai-platform-single-card {
-  padding: 35px 30px !important;
-}
-
-.ai-platform-single-card .inner .title {
-  font-size: 24px !important;
-}
-
-.ai-platform-single-card .thumbnail {
-  text-align: center;
-}
-
-.ai-platform-single-card .thumbnail img {
-  max-width: 300px !important;
-  margin: 0 auto !important;
-}
-
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.marquee-wrapper .marquee-content {
-  display: flex !important;
-  width: max-content;
-}
-
-.rts-single-blog-card-m .thumbnail img {
-  max-width: 400px !important;
-  margin: 0 auto !important;
-  display: block !important;
-}
-
-
-.rts-mega-menu.service-mega-menu-style .mega-menu-item.parent-nav {
-  max-height: 480px;
-  overflow-y: auto;
-  padding-right: 10px;
-}
-
-.rts-mega-menu.service-mega-menu-style .mega-menu-item.parent-nav::-webkit-scrollbar {
-  width: 4px;
-}
-
-.rts-mega-menu.service-mega-menu-style .mega-menu-item.parent-nav::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-.rts-mega-menu.service-mega-menu-style .mega-menu-item.parent-nav::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 10px;
-}
-
-.rts-mega-menu.service-mega-menu-style .mega-menu-item.parent-nav::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary);
 }
 
 /*# sourceMappingURL=../maps/style.css.map */
