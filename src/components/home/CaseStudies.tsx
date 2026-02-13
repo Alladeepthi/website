@@ -8,15 +8,29 @@ export const CaseStudies: React.FC = () => {
                 <div className="row">
                     <div className="col-lg-12">
                         <div className="stok-text marquee-wrapper" style={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-                            <div className="marquee-content" style={{ display: 'inline-block', animation: 'marquee 30s linear infinite' }}>
-                                <h2 className="title" style={{ display: 'inline-block', paddingRight: '50px', fontSize: '80px' }}>Case Studies</h2>
-                                <h2 className="title" style={{ display: 'inline-block', paddingRight: '50px', fontSize: '80px' }}>Case Studies</h2>
-                                <h2 className="title" style={{ display: 'inline-block', paddingRight: '50px', fontSize: '80px' }}>Case Studies</h2>
-                                <h2 className="title" style={{ display: 'inline-block', paddingRight: '50px', fontSize: '80px' }}>Case Studies</h2>
+                            <div className="marquee-content" style={{ display: 'inline-block', animation: 'marqueeScroll 40s linear infinite' }}>
+                                {[...Array(8)].map((_, i) => (
+                                    <h2 key={i} className="title" style={{
+                                        display: 'inline-block',
+                                        paddingRight: '60px',
+                                        fontSize: '80px',
+                                        color: 'rgba(255, 255, 255, 0.08)',
+                                        WebkitTextStroke: 'none',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '5px',
+                                        fontWeight: 800
+                                    }}>Case Studies</h2>
+                                ))}
                             </div>
                         </div>
                     </div>
                 </div>
+                <style>{`
+                    @keyframes marqueeScroll {
+                        from { transform: translateX(0); }
+                        to { transform: translateX(-50%); }
+                    }
+                `}</style>
                 <div className="product-sticky-wrapper-main mt--60">
                     <div className="product-wrapper">
                         <div className="inner one">
