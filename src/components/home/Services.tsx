@@ -52,16 +52,27 @@ export const Services: React.FC = () => {
                             <div className="single-service-wrapper-machine">
                                 <Link to="/service-details" state={{ service }} className="thumbnail">
                                     <div className="icon-wrapper" style={{
-                                        height: '180px',
+                                        height: '240px',
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
-                                        backgroundColor: '#F6F7F9',
+                                        backgroundColor: '#FFFFFF',
                                         borderRadius: '12px 12px 0 0',
                                         overflow: 'hidden',
-                                        padding: '25px'
+                                        padding: '10px',
+                                        transition: 'all 0.4s ease'
                                     }}>
-                                        <img src={`/assets/images/service/${service.icon}`} alt={service.title} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                                        <img
+                                            src={`/assets/images/service/${service.icon}`}
+                                            alt={service.title}
+                                            style={{
+                                                width: '100%',
+                                                height: '100%',
+                                                objectFit: 'contain',
+                                                transition: 'transform 0.5s ease'
+                                            }}
+                                            className="service-img"
+                                        />
                                     </div>
                                 </Link>
                                 <div className="content">
@@ -84,6 +95,15 @@ export const Services: React.FC = () => {
                         opacity: 1;
                         transform: translateY(0);
                     }
+                }
+                .single-service-wrapper-machine:hover .service-img {
+                    transform: scale(1.1);
+                }
+                .single-service-wrapper-machine {
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                }
+                .single-service-wrapper-machine:hover {
+                    transform: translateY(-5px);
                 }
             `}</style>
         </div>
