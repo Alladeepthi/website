@@ -17,6 +17,7 @@ export interface IndustryData {
         items: {
             title: string;
             description: string;
+            solution?: string;
         }[];
     };
     solutions: {
@@ -51,9 +52,21 @@ export const industriesData: IndustryData[] = [
         challenges: {
             title: 'Key Industry Challenges',
             items: [
-                { title: 'Interoperability Gaps', description: 'Fragmented systems (EHR/EMR) that fail to communicate effective patient data.' },
-                { title: 'Regulatory Compliance', description: 'Navigating complex HIPAA, GDPR, and FDA regulations for digital products.' },
-                { title: 'Legacy Modernization', description: 'Updating critical but outdated infrastructure without disrupting patient care.' }
+                {
+                    title: 'Interoperability Gaps',
+                    description: 'Fragmented systems (EHR/EMR) that fail to communicate effective patient data.',
+                    solution: 'We deploy targeted solutions using HL7/FHIR standards to mitigate this risk, ensuring seamless data exchange and compliance through advanced automation and monitoring.'
+                },
+                {
+                    title: 'Regulatory Compliance',
+                    description: 'Navigating complex HIPAA, GDPR, and FDA regulations for digital products.',
+                    solution: 'Our compliance-first approach integrates security and regulatory requirements from day one, with automated auditing and continuous monitoring to ensure adherence to all healthcare standards.'
+                },
+                {
+                    title: 'Legacy Modernization',
+                    description: 'Updating critical but outdated infrastructure without disrupting patient care.',
+                    solution: 'We implement phased migration strategies with zero-downtime deployments, ensuring continuous patient care while modernizing your infrastructure with cloud-native technologies.'
+                }
             ]
         },
         solutions: {
@@ -92,9 +105,21 @@ export const industriesData: IndustryData[] = [
         challenges: {
             title: 'Key Industry Challenges',
             items: [
-                { title: 'Security & Fraud', description: 'Protecting assets and data against increasingly sophisticated cyber threats.' },
-                { title: 'Legacy Core Banking', description: 'Integrating modern digital experiences with decades-old mainframe systems.' },
-                { title: 'Regulatory Agility', description: 'Adapting quickly to changing global financial regulations and standards.' }
+                {
+                    title: 'Security & Fraud',
+                    description: 'Protecting assets and data against increasingly sophisticated cyber threats.',
+                    solution: 'We implement multi-layered security architectures with real-time fraud detection, encryption at rest and in transit, and continuous threat monitoring to protect your financial assets.'
+                },
+                {
+                    title: 'Legacy Core Banking',
+                    description: 'Integrating modern digital experiences with decades-old mainframe systems.',
+                    solution: 'Our API-first integration approach creates a modern layer on top of legacy systems, enabling digital transformation without risky core replacements.'
+                },
+                {
+                    title: 'Regulatory Agility',
+                    description: 'Adapting quickly to changing global financial regulations and standards.',
+                    solution: 'We build configurable compliance engines that adapt to regulatory changes quickly, with automated reporting and audit trails built into every transaction.'
+                }
             ]
         },
         solutions: {
@@ -133,9 +158,21 @@ export const industriesData: IndustryData[] = [
         challenges: {
             title: 'Key Industry Challenges',
             items: [
-                { title: 'Inventory Visibility', description: 'Lack of real-time stock data across online and offline channels.' },
-                { title: 'Supply Chain Agility', description: 'Difficulty adapting to demand fluctuations and logistics disruptions.' },
-                { title: 'Customer Retention', description: 'Competition driving the need for hyper-personalized shopping experiences.' }
+                {
+                    title: 'Inventory Visibility',
+                    description: 'Lack of real-time stock data across online and offline channels.',
+                    solution: 'We build unified inventory management systems with real-time synchronization across all channels, providing complete visibility and preventing stockouts or overselling.'
+                },
+                {
+                    title: 'Supply Chain Agility',
+                    description: 'Difficulty adapting to demand fluctuations and logistics disruptions.',
+                    solution: 'Our predictive analytics and automated supply chain platforms help you forecast demand, optimize routing, and respond quickly to disruptions with intelligent automation.'
+                },
+                {
+                    title: 'Customer Retention',
+                    description: 'Competition driving the need for hyper-personalized shopping experiences.',
+                    solution: 'We implement customer data platforms and AI-powered recommendation engines that deliver personalized experiences across all touchpoints, increasing loyalty and lifetime value.'
+                }
             ]
         },
         solutions: {
@@ -174,9 +211,21 @@ export const industriesData: IndustryData[] = [
         challenges: {
             title: 'Key Industry Challenges',
             items: [
-                { title: 'Data Silos', description: 'Information locked in proprietary machine protocols and isolated systems.' },
-                { title: 'Unplanned Downtime', description: 'Reactive maintenance leading to costly production stoppages.' },
-                { title: 'Quality Control', description: 'Manual inspection processes that are slow and prone to error.' }
+                {
+                    title: 'Data Silos',
+                    description: 'Information locked in proprietary machine protocols and isolated systems.',
+                    solution: 'We create unified IIoT platforms that integrate with legacy equipment using standard protocols (OPC-UA, MQTT), breaking down data silos and enabling real-time insights.'
+                },
+                {
+                    title: 'Unplanned Downtime',
+                    description: 'Reactive maintenance leading to costly production stoppages.',
+                    solution: 'Our predictive maintenance solutions use machine learning to analyze sensor data and predict failures before they occur, reducing downtime by up to 50%.'
+                },
+                {
+                    title: 'Quality Control',
+                    description: 'Manual inspection processes that are slow and prone to error.',
+                    solution: 'We implement computer vision and AI-powered quality control systems that inspect products in real-time with higher accuracy than manual processes.'
+                }
             ]
         },
         solutions: {
@@ -215,9 +264,21 @@ export const industriesData: IndustryData[] = [
         challenges: {
             title: 'Key Industry Challenges',
             items: [
-                { title: 'Scaling Complexity', description: 'Managing technical debt while trying to scale users and features.' },
-                { title: 'Talent Gaps', description: 'Finding specialized expertise for niche technologies or rapid expansion.' },
-                { title: 'Cloud Costs', description: 'Optimizing infrastructure to maintain margins at scale.' }
+                {
+                    title: 'Scaling Complexity',
+                    description: 'Managing technical debt while trying to scale users and features.',
+                    solution: 'We help you refactor and modernize your architecture with cloud-native patterns, microservices, and automated testing to scale efficiently without accumulating debt.'
+                },
+                {
+                    title: 'Talent Gaps',
+                    description: 'Finding specialized expertise for niche technologies or rapid expansion.',
+                    solution: 'Our expert engineering teams provide on-demand access to specialized skills, allowing you to scale your development capacity quickly without lengthy hiring processes.'
+                },
+                {
+                    title: 'Cloud Costs',
+                    description: 'Optimizing infrastructure to maintain margins at scale.',
+                    solution: 'We implement FinOps best practices, right-sizing resources, leveraging spot instances, and optimizing architectures to reduce cloud costs by 30-50% while maintaining performance.'
+                }
             ]
         },
         solutions: {

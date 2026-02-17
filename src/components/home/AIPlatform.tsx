@@ -1,217 +1,213 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 
 export const AIPlatform: React.FC = () => {
-    const sectionRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const elements = entry.target.querySelectorAll('.ai-reveal-item');
-                    elements.forEach((el, index) => {
-                        setTimeout(() => {
-                            el.classList.add('reveal');
-                        }, index * 200); // Staggered delay
-                    });
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
+    const [currentIndex, setCurrentIndex] = React.useState(0);
+    const [itemsPerPage, setItemsPerPage] = React.useState(4);
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
-        return () => observer.disconnect();
+    React.useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 768) setItemsPerPage(1);
+            else if (window.innerWidth < 992) setItemsPerPage(2);
+            else setItemsPerPage(4);
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    const metrics = [
+        {
+            value: "4 Weeks",
+            label: "Typical MVP Delivery",
+            desc: "Rapid prototyping to validate ideas and get to market fast.",
+            icon: "fa-rocket"
+        },
+        {
+            value: "40%",
+            label: "Reduced Dev Costs",
+            desc: "Significant savings compared to hiring full-time in-house teams.",
+            icon: "fa-percent"
+        },
+        {
+            value: "2x",
+            label: "Faster Time-to-Market",
+            desc: "Accelerated cycles using our pre-built AI accelerators.",
+            icon: "fa-gauge-high"
+        },
+        {
+            value: "100%",
+            label: "Client IP Ownership",
+            desc: "You own the code, models, and intellectual property completely.",
+            icon: "fa-file-shield"
+        },
+        {
+            value: "Top 1%",
+            label: "Engineering Talent",
+            desc: "Access to elite developers and AI researchers for your project.",
+            icon: "fa-users-gear"
+        },
+        {
+            value: "Zero",
+            label: "Tech Debt",
+            desc: "Clean, maintainable code architectures built for long-term scale.",
+            icon: "fa-code-branch"
+        }
+    ];
+
+    const nextSlide = () => {
+        if (currentIndex < metrics.length - itemsPerPage) {
+            setCurrentIndex(prev => prev + 1);
+        }
+    };
+
+    const prevSlide = () => {
+        if (currentIndex > 0) {
+            setCurrentIndex(prev => prev - 1);
+        }
+    };
+
     return (
-        <div className="rts-ai-platform-area" ref={sectionRef} style={{ padding: '80px 0', background: '#fff' }}>
-            <div className="container">
-                {/* Top Banner - Sequential Reveal */}
-                <div className="row mb-5 ai-reveal-item">
-                    <div className="col-lg-12">
-                        <div style={{
-                            background: 'linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%)',
-                            borderRadius: '24px',
-                            padding: '60px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'space-between',
-                            boxShadow: '0 20px 50px rgba(59, 130, 246, 0.15)',
-                            position: 'relative',
-                            overflow: 'hidden'
-                        }}>
-                            <div style={{ maxWidth: '550px', zIndex: 2 }}>
-                                <h3 style={{
-                                    fontSize: '42px',
-                                    marginBottom: '20px',
-                                    lineHeight: 1.1,
-                                    color: '#fff',
-                                    fontWeight: 800
-                                }}>The Universal AI Platform</h3>
-                                <p style={{
-                                    fontSize: '18px',
-                                    marginBottom: '30px',
-                                    lineHeight: 1.6,
-                                    color: 'rgba(255,255,255,0.9)'
-                                }}>Enterprise-grade infrastructure for scaling machine learning and data engineering workloads across multi-cloud environments.</p>
-                                <a href="#" className="rts-btn btn-primary" style={{
-                                    background: '#fff',
-                                    color: '#1E3A8A',
-                                    border: 'none',
-                                    fontWeight: 700,
-                                    padding: '15px 35px'
-                                }}>Explore Capability</a>
-                            </div>
-                            <div style={{
-                                maxWidth: '320px',
-                                zIndex: 2
-                            }} className="banner-visual">
-                                <img src="/assets/images/why-choose/innovation.png" alt="" style={{
-                                    width: '100%',
-                                    height: 'auto',
-                                    objectFit: 'contain'
-                                }} />
-                            </div>
+        <div className="rts-ai-platform-area" style={{ padding: '80px 0', background: '#F8FAFC' }}>
+            <div className="container" style={{ position: 'relative' }}>
+                <div className="row mb-5 align-items-end">
+                    <div className="col-lg-8">
+                        <span style={{
+                            color: '#3B82F6',
+                            fontWeight: 700,
+                            letterSpacing: '1px',
+                            textTransform: 'uppercase',
+                            fontSize: '14px',
+                            marginBottom: '10px',
+                            display: 'block'
+                        }}>Value Delivered</span>
+                        <h2 style={{
+                            fontSize: '42px',
+                            fontWeight: 800,
+                            color: '#0F172A',
+                            marginBottom: '0'
+                        }}>Accelerating Your Product Vision</h2>
+                    </div>
+                    <div className="col-lg-4 text-lg-end mt-4 mt-lg-0">
+                        <div style={{ display: 'flex', gap: '15px', justifyContent: 'flex-end' }}>
+                            <button
+                                onClick={prevSlide}
+                                disabled={currentIndex === 0}
+                                style={{
+                                    width: '45px',
+                                    height: '45px',
+                                    borderRadius: '50%',
+                                    border: '1px solid #E2E8F0',
+                                    background: currentIndex === 0 ? '#F1F5F9' : '#fff',
+                                    color: currentIndex === 0 ? '#94A3B8' : '#3B82F6',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    cursor: currentIndex === 0 ? 'not-allowed' : 'pointer',
+                                    transition: 'all 0.3s ease',
+                                    fontSize: '18px'
+                                }}
+                            >
+                                <i className="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button
+                                onClick={nextSlide}
+                                disabled={currentIndex >= metrics.length - itemsPerPage}
+                                style={{
+                                    width: '45px',
+                                    height: '45px',
+                                    borderRadius: '50%',
+                                    border: '1px solid #E2E8F0',
+                                    background: currentIndex >= metrics.length - itemsPerPage ? '#F1F5F9' : '#fff',
+                                    color: currentIndex >= metrics.length - itemsPerPage ? '#94A3B8' : '#3B82F6',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    cursor: currentIndex >= metrics.length - itemsPerPage ? 'not-allowed' : 'pointer',
+                                    transition: 'all 0.3s ease',
+                                    fontSize: '18px'
+                                }}
+                            >
+                                <i className="fa-solid fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                {/* Bottom Cards - Staggered Reveal */}
-                <div className="row g-5">
-                    <div className="col-lg-6 ai-reveal-item">
-                        <div className="ai-platform-card" style={{
-                            background: '#fff',
-                            borderRadius: '24px',
-                            padding: '50px 40px',
-                            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.04)',
-                            transition: 'all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)',
-                            height: '100%',
-                            border: '1px solid #F1F5F9',
-                            textAlign: 'center'
-                        }}>
-                            <div className="icon-badge" style={{
-                                width: '130px',
-                                height: '130px',
-                                margin: '0 auto 35px',
-                                background: 'linear-gradient(135deg, #F0F4FF 0%, #E0E7FF 100%)',
-                                borderRadius: '24px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                padding: '25px',
-                                transition: 'all 0.5s ease'
+                <div style={{ overflow: 'hidden', margin: '-15px', padding: '15px' }}>
+                    <div style={{
+                        display: 'flex',
+                        transition: 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)',
+                        transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)`,
+                    }}>
+                        {metrics.map((metric, idx) => (
+                            <div key={idx} style={{
+                                flex: `0 0 ${100 / itemsPerPage}%`,
+                                padding: '0 12px',
+                                boxSizing: 'border-box'
                             }}>
-                                <img src="/assets/images/ai/cloud.png" alt="ai" style={{
-                                    width: '100%',
+                                <div style={{
+                                    background: '#fff',
+                                    padding: '30px 25px',
+                                    borderRadius: '16px',
                                     height: '100%',
-                                    objectFit: 'contain'
-                                }} />
+                                    border: '1px solid #E2E8F0',
+                                    transition: 'all 0.3s ease',
+                                    textAlign: 'center',
+                                    position: 'relative'
+                                }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.transform = 'translateY(-8px)';
+                                        e.currentTarget.style.boxShadow = '0 15px 30px rgba(59, 130, 246, 0.1)';
+                                        e.currentTarget.style.borderColor = '#3B82F6';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.transform = 'translateY(0)';
+                                        e.currentTarget.style.boxShadow = 'none';
+                                        e.currentTarget.style.borderColor = '#E2E8F0';
+                                    }}
+                                >
+                                    <div style={{
+                                        width: '50px',
+                                        height: '50px',
+                                        background: 'rgba(59, 130, 246, 0.1)',
+                                        borderRadius: '50%',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        margin: '0 auto 20px',
+                                        color: '#3B82F6',
+                                        fontSize: '20px'
+                                    }}>
+                                        <i className={`fa-solid ${metric.icon}`}></i>
+                                    </div>
+                                    <h3 style={{
+                                        fontSize: '28px',
+                                        fontWeight: 800,
+                                        color: '#0F172A',
+                                        marginBottom: '5px',
+                                        background: 'linear-gradient(90deg, #1E40AF 0%, #3B82F6 100%)',
+                                        WebkitBackgroundClip: 'text',
+                                        WebkitTextFillColor: 'transparent'
+                                    }}>{metric.value}</h3>
+                                    <h5 style={{
+                                        fontSize: '16px',
+                                        fontWeight: 700,
+                                        color: '#334155',
+                                        marginBottom: '10px'
+                                    }}>{metric.label}</h5>
+                                    <p style={{
+                                        fontSize: '14px',
+                                        lineHeight: 1.5,
+                                        color: '#64748B',
+                                        marginBottom: 0
+                                    }}>{metric.desc}</p>
+                                </div>
                             </div>
-                            <h5 style={{
-                                fontSize: '28px',
-                                marginBottom: '18px',
-                                color: '#0F172A',
-                                fontWeight: 800
-                            }}>Machine Learning</h5>
-                            <p style={{
-                                fontSize: '16px',
-                                marginBottom: '30px',
-                                lineHeight: 1.7,
-                                color: '#64748B'
-                            }}>Build and evaluate advanced machine learning models using AutoML and the latest AI techniques with zero infrastructure management.</p>
-                            <a href="#" className="rts-btn btn-primary with-arrow">Explore Capability <i className="fa-regular fa-arrow-up up-right"></i></a>
-                        </div>
-                    </div>
-                    <div className="col-lg-6 ai-reveal-item">
-                        <div className="ai-platform-card" style={{
-                            background: '#fff',
-                            borderRadius: '24px',
-                            padding: '50px 40px',
-                            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.04)',
-                            transition: 'all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)',
-                            height: '100%',
-                            border: '1px solid #F1F5F9',
-                            textAlign: 'center'
-                        }}>
-                            <div className="icon-badge" style={{
-                                width: '130px',
-                                height: '130px',
-                                margin: '0 auto 35px',
-                                background: 'linear-gradient(135deg, #EEF2FF 0%, #DDD6FE 100%)',
-                                borderRadius: '24px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                padding: '25px',
-                                transition: 'all 0.5s ease'
-                            }}>
-                                <img src="/assets/images/ai/programming.png" alt="ai" style={{
-                                    width: '100%',
-                                    height: '100%',
-                                    objectFit: 'contain'
-                                }} />
-                            </div>
-                            <h5 style={{
-                                fontSize: '28px',
-                                marginBottom: '18px',
-                                color: '#0F172A',
-                                fontWeight: 800
-                            }}>Data Preparation</h5>
-                            <p style={{
-                                fontSize: '16px',
-                                marginBottom: '30px',
-                                lineHeight: 1.7,
-                                color: '#64748B'
-                            }}>Professional data pipelines to connect, cleanse, and prepare enterprise data for predictive analytics and generative AI projects.</p>
-                            <a href="#" className="rts-btn btn-primary with-arrow">Explore Capability <i className="fa-regular fa-arrow-up up-right"></i></a>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>
-
-            <style dangerouslySetInnerHTML={{
-                __html: `
-                .ai-reveal-item {
-                    opacity: 0;
-                    transform: translateY(30px);
-                    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-                }
-                .ai-reveal-item.reveal {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-                
-                .ai-platform-card:hover {
-                    transform: translateY(-12px) !important;
-                    box-shadow: 0 30px 60px rgba(59, 130, 246, 0.15) !important;
-                    border-color: #3B82F6 !important;
-                }
-                
-                .ai-platform-card:hover .icon-badge {
-                    transform: scale(1.1) rotate(3deg);
-                    background: #EEF2FF !important;
-                }
-                
-                .banner-visual img {
-                    animation: floatBanner 4s ease-in-out infinite;
-                }
-                
-                @keyframes floatBanner {
-                    0%, 100% { transform: translateY(0); }
-                    50% { transform: translateY(-15px); }
-                }
-
-                @media (max-width: 991px) {
-                    .ai-reveal-item .row > div {
-                        padding: 40px !important;
-                    }
-                    .ai-reveal-item h3 {
-                        font-size: 32px !important;
-                    }
-                }
-            ` }} />
         </div>
     );
 };

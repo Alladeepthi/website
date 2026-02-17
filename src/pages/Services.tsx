@@ -93,7 +93,7 @@ export const Services: React.FC = () => {
                         <div className="col-lg-5">
                             <div className="why-choose-left-content">
                                 <div className="title-left-wrapper">
-                                    <h2 className="title rts-text-anime-style-1">The Neuraltrix Advantage</h2>
+                                    <h2 className="title rts-text-anime-style-1">The NeuraltrixAI Advantage</h2>
                                 </div>
                                 <p className="disc">
                                     We are more than just developers; we are strategic partners in your digital transformation.

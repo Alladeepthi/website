@@ -25,15 +25,21 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isPlatformDetails = location.pathname.startsWith('/platform/');
+  const headerClass = `header-one header--sticky ${!isHome ? 'header-relative' : ''} ${!isPlatformDetails ? 'machine-learning' : ''}`;
+
+  const containerStyle = isPlatformDetails ? {} : { maxWidth: '1400px' };
+  const wrapperStyle = isPlatformDetails ? {} : { display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '30px', flexWrap: 'nowrap' };
+
   return (
-    <header className={`header-one machine-learning header--sticky ${!isHome ? 'header-relative' : ''}`}>
-      <div className="container" style={{ maxWidth: '1400px' }}>
+    <header className={headerClass}>
+      <div className="container" style={containerStyle}>
         <div className="row">
           <div className="col-lg-12">
-            <div className="header-wrapper-main" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '30px', flexWrap: 'nowrap' }}>
+            <div className="header-wrapper-main" style={wrapperStyle}>
               <div className="logo-area">
                 <Link to="/">
-                  <img src="/assets/images/logo/neuraltrix-logo-white.svg" alt="NeuralTrix AI" style={{ height: '55px', width: 'auto' }} />
+                  <img src="/assets/images/logo/neuraltrix-ai-logo.png" alt="NeuraltrixAI" style={{ height: '55px', width: 'auto' }} />
                 </Link>
               </div>
               <div className="nav-area" style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
@@ -217,7 +223,7 @@ export const Header: React.FC = () => {
 
                   {/* Platforms */}
                   <li className="main-nav has-dropdown mega-menu platforms-parent">
-                    <Link to="/platforms">Platforms</Link>
+                    <Link to="#" onClick={(e) => e.preventDefault()}>Platforms</Link>
                     <div className="rts-mega-menu service-mega-menu-style">
                       <div className="wrapper">
                         <div className="container">

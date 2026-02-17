@@ -1,210 +1,327 @@
-
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { platformsData } from '../data/platformsData';
-import { Testimonials } from '../components/home/Testimonials';
-import { CTA } from '../components/home/CTA';
 
-export const PlatformDetails: React.FC = () => {
-    const { id } = useParams<{ id: string }>();
+export const PlatformDetails = () => {
+    const { id } = useParams();
     const platform = platformsData.find(p => p.slug === id);
+    const [activeFeature, setActiveFeature] = useState(0);
+    const [metricsVisible, setMetricsVisible] = useState(false);
 
     useEffect(() => {
-        document.body.className = "demo-cybersecurity";
+        document.body.className = "demo-data-science";
+
         const script = document.createElement('script');
         script.src = "/assets/js/main.js?t=" + new Date().getTime();
         script.async = true;
         document.body.appendChild(script);
+
+        // Metrics animation trigger
+        const handleScroll = () => {
+            const metricsSection = document.getElementById('metrics-section');
+            if (metricsSection) {
+                const rect = metricsSection.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                    setMetricsVisible(true);
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+
         return () => {
             document.body.className = "";
-            document.body.removeChild(script);
+            window.removeEventListener('scroll', handleScroll);
+            if (document.body.contains(script)) {
+                document.body.removeChild(script);
+            }
         };
     }, [id]);
 
     if (!platform) {
-        return <Navigate to="/platforms" replace />;
+        return <Navigate to="/" replace />;
     }
 
+    // Theme Colors
+    const primaryColor = '#3B82F6';
+    const darkColor = '#1e293b';
+    const lightBg = '#F8FAFC';
+    const textColor = '#475569';
+
     return (
-        <main className="platform-details-cyber-wrapper">
-            {/* 1. Cyber Style Breadcrumb & Title */}
-            <div className="rts-service-details-breadcrumb-area" style={{ background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)', padding: '160px 0 100px' }}>
+        <>
+            <style>{`
+                @keyframes slideInUp {
+                    from { opacity: 0; transform: translateY(30px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+                @keyframes pulse {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.05); }
+                }
+                @keyframes flowAnimation {
+                    0% { stroke-dashoffset: 1000; }
+                    100% { stroke-dashoffset: 0; }
+                }
+                .metric-card {
+                    animation: slideInUp 0.6s ease-out forwards;
+                    opacity: 0;
+                }
+                .metric-card:nth-child(1) { animation-delay: 0.1s; }
+                .metric-card:nth-child(2) { animation-delay: 0.2s; }
+                .metric-card:nth-child(3) { animation-delay: 0.3s; }
+                .metric-card:nth-child(4) { animation-delay: 0.4s; }
+                
+                .use-case-card {
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                .use-case-card:hover {
+                    transform: translateY(-10px) scale(1.02);
+                    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+                }
+                
+                .tech-icon {
+                    transition: all 0.3s ease;
+                }
+                .tech-icon:hover {
+                    transform: scale(1.2) rotate(5deg);
+                }
+                
+                .comparison-row {
+                    transition: all 0.3s ease;
+                }
+                .comparison-row:hover {
+                    background: #eff6ff !important;
+                    transform: scale(1.02);
+                }
+            `}</style>
+
+            {/* 1. Hero Section */}
+            <div className="rts-about-breadcrumb-area" style={{
+                backgroundImage: `linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.8) 100%), url('/assets/images/banner/breadcrumb-01.webp')`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center center',
+                backgroundRepeat: 'no-repeat',
+                padding: '200px 0 120px',
+                textAlign: 'center',
+                color: '#fff',
+                position: 'relative'
+            }}>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
-                            <div className="breadcrumb-area text-start">
-                                <ul style={{ listStyle: 'none', padding: 0, display: 'flex', gap: '10px', fontSize: '14px', marginBottom: '20px' }}>
-                                    <li><Link to="/" style={{ color: '#94A3B8', textDecoration: 'none' }}>Home</Link></li>
-                                    <li><i className="fa-regular fa-chevron-right" style={{ fontSize: '10px', color: '#445161', marginTop: '4px' }}></i></li>
-                                    <li><Link to="/platforms" style={{ color: '#94A3B8', textDecoration: 'none' }}>Platforms</Link></li>
-                                    <li><i className="fa-regular fa-chevron-right" style={{ fontSize: '10px', color: '#445161', marginTop: '4px' }}></i></li>
-                                    <li><a href="#" className="active" style={{ color: '#3B82F6', textDecoration: 'none' }}>{platform.name}</a></li>
-                                </ul>
-                                <h1 className="title rts-text-anime-style-1 text-white" style={{ fontSize: '4rem', fontWeight: 800, maxWidth: '800px' }}>
-                                    {platform.name} <span style={{ color: '#3B82F6' }}>Enterprise</span> AI Implementation
-                                </h1>
-                            </div>
+                            <h1 className="title" style={{ fontSize: '48px', fontWeight: '800', marginBottom: '10px', color: '#fff' }}>
+                                {platform.name}
+                            </h1>
+                            <ul style={{ display: 'flex', justifyContent: 'center', gap: '10px', listStyle: 'none', padding: 0, fontSize: '16px', opacity: 0.8 }}>
+                                <li><Link to="/" style={{ color: '#fff' }}>Home</Link></li>
+                                <li><i className="fa fa-chevron-right" style={{ fontSize: '12px' }}></i></li>
+                                <li><span style={{ color: primaryColor }}>{platform.name}</span></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* 2. Video/Image Overview (Cyber Style) */}
-            <div className="rts-service-details-video-area rts-section-gap">
+            {/* 2. Intro Section with Stats */}
+            <div className="rts-service-intro-area rts-section-gap" style={{ padding: '100px 0', position: 'relative', background: '#fff' }}>
                 <div className="container">
                     <div className="row align-items-center">
-                        <div className="col-lg-7">
-                            <div className="service-details-video-wrapper" style={{ position: 'relative' }}>
-                                <img src={platform.hero.image || "/assets/images/service/16.webp"} alt={platform.name} style={{ borderRadius: '30px', width: '100%', boxShadow: '0 30px 60px rgba(0,0,0,0.2)' }} />
-                                <div className="vedio-icone">
-                                    <a className="video-play-button play-video popup-video" href="https://www.youtube.com/watch?v=vZE0j_WCRvI">
-                                        <span></span>
-                                    </a>
+                        <div className="col-lg-6 pr--60 pr_md--15 pr_sm--15">
+                            <div className="content-left">
+                                <span style={{
+                                    display: 'inline-block',
+                                    color: primaryColor,
+                                    fontWeight: '700',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '1px',
+                                    marginBottom: '15px',
+                                    fontSize: '14px'
+                                }}>Enterprise Platform</span>
+                                <h2 className="title" style={{
+                                    fontSize: '42px',
+                                    fontWeight: '800',
+                                    lineHeight: '1.2',
+                                    marginBottom: '25px',
+                                    color: darkColor
+                                }}>
+                                    {platform.hero.title || `${platform.name} Solutions`}
+                                </h2>
+                                <p className="disc" style={{ fontSize: '18px', color: textColor, lineHeight: '1.8', marginBottom: '30px' }}>
+                                    {platform.hero.description}
+                                </p>
+
+                                {/* Quick Stats */}
+                                <div className="row g-3 mb-4">
+                                    {[
+                                        { icon: 'fa-rocket', label: 'Fast Deploy', value: '< 24hrs' },
+                                        { icon: 'fa-shield-halved', label: 'Security', value: '99.99%' },
+                                        { icon: 'fa-chart-line', label: 'Performance', value: '10x' }
+                                    ].map((stat, i) => (
+                                        <div className="col-4" key={i}>
+                                            <div style={{ textAlign: 'center', padding: '15px', background: lightBg, borderRadius: '10px' }}>
+                                                <i className={`fa-solid ${stat.icon}`} style={{ color: primaryColor, fontSize: '24px', marginBottom: '8px' }}></i>
+                                                <div style={{ fontSize: '20px', fontWeight: '800', color: darkColor }}>{stat.value}</div>
+                                                <div style={{ fontSize: '12px', color: textColor }}>{stat.label}</div>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
+
+                                <Link to="/contact" className="rts-btn btn-primary" style={{
+                                    background: primaryColor,
+                                    color: '#fff',
+                                    padding: '16px 36px',
+                                    borderRadius: '6px',
+                                    fontWeight: '600',
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '10px',
+                                    transition: 'all 0.3s ease'
+                                }}>
+                                    Get Started <i className="fa-regular fa-arrow-right"></i>
+                                </Link>
                             </div>
                         </div>
-                        <div className="col-lg-5 ps-lg-5 text-start mt_md--50 mt_sm--50">
-                            <span className="pre" style={{ color: '#3B82F6', fontWeight: 700, letterSpacing: '2px' }}>PLATFORM OVERVIEW</span>
-                            <h2 className="title mb--30" style={{ fontSize: '2.8rem', fontWeight: 800 }}>{platform.overview.heading}</h2>
-                            <p className="disc mb--40" style={{ fontSize: '1.1rem', color: '#64748B', lineHeight: 1.7 }}>
-                                {platform.overview.content}
-                            </p>
-                            <div className="button-wrapper">
-                                <Link to="/contact" className="rts-btn btn-primary with-arrow">Request Solution Blueprint <i className="fa-regular fa-arrow-up up-right"></i></Link>
+                        <div className="col-lg-6 mt_md--50 mt_sm--50">
+                            <div className="thumbnail-image" style={{ position: 'relative' }}>
+                                <img
+                                    src={platform.hero.image || "/assets/images/banner/28.webp"}
+                                    alt={platform.name}
+                                    style={{
+                                        width: '100%',
+                                        borderRadius: '20px',
+                                        boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
+                                    }}
+                                />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* 3. Engineering Planning (Cyber Style Work Process) */}
-            <div className="rts-work-process-area rts-section-gap bg_light">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-6 pr--70 pr_md--10 pr_sm--10 text-start">
-                            <div className="work-process-content">
-                                <div className="title-left-wrapper">
-                                    <span className="pre">Work Planning</span>
-                                    <h2 className="title rts-text-anime-style-1" style={{ fontSize: '3rem', fontWeight: 800 }}>Strategic {platform.name} Engineering Roadmap</h2>
-                                </div>
-                                <div className="thumbnail-plunning-service-detials mt--60">
-                                    <img src="/assets/images/service/17.webp" alt="process" style={{ borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.05)' }} />
-                                </div>
+
+            {/* 4. Data Architecture Flow */}
+            {platform.architecture && (
+                <div className="rts-architecture-area rts-section-gap" style={{ background: lightBg, padding: '100px 0' }}>
+                    <div className="container">
+                        <div className="row mb--60">
+                            <div className="col-12 text-center">
+                                <span style={{ color: primaryColor, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '14px' }}>Architecture</span>
+                                <h2 className="title" style={{ fontSize: '38px', fontWeight: '800', color: darkColor, marginTop: '10px' }}>{platform.architecture.title}</h2>
+                                <p style={{ fontSize: '16px', color: textColor, marginTop: '15px', maxWidth: '700px', margin: '15px auto 0' }}>
+                                    {platform.architecture.description}
+                                </p>
                             </div>
                         </div>
-                        <div className="col-lg-6 mt_md--50 mt_sm--50 text-start">
-                            <div className="working-process-list-wrapper">
+
+                        {/* Visual Data Flow */}
+                        <div style={{
+                            background: '#fff',
+                            borderRadius: '20px',
+                            padding: '60px 40px',
+                            boxShadow: '0 10px 40px rgba(0,0,0,0.08)',
+                            position: 'relative'
+                        }}>
+                            <div className="row g-4 align-items-center">
                                 {[
-                                    { title: 'In-Depth Platform Audit', desc: 'Comprehensive assessment of your current data maturity and integration readiness for ' + platform.name + '.', tags: ['Audit', 'Assessment'] },
-                                    { title: 'Architecture & Scalability Blueprint', desc: 'Developing a security-first, high-performance architecture tailored to your enterprise data fabric.', tags: ['Architecture', 'Scaling'] },
-                                    { title: 'Production Deployment & Ops', desc: 'CI/CD-driven implementation with automated monitoring, guardrails, and ongoing support.', tags: ['Deployment', 'Operations'] }
-                                ].map((process, i) => (
-                                    <div className="single-working-process-area mb--40" key={i}>
-                                        <h5 className="title" style={{ fontWeight: 800, fontSize: '1.4rem' }}>{process.title}</h5>
-                                        <p className="disc" style={{ color: '#64748B' }}>{process.desc}</p>
-                                        <div className="tag-area-wrapper d-flex gap-2 mt--20">
-                                            {process.tags.map(tag => (
-                                                <span className="tag-area" key={tag} style={{ background: '#fff', padding: '6px 15px', borderRadius: '8px', fontSize: '13px', fontWeight: 700, border: '1px solid #E2E8F0', color: '#1E293B' }}>
-                                                    {tag}
-                                                </span>
-                                            ))}
+                                    { icon: 'fa-database', label: 'Data Sources', color: '#10b981' },
+                                    { icon: 'fa-arrow-right', label: '', color: '#94a3b8' },
+                                    { icon: 'fa-upload', label: 'Ingestion', color: '#f59e0b' },
+                                    { icon: 'fa-arrow-right', label: '', color: '#94a3b8' },
+                                    { icon: 'fa-snowflake', label: platform.name, color: primaryColor },
+                                    { icon: 'fa-arrow-right', label: '', color: '#94a3b8' },
+                                    { icon: 'fa-chart-line', label: 'Analytics', color: '#8b5cf6' },
+                                    { icon: 'fa-arrow-right', label: '', color: '#94a3b8' },
+                                    { icon: 'fa-users', label: 'End Users', color: '#ec4899' }
+                                ].map((step, idx) => (
+                                    step.label ? (
+                                        <div className="col text-center" key={idx}>
+                                            <div style={{
+                                                width: '80px',
+                                                height: '80px',
+                                                background: idx === 4 ? `linear-gradient(135deg, ${step.color} 0%, #1d4ed8 100%)` : `${step.color}15`,
+                                                borderRadius: '50%',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                margin: '0 auto 15px',
+                                                boxShadow: idx === 4 ? `0 10px 30px ${step.color}40` : 'none',
+                                                transition: 'all 0.3s'
+                                            }}
+                                                onMouseEnter={(e) => {
+                                                    e.currentTarget.style.transform = 'scale(1.1)';
+                                                }}
+                                                onMouseLeave={(e) => {
+                                                    e.currentTarget.style.transform = 'scale(1)';
+                                                }}>
+                                                <i className={`fa-solid ${step.icon}`} style={{
+                                                    color: idx === 4 ? '#fff' : step.color,
+                                                    fontSize: '32px'
+                                                }}></i>
+                                            </div>
+                                            <div style={{ fontSize: '14px', fontWeight: '700', color: darkColor }}>{step.label}</div>
                                         </div>
-                                    </div>
+                                    ) : (
+                                        <div className="col-auto" key={idx} style={{ padding: '0 5px' }}>
+                                            <i className={`fa-solid ${step.icon}`} style={{ color: step.color, fontSize: '24px' }}></i>
+                                        </div>
+                                    )
                                 ))}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            )}
 
-            {/* 4. Service Offerings (Cyber Style Solutions) */}
-            <div className="rts-service-area rts-section-gap">
-                <div className="container">
-                    <div className="row g-5">
-                        <div className="col-lg-12 text-center mb--60">
-                            <span className="pre" style={{ color: '#3B82F6', fontWeight: 700 }}>OUR SOLUTIONS</span>
-                            <h2 className="title" style={{ fontSize: '3.5rem', fontWeight: 800 }}>Specialized {platform.name} Services</h2>
-                        </div>
-                        {platform.solutions.items.map((solution, i) => (
-                            <div className="col-xl-4 col-lg-6" key={i}>
-                                <div className="single-service-security active h-100 text-start" style={{ padding: '45px', borderRadius: '28px' }}>
-                                    <div className="icon mb--30" style={{ background: 'rgba(59,130,246,0.1)', width: '60px', height: '60px', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#3B82F6' }}>
-                                        <i className={`fa-solid ${['fa-cubes', 'fa-shield-halved', 'fa-chart-line', 'fa-gear', 'fa-microchip', 'fa-database'][i % 6]}`} style={{ fontSize: '24px' }}></i>
-                                    </div>
-                                    <h4 className="title" style={{ fontWeight: 800, fontSize: '1.6rem' }}>{solution.title}</h4>
-                                    <p className="disc mt--20" style={{ color: '#64748B', lineHeight: 1.7 }}>{solution.description}</p>
-                                    <Link to="/contact" className="rts-btn btn-primary with-arrow btn-white btn-border mt--30"><i className="fa-regular fa-arrow-up up-right"></i> More Details</Link>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-
-            {/* 5. FAQs (Cyber Style Split Layout) */}
-            <div className="rts-faq-area-inner rts-section-gap bg_light">
-                <div className="container">
-                    <div className="row align-items-center">
-                        <div className="col-lg-6 text-start">
-                            <div className="faq-content-one">
-                                <div className="title-left-wrapper">
-                                    <span className="pre">Platform FAQ</span>
-                                    <h2 className="title rts-text-anime-style-1" style={{ fontSize: '2.8rem', fontWeight: 800 }}>Platform Engineering Expert Insights</h2>
-                                </div>
-                                <div className="faq-sccordion-area-wrapper mt--40">
-                                    <p className="disc mb--40">
-                                        Transitioning to a modern data platform involves complex technical decisions. We've compiled the most frequent architectural questions to help guide your journey.
-                                    </p>
-                                    <div className="accordon-pricing-wrapper-three">
-                                        <div className="accordion" id="platformFaqAccordion">
-                                            {platform.faq.map((faq, i) => (
-                                                <div className="accordion-item mb--20" key={i} style={{ borderRadius: '16px', border: '1px solid #E2E8F0', overflow: 'hidden', background: '#fff' }}>
-                                                    <h2 className="accordion-header">
-                                                        <button className={`accordion-button ${i === 0 ? '' : 'collapsed'}`} type="button" data-bs-toggle="collapse" data-bs-target={`#faq${i}`} style={{ background: '#fff', fontWeight: 700, color: '#1E293B', padding: '25px', boxShadow: 'none' }}>
-                                                            {faq.question}
-                                                        </button>
-                                                    </h2>
-                                                    <div id={`faq${i}`} className={`accordion-collapse collapse ${i === 0 ? 'show' : ''}`} data-bs-parent="#platformFaqAccordion">
-                                                        <div className="accordion-body" style={{ padding: '0 25px 30px', color: '#64748B', lineHeight: '1.7' }}>
-                                                            {faq.answer}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-6 mt_md--50 mt_sm--50 text-center">
-                            <div className="thumbnail-faq">
-                                <img src="/assets/images/service/18.webp" alt="faq" style={{ borderRadius: '30px', boxShadow: '0 30px 60px rgba(0,0,0,0.1)' }} />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* 6. Case Study / Success Stories (Using the Cyber style breadcrumb/card mix) */}
-            {platform.caseStudies && platform.caseStudies.items.length > 0 && (
-                <div className="rts-case-area rts-section-gap">
+            {/* 5. Industry Use Cases with Icons */}
+            {platform.industryUseCases && (
+                <div className="rts-use-cases-area rts-section-gap" style={{ padding: '100px 0', background: '#fff' }}>
                     <div className="container">
                         <div className="row mb--60">
-                            <div className="col-lg-12 text-start">
-                                <span className="pre">Expertise in Action</span>
-                                <h2 className="title" style={{ fontWeight: 800, fontSize: '3rem' }}>Successful {platform.name} Implementations</h2>
+                            <div className="col-12 text-center">
+                                <span style={{ color: primaryColor, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '14px' }}>Industries</span>
+                                <h2 className="title" style={{ fontSize: '38px', fontWeight: '800', color: darkColor, marginTop: '10px' }}>{platform.industryUseCases.title}</h2>
                             </div>
                         </div>
-                        <div className="row g-5">
-                            {platform.caseStudies.items.map((study, i) => (
-                                <div className="col-lg-4 col-md-6" key={i}>
-                                    <div className="single-service-security active text-start h-100" style={{ padding: '0', overflow: 'hidden', borderRadius: '24px' }}>
-                                        <img src={study.image || `/assets/images/case/0${5 + (i % 2)}.webp`} alt="case" style={{ width: '100%', height: '240px', objectFit: 'cover' }} />
-                                        <div style={{ padding: '35px' }}>
-                                            <span style={{ color: '#3B82F6', fontWeight: 700, fontSize: '13px', textTransform: 'uppercase', letterSpacing: '1px' }}>CASE STUDY</span>
-                                            <h4 className="title mt--10 mb--20" style={{ fontWeight: 800, fontSize: '1.4rem' }}>{study.title}</h4>
-                                            <Link to="/case-studies" className="text-primary fw-bold" style={{ textDecoration: 'none' }}>View Methodology <i className="fa-solid fa-arrow-right ms-2"></i></Link>
+                        <div className="row g-4">
+                            {platform.industryUseCases.items.map((useCase, idx) => (
+                                <div className="col-lg-3 col-md-6" key={idx}>
+                                    <div className="use-case-card" style={{
+                                        background: '#fff',
+                                        border: '2px solid #f1f5f9',
+                                        borderRadius: '16px',
+                                        padding: '40px 30px',
+                                        textAlign: 'center',
+                                        height: '100%'
+                                    }}>
+                                        <div style={{
+                                            width: '80px',
+                                            height: '80px',
+                                            background: `linear-gradient(135deg, ${primaryColor}15 0%, ${primaryColor}05 100%)`,
+                                            borderRadius: '20px',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            margin: '0 auto 20px',
+                                            border: `2px solid ${primaryColor}20`
+                                        }}>
+                                            <i className={`fa-solid ${useCase.icon || 'fa-building'}`} style={{
+                                                color: primaryColor,
+                                                fontSize: '36px'
+                                            }}></i>
                                         </div>
+                                        <h4 style={{ fontSize: '20px', fontWeight: '700', color: darkColor, marginBottom: '12px' }}>
+                                            {useCase.title}
+                                        </h4>
+                                        <p style={{ fontSize: '15px', color: textColor, margin: 0, lineHeight: '1.6' }}>
+                                            {useCase.description}
+                                        </p>
                                     </div>
                                 </div>
                             ))}
@@ -213,7 +330,388 @@ export const PlatformDetails: React.FC = () => {
                 </div>
             )}
 
-            <CTA />
-        </main>
+            {/* 6. Platform vs Traditional Comparison */}
+            <div className="rts-comparison-area rts-section-gap" style={{ background: lightBg, padding: '100px 0' }}>
+                <div className="container">
+                    <div className="row mb--60">
+                        <div className="col-12 text-center">
+                            <span style={{ color: primaryColor, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '14px' }}>Comparison</span>
+                            <h2 className="title" style={{ fontSize: '38px', fontWeight: '800', color: darkColor, marginTop: '10px' }}>
+                                {platform.name} vs Traditional Solutions
+                            </h2>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-lg-10 offset-lg-1">
+                            <div style={{ background: '#fff', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 10px 40px rgba(0,0,0,0.08)' }}>
+                                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                                    <thead>
+                                        <tr style={{ background: darkColor }}>
+                                            <th style={{ padding: '20px', color: '#fff', fontSize: '16px', fontWeight: '700', textAlign: 'left' }}>Feature</th>
+                                            <th style={{ padding: '20px', color: '#fff', fontSize: '16px', fontWeight: '700', textAlign: 'center' }}>Traditional</th>
+                                            <th style={{ padding: '20px', color: primaryColor, fontSize: '16px', fontWeight: '700', textAlign: 'center', background: '#1e3a5f' }}>{platform.name}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {[
+                                            { feature: 'Deployment Time', traditional: '3-6 months', modern: '< 24 hours' },
+                                            { feature: 'Scalability', traditional: 'Manual', modern: 'Auto-scale' },
+                                            { feature: 'Maintenance', traditional: 'High effort', modern: 'Fully managed' },
+                                            { feature: 'Cost Model', traditional: 'Fixed CapEx', modern: 'Pay-as-you-go' },
+                                            { feature: 'Performance', traditional: 'Limited', modern: 'Unlimited' }
+                                        ].map((row, idx) => (
+                                            <tr key={idx} className="comparison-row" style={{
+                                                background: idx % 2 === 0 ? '#fff' : '#f8fafc',
+                                                borderBottom: '1px solid #e2e8f0'
+                                            }}>
+                                                <td style={{ padding: '20px', fontSize: '15px', fontWeight: '600', color: darkColor }}>{row.feature}</td>
+                                                <td style={{ padding: '20px', fontSize: '15px', color: '#ef4444', textAlign: 'center' }}>
+                                                    <i className="fa-solid fa-xmark" style={{ marginRight: '8px' }}></i>
+                                                    {row.traditional}
+                                                </td>
+                                                <td style={{ padding: '20px', fontSize: '15px', color: '#10b981', textAlign: 'center', fontWeight: '600' }}>
+                                                    <i className="fa-solid fa-check" style={{ marginRight: '8px' }}></i>
+                                                    {row.modern}
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* 7. Capabilities - Horizontal Accordion Cards */}
+            <div className="rts-capabilities-area rts-section-gap" style={{ padding: '100px 0', background: '#fff' }}>
+                <div className="container">
+                    <div className="row mb--60">
+                        <div className="col-12 text-center">
+                            <span style={{ color: primaryColor, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '14px' }}>Our Expertise</span>
+                            <h2 className="title" style={{ fontSize: '38px', fontWeight: '800', color: darkColor, marginTop: '10px' }}>{platform.solutions.title}</h2>
+                            <p style={{ fontSize: '16px', color: textColor, marginTop: '15px', maxWidth: '700px', margin: '15px auto 0' }}>
+                                Comprehensive capabilities to power your data platform
+                            </p>
+                        </div>
+                    </div>
+                    <div className="row g-4">
+                        {platform.solutions.items.map((solution, index) => {
+                            const isActive = activeFeature === index;
+                            return (
+                                <div className="col-lg-6" key={index}>
+                                    <div
+                                        style={{
+                                            background: '#fff',
+                                            border: `2px solid ${isActive ? primaryColor : '#f1f5f9'}`,
+                                            borderRadius: '16px',
+                                            padding: '30px',
+                                            cursor: 'pointer',
+                                            transition: 'all 0.3s ease',
+                                            boxShadow: isActive ? '0 10px 40px rgba(59, 130, 246, 0.2)' : '0 4px 6px rgba(0,0,0,0.05)',
+                                            position: 'relative',
+                                            overflow: 'hidden'
+                                        }}
+                                        onClick={() => setActiveFeature(isActive ? -1 : index)}
+                                        onMouseEnter={(e) => {
+                                            if (!isActive) {
+                                                e.currentTarget.style.borderColor = '#cbd5e1';
+                                                e.currentTarget.style.transform = 'translateY(-3px)';
+                                            }
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            if (!isActive) {
+                                                e.currentTarget.style.borderColor = '#f1f5f9';
+                                                e.currentTarget.style.transform = 'translateY(0)';
+                                            }
+                                        }}
+                                    >
+                                        {/* Header Section */}
+                                        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px', marginBottom: isActive ? '20px' : '0' }}>
+                                            {/* Icon */}
+                                            <div style={{
+                                                minWidth: '56px',
+                                                height: '56px',
+                                                background: isActive ? `linear-gradient(135deg, ${primaryColor} 0%, #1d4ed8 100%)` : `${primaryColor}10`,
+                                                borderRadius: '12px',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                transition: 'all 0.3s'
+                                            }}>
+                                                <i className="fa-solid fa-database" style={{
+                                                    color: isActive ? '#fff' : primaryColor,
+                                                    fontSize: '24px'
+                                                }}></i>
+                                            </div>
+
+                                            {/* Title & Description */}
+                                            <div style={{ flex: 1 }}>
+                                                <h4 style={{
+                                                    fontSize: '20px',
+                                                    fontWeight: '700',
+                                                    color: darkColor,
+                                                    marginBottom: '8px',
+                                                    lineHeight: '1.3'
+                                                }}>
+                                                    {solution.title}
+                                                </h4>
+                                                <p style={{
+                                                    fontSize: '15px',
+                                                    color: textColor,
+                                                    lineHeight: '1.6',
+                                                    margin: 0,
+                                                    display: isActive ? 'block' : '-webkit-box',
+                                                    WebkitLineClamp: isActive ? 'unset' : 2,
+                                                    WebkitBoxOrient: 'vertical',
+                                                    overflow: isActive ? 'visible' : 'hidden'
+                                                }}>
+                                                    {solution.description}
+                                                </p>
+                                            </div>
+
+                                            {/* Toggle Icon */}
+                                            <div style={{
+                                                width: '32px',
+                                                height: '32px',
+                                                background: isActive ? `${primaryColor}15` : '#f8fafc',
+                                                borderRadius: '50%',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                transition: 'all 0.3s',
+                                                transform: isActive ? 'rotate(180deg)' : 'rotate(0deg)'
+                                            }}>
+                                                <i className="fa-solid fa-chevron-down" style={{
+                                                    color: isActive ? primaryColor : '#94a3b8',
+                                                    fontSize: '14px'
+                                                }}></i>
+                                            </div>
+                                        </div>
+
+                                        {/* Expandable Content */}
+                                        <div style={{
+                                            maxHeight: isActive ? '300px' : '0',
+                                            opacity: isActive ? 1 : 0,
+                                            overflow: 'hidden',
+                                            transition: 'all 0.4s ease',
+                                            paddingTop: isActive ? '20px' : '0',
+                                            borderTop: isActive ? '1px solid #f1f5f9' : 'none'
+                                        }}>
+                                            <h5 style={{ fontSize: '15px', fontWeight: '700', color: darkColor, marginBottom: '15px' }}>
+                                                Key Benefits
+                                            </h5>
+                                            <div className="row g-3">
+                                                {['Enterprise Grade', 'Scalable', '24/7 Support', 'Secure'].map((benefit, i) => (
+                                                    <div className="col-6" key={i}>
+                                                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                                            <div style={{
+                                                                width: '20px',
+                                                                height: '20px',
+                                                                background: `${primaryColor}15`,
+                                                                borderRadius: '50%',
+                                                                display: 'flex',
+                                                                alignItems: 'center',
+                                                                justifyContent: 'center',
+                                                                flexShrink: 0
+                                                            }}>
+                                                                <i className="fa-solid fa-check" style={{ color: primaryColor, fontSize: '10px' }}></i>
+                                                            </div>
+                                                            <span style={{ fontSize: '14px', color: textColor, fontWeight: '500' }}>{benefit}</span>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            </div>
+
+            {/* 8. Tech Stack Integration */}
+            <div className="rts-tech-stack-area" style={{ background: lightBg, padding: '80px 0' }}>
+                <div className="container">
+                    <div className="row mb--40">
+                        <div className="col-12 text-center">
+                            <span style={{ color: primaryColor, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '14px' }}>Integrations</span>
+                            <h2 className="title" style={{ fontSize: '38px', fontWeight: '800', color: darkColor, marginTop: '10px' }}>
+                                Works With Your Tech Stack
+                            </h2>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-12">
+                            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '40px', flexWrap: 'wrap' }}>
+                                {['AWS', 'Azure', 'GCP', 'Tableau', 'PowerBI', 'Python', 'dbt', 'Airflow'].map((tech, idx) => (
+                                    <div key={idx} className="tech-icon" style={{
+                                        width: '100px',
+                                        height: '100px',
+                                        background: '#fff',
+                                        borderRadius: '16px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
+                                        border: '2px solid #f1f5f9',
+                                        cursor: 'pointer'
+                                    }}>
+                                        <span style={{ fontSize: '14px', fontWeight: '700', color: darkColor }}>{tech}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* 9. Why Choose Section */}
+            <div className="rts-feature-area rts-section-gap" style={{ padding: '100px 0' }}>
+                <div className="container">
+                    <div className="row mb--60">
+                        <div className="col-12 text-center">
+                            <span style={{ color: primaryColor, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '14px' }}>Why Choose Us</span>
+                            <h2 className="title" style={{ fontSize: '38px', fontWeight: '800', color: darkColor, marginTop: '10px' }}>{platform.whyChoose.title}</h2>
+                        </div>
+                    </div>
+                    <div className="row g-4">
+                        {platform.whyChoose.items.map((item, idx) => (
+                            <div className="col-lg-6" key={idx}>
+                                <div style={{
+                                    background: '#fff',
+                                    padding: '30px',
+                                    borderRadius: '12px',
+                                    boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
+                                    border: '1px solid #f1f5f9',
+                                    transition: 'all 0.3s',
+                                    height: '100%'
+                                }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.boxShadow = '0 10px 30px rgba(59, 130, 246, 0.15)';
+                                        e.currentTarget.style.borderColor = primaryColor;
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.boxShadow = '0 4px 6px rgba(0,0,0,0.05)';
+                                        e.currentTarget.style.borderColor = '#f1f5f9';
+                                    }}>
+                                    <div style={{ display: 'flex', gap: '15px' }}>
+                                        <div style={{
+                                            minWidth: '48px',
+                                            height: '48px',
+                                            background: '#eff6ff',
+                                            borderRadius: '50%',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center'
+                                        }}>
+                                            <i className="fa-solid fa-check" style={{ color: primaryColor, fontSize: '20px' }}></i>
+                                        </div>
+                                        <div>
+                                            <h5 style={{ fontSize: '18px', fontWeight: '700', color: darkColor, marginBottom: '10px' }}>{item.title}</h5>
+                                            <p style={{ fontSize: '15px', color: textColor, margin: 0, lineHeight: '1.6' }}>{item.description}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* 10. Case Studies */}
+            <div className="rts-case-area rts-section-gap" style={{ background: lightBg, padding: '100px 0' }}>
+                <div className="container">
+                    <div className="row mb--60">
+                        <div className="col-12 text-center">
+                            <span style={{ color: primaryColor, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '14px' }}>Success Stories</span>
+                            <h2 className="title" style={{ fontSize: '38px', fontWeight: '800', color: darkColor, marginTop: '10px' }}>{platform.caseStudies.title}</h2>
+                        </div>
+                    </div>
+                    <div className="row g-5">
+                        {platform.caseStudies.items.map((study, i) => (
+                            <div className="col-lg-6 col-md-6" key={i}>
+                                <div className="single-case-style-one" style={{
+                                    background: '#fff',
+                                    borderRadius: '16px',
+                                    overflow: 'hidden',
+                                    boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
+                                    transition: 'all 0.3s'
+                                }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.1)';
+                                        e.currentTarget.style.transform = 'translateY(-5px)';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.boxShadow = '0 4px 6px rgba(0,0,0,0.05)';
+                                        e.currentTarget.style.transform = 'translateY(0)';
+                                    }}>
+                                    <Link to="/contact" className="thumbnail-case">
+                                        <img src={study.image || `/assets/images/case/0${(i % 3) + 6}.webp`} alt={study.title} style={{ width: '100%', height: '300px', objectFit: 'cover' }} />
+                                    </Link>
+                                    <div className="inner-content" style={{ padding: '30px' }}>
+                                        <span style={{ color: primaryColor, fontSize: '14px', fontWeight: '600', textTransform: 'uppercase' }}>Use Case</span>
+                                        <h5 className="title" style={{ fontSize: '22px', fontWeight: '700', color: darkColor, margin: '10px 0 15px' }}>{study.title}</h5>
+                                        <p className="disc" style={{ fontSize: '15px', color: textColor, margin: 0, lineHeight: '1.6' }}>
+                                            {study.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* 11. Final CTA */}
+            <div className="rts-call-to-action-area rts-section-gapBottom" style={{ padding: '80px 0' }}>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <div className="call-to-action-wrapper-three" style={{
+                                background: `linear-gradient(135deg, ${darkColor} 0%, #0f172a 100%)`,
+                                borderRadius: '20px',
+                                padding: '60px 40px',
+                                textAlign: 'center',
+                                position: 'relative',
+                                overflow: 'hidden'
+                            }}>
+                                <div style={{
+                                    position: 'absolute',
+                                    top: '50%',
+                                    left: '50%',
+                                    transform: 'translate(-50%, -50%)',
+                                    width: '400px',
+                                    height: '400px',
+                                    background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%)',
+                                    animation: 'pulse 3s ease-in-out infinite'
+                                }}></div>
+                                <h3 className="title" style={{ fontSize: '36px', fontWeight: '800', color: '#fff', marginBottom: '15px', position: 'relative', zIndex: 1 }}>
+                                    Ready to Transform Your Data?
+                                </h3>
+                                <p className="disc" style={{ fontSize: '18px', color: '#cbd5e1', marginBottom: '30px', position: 'relative', zIndex: 1 }}>
+                                    Partner with NeuraltrixAI to unlock the full potential of {platform.name}.
+                                </p>
+                                <Link to="/contact" className="rts-btn btn-primary" style={{
+                                    background: primaryColor,
+                                    color: '#fff',
+                                    padding: '16px 40px',
+                                    borderRadius: '6px',
+                                    fontWeight: '700',
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '10px',
+                                    position: 'relative',
+                                    zIndex: 1
+                                }}>
+                                    Schedule Consultation <i className="fa-regular fa-arrow-up"></i>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
     );
 };

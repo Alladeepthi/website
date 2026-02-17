@@ -1,322 +1,304 @@
-
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { platformsData } from '../data/platformsData';
 
 export const Platforms: React.FC = () => {
     useEffect(() => {
-        document.body.className = "demo-cybersecurity";
-        const script = document.createElement('script');
-        script.src = "/assets/js/main.js?t=" + new Date().getTime();
-        script.async = true;
-        document.body.appendChild(script);
-        return () => {
-            document.body.className = "";
-            document.body.removeChild(script);
-        };
+        window.scrollTo(0, 0);
     }, []);
 
-    const categories = [
-        { type: 'DataLake', title: 'Data Lakes & Storage', icon: '08.svg', description: 'Enterprise-grade data orchestration and storage solutions for modern workloads.' },
-        { type: 'RAG', title: 'AI & RAG Tools', icon: '09.svg', description: 'Advanced frameworks for connecting your private data to powerful LLMs.' },
-        { type: 'VectorDB', title: 'Vector Databases', icon: '10.svg', description: 'High-performance storage and retrieval systems optimized for semantic search.' },
-        { type: 'Model', title: 'Model Ecosystem', icon: '11.svg', description: 'Deploy and scale the latest generative AI and large language models.' }
+    // State for Testimonials Carousel
+    const [activeTestimonial, setActiveTestimonial] = useState(0);
+    const testimonials = [
+        { name: "Sarah Jenkins", role: "CTO, TechFlow", text: "NeuralTrix transformed our data pipeline. The efficiency gains were immediate." },
+        { name: "Michael Chen", role: "VP of Engineering, Solaris", text: "The platform's scalability is unmatched. We expanded seamlessly." },
+        { name: "Emma Rodriguez", role: "Data Lead, FinCorp", text: "Security and compliance are built-in, saving us months." }
     ];
 
-    const featuredPlatforms = [
-        platformsData.find(p => p.slug === 'snowflake'),
-        platformsData.find(p => p.slug === 'llamaindex'),
-        platformsData.find(p => p.slug === 'pinecone'),
-        platformsData.find(p => p.slug === 'openai')
-    ].filter(Boolean);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, []);
+
+    // Colors & Styles
+    const styles = {
+        page: {
+            backgroundColor: '#0f172a',
+            color: '#cbd5e1',
+            fontFamily: "'Inter', sans-serif",
+            overflowX: 'hidden' as const,
+            minHeight: '100vh'
+        },
+        container: {
+            maxWidth: '1200px',
+            margin: '0 auto',
+            padding: '0 20px',
+            position: 'relative' as const,
+            zIndex: 1
+        },
+        section: {
+            padding: '80px 0',
+            position: 'relative' as const
+        },
+        flexCenter: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+        },
+        grid2: {
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '40px',
+            alignItems: 'center'
+        },
+        grid3: {
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '30px'
+        },
+        grid4: {
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '25px'
+        },
+        glassCard: {
+            background: 'rgba(255, 255, 255, 0.03)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            border: '1px solid rgba(255, 255, 255, 0.08)',
+            borderRadius: '16px',
+            padding: '30px',
+            transition: 'transform 0.3s ease, border-color 0.3s ease',
+            height: '100%'
+        },
+        buttonPrimary: {
+            background: 'linear-gradient(90deg, #3B82F6 0%, #2563EB 100%)',
+            color: '#fff',
+            padding: '16px 32px',
+            borderRadius: '50px',
+            fontWeight: 'bold',
+            border: 'none',
+            cursor: 'pointer',
+            textDecoration: 'none',
+            display: 'inline-block',
+            fontSize: '16px',
+            boxShadow: '0 4px 14px 0 rgba(0,118,255,0.39)'
+        },
+        buttonOutline: {
+            background: 'rgba(255,255,255,0.05)',
+            border: '1px solid rgba(255,255,255,0.2)',
+            color: '#fff',
+            padding: '16px 32px',
+            borderRadius: '50px',
+            fontWeight: 'bold',
+            cursor: 'pointer',
+            textDecoration: 'none',
+            display: 'inline-block',
+            fontSize: '16px',
+            backdropFilter: 'blur(10px)'
+        }
+    };
 
     return (
-        <main className="platforms-cyber-wrapper">
-            {/* Banner Area (index-seven style) */}
-            <div className="banner-area-cyber-security rts-section-gap bg_image">
-                <div className="container" style={{ paddingTop: '80px' }}>
-                    <div className="row align-items-center">
-                        <div className="col-xl-6">
-                            <div className="banner-content-cyber-security text-start">
-                                <h1 className="title rts-text-anime-style-1" style={{ fontSize: '3.8rem', lineHeight: '1.1' }}>
-                                    Enterprise <br /> AI Platforms <br /> & Data Fabric
-                                </h1>
-                                <p className="disc">
-                                    We integrate world-class AI and data platforms to build a secure, scalable, and intelligent future for your business infrastructure.
-                                </p>
-                                <div className="button-wrapper d-flex gap-4">
-                                    <Link to="/contact" className="rts-btn btn-primary with-arrow">Get Started <i className="fa-regular fa-arrow-up up-right"></i></Link>
-                                    <a href="#solutions" className="rts-btn btn-primary with-arrow btn-white btn-border">Explore Suite <i className="fa-regular fa-arrow-up up-right"></i></a>
-                                </div>
-                                <div className="brand-area-bottom mt--50">
-                                    <p className="disc">Collaborated with globally <br /> recognized AI & Data partners</p>
-                                    <div className="brand-banner-7">
-                                        <div className="d-flex gap-5 opacity-50 grayscale">
-                                            <img src="/assets/images/brand/01.svg" alt="" style={{ height: '30px' }} />
-                                            <img src="/assets/images/brand/02.svg" alt="" style={{ height: '30px' }} />
-                                            <img src="/assets/images/brand/03.svg" alt="" style={{ height: '30px' }} />
-                                            <img src="/assets/images/brand/04.svg" alt="" style={{ height: '30px' }} />
-                                        </div>
-                                    </div>
-                                </div>
+        <main style={styles.page}>
+            <style>{`
+                @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
+                @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+                .animate-float { animation: float 6s ease-in-out infinite; }
+                .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+                .hover-card:hover { transform: translateY(-5px); border-color: #3B82F6 !important; background: rgba(30, 41, 59, 0.6) !important; }
+            `}</style>
+
+            {/* 1. Hero Section */}
+            <section style={{ ...styles.section, paddingTop: '180px', paddingBottom: '120px', overflow: 'hidden' }}>
+                {/* Background Blobs */}
+                <div style={{ position: 'absolute', top: '-20%', right: '-10%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)', filter: 'blur(80px)', zIndex: 0 }}></div>
+                <div style={{ position: 'absolute', bottom: '-20%', left: '-10%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 70%)', filter: 'blur(80px)', zIndex: 0 }}></div>
+
+                <div style={styles.container}>
+                    <div style={styles.grid2}>
+                        <div className="animate-fade-in">
+                            <span style={{ display: 'inline-block', padding: '6px 16px', borderRadius: '50px', background: 'rgba(59, 130, 246, 0.1)', border: '1px solid rgba(59, 130, 246, 0.3)', color: '#60A5FA', fontSize: '13px', fontWeight: 'bold', marginBottom: '24px', letterSpacing: '1px' }}>
+                                ENTERPRISE PLATFORM V4.0
+                            </span>
+                            <h1 style={{ fontSize: '56px', fontWeight: '800', lineHeight: '1.1', color: '#fff', marginBottom: '24px' }}>
+                                Build the Future with <br />
+                                <span style={{ background: 'linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Intelligent Core</span>
+                            </h1>
+                            <p style={{ fontSize: '18px', lineHeight: '1.6', opacity: 0.8, maxWidth: '540px', marginBottom: '40px' }}>
+                                Seamlessly integrate AI, automate workflows, and scale your infrastructure with our unified enterprise platform.
+                            </p>
+                            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+                                <Link to="/contact" style={styles.buttonPrimary}>Explore Platforms</Link>
+                                <button style={styles.buttonOutline}>Watch Demo</button>
                             </div>
                         </div>
-                        <div className="col-xl-6 order-lg-change mt_md--50 mt_sm--50">
-                            <div className="thumbnail-security-area-right">
-                                <div className="thumbnail">
-                                    <img src="/assets/images/banner/14.webp" alt="banner" className="rounded-4" />
-                                </div>
-                                <div className="right-top-area" style={{ background: '#3B82F6' }}>
-                                    <div className="thumb-img">
-                                        <img src="/assets/images/banner/10.svg" alt="banner" />
+                        <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                            <div className="animate-float" style={{ ...styles.glassCard, padding: '10px', position: 'relative' }}>
+                                <img src="/assets/images/about/16.webp" alt="Platform UI" style={{ width: '100%', borderRadius: '12px', display: 'block' }} />
+                                {/* Floating Badge */}
+                                <div style={{ ...styles.glassCard, position: 'absolute', top: '20px', right: '20px', padding: '15px', display: 'flex', alignItems: 'center', gap: '15px', maxWidth: '200px', height: 'auto' }}>
+                                    <div style={{ width: '40px', height: '40px', background: '#10B981', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                        <i className="fa-solid fa-check" style={{ color: '#fff' }}></i>
                                     </div>
-                                    <p className="disc text-white">
-                                        <span className="text-white">500+</span> Enterprise Deployments
-                                    </p>
-                                    <img src="/assets/images/banner/16.webp" alt="" className="bottom" />
-                                </div>
-                                <div className="left-bottom">
-                                    <img src="/assets/images/banner/17.webp" alt="" />
-                                    <div className="vedio-icone">
-                                        <a className="video-play-button play-video popup-video" href="https://www.youtube.com/watch?v=vZE0j_WCRvI">
-                                            <span></span>
-                                        </a>
-                                        <span className="text">Watch Work</span>
+                                    <div>
+                                        <p style={{ margin: 0, color: '#fff', fontWeight: 'bold', fontSize: '14px' }}>System Active</p>
+                                        <p style={{ margin: 0, color: '#10B981', fontSize: '12px' }}>99.99% Uptime</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            {/* Metrics/About Area (index-seven style) */}
-            <div className="rts-about-area rts-section-gap bg_light">
-                <div className="container">
-                    <div className="row align-items-center">
-                        <div className="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                            <div className="cyber-security-about-left">
-                                <img className="top" src="/assets/images/about/text-01.png" alt="" />
-                                <div className="bottom-iamge" style={{ background: '#3B82F6' }}>
-                                    <img src="/assets/images/about/13.webp" alt="" />
-                                    <div className="content">
-                                        <h3 className="title text-white">15+</h3>
-                                        <p className="text-white">AI Engineering Years</p>
-                                    </div>
+            {/* 2. Features Grid */}
+            <section style={styles.section}>
+                <div style={styles.container}>
+                    <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+                        <h2 style={{ fontSize: '36px', fontWeight: '800', color: '#fff', marginBottom: '16px' }}>Powering Next-Gen Enterprises</h2>
+                        <p style={{ fontSize: '18px', opacity: 0.7 }}>A complete suite of tools designed for modern scalability.</p>
+                    </div>
+                    <div style={styles.grid4}>
+                        {[
+                            { title: 'Cloud Native', icon: 'fa-cloud', desc: 'Deploy anywhere with containerized microservices architecture.' },
+                            { title: 'Real-time Analytics', icon: 'fa-chart-line', desc: 'Gain actionable insights with millisecond-latency data processing.' },
+                            { title: 'AI Automation', icon: 'fa-robot', desc: 'Automate complex decision-making workflows with built-in ML models.' },
+                            { title: 'Enterprise Security', icon: 'fa-shield-halved', desc: 'Bank-grade encryption and compliance features out of the box.' }
+                        ].map((feature, idx) => (
+                            <div key={idx} style={{ ...styles.glassCard }} className="hover-card">
+                                <div style={{ width: '60px', height: '60px', background: 'rgba(59, 130, 246, 0.1)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#3B82F6', fontSize: '24px', marginBottom: '20px' }}>
+                                    <i className={`fa-solid ${feature.icon}`}></i>
                                 </div>
+                                <h4 style={{ color: '#fff', fontWeight: '700', fontSize: '20px', marginBottom: '12px' }}>{feature.title}</h4>
+                                <p style={{ fontSize: '15px', lineHeight: '1.6', margin: 0, opacity: 0.8 }}>{feature.desc}</p>
                             </div>
-                        </div>
-                        <div className="col-xl-6 col-lg-5 pl--50 pl_lg--20 pl_md--10 pl_sm--10 text-start">
-                            <div className="about-cybar-mid">
-                                <div className="title-left-wrapper">
-                                    <span className="pre">Platform Ecosystem</span>
-                                    <h2 className="title rts-text-anime-style-1">Powering Your Data <br /> Intelligence</h2>
-                                    <p className="disc">
-                                        Our platform integration framework is designed to orchestrate complex AI workloads across diverse environments. We help you build a resilient, future-ready data foundation that scales effortlessly with your business needs.
-                                    </p>
-                                    <div className="button-wrapper d-flex align-items-center gap-4 mt--40">
-                                        <Link to="/contact" className="rts-btn btn-primary with-arrow btn-white btn-border">Get Started <i className="fa-regular fa-arrow-up up-right"></i></Link>
-                                        <div className="user-thumb text-start d-flex align-items-center gap-3">
-                                            <img src="/assets/images/about/15.webp" alt="" style={{ width: '120px' }} />
-                                            <p className="mb-0" style={{ fontSize: '14px', fontWeight: 700, lineHeight: 1.2 }}>Trusted by <br /> 2500+ Leads</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                            <div className="thumbnail-right-about-cyber" style={{ background: '#0F172A' }}>
-                                <img src="/assets/images/about/14.webp" alt="" />
-                                <div className="content">
-                                    <h3 className="title text-white">200+</h3>
-                                    <p className="text-white">Active AI <br /> Models Deployed</p>
-                                    <img src="/assets/images/about/02.svg" alt="" />
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
-            </div>
+            </section>
 
-            {/* Service Area Categories (index-seven style swiper-like grid) */}
-            <div id="solutions" className="rts-service-area rts-section-gap">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <div className="title-area-between text-start align-items-end">
-                                <div className="title-left-wrapper">
-                                    <span className="pre">Technical Suite</span>
-                                    <h2 className="title rts-text-anime-style-1">Advanced Technology <br /> Orchestration</h2>
-                                </div>
-                                <div className="right-area mb--10">
-                                    <Link to="/contact" className="btn-line"><span>Explore All Solutions</span> <i className="fa-solid fa-chevron-right"></i></Link>
-                                </div>
-                            </div>
+            {/* 3. Comparison Table (Custom Grid) */}
+            <section style={{ ...styles.section, background: 'rgba(15, 23, 42, 0.5)' }}>
+                <div style={styles.container}>
+                    <div style={{ ...styles.glassCard, padding: '40px' }}>
+                        <h2 style={{ color: '#fff', fontWeight: '800', textAlign: 'center', marginBottom: '40px' }}>Why Choose NeuralTrix?</h2>
+
+                        {/* Table Header */}
+                        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '20px', marginBottom: '20px' }}>
+                            <div style={{ color: '#94a3b8', fontSize: '16px', fontWeight: '600' }}>Features</div>
+                            <div style={{ color: '#fff', fontSize: '18px', fontWeight: 'bold', textAlign: 'center' }}>NeuralTrix Core</div>
+                            <div style={{ color: '#64748b', fontSize: '16px', fontWeight: '600', textAlign: 'center' }}>Others</div>
                         </div>
+
+                        {/* Table Rows */}
+                        {[
+                            { feat: 'Deployment Speed', us: 'Instant (< 5min)', them: 'Hours / Days' },
+                            { feat: 'AI Integration', us: 'Native / Built-in', them: 'Plugin / Extra Cost' },
+                            { feat: 'Scalability', us: 'Auto-scaling', them: 'Manual Config' },
+                            { feat: 'Support SLA', us: '24/7 Dedicated', them: 'Email Only' }
+                        ].map((row, i) => (
+                            <div key={i} style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', alignItems: 'center', padding: '20px 0', borderBottom: i !== 3 ? '1px solid rgba(255,255,255,0.05)' : 'none' }}>
+                                <div style={{ color: '#fff', fontWeight: '500' }}>{row.feat}</div>
+                                <div style={{ color: '#10B981', fontWeight: 'bold', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                                    <i className="fa-solid fa-check-circle"></i> {row.us}
+                                </div>
+                                <div style={{ color: '#64748b', textAlign: 'center' }}>{row.them}</div>
+                            </div>
+                        ))}
                     </div>
-                    <div className="row g-5 mt--40">
-                        {categories.map((cat, i) => (
-                            <div className="col-lg-3 col-md-6" key={i}>
-                                <div className="single-service-security active h-100 text-start">
-                                    <div className="icon">
-                                        <img src={`/assets/images/service/${cat.icon}`} alt="service" />
-                                    </div>
-                                    <h5 className="title">{cat.title}</h5>
-                                    <p className="disc">
-                                        {cat.description}
-                                    </p>
-                                    <a href={`#${cat.type}`} className="rts-btn btn-primary with-arrow btn-white btn-border"><i className="fa-regular fa-arrow-up up-right"></i> Learn More</a>
+                </div>
+            </section>
+
+            {/* 4. Use Cases */}
+            <section style={styles.section}>
+                <div style={styles.container}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
+                        <div>
+                            <h2 style={{ fontSize: '32px', fontWeight: '800', color: '#fff', marginBottom: '10px' }}>Versatile Applications</h2>
+                            <p style={{ fontSize: '18px', opacity: 0.7 }}>From fintech to healthcare, our platform adapts.</p>
+                        </div>
+                        <Link to="/services" style={{ ...styles.buttonOutline, padding: '10px 24px', fontSize: '14px' }}>View All Industries</Link>
+                    </div>
+                    <div style={styles.grid3}>
+                        {[
+                            { title: 'Fraud Detection', industry: 'Fintech', img: '08.webp' },
+                            { title: 'Predictive Maintenance', industry: 'Manufacturing', img: '10.webp' },
+                            { title: 'Personalized Care', industry: 'Healthcare', img: '07.webp' }
+                        ].map((useCase, idx) => (
+                            <div key={idx} className="hover-card" style={{ ...styles.glassCard, padding: 0, overflow: 'hidden', minHeight: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', position: 'relative' }}>
+                                <img src={`/assets/images/feature/${useCase.img}`} alt={useCase.title} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.6 }} />
+                                <div style={{ position: 'relative', padding: '24px', background: 'linear-gradient(to top, rgba(15,23,42,1), transparent)' }}>
+                                    <span style={{ background: '#3B82F6', color: '#fff', padding: '4px 10px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', marginBottom: '8px', display: 'inline-block' }}>{useCase.industry}</span>
+                                    <h3 style={{ color: '#fff', fontSize: '20px', fontWeight: 'bold', margin: 0 }}>{useCase.title}</h3>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
-            </div>
+            </section>
 
-            {/* Case Studies / Featured Platforms Accordion (index-seven style) */}
-            <div className="rts-case-studies rts-section-gap bg_light">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <div className="title-area-between text-start">
-                                <div className="title-left-wrapper">
-                                    <span className="pre">Featured Partners</span>
-                                    <h2 className="title rts-text-anime-style-1">Best-in-Class <br /> Platform Expertise</h2>
-                                </div>
-                                <div className="right-area">
-                                    <p className="disc">
-                                        We maintain gold-standard partnerships with the industry's leading AI and data providers to ensure your implementation is backed by official expertise.
-                                    </p>
-                                    <Link to="/case-studies" className="btn-line"><span>View Success Stories</span><i className="fa-solid fa-chevron-right"></i></Link>
+            {/* 5. Testimonials Carousel */}
+            <section style={{ ...styles.section, textAlign: 'center' }}>
+                <div style={styles.container}>
+                    <i className="fa-solid fa-quote-left" style={{ fontSize: '48px', color: '#3B82F6', opacity: 0.3, marginBottom: '40px' }}></i>
+                    <div style={{ position: 'relative', height: '180px', maxWidth: '800px', margin: '0 auto' }}>
+                        {testimonials.map((t, i) => (
+                            <div key={i} style={{
+                                position: 'absolute', top: 0, left: 0, width: '100%',
+                                opacity: activeTestimonial === i ? 1 : 0,
+                                transition: 'opacity 0.8s ease-in-out',
+                                pointerEvents: activeTestimonial === i ? 'all' : 'none'
+                            }}>
+                                <h3 style={{ fontSize: '24px', fontWeight: '500', color: '#fff', lineHeight: '1.5', marginBottom: '30px' }}>"{t.text}"</h3>
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px' }}>
+                                    <div style={{ width: '40px', height: '40px', background: '#334155', borderRadius: '50%' }}></div>
+                                    <div style={{ textAlign: 'left' }}>
+                                        <h5 style={{ color: '#fff', margin: 0, fontSize: '16px', fontWeight: 'bold' }}>{t.name}</h5>
+                                        <p style={{ color: '#3B82F6', margin: 0, fontSize: '14px' }}>{t.role}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        ))}
                     </div>
-                    <div className="row mt--70">
-                        <div className="col-lg-12">
-                            <div className="accordion-faq-one in-working-process in-case-cyber">
-                                <div className="accordion" id="platformsAccordion">
-                                    {featuredPlatforms.map((platform, i) => (
-                                        <div className="accordion-item" key={platform!.slug}>
-                                            <h2 className="accordion-header">
-                                                <button className={`accordion-button ${i === 0 ? '' : 'collapsed'}`} type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${i}`}>
-                                                    <span>{i + 1}. </span> {platform!.name} Integration & Engineering
-                                                </button>
-                                            </h2>
-                                            <div id={`collapse${i}`} className={`accordion-collapse collapse ${i === 0 ? 'show' : ''}`} data-bs-parent="#platformsAccordion">
-                                                <div className="accordion-body text-start d-flex gap-5 align-items-center flex-wrap flex-md-nowrap">
-                                                    <img src={platform!.hero.image || "/assets/images/case/05.webp"} alt={platform!.name} style={{ width: '300px', borderRadius: '15px' }} />
-                                                    <div>
-                                                        <h4 className="mb-3">{platform!.name} Overview</h4>
-                                                        <p className="disc mb-4">{platform!.hero.description}</p>
-                                                        <Link to={`/platform/${platform!.slug}`} className="rts-btn btn-primary with-arrow">View Case Study <i className="fa-regular fa-arrow-up up-right"></i></Link>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
+                    {/* Indicators */}
+                    <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '20px' }}>
+                        {testimonials.map((_, i) => (
+                            <button
+                                key={i}
+                                onClick={() => setActiveTestimonial(i)}
+                                style={{
+                                    width: '10px', height: '10px', borderRadius: '50%', border: 'none',
+                                    background: activeTestimonial === i ? '#3B82F6' : '#334155',
+                                    cursor: 'pointer', transition: 'background 0.3s'
+                                }}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* 6. CTA Section */}
+            <section style={{ padding: '100px 0', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                <div style={styles.container}>
+                    <div style={{ ...styles.glassCard, padding: '60px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+                        {/* Glow Behind */}
+                        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 60%)', filter: 'blur(50px)', zIndex: 0 }}></div>
+
+                        <div style={{ position: 'relative', zIndex: 1 }}>
+                            <h2 style={{ fontSize: '42px', fontWeight: '800', color: '#fff', marginBottom: '20px' }}>Start Your Transformation Today</h2>
+                            <p style={{ fontSize: '18px', opacity: 0.8, maxWidth: '600px', margin: '0 auto 40px' }}>
+                                Join 500+ enterprises leveraging NeuralTrix to scale their operations.
+                            </p>
+                            <Link to="/contact" style={{ ...styles.buttonPrimary, background: '#fff', color: '#0f172a' }}>
+                                Get Started Free
+                            </Link>
+                            <p style={{ fontSize: '13px', opacity: 0.5, marginTop: '20px' }}>No credit card required. 14-day free trial.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            {/* Technology Integration / Pricing List variant (index-seven style) */}
-            {/* Integration Packs / Pricing (Replaced with White Background for Contrast) */}
-            <div className="rs-pricing-area rts-section-gap pricing-cyber-page" style={{ background: '#fff' }}>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <div className="title-area-between text-start align-items-end mb--50">
-                                <div className="title-left-wrapper">
-                                    <span className="pre" style={{ color: '#3B82F6', border: '1px solid #3B82F6' }}>Integration Packs</span>
-                                    <h2 className="title rts-text-anime-style-1" style={{ color: '#0F172A' }}>Transparent Plans for <br /> Platform Excellence</h2>
-                                </div>
-                                <div className="right-area">
-                                    <p className="disc" style={{ color: '#475569', maxWidth: '500px' }}>
-                                        Accelerate your time-to-market with our pre-engineered integration blueprints tailored for enterprise scale.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <div className="single-pricing-list-area active mb--30">
-                                <span className="package">Core Suite</span>
-                                <div className="left-area">
-                                    <h4 className="title">Capabilities</h4>
-                                    <ul>
-                                        <li>Multi-Platform Connectivity</li>
-                                        <li>Standard Security Guardrails</li>
-                                        <li>Performance Monitoring</li>
-                                    </ul>
-                                </div>
-                                <div className="right-area">
-                                    <h3 className="price">Consultative</h3>
-                                    <Link to="/contact" className="rts-btn btn-primary with-arrow">Inquire Now <i className="fa-regular fa-arrow-up up-right"></i></Link>
-                                </div>
-                            </div>
-                            <div className="single-pricing-list-area active">
-                                <span className="package">Advanced Fabric</span>
-                                <div className="left-area">
-                                    <h4 className="title">Capabilities</h4>
-                                    <ul>
-                                        <li>Automated Scaling Eng.</li>
-                                        <li>Custom RAG Architecture</li>
-                                        <li>24/7 Managed Operations</li>
-                                    </ul>
-                                </div>
-                                <div className="right-area">
-                                    <h3 className="price">Enterprise</h3>
-                                    <Link to="/contact" className="rts-btn btn-primary with-arrow btn-white btn-border">Book Architecture Review <i className="fa-regular fa-arrow-up up-right"></i></Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Testimonials removed as per user request */}
-
-            {/* Premium Cyber Security CTA */}
-            <div className="rts-cta-area-cyber" style={{ background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <div className="cta-cyber-wrapper" style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
-                                <div className="icon mb--30" style={{
-                                    width: '80px',
-                                    height: '80px',
-                                    background: 'rgba(59,130,246,0.1)',
-                                    borderRadius: '50%',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    margin: '0 auto',
-                                    color: '#3B82F6',
-                                    fontSize: '32px'
-                                }}>
-                                    <i className="fa-regular fa-rocket-launch"></i>
-                                </div>
-                                <h2 className="title text-white mb--20" style={{ fontSize: '3.5rem', fontWeight: 800 }}>Ready to Scale Your<br /><span style={{ color: '#3B82F6' }}>Enterprise Data Fabric?</span></h2>
-                                <p className="disc mb--40" style={{ color: '#94A3B8', fontSize: '18px', maxWidth: '600px', margin: '0 auto 40px' }}>
-                                    Accelerate your transformation with our battle-tested AI infrastructure blueprints. Secure, scalable, and production-ready.
-                                </p>
-                                <div className="button-group" style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
-                                    <Link to="/contact" className="rts-btn btn-primary with-arrow">
-                                        Start Your Transformation <i className="fa-regular fa-arrow-right"></i>
-                                    </Link>
-                                    <Link to="/case-studies" className="rts-btn btn-white btn-border">
-                                        View Success Stories
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </section>
         </main>
     );
 };

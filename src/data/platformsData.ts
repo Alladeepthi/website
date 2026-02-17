@@ -37,6 +37,25 @@ export interface PlatformData {
             description: string;
         }[];
     };
+    architecture?: {
+        title: string;
+        image?: string;
+        description: string;
+    };
+    industryUseCases?: {
+        title: string;
+        items: {
+            title: string;
+            description: string;
+            icon?: string;
+        }[];
+    };
+    metrics?: {
+        items: {
+            value: string;
+            label: string;
+        }[];
+    };
     faq: {
         question: string;
         answer: string;
@@ -50,8 +69,8 @@ export const platformsData: PlatformData[] = [
         name: 'Snowflake',
         type: 'DataLake',
         hero: {
-            title: 'Snowflake Partner',
-            description: 'Unlock the full potential of your data with Snowflake’s Data Cloud. Secure, scalable, and easy to use.',
+            title: 'Snowflake Data Engineering & Analytics Solutions',
+            description: 'NeuraltrixAI helps enterprises design, migrate, optimize, and scale modern cloud data platforms powered by Snowflake.',
             image: '/assets/images/platform/Operating system-bro.png'
         },
         overview: {
@@ -60,26 +79,56 @@ export const platformsData: PlatformData[] = [
             image: '/assets/images/platform/Innovation-rafiki.png'
         },
         solutions: {
-            title: 'Our Snowflake Solutions',
+            title: 'Our Snowflake Capabilities',
             items: [
                 {
-                    title: 'Data Migration',
-                    description: 'Seamlessly migrate your legacy data warehouses to Snowflake with zero downtime.'
+                    title: 'Snowflake Architecture Design',
+                    description: 'Custom-tailored data warehouse architectures optimized for performance and cost.'
                 },
                 {
-                    title: 'Data Warehousing',
-                    description: 'Build robust data warehouse solutions that scale with your business needs.'
+                    title: 'Data Migration & Modernization',
+                    description: 'Seamless migration from legacy on-premise systems (Teradata, Netezza) to Snowflake.'
                 },
                 {
-                    title: 'Data Engineering',
-                    description: 'Automate data pipelines and transformations for real-time insights.'
+                    title: 'ELT & Data Pipeline Engineering',
+                    description: 'Building robust, scalable data pipelines using dbt, Airflow, and Snowpark.'
                 },
                 {
-                    title: 'Data Sharing',
-                    description: 'Securely share live data across your organization and with external partners.'
+                    title: 'Advanced Analytics & BI Integration',
+                    description: 'Connecting Snowflake to Tableau, PowerBI, and Looker for actionable insights.'
+                },
+                {
+                    title: 'Performance & Cost Optimization',
+                    description: 'Fine-tuning warehouses and queries to maximize efficiency and reduce spend.'
+                },
+                {
+                    title: 'Security & Data Governance',
+                    description: 'Implementing RBAC, masking policies, and secure data sharing frameworks.'
                 }
             ],
             image: '/assets/images/platform/App development-rafiki.png'
+        },
+        architecture: {
+            title: 'Modern Data Architecture',
+            description: 'A scalable, secure, and high-performance data flow designed for modern enterprises.',
+            image: '/assets/images/feature/06.webp'
+        },
+        metrics: {
+            items: [
+                { value: '99.99%', label: 'Availability' },
+                { value: 'PB-Scale', label: 'Processing Power' },
+                { value: 'Auto-Scale', label: 'Compute Resources' },
+                { value: 'Multi-Cluster', label: 'Concurrency' }
+            ]
+        },
+        industryUseCases: {
+            title: 'Industry Use Cases',
+            items: [
+                { title: 'Banking & Finance', description: 'Fraud detection, risk modeling, and regulatory reporting.', icon: 'fa-landmark' },
+                { title: 'Healthcare', description: 'Patient 360, clinical data interoperability, and research.', icon: 'fa-heart-pulse' },
+                { title: 'Retail', description: 'Inventory optimization, customer segmentation, and forecasting.', icon: 'fa-cart-shopping' },
+                { title: 'Manufacturing', description: 'Supply chain visibility, predictive maintenance, and IoT analytics.', icon: 'fa-industry' }
+            ]
         },
         caseStudies: {
             title: 'Case studies showcasing our expertise',
@@ -97,22 +146,22 @@ export const platformsData: PlatformData[] = [
             ]
         },
         whyChoose: {
-            title: 'Why Choose NeuralTrix for Snowflake Solutions',
+            title: 'Why NeuraltrixAI for Snowflake Solutions',
             items: [
                 {
-                    title: 'Certified Experts',
+                    title: 'Certified Data Engineers',
                     description: 'Our team consists of certified Snowflake architects and engineers.'
                 },
                 {
-                    title: 'Proven Methodologies',
-                    description: 'We follow best practices and proven methodologies for successful delivery.'
+                    title: 'Cloud Architecture Expertise',
+                    description: 'Deep understanding of AWS, Azure, and GCP integration patterns.'
                 },
                 {
-                    title: 'End-to-End Support',
+                    title: 'End-to-End Implementation',
                     description: 'From strategy to implementation and ongoing support, we are with you.'
                 },
                 {
-                    title: 'Cost Optimization',
+                    title: 'Ongoing Optimization & Support',
                     description: 'We help you optimize your Snowflake usage to reduce costs.'
                 }
             ]
@@ -173,6 +222,19 @@ export const platformsData: PlatformData[] = [
                 { title: 'Security First', description: 'Best-in-class security implementation for sensitive data.' }
             ]
         },
+        architecture: {
+            title: 'Redshift Architecture',
+            description: 'Amazon Redshift uses a massively parallel processing (MPP) architecture to distribute data and query execution across multiple nodes, delivering fast query performance on large datasets.'
+        },
+        industryUseCases: {
+            title: 'Industry Applications',
+            items: [
+                { title: 'E-commerce', description: 'Real-time inventory and sales analytics for online retailers', icon: 'fa-shopping-cart' },
+                { title: 'Financial Services', description: 'Risk analysis and fraud detection at scale', icon: 'fa-chart-line' },
+                { title: 'Media & Entertainment', description: 'Content recommendation and audience analytics', icon: 'fa-film' },
+                { title: 'Healthcare', description: 'Patient data analysis and clinical research', icon: 'fa-hospital' }
+            ]
+        },
         faq: [
             { question: 'What is Amazon Redshift?', answer: 'Amazon Redshift is a fully managed, petabyte-scale data warehouse service in the cloud.' },
             { question: 'Can Redshift handle semi-structured data?', answer: 'Yes, Redshift supports semi-structured data like JSON using the SUPER data type.' },
@@ -205,8 +267,32 @@ export const platformsData: PlatformData[] = [
             image: '/assets/images/platform/App development-rafiki.png'
         },
         caseStudies: { title: 'Impactful Results', items: [{ title: 'Predictive Maintenance', description: 'Reducing equipment downtime by 40% for a manufacturing client.', image: '/assets/images/platform/computer-login.png' }, { title: 'Personalization Engine', description: 'Driving 30% revenue uplift through real-time recommendations.', image: '/assets/images/platform/Social networking-amico.png' }] },
-        whyChoose: { title: 'Why Us?', items: [{ title: 'Certified Databricks Partners', description: 'Deep expertise in the Databricks ecosystem.' }, { title: 'Unified Approach', description: 'We bridge the gap between data engineering and data science.' }, { title: 'Rapid Deployment', description: 'Get your Lakehouse up and running in weeks, not months.' }, { title: 'Scalable Solutions', description: 'Architectures designed to grow with your data.' }] },
-        faq: [{ question: 'What is a Lakehouse?', answer: 'A Lakehouse is a new data management architecture that combines the flexibility of data lakes with the data management of data warehouses.' }, { question: 'What is Delta Lake?', answer: 'Delta Lake is an open-source storage layer that brings reliability to data lakes.' }]
+        whyChoose: {
+            title: 'Why Us?',
+            items: [
+                { title: 'Certified Databricks Partners', description: 'Deep expertise in the Databricks ecosystem.' },
+                { title: 'Unified Approach', description: 'We bridge the gap between data engineering and data science.' },
+                { title: 'Rapid Deployment', description: 'Get your Lakehouse up and running in weeks, not months.' },
+                { title: 'Scalable Solutions', description: 'Architectures designed to grow with your data.' }
+            ]
+        },
+        architecture: {
+            title: 'Databricks Lakehouse Architecture',
+            description: 'The Databricks Lakehouse Platform combines the best of data lakes and data warehouses with Delta Lake, providing ACID transactions, scalable metadata handling, and unified streaming and batch data processing.'
+        },
+        industryUseCases: {
+            title: 'Industry Applications',
+            items: [
+                { title: 'Manufacturing', description: 'Predictive maintenance and supply chain optimization', icon: 'fa-industry' },
+                { title: 'Retail', description: 'Customer personalization and demand forecasting', icon: 'fa-store' },
+                { title: 'Financial Services', description: 'Fraud detection and risk modeling', icon: 'fa-coins' },
+                { title: 'Telecommunications', description: 'Network optimization and customer churn prediction', icon: 'fa-tower-cell' }
+            ]
+        },
+        faq: [
+            { question: 'What is a Lakehouse?', answer: 'A Lakehouse is a new data management architecture that combines the flexibility of data lakes with the data management of data warehouses.' },
+            { question: 'What is Delta Lake?', answer: 'Delta Lake is an open-source storage layer that brings reliability to data lakes.' }
+        ]
     },
     {
         id: 'mongodb',
@@ -234,8 +320,32 @@ export const platformsData: PlatformData[] = [
             image: '/assets/images/platform/Team work-amico.png'
         },
         caseStudies: { title: 'Client Success', items: [{ title: 'IoT Data Platform', description: 'Handling millions of device events per second.', image: '/assets/images/platform/Social tree-rafiki.png' }, { title: 'Content Management', description: 'Flexible CMS backend for a global media company.', image: '/assets/images/platform/Video files-rafiki.png' }] },
-        whyChoose: { title: 'Why Us?', items: [{ title: 'MongoDB Experts', description: 'Deep knowledge of document modeling and distributed systems.' }, { title: 'Cloud Native', description: 'Expertise in deploying MongoDB on AWS, Azure, and GCP.' }, { title: 'Agile Delivery', description: 'Iterative development to match your fast-paced needs.' }, { title: 'Full-Stack Capability', description: 'We build the apps that run on the database, not just the database.' }] },
-        faq: [{ question: 'Why use a document database?', answer: 'Document databases offer a flexible schema that maps directly to objects in your code.' }, { question: 'What is MongoDB Atlas?', answer: 'MongoDB Atlas is a fully managed cloud database service.' }]
+        whyChoose: {
+            title: 'Why Us?',
+            items: [
+                { title: 'MongoDB Experts', description: 'Deep knowledge of document modeling and distributed systems.' },
+                { title: 'Cloud Native', description: 'Expertise in deploying MongoDB on AWS, Azure, and GCP.' },
+                { title: 'Agile Delivery', description: 'Iterative development to match your fast-paced needs.' },
+                { title: 'Full-Stack Capability', description: 'We build the apps that run on the database, not just the database.' }
+            ]
+        },
+        architecture: {
+            title: 'MongoDB Architecture',
+            description: 'MongoDB uses a distributed architecture with replica sets for high availability and sharding for horizontal scalability, allowing you to store and process massive amounts of data across multiple servers.'
+        },
+        industryUseCases: {
+            title: 'Industry Applications',
+            items: [
+                { title: 'IoT & Real-time', description: 'High-velocity data ingestion from millions of devices', icon: 'fa-microchip' },
+                { title: 'Content Management', description: 'Flexible schema for diverse content types', icon: 'fa-file-alt' },
+                { title: 'Mobile Apps', description: 'Offline-first sync and real-time collaboration', icon: 'fa-mobile-alt' },
+                { title: 'Gaming', description: 'Player profiles and real-time leaderboards', icon: 'fa-gamepad' }
+            ]
+        },
+        faq: [
+            { question: 'Why use a document database?', answer: 'Document databases offer a flexible schema that maps directly to objects in your code.' },
+            { question: 'What is MongoDB Atlas?', answer: 'MongoDB Atlas is a fully managed cloud database service.' }
+        ]
     },
     {
         id: 'datadog',
@@ -263,8 +373,32 @@ export const platformsData: PlatformData[] = [
             image: '/assets/images/platform/App development-rafiki.png'
         },
         caseStudies: { title: 'Monitoring Success', items: [{ title: 'Downtime Reduction', description: 'Reduced MTTR by 60% for a SaaS provider.', image: '/assets/images/platform/computer-login.png' }, { title: 'Cloud Migration', description: ' ensured visibility during a massive cloud migration.', image: '/assets/images/platform/Social networking-amico.png' }] },
-        whyChoose: { title: 'Why Us?', items: [{ title: 'Observability Experts', description: 'We know what metrics matter most for your business.' }, { title: 'Custom Dashboards', description: 'We build views tailored to your specific stakeholders.' }, { title: 'Proactive Alerting', description: 'Configure alerts that are actionable, not noisy.' }, { title: 'Integration Specialists', description: 'Seamlessly integrate Datadog with your existing tools.' }] },
-        faq: [{ question: 'What can Datadog monitor?', answer: 'Datadog monitors servers, databases, tools, services, and apps.' }, { question: 'Is Datadog SaaS?', answer: 'Yes, Datadog is a SaaS-based data analytics platform.' }]
+        whyChoose: {
+            title: 'Why Us?',
+            items: [
+                { title: 'Observability Experts', description: 'We know what metrics matter most for your business.' },
+                { title: 'Custom Dashboards', description: 'We build views tailored to your specific stakeholders.' },
+                { title: 'Proactive Alerting', description: 'Configure alerts that are actionable, not noisy.' },
+                { title: 'Integration Specialists', description: 'Seamlessly integrate Datadog with your existing tools.' }
+            ]
+        },
+        architecture: {
+            title: 'Datadog Observability Platform',
+            description: 'Datadog provides unified monitoring across infrastructure, applications, and logs with distributed tracing, real-time dashboards, and AI-powered anomaly detection for complete visibility.'
+        },
+        industryUseCases: {
+            title: 'Industry Applications',
+            items: [
+                { title: 'E-commerce', description: 'Monitor checkout flows and payment systems', icon: 'fa-shopping-bag' },
+                { title: 'SaaS Platforms', description: 'Track application performance and user experience', icon: 'fa-cloud' },
+                { title: 'Financial Services', description: 'Ensure compliance and detect security threats', icon: 'fa-shield-alt' },
+                { title: 'Media Streaming', description: 'Monitor content delivery and streaming quality', icon: 'fa-play-circle' }
+            ]
+        },
+        faq: [
+            { question: 'What can Datadog monitor?', answer: 'Datadog monitors servers, databases, tools, services, and apps.' },
+            { question: 'Is Datadog SaaS?', answer: 'Yes, Datadog is a SaaS-based data analytics platform.' }
+        ]
     },
 
     // RAG Tools

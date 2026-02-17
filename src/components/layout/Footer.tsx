@@ -1,15 +1,19 @@
 ﻿import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
+    const location = useLocation();
+    const isPlatformDetails = location.pathname.startsWith('/platform/');
+    const footerClass = `rts-footer-one pt--100 ${isPlatformDetails ? 'bg_light' : 'bg_dark'}`;
+
     return (
-        <div className="rts-footer-one pt--100 bg_dark">
+        <div className={footerClass}>
             <div className="container pb--80 ">
                 <div className="row">
                     <div className="col-lg-3">
                         <div className="left-wiget">
                             <Link className="logo" to="/">
-                                <img src="/assets/images/logo/neuraltrix-logo-white.svg" alt="NeuralTrix AI" style={{ height: '45px', width: 'auto' }} />
+                                <img src="/assets/images/logo/neuraltrix-ai-logo.png" alt="NeuraltrixAI" style={{ height: '45px', width: 'auto' }} />
                             </Link>
                             <p className="disc">We engineer high-performance software, data platforms, and automated workflows that drive real business growth.</p>
                             <form action="#" className="footer-form" onClick={(e) => e.preventDefault()}>
