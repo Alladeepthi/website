@@ -105,7 +105,7 @@ export const About: React.FC = () => {
     // Theme Colors
     const primaryColor = '#3B82F6';
     const darkColor = '#0F172A';
-    const lightBg = '#F8FAFC';
+
     const textColor = '#64748B';
 
     // Animation Variants
