@@ -130,25 +130,25 @@ export const IndustryDetails: React.FC = () => {
                 </div>
             </div>
 
-            {/* 3. Challenges Section - Tab-Based Layout */}
-            <div className="rts-challenges-area rts-section-gap" style={{ background: '#F8FAFC', padding: '100px 0' }}>
+            {/* 3. Challenges Section - Compacted Layout */}
+            <div className="rts-challenges-area rts-section-gap" style={{ background: '#F8FAFC', padding: '60px 0' }}>
                 <div className="container">
-                    <div className="row mb--60">
+                    <div className="row mb--40">
                         <div className="col-12 text-center">
                             <span style={{ color: primaryColor, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', display: 'block', marginBottom: '10px' }}>Challenges Solved</span>
-                            <h2 className="title" style={{ fontSize: '38px', fontWeight: '800', color: darkColor }}>Addressing Key <br /> Industry Pain Points</h2>
+                            <h2 className="title" style={{ fontSize: '32px', fontWeight: '800', color: darkColor }}>Addressing Key <br /> Industry Pain Points</h2>
                         </div>
                     </div>
-                    <div className="row g-5">
+                    <div className="row g-4">
                         {/* Left: Interactive Challenge List */}
                         <div className="col-lg-4 col-md-12">
-                            <div className="challenge-menu-list shadow-sm" style={{ background: '#fff', borderRadius: '16px', padding: '20px', border: '1px solid #f1f5f9' }}>
+                            <div className="challenge-menu-list shadow-sm" style={{ background: '#fff', borderRadius: '16px', padding: '15px', border: '1px solid #f1f5f9' }}>
                                 {industry.challenges.items.map((item, index) => (
                                     <div
                                         key={index}
                                         onClick={() => setActiveChallenge(index)}
                                         style={{
-                                            padding: '20px 25px',
+                                            padding: '18px 20px',
                                             borderBottom: index !== industry.challenges.items.length - 1 ? '1px solid #f1f5f9' : 'none',
                                             cursor: 'pointer',
                                             background: activeChallenge === index ? '#eff6ff' : 'transparent',
@@ -157,7 +157,7 @@ export const IndustryDetails: React.FC = () => {
                                             transition: 'all 0.3s',
                                             display: 'flex',
                                             alignItems: 'center',
-                                            gap: '15px'
+                                            gap: '12px'
                                         }}
                                         onMouseEnter={(e) => {
                                             if (activeChallenge !== index) e.currentTarget.style.background = '#f8fafc';
@@ -168,21 +168,21 @@ export const IndustryDetails: React.FC = () => {
                                     >
                                         <i className="fa-solid fa-triangle-exclamation" style={{
                                             color: activeChallenge === index ? primaryColor : '#94a3b8',
-                                            fontSize: '18px',
-                                            width: '24px',
+                                            fontSize: '16px',
+                                            width: '20px',
                                             textAlign: 'center',
                                             transition: 'color 0.3s'
                                         }}></i>
                                         <h6 style={{
                                             margin: 0,
-                                            fontSize: '16px',
+                                            fontSize: '15px',
                                             fontWeight: activeChallenge === index ? '700' : '500',
                                             color: activeChallenge === index ? primaryColor : darkColor,
                                             transition: 'color 0.3s'
                                         }}>
                                             {item.title}
                                         </h6>
-                                        {activeChallenge === index && <i className="fa-solid fa-chevron-right ms-auto" style={{ fontSize: '12px', color: primaryColor }}></i>}
+                                        {activeChallenge === index && <i className="fa-solid fa-chevron-right ms-auto" style={{ fontSize: '10px', color: primaryColor }}></i>}
                                     </div>
                                 ))}
                             </div>
@@ -203,8 +203,8 @@ export const IndustryDetails: React.FC = () => {
                                 className="challenge-detail-content"
                                 style={{
                                     background: `linear-gradient(145deg, #ffffff 0%, ${lightBg} 100%)`,
-                                    borderRadius: '24px',
-                                    padding: '50px',
+                                    borderRadius: '20px',
+                                    padding: '35px',
                                     boxShadow: '0 20px 60px rgba(0,0,0,0.05)',
                                     border: '1px solid #fff',
                                     height: '100%',
@@ -215,9 +215,9 @@ export const IndustryDetails: React.FC = () => {
                                 {/* Decorative BG Icon */}
                                 <div style={{
                                     position: 'absolute',
-                                    top: '30px',
-                                    right: '30px',
-                                    fontSize: '120px',
+                                    top: '20px',
+                                    right: '20px',
+                                    fontSize: '100px',
                                     opacity: '0.03',
                                     color: darkColor,
                                     zIndex: 0,
@@ -232,32 +232,32 @@ export const IndustryDetails: React.FC = () => {
                                         <span style={{
                                             background: '#fee2e2',
                                             color: '#dc2626',
-                                            padding: '8px 16px',
+                                            padding: '6px 14px',
                                             borderRadius: '30px',
-                                            fontSize: '12px',
+                                            fontSize: '11px',
                                             fontWeight: '700',
                                             textTransform: 'uppercase',
                                             letterSpacing: '1px',
                                             display: 'inline-block',
-                                            marginBottom: '20px'
+                                            marginBottom: '15px'
                                         }}>
                                             The Challenge
                                         </span>
-                                        <h3 style={{ fontSize: '28px', fontWeight: '800', color: darkColor, marginBottom: '15px' }}>
+                                        <h3 style={{ fontSize: '24px', fontWeight: '800', color: darkColor, marginBottom: '12px' }}>
                                             {industry.challenges.items[activeChallenge].title}
                                         </h3>
-                                        <p style={{ fontSize: '16px', lineHeight: '1.7', color: textColor, marginBottom: '20px' }}>
+                                        <p style={{ fontSize: '15px', lineHeight: '1.7', color: textColor, marginBottom: '15px' }}>
                                             {industry.challenges.items[activeChallenge].description}
                                         </p>
                                     </div>
 
-                                    <hr style={{ borderColor: '#e2e8f0', margin: '30px 0', opacity: 0.5 }} />
+                                    <hr style={{ borderColor: '#e2e8f0', margin: '25px 0', opacity: 0.5 }} />
 
                                     {/* Solution Section */}
                                     <div style={{
-                                        padding: '30px',
+                                        padding: '25px',
                                         background: `linear-gradient(135deg, ${darkColor} 0%, #0f172a 100%)`,
-                                        borderRadius: '16px',
+                                        borderRadius: '12px',
                                         position: 'relative',
                                         overflow: 'hidden'
                                     }}>
@@ -266,30 +266,30 @@ export const IndustryDetails: React.FC = () => {
                                             position: 'absolute',
                                             top: 0,
                                             right: 0,
-                                            width: '150px',
-                                            height: '150px',
+                                            width: '120px',
+                                            height: '120px',
                                             background: 'radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%)',
                                             pointerEvents: 'none'
                                         }}></div>
 
                                         <div style={{ position: 'relative', zIndex: 1 }}>
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px' }}>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
                                                 <div style={{
-                                                    width: '50px',
-                                                    height: '50px',
+                                                    width: '40px',
+                                                    height: '40px',
                                                     background: 'rgba(255,255,255,0.1)',
-                                                    borderRadius: '12px',
+                                                    borderRadius: '10px',
                                                     display: 'flex',
                                                     alignItems: 'center',
                                                     justifyContent: 'center'
                                                 }}>
-                                                    <i className="fa-solid fa-lightbulb" style={{ color: primaryColor, fontSize: '24px' }}></i>
+                                                    <i className="fa-solid fa-lightbulb" style={{ color: primaryColor, fontSize: '20px' }}></i>
                                                 </div>
-                                                <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#fff', margin: 0 }}>
+                                                <h4 style={{ fontSize: '18px', fontWeight: '700', color: '#fff', margin: 0 }}>
                                                     Our Strategic Approach
                                                 </h4>
                                             </div>
-                                            <p style={{ fontSize: '16px', lineHeight: '1.7', color: 'rgba(255,255,255,0.95)', margin: 0 }}>
+                                            <p style={{ fontSize: '15px', lineHeight: '1.6', color: 'rgba(255,255,255,0.95)', margin: 0 }}>
                                                 {industry.challenges.items[activeChallenge].solution}
                                             </p>
                                         </div>
@@ -435,24 +435,140 @@ export const IndustryDetails: React.FC = () => {
                 </div>
             </div>
 
-            {/* 5. CTA Section (Dark) */}
-            <div className="rts-cta-area" style={{ background: '#0f172a', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
-                {/* Abstract Shapes */}
-                <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 20%), radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 20%)' }}></div>
+            {/* 5. Process / How It Works Section (New Addition) */}
+            <div className="rts-process-area rts-section-gap" style={{ padding: '80px 0 100px', background: '#fff' }}>
+                <div className="container">
+                    <div className="row mb--40">
+                        <div className="col-12 text-center">
+                            <span style={{ color: primaryColor, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '14px', display: 'block', marginBottom: '10px' }}>
+                                Implementation Process
+                            </span>
+                            <h2 className="title" style={{ fontSize: '36px', fontWeight: '800', color: darkColor }}>
+                                How We Drive Results
+                            </h2>
+                        </div>
+                    </div>
+                    <div className="row g-4 justify-content-center">
+                        {[
+                            { step: '01', title: 'Assessment', desc: 'We analyze your current infrastructure and identify AI opportunities.' },
+                            { step: '02', title: 'Strategy', desc: 'Developing a tailored roadmap aligned with your business goals.' },
+                            { step: '03', title: 'Integration', desc: 'Seamless implementation of AI solutions into your workflows.' },
+                            { step: '04', title: 'Optimization', desc: 'Continuous monitoring and refinement for maximum performance.' }
+                        ].map((item, index) => (
+                            <div className="col-lg-3 col-md-6" key={index}>
+                                <div style={{ textAlign: 'center', padding: '30px 20px', position: 'relative' }}>
+                                    <div style={{
+                                        width: '60px',
+                                        height: '60px',
+                                        background: index % 2 === 0 ? '#EFF6FF' : '#F5F3FF',
+                                        color: index % 2 === 0 ? primaryColor : '#8B5CF6',
+                                        borderRadius: '50%',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        fontSize: '20px',
+                                        fontWeight: '800',
+                                        margin: '0 auto 20px',
+                                        border: `1px solid ${index % 2 === 0 ? '#DBEAFE' : '#EDE9FE'}`
+                                    }}>
+                                        {item.step}
+                                    </div>
+                                    <h4 style={{ fontSize: '20px', fontWeight: '700', color: darkColor, marginBottom: '10px' }}>{item.title}</h4>
+                                    <p style={{ fontSize: '15px', color: textColor, lineHeight: '1.6' }}>{item.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
 
-                <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-                    <div className="row justify-content-center text-center">
-                        <div className="col-lg-8">
-                            <h2 style={{ fontSize: '48px', fontWeight: '800', color: '#fff', marginBottom: '20px' }}>Ready to Transform?</h2>
-                            <p style={{ fontSize: '20px', color: '#cbd5e1', marginBottom: '40px', fontWeight: '300' }}>
+            {/* 6. CTA Gradient Section (Boxed & Premium) */}
+            <div className="rts-cta-gradient" style={{ padding: '0 0 120px' }}>
+                <div className="container">
+                    <div
+                        style={{
+                            background: `linear-gradient(135deg, ${primaryColor} 0%, #8B5CF6 100%)`,
+                            borderRadius: '30px',
+                            padding: '100px 60px',
+                            position: 'relative',
+                            overflow: 'hidden',
+                            textAlign: 'center',
+                            boxShadow: '0 30px 60px -20px rgba(59, 130, 246, 0.4)'
+                        }}
+                    >
+                        {/* Abstract Background Shapes */}
+                        <div style={{
+                            position: 'absolute',
+                            top: '-50%',
+                            right: '-20%',
+                            width: '600px',
+                            height: '600px',
+                            background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%)',
+                            borderRadius: '50%',
+                            pointerEvents: 'none'
+                        }}></div>
+                        <div style={{
+                            position: 'absolute',
+                            bottom: '-50%',
+                            left: '-20%',
+                            width: '500px',
+                            height: '500px',
+                            background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%)',
+                            borderRadius: '50%',
+                            pointerEvents: 'none'
+                        }}></div>
+
+                        <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                            <h2 style={{ color: '#fff', fontSize: '48px', fontWeight: '800', marginBottom: '20px', lineHeight: '1.2' }}>
+                                Ready to Transform?
+                            </h2>
+                            <p style={{ color: 'rgba(255,255,255,0.95)', fontSize: '20px', marginBottom: '45px', maxWidth: '700px', margin: '0 auto 45px' }}>
                                 Let's build a future-proof strategy for your {industry.name} business together.
                             </p>
-                            <div className="d-flex flex-col sm:flex-row justify-content-center gap-3">
-                                <Link to="/contact" className="rts-btn btn-primary w-full sm:w-auto text-center justify-center" style={{ background: primaryColor, border: 'none', padding: '15px 40px', fontSize: '18px', fontWeight: 'bold' }}>
-                                    Get Started Now
+
+                            <div className="d-flex flex-column flex-sm-row gap-3">
+                                <Link to="/contact">
+                                    <button
+                                        style={{
+                                            padding: '18px 45px',
+                                            background: '#fff',
+                                            color: primaryColor,
+                                            borderRadius: '50px',
+                                            fontWeight: '700',
+                                            fontSize: '18px',
+                                            border: 'none',
+                                            cursor: 'pointer',
+                                            boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
+                                            minWidth: '220px',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            gap: '10px'
+                                        }}
+                                        onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+                                        onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+                                    >
+                                        Get Started Now <i className="fa-solid fa-arrow-right"></i>
+                                    </button>
                                 </Link>
-                                <Link to="/contact" className="rts-btn btn-light w-full sm:w-auto text-center justify-center" style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.3)', color: '#fff', padding: '15px 40px', fontSize: '18px', fontWeight: 'bold' }}>
-                                    Contact Sales
+                                <Link to="/contact">
+                                    <button
+                                        style={{
+                                            padding: '18px 45px',
+                                            background: 'rgba(255,255,255,0.1)',
+                                            color: '#fff',
+                                            borderRadius: '50px',
+                                            fontWeight: '700',
+                                            fontSize: '18px',
+                                            border: '1px solid rgba(255,255,255,0.3)',
+                                            cursor: 'pointer',
+                                            minWidth: '200px'
+                                        }}
+                                        onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
+                                        onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+                                    >
+                                        Contact Sales
+                                    </button>
                                 </Link>
                             </div>
                         </div>

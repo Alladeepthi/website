@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
                     <div className="col-lg-3">
                         <div className="left-wiget">
                             <Link className="logo" to="/">
-                                <img src="/assets/images/logo/neuraltrix-ai-logo.png" alt="NeuraltrixAI" style={{ height: '32px', width: 'auto', marginBottom: '10px' }} />
+                                <img src="/assets/images/logo/nlogo (1).png" alt="NeuraltrixAI" style={{ height: '32px', width: 'auto', marginBottom: '10px' }} />
                             </Link>
                             <p className="disc" style={{ marginBottom: '10px', fontSize: '13px', lineHeight: '1.4' }}>High-performance data platforms & automated workflows.</p>
                             <form action="#" className="footer-form" onClick={(e) => e.preventDefault()} style={{ marginTop: '0' }}>

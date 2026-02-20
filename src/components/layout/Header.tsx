@@ -39,7 +39,7 @@ export const Header: React.FC = () => {
             <div className="header-wrapper-main" style={wrapperStyle}>
               <div className="logo-area">
                 <Link to="/">
-                  <img src="/assets/images/logo/neuraltrix-ai-logo.png" alt="NeuraltrixAI" style={{ height: '55px', width: 'auto' }} />
+                  <img src="/assets/images/logo/nlogo (1).png" alt="NeuraltrixAI" style={{ height: '55px', width: 'auto' }} />
                 </Link>
               </div>
               <div className="nav-area hidden lg:flex" style={{ flex: 1, justifyContent: 'flex-end' }}>
