@@ -39,7 +39,7 @@ export const Header: React.FC = () => {
             <div className="header-wrapper-main" style={wrapperStyle}>
               <div className="logo-area">
                 <Link to="/">
-                  <img src="/assets/images/logo/nlogo (1).png" alt="NeuraltrixAI" style={{ height: '55px', width: 'auto' }} />
+                  <img src="/assets/images/logo/nlogo%20(1).png" alt="NeuraltrixAI" style={{ height: '55px', width: 'auto' }} />
                 </Link>
               </div>
               <div className="nav-area hidden lg:flex" style={{ flex: 1, justifyContent: 'flex-end' }}>
@@ -409,6 +409,14 @@ export const Header: React.FC = () => {
           </div>
         </div>
       </div>
+      <style>{`
+        /* Ensure visibility on white backgrounds by turning the white logo black */
+        header.header-relative .logo-area img,
+        header.sticky .logo-area img {
+          filter: brightness(0);
+          transition: filter 0.3s ease;
+        }
+      `}</style>
     </header >
   );
 };
