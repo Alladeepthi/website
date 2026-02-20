@@ -410,9 +410,8 @@ export const Header: React.FC = () => {
         </div>
       </div>
       <style>{`
-        /* Ensure visibility on white backgrounds by turning the white logo black */
-        header.header-relative .logo-area img,
-        header.sticky .logo-area img {
+        /* Ensure visibility on white backgrounds (Inner Pages) by turning the white logo black */
+        header.header-relative .logo-area img {
           filter: brightness(0);
           transition: filter 0.3s ease;
         }
