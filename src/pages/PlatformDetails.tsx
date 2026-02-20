@@ -5,8 +5,8 @@ import { platformsData } from '../data/platformsData';
 export const PlatformDetails = () => {
     const { id } = useParams();
     const platform = platformsData.find(p => p.slug === id);
-    const [activeFeature, setActiveFeature] = useState(0);
-    const [metricsVisible, setMetricsVisible] = useState(false);
+    const [activeFeature, setActiveFeature] = useState(-1);
+
 
     useEffect(() => {
         document.body.className = "demo-data-science";
@@ -16,23 +16,8 @@ export const PlatformDetails = () => {
         script.async = true;
         document.body.appendChild(script);
 
-        // Metrics animation trigger
-        const handleScroll = () => {
-            const metricsSection = document.getElementById('metrics-section');
-            if (metricsSection) {
-                const rect = metricsSection.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom >= 0) {
-                    setMetricsVisible(true);
-                }
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        handleScroll();
-
         return () => {
             document.body.className = "";
-            window.removeEventListener('scroll', handleScroll);
             if (document.body.contains(script)) {
                 document.body.removeChild(script);
             }
@@ -99,15 +84,40 @@ export const PlatformDetails = () => {
                     background: #eff6ff !important;
                     transform: scale(1.02);
                 }
+                
+                .custom-case-card {
+                    background: #fff;
+                    border-radius: 16px;
+                    overflow: hidden;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+                    transition: all 0.3s ease;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                }
+                .custom-case-card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+                }
+                .custom-case-card .case-image {
+                    display: block;
+                    border-bottom: 1px solid #f1f5f9;
+                    overflow: hidden;
+                }
+                .custom-case-card img {
+                    transition: transform 0.5s ease;
+                }
+                .custom-case-card:hover img {
+                    transform: scale(1.05);
+                }
             `}</style>
 
             {/* 1. Hero Section */}
-            <div className="rts-about-breadcrumb-area" style={{
+            <div className="rts-about-breadcrumb-area py-32 md:py-48" style={{
                 backgroundImage: `linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.8) 100%), url('/assets/images/banner/breadcrumb-01.webp')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center center',
                 backgroundRepeat: 'no-repeat',
-                padding: '200px 0 120px',
                 textAlign: 'center',
                 color: '#fff',
                 position: 'relative'
@@ -115,7 +125,7 @@ export const PlatformDetails = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
-                            <h1 className="title" style={{ fontSize: '48px', fontWeight: '800', marginBottom: '10px', color: '#fff' }}>
+                            <h1 className="title text-4xl md:text-5xl lg:text-7xl" style={{ fontWeight: '800', marginBottom: '10px', color: '#fff' }}>
                                 {platform.name}
                             </h1>
                             <ul style={{ display: 'flex', justifyContent: 'center', gap: '10px', listStyle: 'none', padding: 0, fontSize: '16px', opacity: 0.8 }}>
@@ -143,8 +153,7 @@ export const PlatformDetails = () => {
                                     marginBottom: '15px',
                                     fontSize: '14px'
                                 }}>Enterprise Platform</span>
-                                <h2 className="title" style={{
-                                    fontSize: '42px',
+                                <h2 className="title text-3xl md:text-4xl lg:text-5xl" style={{
                                     fontWeight: '800',
                                     lineHeight: '1.2',
                                     marginBottom: '25px',
@@ -191,6 +200,7 @@ export const PlatformDetails = () => {
                         <div className="col-lg-6 mt_md--50 mt_sm--50">
                             <div className="thumbnail-image" style={{ position: 'relative' }}>
                                 <img
+                                    loading="lazy"
                                     src={platform.hero.image || "/assets/images/banner/28.webp"}
                                     alt={platform.name}
                                     style={{
@@ -207,77 +217,77 @@ export const PlatformDetails = () => {
 
 
             {/* 4. Data Architecture Flow */}
-            {platform.architecture && (
-                <div className="rts-architecture-area rts-section-gap" style={{ background: lightBg, padding: '100px 0' }}>
-                    <div className="container">
-                        <div className="row mb--60">
-                            <div className="col-12 text-center">
-                                <span style={{ color: primaryColor, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '14px' }}>Architecture</span>
-                                <h2 className="title" style={{ fontSize: '38px', fontWeight: '800', color: darkColor, marginTop: '10px' }}>{platform.architecture.title}</h2>
-                                <p style={{ fontSize: '16px', color: textColor, marginTop: '15px', maxWidth: '700px', margin: '15px auto 0' }}>
-                                    {platform.architecture.description}
-                                </p>
-                            </div>
+            <div className="rts-architecture-area rts-section-gap" style={{ background: lightBg, padding: '100px 0' }}>
+                <div className="container">
+                    <div className="row mb--60">
+                        <div className="col-12 text-center">
+                            <span style={{ color: primaryColor, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '14px' }}>Architecture</span>
+                            <h2 className="title" style={{ fontSize: '38px', fontWeight: '800', color: darkColor, marginTop: '10px' }}>
+                                {platform.architecture?.title || `${platform.name} Architecture`}
+                            </h2>
+                            <p style={{ fontSize: '16px', color: textColor, marginTop: '15px', maxWidth: '700px', margin: '15px auto 0' }}>
+                                {platform.architecture?.description || `High-level data flow and integration capability of ${platform.name} within your enterprise stack.`}
+                            </p>
                         </div>
+                    </div>
 
-                        {/* Visual Data Flow */}
-                        <div style={{
-                            background: '#fff',
-                            borderRadius: '20px',
-                            padding: '60px 40px',
-                            boxShadow: '0 10px 40px rgba(0,0,0,0.08)',
-                            position: 'relative'
-                        }}>
-                            <div className="row g-4 align-items-center">
-                                {[
-                                    { icon: 'fa-database', label: 'Data Sources', color: '#10b981' },
-                                    { icon: 'fa-arrow-right', label: '', color: '#94a3b8' },
-                                    { icon: 'fa-upload', label: 'Ingestion', color: '#f59e0b' },
-                                    { icon: 'fa-arrow-right', label: '', color: '#94a3b8' },
-                                    { icon: 'fa-snowflake', label: platform.name, color: primaryColor },
-                                    { icon: 'fa-arrow-right', label: '', color: '#94a3b8' },
-                                    { icon: 'fa-chart-line', label: 'Analytics', color: '#8b5cf6' },
-                                    { icon: 'fa-arrow-right', label: '', color: '#94a3b8' },
-                                    { icon: 'fa-users', label: 'End Users', color: '#ec4899' }
-                                ].map((step, idx) => (
-                                    step.label ? (
-                                        <div className="col text-center" key={idx}>
-                                            <div style={{
-                                                width: '80px',
-                                                height: '80px',
-                                                background: idx === 4 ? `linear-gradient(135deg, ${step.color} 0%, #1d4ed8 100%)` : `${step.color}15`,
-                                                borderRadius: '50%',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                margin: '0 auto 15px',
-                                                boxShadow: idx === 4 ? `0 10px 30px ${step.color}40` : 'none',
-                                                transition: 'all 0.3s'
+                    {/* Visual Data Flow */}
+                    <div style={{
+                        background: '#fff',
+                        borderRadius: '20px',
+                        padding: '60px 40px',
+                        boxShadow: '0 10px 40px rgba(0,0,0,0.08)',
+                        position: 'relative'
+                    }}>
+                        <div className="row g-4 align-items-center">
+                            {[
+                                { icon: 'fa-database', label: 'Data Sources', color: '#10b981' },
+                                { icon: 'fa-arrow-right', label: '', color: '#94a3b8' },
+                                { icon: 'fa-upload', label: 'Ingestion', color: '#f59e0b' },
+                                { icon: 'fa-arrow-right', label: '', color: '#94a3b8' },
+                                { icon: 'fa-layer-group', label: platform.name, color: primaryColor },
+                                { icon: 'fa-arrow-right', label: '', color: '#94a3b8' },
+                                { icon: 'fa-chart-line', label: 'Analytics', color: '#8b5cf6' },
+                                { icon: 'fa-arrow-right', label: '', color: '#94a3b8' },
+                                { icon: 'fa-users', label: 'End Users', color: '#ec4899' }
+                            ].map((step, idx) => (
+                                step.label ? (
+                                    <div className="col text-center" key={idx}>
+                                        <div style={{
+                                            width: '80px',
+                                            height: '80px',
+                                            background: idx === 4 ? `linear-gradient(135deg, ${step.color} 0%, #1d4ed8 100%)` : `${step.color}15`,
+                                            borderRadius: '50%',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            margin: '0 auto 15px',
+                                            boxShadow: idx === 4 ? `0 10px 30px ${step.color}40` : 'none',
+                                            transition: 'all 0.3s'
+                                        }}
+                                            onMouseEnter={(e) => {
+                                                e.currentTarget.style.transform = 'scale(1.1)';
                                             }}
-                                                onMouseEnter={(e) => {
-                                                    e.currentTarget.style.transform = 'scale(1.1)';
-                                                }}
-                                                onMouseLeave={(e) => {
-                                                    e.currentTarget.style.transform = 'scale(1)';
-                                                }}>
-                                                <i className={`fa-solid ${step.icon}`} style={{
-                                                    color: idx === 4 ? '#fff' : step.color,
-                                                    fontSize: '32px'
-                                                }}></i>
-                                            </div>
-                                            <div style={{ fontSize: '14px', fontWeight: '700', color: darkColor }}>{step.label}</div>
+                                            onMouseLeave={(e) => {
+                                                e.currentTarget.style.transform = 'scale(1)';
+                                            }}>
+                                            <i className={`fa-solid ${step.icon}`} style={{
+                                                color: idx === 4 ? '#fff' : step.color,
+                                                fontSize: '32px'
+                                            }}></i>
                                         </div>
-                                    ) : (
-                                        <div className="col-auto" key={idx} style={{ padding: '0 5px' }}>
-                                            <i className={`fa-solid ${step.icon}`} style={{ color: step.color, fontSize: '24px' }}></i>
-                                        </div>
-                                    )
-                                ))}
-                            </div>
+                                        <div style={{ fontSize: '14px', fontWeight: '700', color: darkColor }}>{step.label}</div>
+                                    </div>
+                                ) : (
+                                    <div className="col-auto" key={idx} style={{ padding: '0 5px' }}>
+                                        <i className={`fa-solid ${step.icon}`} style={{ color: step.color, fontSize: '24px' }}></i>
+                                    </div>
+                                )
+                            ))}
                         </div>
                     </div>
                 </div>
-            )}
+            </div>
 
             {/* 5. Industry Use Cases with Icons */}
             {platform.industryUseCases && (
@@ -341,42 +351,96 @@ export const PlatformDetails = () => {
                             </h2>
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-lg-10 offset-lg-1">
+                    <div className="row g-5 align-items-center">
+                        {/* Comparison Table */}
+                        <div className="col-lg-7">
                             <div style={{ background: '#fff', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 10px 40px rgba(0,0,0,0.08)' }}>
-                                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                                    <thead>
-                                        <tr style={{ background: darkColor }}>
-                                            <th style={{ padding: '20px', color: '#fff', fontSize: '16px', fontWeight: '700', textAlign: 'left' }}>Feature</th>
-                                            <th style={{ padding: '20px', color: '#fff', fontSize: '16px', fontWeight: '700', textAlign: 'center' }}>Traditional</th>
-                                            <th style={{ padding: '20px', color: primaryColor, fontSize: '16px', fontWeight: '700', textAlign: 'center', background: '#1e3a5f' }}>{platform.name}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {[
-                                            { feature: 'Deployment Time', traditional: '3-6 months', modern: '< 24 hours' },
-                                            { feature: 'Scalability', traditional: 'Manual', modern: 'Auto-scale' },
-                                            { feature: 'Maintenance', traditional: 'High effort', modern: 'Fully managed' },
-                                            { feature: 'Cost Model', traditional: 'Fixed CapEx', modern: 'Pay-as-you-go' },
-                                            { feature: 'Performance', traditional: 'Limited', modern: 'Unlimited' }
-                                        ].map((row, idx) => (
-                                            <tr key={idx} className="comparison-row" style={{
-                                                background: idx % 2 === 0 ? '#fff' : '#f8fafc',
-                                                borderBottom: '1px solid #e2e8f0'
-                                            }}>
-                                                <td style={{ padding: '20px', fontSize: '15px', fontWeight: '600', color: darkColor }}>{row.feature}</td>
-                                                <td style={{ padding: '20px', fontSize: '15px', color: '#ef4444', textAlign: 'center' }}>
-                                                    <i className="fa-solid fa-xmark" style={{ marginRight: '8px' }}></i>
-                                                    {row.traditional}
-                                                </td>
-                                                <td style={{ padding: '20px', fontSize: '15px', color: '#10b981', textAlign: 'center', fontWeight: '600' }}>
-                                                    <i className="fa-solid fa-check" style={{ marginRight: '8px' }}></i>
-                                                    {row.modern}
-                                                </td>
+                                <div className="overflow-x-auto">
+                                    <table style={{ width: '100%', minWidth: '600px', borderCollapse: 'collapse' }}>
+                                        <thead>
+                                            <tr style={{ background: darkColor }}>
+                                                <th style={{ padding: '20px', color: '#fff', fontSize: '16px', fontWeight: '700', textAlign: 'center', width: '80px' }}>S.No</th>
+                                                <th style={{ padding: '20px', color: '#fff', fontSize: '16px', fontWeight: '700', textAlign: 'left' }}>Feature</th>
+                                                <th style={{ padding: '20px', color: primaryColor, fontSize: '16px', fontWeight: '700', textAlign: 'center', background: '#1e3a5f' }}>{platform.name}</th>
                                             </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            {[
+                                                { feature: 'Deployment Time', traditional: '3-6 months', modern: '< 24 hours' },
+                                                { feature: 'Scalability', traditional: 'Manual', modern: 'Auto-scale' },
+                                                { feature: 'Maintenance', traditional: 'High effort', modern: 'Fully managed' },
+                                                { feature: 'Cost Model', traditional: 'Fixed CapEx', modern: 'Pay-as-you-go' },
+                                                { feature: 'Performance', traditional: 'Limited', modern: 'Unlimited' },
+                                                { feature: 'Security', traditional: 'Basic', modern: 'Enterprise Grade' }
+                                            ].map((row, idx) => (
+                                                <tr key={idx} className="comparison-row" style={{
+                                                    background: idx % 2 === 0 ? '#fff' : '#f8fafc',
+                                                    borderBottom: '1px solid #e2e8f0'
+                                                }}>
+                                                    <td style={{ padding: '20px', fontSize: '16px', fontWeight: '700', color: primaryColor, textAlign: 'center', fontFamily: 'monospace' }}>
+                                                        {String(idx + 1).padStart(2, '0')}
+                                                    </td>
+                                                    <td style={{ padding: '20px', fontSize: '15px', fontWeight: '600', color: darkColor }}>{row.feature}</td>
+                                                    <td style={{ padding: '20px', fontSize: '15px', color: '#ef4444', textAlign: 'center' }}>
+                                                        <i className="fa-solid fa-xmark" style={{ marginRight: '8px' }}></i>
+                                                        {row.traditional}
+                                                    </td>
+                                                    <td style={{ padding: '20px', fontSize: '15px', color: '#10b981', textAlign: 'center', fontWeight: '600' }}>
+                                                        <i className="fa-solid fa-check" style={{ marginRight: '8px' }}></i>
+                                                        {row.modern}
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Side Image / Graphic */}
+                        <div className="col-lg-5">
+                            <div style={{
+                                position: 'relative',
+                                borderRadius: '20px',
+                                overflow: 'hidden',
+                                boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                                height: '100%',
+                                minHeight: '400px'
+                            }}>
+                                <img
+                                    loading="lazy"
+                                    src={platform.solutions?.image || platform.hero.image || "/assets/images/platform/App development-rafiki.png"}
+                                    alt="Platform Comparison"
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        objectFit: 'cover',
+                                        transition: 'transform 0.5s ease'
+                                    }}
+                                />
+                                {/* Overlay Gradient */}
+                                <div style={{
+                                    position: 'absolute',
+                                    inset: 0,
+                                    background: 'linear-gradient(to top, rgba(30, 41, 59, 0.4) 0%, transparent 100%)'
+                                }}></div>
+
+                                {/* Floating Badge */}
+                                <div style={{
+                                    position: 'absolute',
+                                    bottom: '30px',
+                                    left: '30px',
+                                    background: 'rgba(255,255,255,0.95)',
+                                    padding: '15px 25px',
+                                    borderRadius: '12px',
+                                    border: `1px solid ${primaryColor}30`,
+                                    boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
+                                }}>
+                                    <div style={{ fontSize: '12px', fontWeight: '600', color: textColor, marginBottom: '5px' }}>Performance Gain</div>
+                                    <div style={{ fontSize: '24px', fontWeight: '800', color: darkColor }}>
+                                        <span style={{ color: '#10b981' }}>10x</span> Faster
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -632,30 +696,36 @@ export const PlatformDetails = () => {
                     <div className="row g-5">
                         {platform.caseStudies.items.map((study, i) => (
                             <div className="col-lg-6 col-md-6" key={i}>
-                                <div className="single-case-style-one" style={{
-                                    background: '#fff',
-                                    borderRadius: '16px',
-                                    overflow: 'hidden',
-                                    boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
-                                    transition: 'all 0.3s'
-                                }}
-                                    onMouseEnter={(e) => {
-                                        e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.1)';
-                                        e.currentTarget.style.transform = 'translateY(-5px)';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.style.boxShadow = '0 4px 6px rgba(0,0,0,0.05)';
-                                        e.currentTarget.style.transform = 'translateY(0)';
-                                    }}>
-                                    <Link to="/contact" className="thumbnail-case">
-                                        <img src={study.image || `/assets/images/case/0${(i % 3) + 6}.webp`} alt={study.title} style={{ width: '100%', height: '300px', objectFit: 'cover' }} />
+                                <div className="custom-case-card">
+                                    <Link to="/contact" className="case-image">
+                                        <img
+                                            src={study.image || `/assets/images/case/0${(i % 3) + 6}.webp`}
+                                            alt={study.title}
+                                            style={{
+                                                width: '100%',
+                                                height: '250px',
+                                                objectFit: 'contain',
+                                                background: '#f8fafc',
+                                                padding: '20px'
+                                            }}
+                                        />
                                     </Link>
-                                    <div className="inner-content" style={{ padding: '30px' }}>
+                                    <div style={{ padding: '30px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                                         <span style={{ color: primaryColor, fontSize: '14px', fontWeight: '600', textTransform: 'uppercase' }}>Use Case</span>
                                         <h5 className="title" style={{ fontSize: '22px', fontWeight: '700', color: darkColor, margin: '10px 0 15px' }}>{study.title}</h5>
-                                        <p className="disc" style={{ fontSize: '15px', color: textColor, margin: 0, lineHeight: '1.6' }}>
+                                        <p className="disc" style={{ fontSize: '15px', color: textColor, margin: '0 0 20px 0', lineHeight: '1.6', flex: 1 }}>
                                             {study.description}
                                         </p>
+                                        <Link to="/contact" style={{
+                                            color: primaryColor,
+                                            fontWeight: '600',
+                                            fontSize: '15px',
+                                            display: 'inline-flex',
+                                            alignItems: 'center',
+                                            gap: '8px'
+                                        }}>
+                                            Read More <i className="fa-regular fa-arrow-right"></i>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

@@ -1,3 +1,11 @@
+export interface CaseStudy {
+    title: string;
+    description: string;
+    features: string[];
+    image: string;
+    link?: string;
+}
+
 export interface ServiceItem {
     id: number;
     title: string;
@@ -5,6 +13,7 @@ export interface ServiceItem {
     subCategories: string[];
     detailedFeatures?: { title: string; description: string; icon: string; image?: string; }[];
     faqs?: { question: string; answer: string; }[];
+    caseStudies?: CaseStudy[];
     icon?: string;
     description: string;
 }
@@ -38,6 +47,29 @@ export const servicesData: ServiceItem[] = [
             { question: "How do you ensure security when integrating external APIs?", answer: "We implement defense-in-depth strategies including OAuth2/OIDC for authentication, mutual TLS for transport security, and strict rate limiting. All sensitive data is encrypted in transit and at rest, and we adhere to industry standards like OWASP Top 10 API Security risks." },
             { question: "Can you integrity with our legacy on-premise systems?", answer: "Yes. We specialize in hybrid cloud architectures. We can deploy secure bridge agents or VPN tunnels to safely expose specific legacy functionalities as modern REST or GraphQL APIs without compromising your internal network security." },
             { question: "What happens if a third-party API goes down?", answer: "Resilience is key. We implement circuit breaker patterns, exponential backoff retries, and dead-letter queues. This ensures your system degrades gracefully rather than crashing, and transactions are queued to be processed once the external service is back online." }
+        ],
+        caseStudies: [
+            {
+                title: "Scaling Fintech Infrastructure",
+                description: "Re-architected a legacy trading platform into microservices, handling 10x transaction volume with sub-millisecond latency.",
+                features: ["99.99% Uptime", "Real-time Data", "Auto-Compliance"],
+                image: "/assets/images/project/Laboratory-pana.png",
+                link: "/case-studies/fintech-scaling"
+            },
+            {
+                title: "Unified Communication API",
+                description: "Built a centralized messaging API consolidating SMS, WhatsApp, and Email for a retail chain, boosting engagement by 40%.",
+                features: ["Omnichannel Support", "High Throughput", "Analytics Dashboard"],
+                image: "/assets/images/project/Emails-amico.png",
+                link: "/case-studies/retail-communication"
+            },
+            {
+                title: "Legacy Banking Integration",
+                description: "Seamlessly connected a 20-year-old mainframe system with modern mobile banking apps using secure middleware.",
+                features: ["Zero Downtime", "Bank-Grade Security", "Real-time Sync"],
+                image: "/assets/images/service/Business merger-amico.png",
+                link: "/case-studies/banking-integration"
+            }
         ]
     },
     {
@@ -68,6 +100,22 @@ export const servicesData: ServiceItem[] = [
             { question: "Do we own the source code after the project?", answer: "Absolutely. Upon project completion and final payment, full intellectual property and source code ownership are transferred to your organization. We believe you should always be in control of your core technology assets." },
             { question: "How do you handle data migration from our spreadsheets/old system?", answer: "We treat data migration as a critical project phase. We perform detailed data profiling, cleansing, and mapping before automating the migration scripts. We verify data integrity through dry runs to ensure zero data loss during the transition." },
             { question: "What is your typical development methodology?", answer: "We follow an Agile methodology with two-week sprints. This gives you regular visibility into progress (demos every two weeks) and the flexibility to adjust priorities based on user feedback throughout the development lifecycle." }
+        ],
+        caseStudies: [
+            {
+                title: "Custom ERP for Manufacturing",
+                description: "Developed a bespoke ERP solution integrating inventory, production planning, and logistics, reducing ops costs by 25%.",
+                features: ["Real-time Inventory", "Auto-Scheduling", "Vendor Portal"],
+                image: "/assets/images/project/Tax-bro.png",
+                link: "/case-studies/manufacturing-erp"
+            },
+            {
+                title: "Global HRMS Platform",
+                description: "Built a centralized HR management system for a multinational corp, streamlining payroll for 5,000+ employees.",
+                features: ["Multi-Country Payroll", "Self-Service Portal", "Compliance Engine"],
+                image: "/assets/images/service/New employee-amico.png",
+                link: "/case-studies/global-hrms"
+            }
         ]
     },
     {
@@ -98,6 +146,22 @@ export const servicesData: ServiceItem[] = [
             { question: "What is your design process?", answer: "We follow a Double Diamond approach: Discover (research & strategy), Define (user personas & flows), Develop (wireframing & prototyping), and Deliver (UI design & specs). We involve you at every stage to ensure the design aligns with business goals." },
             { question: "Do you really do user testing?", answer: "Yes. We believe 'you are not your user'. We conduct usability testing sessions with real or representative users on prototypes to validate assumptions and uncover friction points before development begins." },
             { question: "How do we collaborate during the design phase?", answer: "We use Figma for all our design work. You'll have a live link to view progress in real-time, leave comments directly on the designs, and see how the product is evolving day by day." }
+        ],
+        caseStudies: [
+            {
+                title: "FinTech App UI Overhaul",
+                description: "Redesigned a mobile banking app interface, boosting user engagement by 35% and upgrading store ratings to 4.8 stars.",
+                features: ["Modern Visual Identity", "Simplified Flows", "Dark Mode"],
+                image: "/assets/images/project/Laboratory-pana.png",
+                link: "/case-studies/fintech-ui-overhaul"
+            },
+            {
+                title: "E-Commerce Rebranding",
+                description: "Complete visual rebranding and website redesign for a fashion retailer, resulting in a 50% increase in mobile conversions.",
+                features: ["Visual Storytelling", "Mobile-First Design", "Design System"],
+                image: "/assets/images/service/Onboarding-bro.png",
+                link: "/case-studies/ecommerce-rebrand"
+            }
         ]
     },
     {
@@ -128,6 +192,22 @@ export const servicesData: ServiceItem[] = [
             { question: "Which CRM platforms do you integrate with?", answer: "We have extensive experience with major platforms including Salesforce, HubSpot, Zoho, and Pipedrive, as well as custom industry-specific CRMs. We ensure seamless 2-way data sync." },
             { question: "Can you help us separate 'hot' leads from 'tire kickers'?", answer: "Yes, that's exactly what our lead scoring models do. We assign points based on behavioral signals (email opens, pricing page visits) and demographic fit, so your sales team only calls leads that are sales-ready." },
             { question: "How long does it take to see results from automation?", answer: "While setup takes a few weeks, most clients see an immediate impact on efficiency (time saved). Measurable improvements in conversion rates and retention typically become statistically significant within 1-3 months of launching the new workflows." }
+        ],
+        caseStudies: [
+            {
+                title: "SaaS Lead Nurturing",
+                description: "Implemented a complex HubSpot automation workflow that increased lead-to-opportunity conversion by 20% within 3 months.",
+                features: ["Behavioral Triggers", "Personalized Sequences", "Sales Alerts"],
+                image: "/assets/images/project/Emails-amico.png",
+                link: "/case-studies/saas-automation"
+            },
+            {
+                title: "Retention Bot for Telco",
+                description: "Deployed an AI-driven churn prevention bot that automatically engaged at-risk customers, reducing churn by 12%.",
+                features: ["Sentiment Analysis", "Auto-Offers", "CRM Sync"],
+                image: "/assets/images/service/Consultative sales-amico.png",
+                link: "/case-studies/telco-retention"
+            }
         ]
     },
     {
@@ -158,6 +238,22 @@ export const servicesData: ServiceItem[] = [
             { question: "Do you recommend React Native/Flutter or pure Native?", answer: "For 90% of business use cases, we recommend React Native or Flutter. They offer significant cost savings (one codebase) and near-native performance. We recommend pure Native (Swift/Kotlin) only for apps requiring extreme hardware access or 3D graphics." },
             { question: "Will you help us get the app on the App Store?", answer: "Yes, we handle the entire submission process, including compliance checks, certificate management, and responding to Apple/Google review queries until the app is approved and live." },
             { question: "How do you handle bug fixes after launch?", answer: "We offer ongoing maintenance packages. Critical bugs are addressed immediately under SLA. For non-critical issues, we can follow a monthly update schedule to bundle fixes with new feature releases." }
+        ],
+        caseStudies: [
+            {
+                title: "Logistics Delivery App",
+                description: "Built a cross-platform Flutter app featuring real-time tracking, route optimization, and secure in-app payments for a logistics firm.",
+                features: ["Live Geolocation", "Secure Payments", "Driver Dashboard"],
+                image: "/assets/images/project/Tax-bro.png",
+                link: "/case-studies/delivery-app"
+            },
+            {
+                title: "Telemedicine Platform",
+                description: "Secure video consultation app connecting patients with doctors, featuring verified digital prescriptions and appointment booking.",
+                features: ["HIPAA Compliant", "Video Calling", "E-Prescriptions"],
+                image: "/assets/images/service/Business support-pana.png",
+                link: "/case-studies/telemedicine-app"
+            }
         ]
     },
     {
@@ -188,6 +284,22 @@ export const servicesData: ServiceItem[] = [
             { question: "Do we need a huge dataset to start with AI?", answer: "Not necessarily. We can start with transfer learning on pre-trained models (like GPT or Vision models) and fine-tune them with your smaller dataset. We also help you implement data collection strategies to build your proprietary dataset over time." },
             { question: "How accurate are the models?", answer: "Accuracy varies by use case, but we typically target and achieve >95% accuracy for tasks like document processing and >90% for classification. We always implement 'human-in-the-loop' workflows where the AI flags low-confidence predictions for human review." },
             { question: "Is our data used to train public models?", answer: "Never. We deploy private instances of models (or local models) where your data remains essentially your own. It is used exclusively to train/tune YOUR model and is never shared with third parties or used to improve public base models." }
+        ],
+        caseStudies: [
+            {
+                title: "Predictive Maintenance AI",
+                description: "Deployed IoT sensor analysis models to predict equipment failures, reducing plant downtime by 30% and maintenance costs by 15%.",
+                features: ["IoT Integration", "Early Warning", "Operator Dashboards"],
+                image: "/assets/images/project/Laboratory-pana.png",
+                link: "/case-studies/predictive-maintenance"
+            },
+            {
+                title: "Fraud Detection System",
+                description: "Real-time transaction monitoring system using ML to flag fraudulent activities with 98% accuracy for a payment processor.",
+                features: ["Real-time Scoring", "Pattern Recognition", "Admin Alerts"],
+                image: "/assets/images/service/Business merger-amico.png",
+                link: "/case-studies/fraud-detection"
+            }
         ]
     },
     {
@@ -218,6 +330,22 @@ export const servicesData: ServiceItem[] = [
             { question: "Which cloud data warehouse should we use?", answer: "It depends on your existing stack. If you are on GCP, BigQuery is the clear winner. For AWS, Redshift or Snowflake are great options. We help you evaluate costs and performance to make the best architectural decision." },
             { question: "How do you handle 'dirty' data?", answer: "We implement automated data quality checks (using tools like Great Expectations) within the pipeline. Bad data is quarantined for review, and we build transformation logic to clean common errors automatically, ensuring your dashboard metrics remain accurate." },
             { question: "Is my data secure in the cloud?", answer: "Yes. We implement strict encryption at rest and in transit, private networking (VPC), and granular IAM policies. We also configure audit logging so you know exactly who accessed what data and when." }
+        ],
+        caseStudies: [
+            {
+                title: "BI Data Warehouse",
+                description: "Consolidated data from 5 sources into a single cloud warehouse, enabling real-time cross-departmental reporting and visualization.",
+                features: ["Unified Data", "Automated ETL", "Interactive Dashboards"],
+                image: "/assets/images/service/Investment data-amico.png",
+                link: "/case-studies/bi-warehouse"
+            },
+            {
+                title: "Supply Chain Analytics",
+                description: "Created an end-to-end visibility dashboard for a logistics firm, helping identify bottlenecks and reducing delivery delays by 18%.",
+                features: ["Route Analytics", "Driver Performance", "Cost Tracking"],
+                image: "/assets/images/service/Consultative sales-amico.png",
+                link: "/case-studies/supply-chain-analytics"
+            }
         ]
     },
     {
@@ -248,6 +376,22 @@ export const servicesData: ServiceItem[] = [
             { question: "How quickly can we launch?", answer: "Using our pre-built infrastructure templates, we can often cut launch technical preparation time by 50%. A typical MVP launch setup can be ready in 2-4 weeks alongside your product development." },
             { question: "Can you help with the marketing strategy too?", answer: "While our core focus is technical implementation (analytics, landing pages, email automation), we work closely with your marketing team to ensure their strategy is technically feasible and properly tracked." },
             { question: "What support do we get on launch day?", answer: "We provide a 'War Room' service on launch day. Our engineers monitor traffic, server health, and error logs in real-time to instantly mitigate any issues, ensuring your big day goes without a hitch." }
+        ],
+        caseStudies: [
+            {
+                title: "High-Speed SaaS Launch",
+                description: "Executed a technical launch for a B2B SaaS product, including landing pages and analytics, acquiring 1,000 users in week one.",
+                features: ["Scalable Infra", "Integrated Analytics", "High Conv. Pages"],
+                image: "/assets/images/service/Business support-pana.png",
+                link: "/case-studies/saas-launch"
+            },
+            {
+                title: "Beta Program Management",
+                description: "Managed the technical rollout of a closed beta program, handling invite codes, waitlists, and user feedback collection for 500 early adopters.",
+                features: ["Invite System", "Feedback Loops", "Waitlist Ops"],
+                image: "/assets/images/service/New employee-amico.png",
+                link: "/case-studies/beta-management"
+            }
         ]
     }
 ];

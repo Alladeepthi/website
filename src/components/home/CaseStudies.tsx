@@ -7,30 +7,35 @@ export const CaseStudies: React.FC = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12">
-                        <div className="stok-text marquee-wrapper" style={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-                            <div className="marquee-content" style={{ display: 'inline-block', animation: 'marqueeScroll 40s linear infinite' }}>
-                                {[...Array(8)].map((_, i) => (
-                                    <h2 key={i} className="title" style={{
-                                        display: 'inline-block',
-                                        paddingRight: '60px',
-                                        fontSize: '80px',
-                                        color: 'rgba(255, 255, 255, 0.08)',
-                                        WebkitTextStroke: 'none',
-                                        textTransform: 'uppercase',
-                                        letterSpacing: '5px',
-                                        fontWeight: 800
-                                    }}>Case Studies</h2>
-                                ))}
-                            </div>
+                        <div className="title-center-wrapper text-center" style={{ marginBottom: '50px' }}>
+                            <span className="pre" style={{
+                                color: '#3B82F6',
+                                fontWeight: 700,
+                                fontSize: '13px',
+                                letterSpacing: '2px',
+                                textTransform: 'uppercase',
+                                display: 'block',
+                                marginBottom: '12px',
+                                animation: 'fadeInUp 0.8s ease-out forwards'
+                            }}>Success Stories</span>
+                            <h2 className="title" style={{
+                                fontSize: '42px',
+                                fontWeight: 800,
+                                color: '#ffffff',
+                                lineHeight: 1.2,
+                                marginBottom: '15px',
+                                opacity: 0,
+                                animation: 'fadeInUp 0.8s ease-out 0.2s forwards'
+                            }}>Case Studies</h2>
+                            <style>{`
+                                @keyframes fadeInUp {
+                                    from { opacity: 0; transform: translateY(20px); }
+                                    to { opacity: 1; transform: translateY(0); }
+                                }
+                            `}</style>
                         </div>
                     </div>
                 </div>
-                <style>{`
-                    @keyframes marqueeScroll {
-                        from { transform: translateX(0); }
-                        to { transform: translateX(-50%); }
-                    }
-                `}</style>
                 <div className="product-sticky-wrapper-main mt--60">
                     <div className="product-wrapper">
                         <div className="inner one">

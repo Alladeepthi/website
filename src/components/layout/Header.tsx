@@ -29,10 +29,10 @@ export const Header: React.FC = () => {
   const headerClass = `header-one header--sticky ${!isHome ? 'header-relative' : ''} ${!isPlatformDetails ? 'machine-learning' : ''}`;
 
   const containerStyle = isPlatformDetails ? {} : { maxWidth: '1400px' };
-  const wrapperStyle = isPlatformDetails ? {} : { display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '30px', flexWrap: 'nowrap' };
+  const wrapperStyle = { display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '30px', flexWrap: 'nowrap' as const };
 
   return (
-    <header className={headerClass}>
+    <header className={headerClass} style={{ zIndex: 999, position: 'relative' }}>
       <div className="container" style={containerStyle}>
         <div className="row">
           <div className="col-lg-12">
@@ -42,7 +42,7 @@ export const Header: React.FC = () => {
                   <img src="/assets/images/logo/neuraltrix-ai-logo.png" alt="NeuraltrixAI" style={{ height: '55px', width: 'auto' }} />
                 </Link>
               </div>
-              <div className="nav-area" style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+              <div className="nav-area hidden lg:flex" style={{ flex: 1, justifyContent: 'flex-end' }}>
                 <ul className="" style={{ display: 'flex', flexWrap: 'nowrap', gap: '45px', alignItems: 'center', margin: 0, padding: 0, listStyle: 'none' }}>
                   {/* Services - With Dropdown */}
                   <li className="main-nav has-dropdown mega-menu">
@@ -344,7 +344,7 @@ export const Header: React.FC = () => {
 
                   {/* Industry */}
                   <li className="main-nav has-dropdown project-a-after">
-                    <Link to="/industry">Industry</Link>
+                    <Link to="#" onClick={(e) => e.preventDefault()}>Industry</Link>
                     <ul className="submenu parent-nav">
                       <li><Link to="/industry/healthcare">Healthcare</Link></li>
                       <li><Link to="/industry/finance">Finance</Link></li>
@@ -381,7 +381,7 @@ export const Header: React.FC = () => {
                 </ul>
               </div>
               <div className="button-wrapper-flex">
-                <div className="select-area language">
+                <div className="select-area language hidden lg:flex">
                   <ul>
                     <li className="main-nav has-dropdown project-a-after">
                       <img src="/assets/images/header/01.svg" alt="lang" />
@@ -393,8 +393,8 @@ export const Header: React.FC = () => {
                     </li>
                   </ul>
                 </div>
-                <Link to="/contact" className="rts-btn btn-primary with-arrow">Let's Connect <i className="fa-regular fa-arrow-right"></i></Link>
-                <div className="menu-btn-toggle white" onClick={() => {
+                <Link to="/contact" className="rts-btn btn-primary with-arrow hidden lg:flex">Let's Connect <i className="fa-regular fa-arrow-right"></i></Link>
+                <div className="menu-btn-toggle white lg:hidden" onClick={() => {
                   document.getElementById('side-bar')?.classList.add('show');
                   document.getElementById('anywhere-home')?.classList.add('bgshow');
                 }}>

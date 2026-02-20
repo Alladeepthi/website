@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 export const Hero: React.FC = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
-    const [videoLoaded, setVideoLoaded] = useState(false);
+
 
     useEffect(() => {
         const video = videoRef.current;
@@ -11,7 +11,7 @@ export const Hero: React.FC = () => {
             // Force play immediately
             const playPromise = video.play();
             if (playPromise !== undefined) {
-                playPromise.catch(error => {
+                playPromise.catch(() => {
                     console.log("Auto-play was prevented. This is expected for large local files locally.");
                 });
             }
@@ -21,10 +21,12 @@ export const Hero: React.FC = () => {
     return (
         <section
             style={{
-                position: 'relative',
+                position: 'fixed',
+                top: 0,
+                left: 0,
                 width: '100%',
                 height: '100vh',
-                minHeight: '820px',
+                zIndex: 0,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -50,7 +52,7 @@ export const Hero: React.FC = () => {
                     muted
                     playsInline
                     preload="auto"
-                    onLoadedData={() => setVideoLoaded(true)}
+                    // onLoadedData={() => setVideoLoaded(true)} -> Removed
                     // Removed fallback image to prove video is playing/loading
                     style={{
                         width: '100%',
@@ -85,7 +87,7 @@ export const Hero: React.FC = () => {
             {/* 3. CONTENT - HIDDEN TEMPORARILY AS REQUESTED TO CHECK VIDEO */}
             {/* User request: "if we remove the text then the video might look good" */}
             {/* We are hiding it to verify the video playback quality first */}
-            <div className="container" style={{ position: 'relative', zIndex: 10, opacity: 0 }}>
+            <div className="container" style={{ position: 'relative', zIndex: 10 }}>
                 <div className="row justify-content-center">
                     <div className="col-lg-10 text-center">
                         <div>
@@ -104,8 +106,6 @@ export const Hero: React.FC = () => {
                             }}>
                                 Future-Scale Product Engineering
                             </span>
-
-
                         </div>
                     </div>
                 </div>

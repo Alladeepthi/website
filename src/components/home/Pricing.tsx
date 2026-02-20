@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 export const Pricing: React.FC = () => {
     return (
-        <div className="rts-pricing-area-machine rts-section-gap bg_image">
+        <div className="rts-pricing-area-machine rts-section-gap bg_image py-12 md:py-20">
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12">
                         <div className="title-center-wrapper">
                             <span className="pre">Pricing Plan</span>
-                            <h2 className="title rts-text-anime-style-1">Pricing Options for <br /> Every Business</h2>
+                            <h2 className="title rts-text-anime-style-1 text-3xl md:text-5xl">Pricing Options for <br /> Every Business</h2>
                         </div>
                     </div>
                 </div>

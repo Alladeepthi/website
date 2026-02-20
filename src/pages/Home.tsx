@@ -30,16 +30,27 @@ export const Home: React.FC = () => {
     return (
         <main>
             <Hero />
-            <Services />
-            <WhyChooseUs />
-            <AIPlatform />
-            <CaseStudies />
-            <WorkingProcess />
-            <Testimonials />
-            <Counter />
-            <Pricing />
-            <HomeBlog />
-            <CTA />
+            {/* 2. Services Section - Scrolled Content */}
+            <div style={{ position: 'relative', zIndex: 10, marginTop: '100vh', width: '100%', backgroundColor: '#ffffff' }}>
+                <Services />
+            </div>
+
+            {/* 3. Sticky Section - Why Choose Us */}
+            <div style={{ position: 'sticky', top: 0, zIndex: 5, width: '100%' }}>
+                <WhyChooseUs />
+            </div>
+
+            {/* 4. Remaining Content - Scrolled Content */}
+            <div style={{ position: 'relative', zIndex: 10, width: '100%', backgroundColor: '#ffffff' }}>
+                <AIPlatform />
+                <CaseStudies />
+                <WorkingProcess />
+                <Testimonials />
+                <Counter />
+                <Pricing />
+                <HomeBlog />
+                <CTA />
+            </div>
         </main>
     );
 };

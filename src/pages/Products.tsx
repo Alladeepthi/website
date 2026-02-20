@@ -1,109 +1,144 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { productsData } from '../data/products';
 
 export const Products: React.FC = () => {
     useEffect(() => {
         document.body.className = "demo-machine-learning";
+
+        // Re-initialize main.js for animations and plugins
         const script = document.createElement('script');
         script.src = "/assets/js/main.js?t=" + new Date().getTime();
         script.async = true;
         document.body.appendChild(script);
+
         return () => {
             document.body.className = "";
             document.body.removeChild(script);
         };
     }, []);
 
-    const productList = [
-        {
-            title: 'NeuralX AI Platform',
-            description: 'A comprehensive platform for building, training, and deploying AI models at scale.',
-            icon: '/assets/images/feature/01.svg',
-            link: '/service-details'
-        },
-        {
-            title: 'ML Studio',
-            description: 'Interactive notebook environment designed for data scientists and ML engineers.',
-            icon: '/assets/images/feature/02.svg',
-            link: '/service-details'
-        },
-        {
-            title: 'Data Analytics Suite',
-            description: 'Advanced analytics tools to visualize data and derive actionable insights.',
-            icon: '/assets/images/feature/03.svg',
-            link: '/service-details'
-        },
-        {
-            title: 'Automation Engine',
-            description: 'Automate complex business processes with intelligent workflow orchestration.',
-            icon: '/assets/images/feature/04.svg',
-            link: '/service-details'
-        },
-        {
-            title: 'Vision API',
-            description: 'Integrate powerful computer vision capabilities into your applications easily.',
-            icon: '/assets/images/feature/05.svg',
-            link: '/service-details'
-        },
-        {
-            title: 'NLP Toolkit',
-            description: 'State-of-the-art tools for text analysis, sentiment analysis, and translations.',
-            icon: '/assets/images/feature/06.svg',
-            link: '/service-details'
-        }
-    ];
+    const primaryColor = '#3C72FC'; // Using the primary blue from other pages
+    const darkColor = '#0F0F11';
+    const textColor = '#5D666F';
 
     return (
         <main>
-            {/* rts product-breadcrumb-area-start */}
-            <div className="rts-about-breadcrumb-area">
+            {/* Hero Section */}
+            <div className="rts-breadcrumb-area breadcrumb-bg-1 bg_image" style={{ background: 'linear-gradient(180deg, #091533 0%, #172445 100%)', minHeight: '350px', display: 'flex', alignItems: 'center' }}>
                 <div className="container">
                     <div className="row align-items-center">
-                        <div className="col-lg-6">
-                            <div className="rts-about-breadcrumb-content">
-                                <ul>
-                                    <li><Link to="/">Home</Link></li>
-                                    <li><i className="fa fa-chevron-right"></i></li>
-                                    <li><a href="#" className="active">Products</a></li>
-                                </ul>
-                                <h1 className="title rts-text-anime-style-1">Core Tech & Products</h1>
-                            </div>
-                        </div>
-                        <div className="col-lg-6 pl--50 pl_md--10 pl_sm--10">
-                            <div className="rts-about-breadcrumb-image">
-                                <img src="/assets/images/about/05.webp" alt="products" />
+                        <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 breadcrumb-1-left">
+                            <h1 className="title" style={{ color: '#fff', fontSize: '60px', lineHeight: '1.2', marginBottom: '15px' }}>Our Products</h1>
+                            <div className="bread-tag" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                <Link to="/" style={{ color: '#fff', fontSize: '16px', fontWeight: '500' }}>Home</Link>
+                                <span style={{ color: 'rgba(255,255,255,0.6)' }}> / </span>
+                                <span style={{ color: 'rgba(255,255,255,0.8)', fontSize: '16px' }}>Products</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {/* rts product-breadcrumb-area-end */}
 
-            {/* rts feature area start (Product Grid) */}
-            <div className="rts-feature-area-three rts-section-gap">
+            {/* Products Grid Section - Clean Professional Cards */}
+            <div className="rts-service-area" style={{ background: '#fff', padding: '60px 0' }}>
                 <div className="container">
-                    <div className="row g-5">
-                        <div className="col-lg-12">
-                            <div className="title-left-wrapper text-center mb--50">
-                                <span className="pre">Our Products</span>
-                                <h2 className="title rts-text-anime-style-1">Tools to Accelerate Your AI Journey</h2>
-                            </div>
+                    <div className="row mb-5">
+                        <div className="col-12 text-center">
+                            <span className="pre" style={{
+                                color: primaryColor,
+                                fontWeight: 700,
+                                fontSize: '14px',
+                                letterSpacing: '2px',
+                                textTransform: 'uppercase',
+                                display: 'block',
+                                marginBottom: '10px'
+                            }}>
+                                Innovation Suite
+                            </span>
+                            <h2 className="title" style={{ fontSize: '42px', fontWeight: 800, color: darkColor, marginBottom: '15px' }}>
+                                Powerful Tools for AI-Driven Growth
+                            </h2>
+                            <p className="disc" style={{ maxWidth: '700px', margin: '0 auto', color: textColor, fontSize: '18px', lineHeight: '1.6' }}>
+                                Discover our range of specialized products designed to accelerate your data journey.
+                            </p>
                         </div>
                     </div>
 
                     <div className="row g-5">
-                        {productList.map((product, index) => (
-                            <div className="col-lg-4 col-md-6" key={index}>
-                                <div className="single-feature-area-three" style={{ height: '100%' }}>
-                                    <div className="icon">
-                                        <img src={product.icon} alt={product.title} />
+                        {productsData.map((product) => (
+                            <div className="col-lg-4 col-md-6 col-sm-12" key={product.id}>
+                                <div className="product-card-simple" style={{
+                                    border: '1px solid #EAF0FF',
+                                    borderRadius: '20px',
+                                    padding: '30px',
+                                    transition: 'all 0.3s ease',
+                                    height: '100%',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    background: '#F9FAFF'
+                                }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.borderColor = primaryColor;
+                                        e.currentTarget.style.boxShadow = '0 10px 40px rgba(0,0,0,0.08)';
+                                        e.currentTarget.style.transform = 'translateY(-5px)';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.borderColor = '#EAF0FF';
+                                        e.currentTarget.style.boxShadow = 'none';
+                                        e.currentTarget.style.transform = 'translateY(0)';
+                                    }}>
+
+                                    {/* Image Top */}
+                                    <div className="thumbnail" style={{
+                                        marginBottom: '25px',
+                                        borderRadius: '12px',
+                                        overflow: 'hidden',
+                                        height: '200px',
+                                        background: '#fff',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        border: '1px solid #F1F5F9'
+                                    }}>
+                                        <img src={product.image} alt={product.name} style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }} />
                                     </div>
-                                    <div className="content">
-                                        <h3 className="title">{product.title}</h3>
-                                        <p className="disc">{product.description}</p>
-                                        <Link to={product.link} className="round-btn">
-                                            <i className="fa-sharp-duotone fa-light fa-arrow-right"></i>
-                                        </Link>
+
+                                    {/* Content */}
+                                    <div className="content" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                                        <div className="header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+                                            <div className="icon" style={{
+                                                width: '45px',
+                                                height: '45px',
+                                                borderRadius: '50%',
+                                                background: '#fff',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                color: primaryColor,
+                                                fontSize: '18px',
+                                                boxShadow: '0 4px 10px rgba(0,0,0,0.05)'
+                                            }}>
+                                                <i className={`fa-solid ${product.icon}`}></i>
+                                            </div>
+                                            <span style={{ fontSize: '12px', fontWeight: '700', color: primaryColor, background: '#ECF2FF', padding: '4px 12px', borderRadius: '15px' }}>
+                                                {product.category}
+                                            </span>
+                                        </div>
+
+                                        <h3 className="title" style={{ fontSize: '24px', fontWeight: '700', color: darkColor, marginBottom: '10px' }}>
+                                            {product.name}
+                                        </h3>
+                                        <p style={{ fontSize: '16px', color: textColor, lineHeight: '1.6', marginBottom: '20px', flex: 1 }}>
+                                            {product.description}
+                                        </p>
+
+                                        <div className="footer" style={{ marginTop: 'auto' }}>
+                                            <Link to="/contact" className="rts-btn btn-primary" style={{ padding: '10px 25px', fontSize: '14px', width: '100%', textAlign: 'center' }}>
+                                                View Product
+                                                <i className="fa-regular fa-arrow-right ml--5"></i>
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -111,60 +146,94 @@ export const Products: React.FC = () => {
                     </div>
                 </div>
             </div>
-            {/* rts feature area end */}
 
-            {/* rts why choose us substitute start */}
-            <div className="why-chooseus-area rts-section-gap bg-light-2">
+            {/* Why Build With Us Section */}
+            <div className="rts-why-choose-us-area rts-section-gap" style={{ background: '#fff' }}>
                 <div className="container">
-                    <div className="row">
-                        <div className="col-lg-5">
+                    <div className="row align-items-center">
+                        <div className="col-lg-6">
                             <div className="why-choose-left-content">
-                                <div className="title-left-wrapper">
-                                    <h2 className="title rts-text-anime-style-1">Why Build with <br /> NeuralTrix?</h2>
-                                </div>
-                                <p className="disc">
+                                <span className="pre-title" style={{ color: primaryColor, textTransform: 'uppercase', fontWeight: '700', letterSpacing: '1px', display: 'block', marginBottom: '10px' }}>
+                                    Enterprise Grade
+                                </span>
+                                <h2 className="title" style={{ fontSize: '36px', fontWeight: '800', color: darkColor, marginBottom: '20px' }}>
+                                    Why Build with NeuralTrix?
+                                </h2>
+                                <p className="disc" style={{ fontSize: '16px', color: textColor, lineHeight: '1.7', marginBottom: '30px' }}>
                                     Our stack is optimized for performance, scalability, and ease of use.
-                                    Whether you are a startup or an enterprise, we have the tools you need.
+                                    We don't just provide tools; we provide a complete ecosystem for your AI initiatives.
                                 </p>
-                                <div className="reason-wrapper">
+                                <div className="row g-4">
                                     {[
-                                        { title: 'Enterprise Security', icon: '/assets/images/why-choose/01.svg' },
-                                        { title: 'Scalable Architecture', icon: '/assets/images/why-choose/02.svg' },
-                                        { title: '24/7 Expert Support', icon: '/assets/images/why-choose/03.svg' },
-                                        { title: 'Seamless Integration', icon: '/assets/images/why-choose/04.svg' },
-                                    ].map((reason, i) => (
-                                        <div className="single-reason" key={i}>
-                                            <div className="icon">
-                                                <img src={reason.icon} alt="choose" />
+                                        { title: 'Bank-Grade Security', desc: 'SOC2 Compliant infrastructure with end-to-end encryption.', icon: 'fa-shield-halved' },
+                                        { title: 'Infinite Scalability', desc: 'Auto-scaling architecture that grows with your user base.', icon: 'fa-layer-group' },
+                                        { title: '24/7 Expert Support', desc: 'Direct access to ML engineers, not just support tickets.', icon: 'fa-headset' },
+                                        { title: 'Seamless Integration', desc: 'Plug-and-play APIs for all major languages and frameworks.', icon: 'fa-plug' },
+                                    ].map((item, index) => (
+                                        <div className="col-md-6" key={index}>
+                                            <div className="single-reason" style={{ display: 'flex', gap: '15px' }}>
+                                                <div className="icon" style={{
+                                                    minWidth: '50px',
+                                                    height: '50px',
+                                                    background: '#F0F6FF',
+                                                    borderRadius: '50%',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    color: primaryColor,
+                                                    fontSize: '20px'
+                                                }}>
+                                                    <i className={`fa-solid ${item.icon}`}></i>
+                                                </div>
+                                                <div className="content">
+                                                    <h5 style={{ fontSize: '18px', fontWeight: '700', marginBottom: '5px', color: darkColor }}>{item.title}</h5>
+                                                    <p style={{ fontSize: '14px', color: textColor, lineHeight: '1.5' }}>{item.desc}</p>
+                                                </div>
                                             </div>
-                                            <h5 className="title" style={{ fontFamily: '"Inter Tight", sans-serif' }}>
-                                                {reason.title}
-                                            </h5>
                                         </div>
                                     ))}
                                 </div>
                             </div>
                         </div>
-                        <div className="offset-lg-1 col-lg-6 mt_sm--50 mt_md--50">
-                            <div className="why-choose-iamge-two">
-                                <img src="/assets/images/why-choose/01.jpg" alt="why us" className="one" />
-                                <img src="/assets/images/why-choose/02.jpg" alt="why us" className="two" />
+                        <div className="col-lg-6 mt_md--50 mt_sm--50 pl--50 pl_md--15 pl_sm--15">
+                            <div className="why-choose-image" style={{ position: 'relative' }}>
+                                <img src="/assets/images/about/05.webp" alt="why-choose" style={{ borderRadius: '20px', width: '100%', boxShadow: '0 20px 50px rgba(0,0,0,0.1)' }} />
+                                <div className="card-floating" style={{
+                                    position: 'absolute',
+                                    bottom: '-30px',
+                                    left: '-30px',
+                                    background: '#fff',
+                                    padding: '25px',
+                                    borderRadius: '15px',
+                                    boxShadow: '0 15px 40px rgba(0,0,0,0.1)',
+                                    maxWidth: '220px'
+                                }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
+                                        <span style={{ fontSize: '32px', fontWeight: '800', color: primaryColor }}>99.9%</span>
+                                    </div>
+                                    <p style={{ margin: 0, fontSize: '14px', fontWeight: '600', color: darkColor }}>Uptime Guarantee on all Enterprise Plans</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {/* rts why choose us substitute end */}
 
-            {/* rts call to action area start */}
-            <div className="rts-call-to-action-area rts-section-gap">
+            {/* CTA Section */}
+            <div className="rts-call-to-action-area" style={{ background: '#0F0F11', padding: '100px 0' }}>
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-12">
-                            <div className="call-to-action-wrapper-three">
-                                <h3 className="title rts-text-anime-style-1">Ready to start building?</h3>
-                                <p className="disc">Get started with our free tier or contact sales for enterprise options.</p>
-                                <Link to="/contact" className="rts-btn btn-primary">Contact Sales</Link>
+                        <div className="col-lg-12 text-center">
+                            <div className="cta-inner">
+                                <h3 className="title" style={{ color: '#fff', fontSize: '48px', fontWeight: '800', marginBottom: '20px' }}>
+                                    Ready to start building?
+                                </h3>
+                                <p className="disc" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '18px', marginBottom: '40px', maxWidth: '600px', margin: '0 auto 40px auto' }}>
+                                    Get started with our free tier or contact sales for enterprise options tailored to your needs.
+                                </p>
+                                <Link to="/contact" className="rts-btn btn-primary" style={{ padding: '15px 40px', fontSize: '18px' }}>
+                                    Contact Sales
+                                </Link>
                             </div>
                         </div>
                     </div>

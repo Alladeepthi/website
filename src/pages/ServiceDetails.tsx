@@ -425,7 +425,9 @@ export const ServiceDetails: React.FC = () => {
                 </div>
             </div>
 
-            {/* 5. Testimonials (Circular Layout Simulation) */}
+
+
+            {/* 6. Testimonials (Circular Layout Simulation) */}
             <div className="rts-testimonial-area" style={{ background: `linear-gradient(135deg, ${lightBg} 0%, #fff 100%)`, padding: '100px 0' }}>
                 <div className="container">
                     <div className="row align-items-center">
@@ -545,7 +547,7 @@ export const ServiceDetails: React.FC = () => {
                 </div>
             </div>
 
-            {/* 6. Brand Logos (Enhanced Marquee) */}
+            {/* 7. Brand Logos (Enhanced Marquee) */}
             <div className="rts-brand-area" style={{ padding: '80px 0', borderTop: '1px solid #f1f5f9', background: lightBg }}>
                 <div className="container">
                     <div className="row justify-content-center">
@@ -611,7 +613,7 @@ export const ServiceDetails: React.FC = () => {
                 `}</style>
             </div>
 
-            {/* 7. FAQ Section */}
+            {/* 8. FAQ Section */}
             <div className="rts-faq-area" style={{ padding: '100px 0', background: '#fff' }}>
                 <div className="container">
                     <div className="row align-items-center">
@@ -702,6 +704,108 @@ export const ServiceDetails: React.FC = () => {
                 </div>
             </div>
 
+            {/* 9. Case Studies (Moved to Bottom) */}
+            {service.caseStudies && service.caseStudies.length > 0 && (
+                <div className="rts-case-study-area-bottom rts-section-gap" style={{ padding: '80px 0', background: '#F8FAFC', borderTop: '1px solid #e2e8f0' }}>
+                    <div className="container">
+                        <div className="row mb--40">
+                            <div className="col-12 text-center">
+                                <span style={{
+                                    color: primaryColor,
+                                    fontWeight: '700',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '1px',
+                                    display: 'block',
+                                    marginBottom: '10px',
+                                    fontSize: '14px'
+                                }}>
+                                    Proven Results
+                                </span>
+                                <h2 className="title" style={{
+                                    fontSize: '32px',
+                                    fontWeight: '800',
+                                    color: darkColor,
+                                    marginBottom: '0'
+                                }}>
+                                    Related Success Stories
+                                </h2>
+                            </div>
+                        </div>
+                        <div className="row g-4 justify-content-center">
+                            {service.caseStudies.map((study: any, index: number) => (
+                                <div className="col-lg-4 col-md-6 col-sm-12" key={index}>
+                                    <div className="case-study-card-compact" style={{
+                                        background: '#fff',
+                                        borderRadius: '12px',
+                                        overflow: 'hidden',
+                                        boxShadow: '0 4px 6px rgba(0,0,0,0.02)',
+                                        border: '1px solid #f1f5f9',
+                                        height: '100%',
+                                        transition: 'all 0.3s ease'
+                                    }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.style.transform = 'translateY(-5px)';
+                                            e.currentTarget.style.boxShadow = '0 15px 30px rgba(0,0,0,0.08)';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.transform = 'translateY(0)';
+                                            e.currentTarget.style.boxShadow = '0 4px 6px rgba(0,0,0,0.02)';
+                                        }}>
+                                        <div className="image-area" style={{ position: 'relative', paddingTop: '60%', overflow: 'hidden' }}>
+                                            <img
+                                                src={study.image}
+                                                alt={study.title}
+                                                style={{
+                                                    position: 'absolute',
+                                                    top: 0,
+                                                    left: 0,
+                                                    width: '100%',
+                                                    height: '100%',
+                                                    objectFit: 'cover',
+                                                    transition: 'transform 0.5s ease'
+                                                }}
+                                            />
+                                        </div>
+                                        <div className="content" style={{ padding: '25px' }}>
+                                            <h4 className="title" style={{
+                                                fontSize: '20px',
+                                                fontWeight: '700',
+                                                color: darkColor,
+                                                marginBottom: '12px',
+                                                lineHeight: '1.4'
+                                            }}>
+                                                {study.title}
+                                            </h4>
+                                            <p style={{
+                                                fontSize: '14px',
+                                                color: textColor,
+                                                lineHeight: '1.6',
+                                                marginBottom: '20px',
+                                                display: '-webkit-box',
+                                                WebkitLineClamp: '3',
+                                                WebkitBoxOrient: 'vertical',
+                                                overflow: 'hidden'
+                                            }}>
+                                                {study.description}
+                                            </p>
+                                            <Link to={study.link || '#'} style={{
+                                                fontSize: '14px',
+                                                fontWeight: '600',
+                                                color: primaryColor,
+                                                display: 'inline-flex',
+                                                alignItems: 'center',
+                                                gap: '6px'
+                                            }}>
+                                                Read Case Study <i className="fa-regular fa-arrow-right" style={{ fontSize: '12px' }}></i>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
         </main >
     );
 };

@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -28,10 +32,10 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
+  @apply text-base md:text-lg leading-relaxed;
 }
 
 h1 {
@@ -666,4 +670,71 @@ button:focus-visible {
     width: 100%;
     margin-bottom: 20px;
   }
+}
+
+/* ----------------------------------------------------------------
+   MOBILE MENU FIXES - FORCE VISIBILITY & LAYOUT
+   ---------------------------------------------------------------- */
+
+/* Ensure links are white and visible */
+.mobile-menu-main .metismenu li a {
+  color: #ffffff !important;
+  padding: 10px 0 !important;
+  font-size: 14px !important;
+  line-height: normal !important;
+  text-decoration: none !important;
+}
+
+/* Fix the layout of the third-level container to prevent overlapping */
+.mobile-menu-main .metismenu .third-lvl {
+  height: auto !important;
+  overflow: visible !important;
+}
+
+/* Ensure the nested UL takes up space in the document flow */
+.mobile-menu-main .metismenu .third-lvl ul {
+  position: relative !important;
+  /* Fixes the overlapping/floating issue */
+  height: auto !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* When the menu is active/shown (handled by metismenu or override) */
+.mobile-menu-main .metismenu .third-lvl ul.mm-show,
+.mobile-menu-main .metismenu .third-lvl ul[style*="display: block"] {
+  display: block !important;
+  position: relative !important;
+}
+
+/* items styling */
+.mobile-menu-main .metismenu .third-lvl ul li {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  display: block !important;
+  min-height: auto !important;
+}
+
+.mobile-menu-main .metismenu .third-lvl ul li a {
+  color: rgba(255, 255, 255, 0.8) !important;
+  padding: 8px 0 8px 15px !important;
+  display: block !important;
+  border: none !important;
+}
+
+.mobile-menu-main .metismenu .third-lvl ul li a:hover {
+  color: var(--color-primary) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  padding-left: 20px !important;
+}
+
+/* Remove borders */
+.mobile-menu-main .metismenu li,
+.mobile-menu-main .metismenu ul {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border: none !important;
 }

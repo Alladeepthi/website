@@ -1,21 +1,7 @@
 import React from 'react';
 
 export const AIPlatform: React.FC = () => {
-
-    const [currentIndex, setCurrentIndex] = React.useState(0);
-    const [itemsPerPage, setItemsPerPage] = React.useState(4);
-
-    React.useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth < 768) setItemsPerPage(1);
-            else if (window.innerWidth < 992) setItemsPerPage(2);
-            else setItemsPerPage(4);
-        };
-        handleResize();
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
+    // Duplicating metrics for seamless infinite scroll
     const metrics = [
         {
             value: "4 Weeks",
@@ -55,23 +41,14 @@ export const AIPlatform: React.FC = () => {
         }
     ];
 
-    const nextSlide = () => {
-        if (currentIndex < metrics.length - itemsPerPage) {
-            setCurrentIndex(prev => prev + 1);
-        }
-    };
-
-    const prevSlide = () => {
-        if (currentIndex > 0) {
-            setCurrentIndex(prev => prev - 1);
-        }
-    };
+    // Duplicate list for seamless loop
+    const scrollingMetrics = [...metrics, ...metrics];
 
     return (
-        <div className="rts-ai-platform-area" style={{ padding: '80px 0', background: '#F8FAFC' }}>
+        <div className="rts-ai-platform-area" style={{ padding: '80px 0', background: '#F8FAFC', overflow: 'hidden' }}>
             <div className="container" style={{ position: 'relative' }}>
-                <div className="row mb-5 align-items-end">
-                    <div className="col-lg-8">
+                <div className="row mb-5 align-items-end text-center">
+                    <div className="col-12">
                         <span style={{
                             color: '#3B82F6',
                             fontWeight: 700,
@@ -88,63 +65,25 @@ export const AIPlatform: React.FC = () => {
                             marginBottom: '0'
                         }}>Accelerating Your Product Vision</h2>
                     </div>
-                    <div className="col-lg-4 text-lg-end mt-4 mt-lg-0">
-                        <div style={{ display: 'flex', gap: '15px', justifyContent: 'flex-end' }}>
-                            <button
-                                onClick={prevSlide}
-                                disabled={currentIndex === 0}
-                                style={{
-                                    width: '45px',
-                                    height: '45px',
-                                    borderRadius: '50%',
-                                    border: '1px solid #E2E8F0',
-                                    background: currentIndex === 0 ? '#F1F5F9' : '#fff',
-                                    color: currentIndex === 0 ? '#94A3B8' : '#3B82F6',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    cursor: currentIndex === 0 ? 'not-allowed' : 'pointer',
-                                    transition: 'all 0.3s ease',
-                                    fontSize: '18px'
-                                }}
-                            >
-                                <i className="fa-solid fa-chevron-left"></i>
-                            </button>
-                            <button
-                                onClick={nextSlide}
-                                disabled={currentIndex >= metrics.length - itemsPerPage}
-                                style={{
-                                    width: '45px',
-                                    height: '45px',
-                                    borderRadius: '50%',
-                                    border: '1px solid #E2E8F0',
-                                    background: currentIndex >= metrics.length - itemsPerPage ? '#F1F5F9' : '#fff',
-                                    color: currentIndex >= metrics.length - itemsPerPage ? '#94A3B8' : '#3B82F6',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    cursor: currentIndex >= metrics.length - itemsPerPage ? 'not-allowed' : 'pointer',
-                                    transition: 'all 0.3s ease',
-                                    fontSize: '18px'
-                                }}
-                            >
-                                <i className="fa-solid fa-chevron-right"></i>
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div style={{ overflow: 'hidden', margin: '-15px', padding: '15px' }}>
-                    <div style={{
+                {/* Marquee Container */}
+                <div className="marquee-container" style={{
+                    display: 'flex',
+                    maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+                    WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+                    overflow: 'hidden'
+                }}>
+                    <div className="marquee-track" style={{
                         display: 'flex',
-                        transition: 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)',
-                        transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)`,
+                        gap: '30px',
+                        animation: 'scroll 30s linear infinite',
+                        width: 'max-content'
                     }}>
-                        {metrics.map((metric, idx) => (
+                        {scrollingMetrics.map((metric, idx) => (
                             <div key={idx} style={{
-                                flex: `0 0 ${100 / itemsPerPage}%`,
-                                padding: '0 12px',
-                                boxSizing: 'border-box'
+                                width: '300px',
+                                flexShrink: 0
                             }}>
                                 <div style={{
                                     background: '#fff',
@@ -154,18 +93,10 @@ export const AIPlatform: React.FC = () => {
                                     border: '1px solid #E2E8F0',
                                     transition: 'all 0.3s ease',
                                     textAlign: 'center',
-                                    position: 'relative'
+                                    position: 'relative',
+                                    cursor: 'pointer'
                                 }}
-                                    onMouseEnter={(e) => {
-                                        e.currentTarget.style.transform = 'translateY(-8px)';
-                                        e.currentTarget.style.boxShadow = '0 15px 30px rgba(59, 130, 246, 0.1)';
-                                        e.currentTarget.style.borderColor = '#3B82F6';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.style.transform = 'translateY(0)';
-                                        e.currentTarget.style.boxShadow = 'none';
-                                        e.currentTarget.style.borderColor = '#E2E8F0';
-                                    }}
+                                    className="metric-card"
                                 >
                                     <div style={{
                                         width: '50px',
@@ -185,10 +116,7 @@ export const AIPlatform: React.FC = () => {
                                         fontSize: '28px',
                                         fontWeight: 800,
                                         color: '#0F172A',
-                                        marginBottom: '5px',
-                                        background: 'linear-gradient(90deg, #1E40AF 0%, #3B82F6 100%)',
-                                        WebkitBackgroundClip: 'text',
-                                        WebkitTextFillColor: 'transparent'
+                                        marginBottom: '5px'
                                     }}>{metric.value}</h3>
                                     <h5 style={{
                                         fontSize: '16px',
@@ -208,6 +136,20 @@ export const AIPlatform: React.FC = () => {
                     </div>
                 </div>
             </div>
+            <style>{`
+                @keyframes scroll {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-50%); }
+                }
+                .marquee-track:hover {
+                    animation-play-state: paused !important;
+                }
+                .metric-card:hover {
+                    transform: translateY(-8px);
+                    box-shadow: 0 15px 30px rgba(59, 130, 246, 0.1);
+                    border-color: #3B82F6 !important;
+                }
+            `}</style>
         </div>
     );
 };

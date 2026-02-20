@@ -6,6 +6,7 @@ import { MobileMenu } from './components/layout/MobileMenu';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { CaseStudies } from './pages/CaseStudies';
+import CaseStudyDetails from './pages/CaseStudyDetails';
 import { CaseStudies2 } from './pages/CaseStudies2';
 import { Pricing } from './pages/Pricing';
 import { ServiceDetails } from './pages/ServiceDetails';
@@ -13,13 +14,10 @@ import { Contact } from './pages/Contact';
 import { Team } from './pages/Team';
 import { Blog } from './pages/Blog';
 import { FAQ } from './pages/FAQ';
-import { Industry } from './pages/Industry';
 import { IndustryDetails } from './pages/IndustryDetails';
 import { PlatformDetails } from './pages/PlatformDetails';
 import { Products } from './pages/Products';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
-
-import { Platforms } from './pages/Platforms';
 
 function App() {
   useEffect(() => {
@@ -35,6 +33,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/case-studies" element={<CaseStudies />} />
+        <Route path="/case-studies/:id" element={<CaseStudyDetails />} />
         <Route path="/case-studies-2" element={<CaseStudies2 />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/service-details" element={<ServiceDetails />} />
@@ -42,9 +41,7 @@ function App() {
         <Route path="/team" element={<Team />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/faq" element={<FAQ />} />
-        <Route path="/industry" element={<Industry />} />
         <Route path="/industry/:id" element={<IndustryDetails />} />
-        <Route path="/platforms" element={<Platforms />} />
         <Route path="/platform/:id" element={<PlatformDetails />} />
         <Route path="/products" element={<Products />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />

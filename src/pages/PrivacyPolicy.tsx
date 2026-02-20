@@ -9,7 +9,7 @@ export const PrivacyPolicy: React.FC = () => {
     // Theme Colors
     const primaryColor = '#3B82F6';
     const darkColor = '#1e293b';
-    const lightBg = '#F8FAFC';
+
     const textColor = '#475569';
 
     const sections = [

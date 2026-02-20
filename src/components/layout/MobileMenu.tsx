@@ -1,11 +1,64 @@
-﻿import React from 'react';
+﻿import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { servicesData } from '../../data/services';
 
+const platformCategories = [
+    {
+        name: 'DataLakes',
+        platforms: [
+            { label: 'Snowflake', path: '/platform/snowflake' },
+            { label: 'RedShift', path: '/platform/redshift' },
+            { label: 'Databricks', path: '/platform/databricks' },
+            { label: 'MongoDB', path: '/platform/mongodb' },
+            { label: 'Datadog', path: '/platform/datadog' },
+        ],
+    },
+    {
+        name: 'RAG Tools',
+        platforms: [
+            { label: 'Unstructured', path: '/platform/unstructured' },
+            { label: 'Airbyte', path: '/platform/airbyte' },
+            { label: 'LlamaIndex', path: '/platform/llamaindex' },
+            { label: 'LangChain', path: '/platform/langchain' },
+        ],
+    },
+    {
+        name: 'Vector Database',
+        platforms: [
+            { label: 'Pinecone', path: '/platform/pinecone' },
+            { label: 'Weaviate', path: '/platform/weaviate' },
+            { label: 'Zilliz', path: '/platform/zilliz' },
+            { label: 'Milvus', path: '/platform/milvus' },
+            { label: 'Supabase', path: '/platform/supabase' },
+        ],
+    },
+    {
+        name: 'Model Ecosystem',
+        platforms: [
+            { label: 'OpenAI', path: '/platform/openai' },
+            { label: 'Gemini', path: '/platform/gemini' },
+            { label: 'Llama 3.2', path: '/platform/llama-3.2' },
+            { label: 'BERT', path: '/platform/bert' },
+            { label: 'LaMDA', path: '/platform/lamda' },
+            { label: 'Orca', path: '/platform/orca' },
+            { label: 'Mistral', path: '/platform/mistral' },
+            { label: 'PaLM2', path: '/platform/palm2' },
+            { label: 'Claude', path: '/platform/claude' },
+            { label: 'Hugging Face', path: '/platform/hugging-face' },
+        ],
+    },
+];
+
 export const MobileMenu: React.FC = () => {
+    const [openCategory, setOpenCategory] = useState<string | null>(null);
+
     const closeMenu = () => {
         document.getElementById('side-bar')?.classList.remove('show');
         document.getElementById('anywhere-home')?.classList.remove('bgshow');
+    };
+
+    const toggleCategory = (name: string) => {
+        setOpenCategory(prev => (prev === name ? null : name));
     };
 
     return (
@@ -63,7 +116,7 @@ export const MobileMenu: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className="mobile-menu-main d-block d-xl-none">
+                <div className="mobile-menu-main block lg:hidden">
                     <nav className="nav-main mainmenu-nav mt--30">
                         <ul className="mainmenu metismenu" id="mobile-menu-active">
                             <li className="has-droupdown">
@@ -78,15 +131,85 @@ export const MobileMenu: React.FC = () => {
                                     ))}
                                 </ul>
                             </li>
+
+                            {/* ---- PLATFORMS: React-controlled accordion, no jQuery dependency ---- */}
                             <li className="has-droupdown">
                                 <Link to="#" className="main" onClick={(e) => e.preventDefault()}>Platforms</Link>
                                 <ul className="submenu mm-collapse">
-                                    <li><Link to="/platforms" onClick={closeMenu}>Data & Storage</Link></li>
-                                    <li><Link to="/platforms" onClick={closeMenu}>AI & RAG</Link></li>
-                                    <li><Link to="/platforms" onClick={closeMenu}>Vector & Search</Link></li>
-                                    <li><Link to="/platforms" onClick={closeMenu}>Model Ecosystem</Link></li>
+                                    {platformCategories.map((cat) => (
+                                        <li key={cat.name} style={{ borderBottom: 'none', margin: 0, padding: 0 }}>
+                                            {/* Category header — acts as toggle */}
+                                            <button
+                                                onClick={() => toggleCategory(cat.name)}
+                                                style={{
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'space-between',
+                                                    width: '100%',
+                                                    background: 'transparent',
+                                                    border: 'none',
+                                                    borderBottom: '1px solid rgba(255,255,255,0.15)',
+                                                    color: 'rgba(255,255,255,0.75)',
+                                                    fontSize: '14px',
+                                                    fontWeight: 500,
+                                                    padding: '10px 0',
+                                                    cursor: 'pointer',
+                                                    textAlign: 'left',
+                                                    fontFamily: 'inherit',
+                                                }}
+                                            >
+                                                {cat.name}
+                                                <span style={{ fontSize: '11px', marginLeft: '8px' }}>
+                                                    {openCategory === cat.name ? '▲' : '▼'}
+                                                </span>
+                                            </button>
+
+                                            {/* Platform links — shown/hidden by React state */}
+                                            {openCategory === cat.name && (
+                                                <ul style={{
+                                                    listStyle: 'none',
+                                                    padding: '4px 0 4px 16px',
+                                                    margin: 0,
+                                                    background: 'rgba(255,255,255,0.03)',
+                                                    borderRadius: '4px',
+                                                }}>
+                                                    {cat.platforms.map((p) => (
+                                                        <li key={p.path} style={{ margin: 0, padding: 0, border: 'none' }}>
+                                                            <Link
+                                                                to={p.path}
+                                                                onClick={closeMenu}
+                                                                style={{
+                                                                    display: 'block',
+                                                                    color: '#ffffff',
+                                                                    fontSize: '13px',
+                                                                    padding: '7px 8px',
+                                                                    textDecoration: 'none',
+                                                                    borderBottom: 'none',
+                                                                    opacity: 0.85,
+                                                                    transition: 'opacity 0.2s, padding-left 0.2s',
+                                                                }}
+                                                                onMouseEnter={e => {
+                                                                    (e.currentTarget as HTMLAnchorElement).style.opacity = '1';
+                                                                    (e.currentTarget as HTMLAnchorElement).style.paddingLeft = '14px';
+                                                                    (e.currentTarget as HTMLAnchorElement).style.color = '#0F62FE';
+                                                                }}
+                                                                onMouseLeave={e => {
+                                                                    (e.currentTarget as HTMLAnchorElement).style.opacity = '0.85';
+                                                                    (e.currentTarget as HTMLAnchorElement).style.paddingLeft = '8px';
+                                                                    (e.currentTarget as HTMLAnchorElement).style.color = '#ffffff';
+                                                                }}
+                                                            >
+                                                                › {p.label}
+                                                            </Link>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            )}
+                                        </li>
+                                    ))}
                                 </ul>
                             </li>
+
                             <li className="has-droupdown">
                                 <Link to="/industry" className="main">Industry</Link>
                                 <ul className="submenu mm-collapse">
@@ -127,4 +250,3 @@ export const MobileMenu: React.FC = () => {
         </>
     );
 };
-
