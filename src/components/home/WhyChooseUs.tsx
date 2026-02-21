@@ -7,12 +7,17 @@ export const WhyChooseUs: React.FC = () => {
             <div className="container">
                 <div className="row align-items-center">
                     <div className="col-lg-6">
-                        <div className="thumbnail-machine-choose-area">
-                            <div className="left-thumbnail">
-                                <img src="/assets/images/why-choose/new-robot-collab.png" alt="AI Collaboration" />
+                        <div className="thumbnail-machine-choose-area" style={{
+                            display: 'flex',
+                            gap: '20px',
+                            justifyContent: 'center',
+                            flexWrap: 'wrap'
+                        }}>
+                            <div className="left-thumbnail" style={{ maxWidth: '45%' }}>
+                                <img src="/assets/images/why-choose/new-robot-collab.png" alt="AI Collaboration" style={{ width: '100%', height: 'auto', borderRadius: '12px' }} />
                             </div>
-                            <div className="left-thumbnail last">
-                                <img src="/assets/images/why-choose/new-man-suit.png" alt="Man in Suit" />
+                            <div className="left-thumbnail last" style={{ maxWidth: '45%', marginTop: '30px' }}>
+                                <img src="/assets/images/why-choose/new-man-suit.png" alt="Man in Suit" style={{ width: '100%', height: 'auto', borderRadius: '12px' }} />
                             </div>
                         </div>
                     </div>
@@ -29,10 +34,11 @@ export const WhyChooseUs: React.FC = () => {
                                     marginBottom: '12px'
                                 }}>Why Partner With NeuraltrixAI</span>
                                 <h2 className="title rts-text-anime-style-1" style={{
-                                    fontSize: '38px',
+                                    fontSize: 'clamp(28px, 5vw, 38px)',
                                     fontWeight: 800,
                                     lineHeight: 1.2,
-                                    marginBottom: 0
+                                    marginBottom: 0,
+                                    color: '#ffffff'
                                 }}>Engineering Excellence Meets Business Strategy</h2>
                             </div>
                             <div className="single-why-choose-wrapper-machine">
@@ -57,12 +63,12 @@ export const WhyChooseUs: React.FC = () => {
                                             fontSize: '20px',
                                             fontWeight: 700,
                                             marginBottom: '8px',
-                                            color: '#0F172A'
+                                            color: '#ffffff'
                                         }}>Proven Technical Expertise</h5>
                                         <p className="disc" style={{
                                             fontSize: '15px',
                                             lineHeight: 1.6,
-                                            color: '#64748B',
+                                            color: 'rgba(255,255,255,0.7)',
                                             margin: 0
                                         }}>A team of senior engineers and architects dedicated to building robust, scalable systems.</p>
                                     </div>
@@ -84,12 +90,12 @@ export const WhyChooseUs: React.FC = () => {
                                             fontSize: '20px',
                                             fontWeight: 700,
                                             marginBottom: '8px',
-                                            color: '#0F172A'
+                                            color: '#ffffff'
                                         }}>ROI-Driven Approach</h5>
                                         <p className="disc" style={{
                                             fontSize: '15px',
                                             lineHeight: 1.6,
-                                            color: '#64748B',
+                                            color: 'rgba(255,255,255,0.7)',
                                             margin: 0
                                         }}>We focus on technology investments that deliver measurable business value and efficiency.</p>
                                     </div>

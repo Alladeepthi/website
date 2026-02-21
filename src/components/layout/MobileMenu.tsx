@@ -83,7 +83,7 @@ export const MobileMenu: React.FC = () => {
                                 <li><Link to="/about" onClick={closeMenu}>About Company</Link></li>
                                 <li><Link to="/service-details" onClick={closeMenu}>Service</Link></li>
                                 <li><Link to="/case-studies" onClick={closeMenu}>Project Details</Link></li>
-                                <li><Link to="/pricing" onClick={closeMenu}>Pricing</Link></li>
+                                <li><Link to="/products#pricing-plan" onClick={closeMenu}>Pricing</Link></li>
                                 <li><Link to="/contact" onClick={closeMenu}>Contact</Link></li>
                             </ul>
                         </div>

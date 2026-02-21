@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { productsData } from '../data/products';
+import { Pricing } from '../components/home/Pricing';
 
 export const Products: React.FC = () => {
+    const [activeTab, setActiveTab] = useState('All Products');
+
     useEffect(() => {
         document.body.className = "demo-machine-learning";
 
@@ -18,125 +21,228 @@ export const Products: React.FC = () => {
         };
     }, []);
 
-    const primaryColor = '#3C72FC'; // Using the primary blue from other pages
-    const darkColor = '#0F0F11';
-    const textColor = '#5D666F';
+    const primaryColor = '#3C72FC';
+    const accentColor = '#6d28d9';
+
+    // Functionality: Filtering logic
+    const tabs = ['All Products', 'Vision AI', 'Natural Language', 'Infrastructure'];
+    const filteredProducts = activeTab === 'All Products'
+        ? productsData
+        : productsData.filter(p => p.category === activeTab);
 
     return (
-        <main>
-            {/* Hero Section */}
-            <div className="rts-breadcrumb-area breadcrumb-bg-1 bg_image" style={{ background: 'linear-gradient(180deg, #091533 0%, #172445 100%)', minHeight: '350px', display: 'flex', alignItems: 'center' }}>
-                <div className="container">
-                    <div className="row align-items-center">
-                        <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 breadcrumb-1-left">
-                            <h1 className="title" style={{ color: '#fff', fontSize: '60px', lineHeight: '1.2', marginBottom: '15px' }}>Our Products</h1>
-                            <div className="bread-tag" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                <Link to="/" style={{ color: '#fff', fontSize: '16px', fontWeight: '500' }}>Home</Link>
-                                <span style={{ color: 'rgba(255,255,255,0.6)' }}> / </span>
-                                <span style={{ color: 'rgba(255,255,255,0.8)', fontSize: '16px' }}>Products</span>
+        <main style={{ backgroundColor: '#fff' }}>
+            {/* Elegant Hero Section with Glassmorphism */}
+            <section className="products-hero-section" style={{
+                position: 'relative',
+                padding: '160px 0 100px',
+                background: `radial-gradient(circle at top right, ${primaryColor}15, transparent), radial-gradient(circle at bottom left, ${accentColor}10, transparent), #050505`,
+                overflow: 'hidden',
+                color: '#fff'
+            }}>
+                <div style={{
+                    position: 'absolute',
+                    top: '0',
+                    left: '0',
+                    right: '0',
+                    bottom: '0',
+                    backgroundImage: 'url("https://www.transparenttextures.com/patterns/carbon-fibre.png")',
+                    opacity: 0.1,
+                    pointerEvents: 'none'
+                }}></div>
+
+                <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+                    <div className="row justify-content-center text-center">
+                        <div className="col-lg-10">
+                            <div className="badge-wrapper mb--20" style={{
+                                display: 'inline-block',
+                                padding: '6px 16px',
+                                borderRadius: '100px',
+                                background: 'rgba(255,255,255,0.05)',
+                                border: '1px solid rgba(255,255,255,0.1)',
+                                backdropFilter: 'blur(10px)'
+                            }}>
+                                <span style={{ fontSize: '12px', fontWeight: 600, letterSpacing: '1px', textTransform: 'uppercase', color: primaryColor }}>
+                                    Enterprise AI Ecosystem
+                                </span>
+                            </div>
+                            <h1 style={{
+                                fontSize: 'clamp(32px, 8vw, 84px)',
+                                fontWeight: 800,
+                                lineHeight: 1.1,
+                                marginBottom: '24px',
+                                letterSpacing: '-0.02em'
+                            }}>
+                                Tools Designed for <br />
+                                <span style={{
+                                    background: `linear-gradient(to right, ${primaryColor}, #818cf8)`,
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent'
+                                }}>Scale & Intelligence.</span>
+                            </h1>
+                            <p style={{
+                                fontSize: '20px',
+                                color: 'rgba(255,255,255,0.6)',
+                                maxWidth: '700px',
+                                margin: '0 auto 40px',
+                                lineHeight: 1.6
+                            }}>
+                                Neuraltrix provides a complete suite of specialized products that empower developers and enterprises to build, deploy, and scale AI-driven workflows in record time.
+                            </p>
+                            <div style={{ display: 'flex', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                                <Link to="/contact" className="rts-btn btn-primary" style={{ padding: '14px 25px', borderRadius: '12px', minWidth: '160px' }}>Get Started Free</Link>
+                                <a href="#products-list" className="rts-btn" style={{
+                                    padding: '14px 25px',
+                                    borderRadius: '12px',
+                                    background: 'rgba(255,255,255,0.05)',
+                                    border: '1px solid rgba(255,255,255,0.1)',
+                                    color: '#fff',
+                                    minWidth: '160px'
+                                }}>Explore Suite</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            {/* Products Grid Section - Clean Professional Cards */}
-            <div className="rts-service-area" style={{ background: '#fff', padding: '60px 0' }}>
+            {/* Featured Product Grid - Envato Style */}
+            <section id="products-list" style={{ padding: '100px 0', background: '#fff' }}>
                 <div className="container">
-                    <div className="row mb-5">
-                        <div className="col-12 text-center">
-                            <span className="pre" style={{
-                                color: primaryColor,
-                                fontWeight: 700,
-                                fontSize: '14px',
-                                letterSpacing: '2px',
-                                textTransform: 'uppercase',
-                                display: 'block',
-                                marginBottom: '10px'
-                            }}>
-                                Innovation Suite
-                            </span>
-                            <h2 className="title" style={{ fontSize: '42px', fontWeight: 800, color: darkColor, marginBottom: '15px' }}>
-                                Powerful Tools for AI-Driven Growth
-                            </h2>
-                            <p className="disc" style={{ maxWidth: '700px', margin: '0 auto', color: textColor, fontSize: '18px', lineHeight: '1.6' }}>
-                                Discover our range of specialized products designed to accelerate your data journey.
-                            </p>
+                    <div className="row mb--60">
+                        <div className="col-lg-12">
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px' }}>
+                                <div className="section-title-left">
+                                    <h2 style={{ fontSize: '38px', fontWeight: 800, color: '#09090b', marginBottom: '10px' }}>Core Innovation Suite</h2>
+                                    <p style={{ color: '#64748b', fontSize: '16px' }}>Select a category to filter our high-performance engines.</p>
+                                </div>
+                                <div style={{
+                                    padding: '8px',
+                                    background: '#f8fafc',
+                                    borderRadius: '12px',
+                                    display: 'flex',
+                                    gap: '5px',
+                                    border: '1px solid #f1f5f9',
+                                    overflowX: 'auto',
+                                    maxWidth: '100%',
+                                    WebkitOverflowScrolling: 'touch',
+                                    scrollbarWidth: 'none'
+                                }} className="no-scrollbar">
+                                    {tabs.map((tab) => (
+                                        <button
+                                            key={tab}
+                                            onClick={() => setActiveTab(tab)}
+                                            style={{
+                                                padding: '8px 18px',
+                                                border: 'none',
+                                                background: activeTab === tab ? '#fff' : 'transparent',
+                                                boxShadow: activeTab === tab ? '0 4px 12px rgba(0,0,0,0.05)' : 'none',
+                                                borderRadius: '8px',
+                                                fontSize: '13px',
+                                                fontWeight: 600,
+                                                color: activeTab === tab ? primaryColor : '#64748b',
+                                                transition: 'all 0.3s ease',
+                                                whiteSpace: 'nowrap'
+                                            }}>{tab}</button>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div className="row g-5">
-                        {productsData.map((product) => (
-                            <div className="col-lg-4 col-md-6 col-sm-12" key={product.id}>
-                                <div className="product-card-simple" style={{
-                                    border: '1px solid #EAF0FF',
-                                    borderRadius: '20px',
-                                    padding: '30px',
-                                    transition: 'all 0.3s ease',
+                        {filteredProducts.map((product) => (
+                            <div className="col-lg-4 col-md-6" key={product.id}>
+                                <div className="product-card-evanto" style={{
                                     height: '100%',
                                     display: 'flex',
                                     flexDirection: 'column',
-                                    background: '#F9FAFF'
-                                }}
-                                    onMouseEnter={(e) => {
-                                        e.currentTarget.style.borderColor = primaryColor;
-                                        e.currentTarget.style.boxShadow = '0 10px 40px rgba(0,0,0,0.08)';
-                                        e.currentTarget.style.transform = 'translateY(-5px)';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.style.borderColor = '#EAF0FF';
-                                        e.currentTarget.style.boxShadow = 'none';
-                                        e.currentTarget.style.transform = 'translateY(0)';
-                                    }}>
-
-                                    {/* Image Top */}
-                                    <div className="thumbnail" style={{
-                                        marginBottom: '25px',
-                                        borderRadius: '12px',
-                                        overflow: 'hidden',
-                                        height: '200px',
-                                        background: '#fff',
+                                    background: '#fff',
+                                    borderRadius: '20px',
+                                    border: '1px solid #f1f5f9',
+                                    padding: '24px',
+                                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                                    position: 'relative',
+                                    overflow: 'hidden'
+                                }}>
+                                    <div style={{
+                                        height: '180px', // Reduced from 220px to reduce card length
+                                        background: '#f8fafc',
+                                        borderRadius: '16px',
+                                        marginBottom: '20px',
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
-                                        border: '1px solid #F1F5F9'
+                                        transition: 'transform 0.4s ease',
+                                        position: 'relative',
+                                        overflow: 'hidden'
                                     }}>
-                                        <img src={product.image} alt={product.name} style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }} />
+                                        <img src={product.image} alt={product.name} style={{
+                                            maxHeight: '70%',
+                                            maxWidth: '70%',
+                                            objectFit: 'contain',
+                                            filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.05))',
+                                            zIndex: 2
+                                        }} />
+                                        <div style={{
+                                            position: 'absolute',
+                                            bottom: '-20px',
+                                            right: '-20px',
+                                            fontSize: '100px',
+                                            opacity: 0.03,
+                                            color: primaryColor,
+                                            zIndex: 1
+                                        }}>
+                                            <i className={`fa-solid ${product.icon}`}></i>
+                                        </div>
                                     </div>
 
-                                    {/* Content */}
                                     <div className="content" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                        <div className="header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
-                                            <div className="icon" style={{
-                                                width: '45px',
-                                                height: '45px',
-                                                borderRadius: '50%',
-                                                background: '#fff',
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
+                                            <div>
+                                                <h3 style={{ fontSize: '20px', fontWeight: 800, color: '#09090b', margin: 0 }}>{product.name}</h3>
+                                                <span style={{ fontSize: '11px', color: primaryColor, fontWeight: 700, textTransform: 'uppercase' }}>{product.category}</span>
+                                            </div>
+                                            <div style={{ textAlign: 'right' }}>
+                                                <span style={{ fontSize: '18px', fontWeight: 800, color: '#09090b', display: 'block' }}>{product.price.split('/')[0]}</span>
+                                                <span style={{ fontSize: '10px', color: '#94a3b8', textTransform: 'uppercase' }}>{product.price.split('/')[1] || 'Forever'}</span>
+                                            </div>
+                                        </div>
+
+                                        <p style={{ color: '#64748b', fontSize: '14px', lineHeight: 1.5, marginBottom: '20px' }}>{product.description}</p>
+
+                                        <div style={{ marginTop: 'auto' }}>
+                                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '20px' }}>
+                                                {product.features.slice(0, 2).map((f, i) => (
+                                                    <span key={i} style={{
+                                                        padding: '4px 10px',
+                                                        background: '#f1f5f9',
+                                                        borderRadius: '6px',
+                                                        fontSize: '11px',
+                                                        color: '#475569',
+                                                        fontWeight: 500
+                                                    }}>• {f}</span>
+                                                ))}
+                                            </div>
+                                            <Link to="/contact" style={{
+                                                width: '100%',
+                                                padding: '12px',
+                                                background: '#09090b',
+                                                color: '#fff',
+                                                borderRadius: '10px',
                                                 display: 'flex',
                                                 alignItems: 'center',
                                                 justifyContent: 'center',
-                                                color: primaryColor,
-                                                fontSize: '18px',
-                                                boxShadow: '0 4px 10px rgba(0,0,0,0.05)'
-                                            }}>
-                                                <i className={`fa-solid ${product.icon}`}></i>
-                                            </div>
-                                            <span style={{ fontSize: '12px', fontWeight: '700', color: primaryColor, background: '#ECF2FF', padding: '4px 12px', borderRadius: '15px' }}>
-                                                {product.category}
-                                            </span>
-                                        </div>
-
-                                        <h3 className="title" style={{ fontSize: '24px', fontWeight: '700', color: darkColor, marginBottom: '10px' }}>
-                                            {product.name}
-                                        </h3>
-                                        <p style={{ fontSize: '16px', color: textColor, lineHeight: '1.6', marginBottom: '20px', flex: 1 }}>
-                                            {product.description}
-                                        </p>
-
-                                        <div className="footer" style={{ marginTop: 'auto' }}>
-                                            <Link to="/contact" className="rts-btn btn-primary" style={{ padding: '10px 25px', fontSize: '14px', width: '100%', textAlign: 'center' }}>
-                                                View Product
-                                                <i className="fa-regular fa-arrow-right ml--5"></i>
+                                                gap: '8px',
+                                                fontWeight: 600,
+                                                fontSize: '13px',
+                                                textDecoration: 'none',
+                                                transition: 'all 0.3s ease'
+                                            }}
+                                                onMouseEnter={(e) => { e.currentTarget.style.background = primaryColor }}
+                                                onMouseLeave={(e) => { e.currentTarget.style.background = '#09090b' }}
+                                            >
+                                                Subscribe Now
+                                                <i className="fa-regular fa-arrow-right"></i>
                                             </Link>
                                         </div>
                                     </div>
@@ -145,100 +251,88 @@ export const Products: React.FC = () => {
                         ))}
                     </div>
                 </div>
+            </section>
+
+            {/* FULL WIDTH Pricing Plan Section */}
+            <div id="pricing-plan" style={{ background: '#f8fafc', padding: '100px 0', borderTop: '1px solid #f1f5f9' }}>
+                <div className="container-fluid" style={{ maxWidth: '100%', padding: '0 5%' }}>
+                    <div className="row justify-content-center">
+                        <div className="col-lg-12">
+                            <Pricing />
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            {/* Why Build With Us Section */}
-            <div className="rts-why-choose-us-area rts-section-gap" style={{ background: '#fff' }}>
+            {/* Detailed Feature Comparison Grid */}
+            <section style={{ padding: '120px 0', background: '#fff' }}>
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-6">
-                            <div className="why-choose-left-content">
-                                <span className="pre-title" style={{ color: primaryColor, textTransform: 'uppercase', fontWeight: '700', letterSpacing: '1px', display: 'block', marginBottom: '10px' }}>
-                                    Enterprise Grade
-                                </span>
-                                <h2 className="title" style={{ fontSize: '36px', fontWeight: '800', color: darkColor, marginBottom: '20px' }}>
-                                    Why Build with NeuralTrix?
-                                </h2>
-                                <p className="disc" style={{ fontSize: '16px', color: textColor, lineHeight: '1.7', marginBottom: '30px' }}>
-                                    Our stack is optimized for performance, scalability, and ease of use.
-                                    We don't just provide tools; we provide a complete ecosystem for your AI initiatives.
-                                </p>
-                                <div className="row g-4">
-                                    {[
-                                        { title: 'Bank-Grade Security', desc: 'SOC2 Compliant infrastructure with end-to-end encryption.', icon: 'fa-shield-halved' },
-                                        { title: 'Infinite Scalability', desc: 'Auto-scaling architecture that grows with your user base.', icon: 'fa-layer-group' },
-                                        { title: '24/7 Expert Support', desc: 'Direct access to ML engineers, not just support tickets.', icon: 'fa-headset' },
-                                        { title: 'Seamless Integration', desc: 'Plug-and-play APIs for all major languages and frameworks.', icon: 'fa-plug' },
-                                    ].map((item, index) => (
-                                        <div className="col-md-6" key={index}>
-                                            <div className="single-reason" style={{ display: 'flex', gap: '15px' }}>
-                                                <div className="icon" style={{
-                                                    minWidth: '50px',
-                                                    height: '50px',
-                                                    background: '#F0F6FF',
-                                                    borderRadius: '50%',
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    justifyContent: 'center',
-                                                    color: primaryColor,
-                                                    fontSize: '20px'
-                                                }}>
-                                                    <i className={`fa-solid ${item.icon}`}></i>
-                                                </div>
-                                                <div className="content">
-                                                    <h5 style={{ fontSize: '18px', fontWeight: '700', marginBottom: '5px', color: darkColor }}>{item.title}</h5>
-                                                    <p style={{ fontSize: '14px', color: textColor, lineHeight: '1.5' }}>{item.desc}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-6 mt_md--50 mt_sm--50 pl--50 pl_md--15 pl_sm--15">
-                            <div className="why-choose-image" style={{ position: 'relative' }}>
-                                <img src="/assets/images/about/05.webp" alt="why-choose" style={{ borderRadius: '20px', width: '100%', boxShadow: '0 20px 50px rgba(0,0,0,0.1)' }} />
-                                <div className="card-floating" style={{
-                                    position: 'absolute',
-                                    bottom: '-30px',
-                                    left: '-30px',
-                                    background: '#fff',
-                                    padding: '25px',
-                                    borderRadius: '15px',
-                                    boxShadow: '0 15px 40px rgba(0,0,0,0.1)',
-                                    maxWidth: '220px'
-                                }}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-                                        <span style={{ fontSize: '32px', fontWeight: '800', color: primaryColor }}>99.9%</span>
-                                    </div>
-                                    <p style={{ margin: 0, fontSize: '14px', fontWeight: '600', color: darkColor }}>Uptime Guarantee on all Enterprise Plans</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            <h2 style={{ fontSize: '42px', fontWeight: 800, color: '#09090b', marginBottom: '25px', lineHeight: 1.1 }}>One Platform. <br />Unlimited Possibilities.</h2>
+                            <p style={{ fontSize: '18px', color: '#64748b', marginBottom: '40px' }}>Unlike fragmented AI tools, Neuraltrix offers a cross-compatible ecosystem. Data flows seamlessly between Vision, Language, and Prediction engines.</p>
 
-            {/* CTA Section */}
-            <div className="rts-call-to-action-area" style={{ background: '#0F0F11', padding: '100px 0' }}>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-12 text-center">
-                            <div className="cta-inner">
-                                <h3 className="title" style={{ color: '#fff', fontSize: '48px', fontWeight: '800', marginBottom: '20px' }}>
-                                    Ready to start building?
-                                </h3>
-                                <p className="disc" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '18px', marginBottom: '40px', maxWidth: '600px', margin: '0 auto 40px auto' }}>
-                                    Get started with our free tier or contact sales for enterprise options tailored to your needs.
-                                </p>
-                                <Link to="/contact" className="rts-btn btn-primary" style={{ padding: '15px 40px', fontSize: '18px' }}>
-                                    Contact Sales
-                                </Link>
+                            <div className="row g-4">
+                                {[
+                                    { title: 'API Integration', icon: 'fa-plug', desc: 'Plug into any stack with our universal SDKs.' },
+                                    { title: 'Scale on Demand', icon: 'fa-layer-group', desc: 'Process millions of requests with zero latency.' },
+                                    { title: 'Hybrid Cloud', icon: 'fa-cloud', desc: 'Deploy on-premise or on our specialized cloud.' },
+                                    { title: 'Audit Ready', icon: 'fa-shield-check', desc: 'GDPR & SOC2 compliance built into the core.' }
+                                ].map((item, i) => (
+                                    <div className="col-sm-6" key={i}>
+                                        <div style={{ padding: '20px', background: '#f8fafc', borderRadius: '16px', border: '1px solid #f1f5f9' }}>
+                                            <div style={{ color: primaryColor, fontSize: '24px', marginBottom: '15px' }}>
+                                                <i className={`fa-solid ${item.icon}`}></i>
+                                            </div>
+                                            <h4 style={{ fontSize: '18px', fontWeight: 700, margin: '0 0 10px' }}>{item.title}</h4>
+                                            <p style={{ fontSize: '13px', color: '#666', margin: 0 }}>{item.desc}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="col-lg-6 mt_md--50 mt_sm--50 pl--60 pl_md--15 pl_sm--15">
+                            <div style={{ position: 'relative' }}>
+                                <img src="/assets/images/about/05.webp" alt="Dashboard Preview" style={{
+                                    width: '100%',
+                                    borderRadius: '24px',
+                                    boxShadow: '0 30px 60px rgba(0,0,0,0.12)',
+                                    border: '8px solid #fff'
+                                }} />
+                                <div style={{
+                                    position: 'absolute',
+                                    top: '-20px',
+                                    left: '-20px',
+                                    background: primaryColor,
+                                    padding: '24px',
+                                    borderRadius: '20px',
+                                    color: '#fff',
+                                    boxShadow: '0 20px 40px rgba(60, 114, 252, 0.3)'
+                                }}>
+                                    <span style={{ fontSize: '32px', fontWeight: 800, display: 'block' }}>10x</span>
+                                    <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase' }}>Faster Deployment</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            {/* Custom Styles for Interactive Effects */}
+            <style>{`
+                .product-card-evanto:hover {
+                    border-color: ${primaryColor}40 !important;
+                    box-shadow: 0 40px 80px rgba(0,0,0,0.08) !important;
+                    transform: translateY(-8px);
+                }
+                .product-card-evanto:hover img {
+                    transform: scale(1.05) translateY(-5px);
+                }
+                .rts-btn.btn-primary:hover {
+                    box-shadow: 0 15px 30px rgba(60, 114, 252, 0.4);
+                    transform: translateY(-2px);
+                }
+            `}</style>
         </main>
     );
 };

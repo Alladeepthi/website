@@ -6,22 +6,28 @@ export const Counter: React.FC = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12">
-                        <div className="fun-facts-area-wrapper-machine bg_image">
-                            <div className="single-fun-facts">
-                                <h2 className="title">12k</h2>
-                                <p>Project Done</p>
+                        <div className="fun-facts-area-wrapper-machine bg_image" style={{
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            gap: '30px',
+                            justifyContent: 'center',
+                            padding: '40px 20px'
+                        }}>
+                            <div className="single-fun-facts" style={{ flex: '1 1 200px', textAlign: 'center' }}>
+                                <h2 className="title" style={{ fontSize: '36px', marginBottom: '5px' }}>12k</h2>
+                                <p style={{ margin: 0 }}>Project Done</p>
                             </div>
-                            <div className="single-fun-facts">
-                                <h2 className="title">131+</h2>
-                                <p>Happy Client</p>
+                            <div className="single-fun-facts" style={{ flex: '1 1 200px', textAlign: 'center' }}>
+                                <h2 className="title" style={{ fontSize: '36px', marginBottom: '5px' }}>131+</h2>
+                                <p style={{ margin: 0 }}>Happy Client</p>
                             </div>
-                            <div className="single-fun-facts">
-                                <h2 className="title">25+</h2>
-                                <p>Year Experience</p>
+                            <div className="single-fun-facts" style={{ flex: '1 1 200px', textAlign: 'center' }}>
+                                <h2 className="title" style={{ fontSize: '36px', marginBottom: '5px' }}>25+</h2>
+                                <p style={{ margin: 0 }}>Year Experience</p>
                             </div>
-                            <div className="single-fun-facts">
-                                <h2 className="title">100+</h2>
-                                <p>Award Wining</p>
+                            <div className="single-fun-facts" style={{ flex: '1 1 200px', textAlign: 'center' }}>
+                                <h2 className="title" style={{ fontSize: '36px', marginBottom: '5px' }}>100+</h2>
+                                <p style={{ margin: 0 }}>Award Wining</p>
                             </div>
                         </div>
                     </div>

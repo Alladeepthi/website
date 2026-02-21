@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const Pricing: React.FC = () => {
     return (
-        <div className="rts-pricing-area-machine rts-section-gap bg_image py-12 md:py-20">
+        <div id="pricing" className="rts-pricing-area-machine rts-section-gap bg_image py-12 md:py-20">
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12">
@@ -23,7 +23,7 @@ export const Pricing: React.FC = () => {
                                 </div>
                                 <p>Perfect for Startups and Small Businesses</p>
                             </div>
-                            <Link to="/pricing" className="rts-btn btn-primary btn-border">Select Plan</Link>
+                            <Link to="/contact" className="rts-btn btn-primary btn-border">Select Plan</Link>
                             <div className="body">
                                 <div className="check-wrapper">
                                     {['Pre-built machine learning models', 'Data preprocessing and analysis', 'Social Media Profile Setup', 'Monthly reports'].map((item, i) => (
@@ -46,7 +46,7 @@ export const Pricing: React.FC = () => {
                                 </div>
                                 <p>Perfect for Startups and Small Businesses</p>
                             </div>
-                            <Link to="/pricing" className="rts-btn btn-primary btn-border">Select Plan</Link>
+                            <Link to="/contact" className="rts-btn btn-primary btn-border">Select Plan</Link>
                             <div className="body">
                                 <div className="check-wrapper">
                                     {['Pre-built machine learning models', 'Data preprocessing and analysis', 'Social Media Profile Setup', 'Monthly reports'].map((item, i) => (
@@ -68,7 +68,7 @@ export const Pricing: React.FC = () => {
                                 </div>
                                 <p>Perfect for Startups and Small Businesses</p>
                             </div>
-                            <Link to="/pricing" className="rts-btn btn-primary btn-border">Select Plan</Link>
+                            <Link to="/contact" className="rts-btn btn-primary btn-border">Select Plan</Link>
                             <div className="body">
                                 <div className="check-wrapper">
                                     {['Pre-built machine learning models', 'Data preprocessing and analysis', 'Social Media Profile Setup', 'Monthly reports'].map((item, i) => (

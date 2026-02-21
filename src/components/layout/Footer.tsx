@@ -42,7 +42,7 @@ export const Footer: React.FC = () => {
                                 <h6 className="title" style={{ marginBottom: '10px', fontSize: '16px' }}>Resources</h6>
                                 <ul style={{ fontSize: '13px' }}>
                                     <li style={{ marginBottom: '6px' }}><Link to="#">Support</Link></li>
-                                    <li style={{ marginBottom: '6px' }}><Link to="/pricing">Pricing</Link></li>
+                                    <li style={{ marginBottom: '6px' }}><Link to="/products#pricing-plan">Pricing</Link></li>
                                     <li style={{ marginBottom: '0' }}><Link to="#">Docs</Link></li>
                                 </ul>
                             </div>
