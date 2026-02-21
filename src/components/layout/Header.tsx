@@ -393,7 +393,7 @@ export const Header: React.FC = () => {
                     </li>
                   </ul>
                 </div>
-                <Link to="/contact" className="rts-btn btn-primary with-arrow hidden lg:flex">Connect Now <i className="fa-regular fa-arrow-right"></i></Link>
+                <Link to="/contact" className="rts-btn btn-primary hidden lg:flex">Connect Now</Link>
                 <div className="menu-btn-toggle white lg:hidden" onClick={() => {
                   document.getElementById('side-bar')?.classList.add('show');
                   document.getElementById('anywhere-home')?.classList.add('bgshow');
