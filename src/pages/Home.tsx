@@ -107,7 +107,17 @@ export const Home: React.FC = () => {
                     .product-wrapper {
                         position: relative !important; 
                         top: 0 !important;
-                        margin-bottom: 30px !important;
+                        margin-bottom: 20px !important; /* Tighter gap between cards */
+                    }
+
+                    .product-sticky-wrapper-main {
+                        height: auto !important;
+                        margin-top: 30px !important;
+                    }
+
+                    .rts-product-area.rts-section-gap {
+                        padding-top: 50px !important;
+                        padding-bottom: 50px !important;
                     }
                 }
 
