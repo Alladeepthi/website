@@ -103,14 +103,24 @@ export const Home: React.FC = () => {
                         margin-bottom: 20px !important;
                     }
 
-                     /* Aggressive reset for sticky card spacing issues */
+                    /* Re-enabled Sticky Stacking Effect for Mobile */
                     .product-wrapper {
-                        position: relative !important; 
-                        top: 0 !important;
-                        margin: 0 auto 20px !important; 
+                        position: sticky !important;
+                        top: 80px !important; /* Offset for header */
+                        z-index: 5 !important;
+                        margin-bottom: 80px !important; /* Controlled duration for the 'stick' */
                         height: auto !important;
-                        min-height: auto !important;
-                        transform: none !important; /* Disable any scroll-animations that might cause shifts */
+                    }
+
+                    .product-wrapper:nth-child(2) {
+                        top: 110px !important;
+                        z-index: 6 !important;
+                    }
+
+                    .product-wrapper:nth-child(3) {
+                        top: 140px !important;
+                        z-index: 7 !important;
+                        margin-bottom: 30px !important;
                     }
 
                     .product-wrapper .inner {
