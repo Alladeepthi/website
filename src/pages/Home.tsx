@@ -103,21 +103,35 @@ export const Home: React.FC = () => {
                         margin-bottom: 20px !important;
                     }
 
-                    /* Disable Stacking on small screens to avoid 'void' space */
+                     /* Aggressive reset for sticky card spacing issues */
                     .product-wrapper {
                         position: relative !important; 
                         top: 0 !important;
-                        margin-bottom: 20px !important; /* Tighter gap between cards */
+                        margin: 0 auto 20px !important; 
+                        height: auto !important;
+                        min-height: auto !important;
+                        transform: none !important; /* Disable any scroll-animations that might cause shifts */
+                    }
+
+                    .product-wrapper .inner {
+                        flex-direction: column !important;
+                        padding: 30px 20px !important;
+                        gap: 20px !important;
+                        width: 100% !important;
+                        margin: 0 !important;
+                        border-radius: 16px !important;
+                        min-height: auto !important;
                     }
 
                     .product-sticky-wrapper-main {
                         height: auto !important;
-                        margin-top: 30px !important;
+                        margin: 0 !important;
+                        padding: 0 !important;
                     }
 
-                    .rts-product-area.rts-section-gap {
-                        padding-top: 50px !important;
-                        padding-bottom: 50px !important;
+                    .rts-product-area {
+                        padding-top: 40px !important;
+                        padding-bottom: 20px !important;
                     }
                 }
 
