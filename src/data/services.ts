@@ -74,7 +74,7 @@ export const servicesData: ServiceItem[] = [
     },
     {
         id: 2,
-        title: "Enterprise Product Solutions",
+        title: "Enterprise Software Solutions",
         subtitle: "Robust Licensing & Operational Platforms",
         description: "We build mission-critical software tailored to your specific business logic and operational needs. Our engineering team delivers scalable, secure applications that streamline complex workflows, reduce manual overhead, and support your organization’s growth without technical debt.",
         icon: "Memory.png",
@@ -127,7 +127,7 @@ export const servicesData: ServiceItem[] = [
         subCategories: [
             "UI/UX Design Systems",
             "Corporate Website Design",
-            "Product & Brand Identity",
+            "Brand & Visual Identity",
             "Landing Page Design",
             "SEO-Optimized Web Builds",
             "Performance & Accessibility Optimization",
@@ -136,7 +136,7 @@ export const servicesData: ServiceItem[] = [
         detailedFeatures: [
             { title: "UI/UX Design Systems", description: "Create consistent and scalable digital products. We develop comprehensive design systems including component libraries and style guides to ensure a unified user experience across all platforms.", icon: "fa-swatchbook", image: "/assets/images/service/teamwork high five-bro.png" },
             { title: "Corporate Website Design", description: "Make a strong first impression. We design professional, responsive corporate websites that effectively communicate your brand values and offerings to your target audience.", icon: "fa-desktop", image: "/assets/images/service/Onboarding-bro.png" },
-            { title: "Product & Brand Identity", description: "Stand out in the market with a unique identity. We craft logos, color palettes, and visual assets that reflect your brand's personality and resonate with your customers.", icon: "fa-fingerprint", image: "/assets/images/service/At the office-amico.png" },
+            { title: "Brand & Visual Identity", description: "Stand out in the market with a unique identity. We craft logos, color palettes, and visual assets that reflect your brand's personality and resonate with your customers.", icon: "fa-fingerprint", image: "/assets/images/service/At the office-amico.png" },
             { title: "Landing Page Design", description: "Convert visitors into leads. Our high-performance landing pages are optimized for conversion, featuring compelling copy, clear calls-to-action, and persuasive design elements.", icon: "fa-file-alt", image: "/assets/images/service/New employee-amico.png" },
             { title: "SEO-Optimized Web Builds", description: "Improve your search engine rankings. We build websites with clean code, proper semantic structure, and fast load times to ensure maximum visibility on Google and other search engines.", icon: "fa-search", image: "/assets/images/service/agile method-bro.png" },
             { title: "Performance & Accessibility Optimization", description: "Ensure inclusivity and speed. We optimize your digital assets for lightning-fast performance and full WCAG compliance, making your site accessible to all users.", icon: "fa-tachometer-alt", image: "/assets/images/service/Investment data-amico.png" },
@@ -356,7 +356,7 @@ export const servicesData: ServiceItem[] = [
         icon: "world.png",
         subCategories: [
             "SaaS Landing Page Design",
-            "Interactive Product Demos",
+            "Interactive Solution Demos",
             "Feature & Pricing Pages",
             "Trial & Onboarding Flows",
             "Conversion-Focused UI",
@@ -365,7 +365,7 @@ export const servicesData: ServiceItem[] = [
         ],
         detailedFeatures: [
             { title: "SaaS Landing Page Design", description: "Capture interest instantly. We design high-converting landing pages that clearly communicate your value proposition.", icon: "fa-laptop-code", image: "/assets/images/service/agile method-bro.png" },
-            { title: "Interactive Product Demos", description: "Let users experience your product. We build guided interactive demos that showcase key features without a full signup.", icon: "fa-play-circle", image: "/assets/images/service/Investment data-amico.png" },
+            { title: "Interactive Solution Demos", description: "Let users experience your solution. We build guided interactive demos that showcase key capabilities without a full signup.", icon: "fa-play-circle", image: "/assets/images/service/Investment data-amico.png" },
             { title: "Feature & Pricing Pages", description: "Drive purchase decisions. We create detailed feature comparisons and pricing tables optimized for subscription conversions.", icon: "fa-tags", image: "/assets/images/service/Business support-pana.png" },
             { title: "Trial & Onboarding Flows", description: "Seamless user activation. We design smooth signup and onboarding processes that reduce drop-off and accelerate time-to-value.", icon: "fa-user-plus", image: "/assets/images/service/Application programming interface-amico.png" },
             { title: "Conversion-Focused UI", description: "Optimize for action. Every element of our interface design is placed strategically to encourage user conversion.", icon: "fa-mouse-pointer", image: "/assets/images/service/Consultative sales-amico.png" },

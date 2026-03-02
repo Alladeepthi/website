@@ -12,11 +12,11 @@ import { Pricing } from './pages/Pricing';
 import { ServiceDetails } from './pages/ServiceDetails';
 import { Contact } from './pages/Contact';
 import { Team } from './pages/Team';
-import { Blog } from './pages/Blog';
+import BlogDetails from './pages/BlogDetails';
 import { FAQ } from './pages/FAQ';
 import { IndustryDetails } from './pages/IndustryDetails';
 import { PlatformDetails } from './pages/PlatformDetails';
-import { Products } from './pages/Products';
+import { Solutions } from './pages/Solutions';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 
 function App() {
@@ -39,11 +39,11 @@ function App() {
         <Route path="/service-details" element={<ServiceDetails />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/team" element={<Team />} />
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogDetails />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/industry/:id" element={<IndustryDetails />} />
         <Route path="/platform/:id" element={<PlatformDetails />} />
-        <Route path="/products" element={<Products />} />
+        <Route path="/solutions" element={<Solutions />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
       <Footer />

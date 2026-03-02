@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { servicesData } from '../../data/services';
 
@@ -83,7 +83,7 @@ export const MobileMenu: React.FC = () => {
                                 <li><Link to="/about" onClick={closeMenu}>About Company</Link></li>
                                 <li><Link to="/service-details" onClick={closeMenu}>Service</Link></li>
                                 <li><Link to="/case-studies" onClick={closeMenu}>Project Details</Link></li>
-                                <li><Link to="/products#pricing-plan" onClick={closeMenu}>Pricing</Link></li>
+                                <li><Link to="/solutions#pricing-plan" onClick={closeMenu}>Pricing</Link></li>
                                 <li><Link to="/contact" onClick={closeMenu}>Contact</Link></li>
                             </ul>
                         </div>
@@ -230,14 +230,15 @@ export const MobileMenu: React.FC = () => {
                                 </ul>
                             </li>
                             <li className="has-droupdown">
-                                <Link to="#" className="main">Products</Link>
+                                <Link to="#" className="main">Solutions</Link>
                                 <ul className="submenu mm-collapse">
-                                    <li><Link to="/products" onClick={closeMenu}>AI Platform</Link></li>
-                                    <li><Link to="/products" onClick={closeMenu}>ML Studio</Link></li>
-                                    <li><Link to="/products" onClick={closeMenu}>Data Analytics Suite</Link></li>
-                                    <li><Link to="/products" onClick={closeMenu}>Automation Tools</Link></li>
+                                    <li><Link to="/solutions" onClick={closeMenu}>Visual Monitoring</Link></li>
+                                    <li><Link to="/solutions" onClick={closeMenu}>Knowledge Automation</Link></li>
+                                    <li><Link to="/solutions" onClick={closeMenu}>Data Augmentation</Link></li>
+                                    <li><Link to="/solutions" onClick={closeMenu}>Edge Intelligence</Link></li>
                                 </ul>
                             </li>
+
 
                         </ul>
                     </nav>

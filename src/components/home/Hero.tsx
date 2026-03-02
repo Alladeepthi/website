@@ -91,6 +91,7 @@ export const Hero: React.FC = () => {
                 <div className="row justify-content-center">
                     <div className="col-lg-10 text-center">
                         <div>
+
                             <span style={{
                                 letterSpacing: '3px',
                                 color: '#60A5FA',
@@ -104,7 +105,7 @@ export const Hero: React.FC = () => {
                                 borderRadius: '30px',
                                 border: '1px solid rgba(59, 130, 246, 0.2)'
                             }}>
-                                Future-Scale Product Engineering
+                                Future-Scale Solution Engineering
                             </span>
                         </div>
                     </div>

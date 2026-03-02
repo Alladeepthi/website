@@ -50,7 +50,7 @@ export const CaseStudies: React.FC = () => {
                                     <li><i className="fa-regular fa-check"></i>Real-time Data Processing</li>
                                     <li><i className="fa-regular fa-check"></i>Automated Compliance Reporting</li>
                                 </ul>
-                                <Link to="/case-studies" className="rts-btn btn-primary">Read Case Study</Link>
+                                <Link to="/case-studies/fintech-scaling" className="rts-btn btn-primary">Read Case Study</Link>
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,7 @@ export const CaseStudies: React.FC = () => {
                                     <li><i className="fa-regular fa-check"></i>Seamless EMR Integration</li>
                                     <li><i className="fa-regular fa-check"></i>Predictive Staffing Models</li>
                                 </ul>
-                                <Link to="/case-studies" className="rts-btn btn-primary">Read Case Study</Link>
+                                <Link to="/case-studies/telemedicine-app" className="rts-btn btn-primary">Read Case Study</Link>
                             </div>
                         </div>
                     </div>
@@ -84,7 +84,7 @@ export const CaseStudies: React.FC = () => {
                                     <li><i className="fa-regular fa-check"></i>Route Optimization</li>
                                     <li><i className="fa-regular fa-check"></i>Vendor Portal Integration</li>
                                 </ul>
-                                <Link to="/case-studies" className="rts-btn btn-primary">Read Case Study</Link>
+                                <Link to="/case-studies/delivery-app" className="rts-btn btn-primary">Read Case Study</Link>
                             </div>
                         </div>
                     </div>

@@ -63,7 +63,7 @@ export const AIPlatform: React.FC = () => {
                             fontWeight: 800,
                             color: '#0F172A',
                             marginBottom: '0'
-                        }}>Accelerating Your Product Vision</h2>
+                        }}>Accelerating Your Solution Vision</h2>
                     </div>
                 </div>
 

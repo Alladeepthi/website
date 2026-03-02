@@ -25,7 +25,7 @@ export const Blog: React.FC = () => {
                     ].map((blog, i) => (
                         <div className="col-lg-6" key={i}>
                             <div className="rts-single-blog-card-m">
-                                <Link to="/blog-details" className="thumbnail">
+                                <Link to="/blog" className="thumbnail">
                                     <img src={`/assets/images/blog/${blog.img}`} alt="blog" />
                                 </Link>
                                 <div className="inner-content">
@@ -33,7 +33,7 @@ export const Blog: React.FC = () => {
                                         <span className="tag">{blog.date}</span>
                                         <span className="tag">{blog.author}</span>
                                     </div>
-                                    <Link to="/blog-details">
+                                    <Link to="/blog">
                                         <h3 className="title">{blog.title}</h3>
                                     </Link>
                                 </div>

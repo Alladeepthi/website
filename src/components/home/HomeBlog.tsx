@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { blogData } from '../../data/blogData';
+
 export const HomeBlog: React.FC = () => {
     const [currentIndex, setCurrentIndex] = React.useState(0);
     const [itemsPerPage, setItemsPerPage] = React.useState(3);
@@ -16,35 +18,8 @@ export const HomeBlog: React.FC = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const blogs = [
-        {
-            date: "2 October 2024",
-            author: "James Henry",
-            title: "Scaling Microservices: Best Practices for High Throughput",
-            image: "/assets/images/blog/blog.png"
-        },
-        {
-            date: "19 October 2024",
-            author: "Engineering Team",
-            title: "Architecting Resilient Data Pipelines for Real-Time Analytics",
-            image: "/assets/images/blog/webinar.png"
-        },
-        {
-            date: "25 October 2024",
-            author: "AI Research",
-            title: "Automating MLOps: From Experimentation to Production",
-            image: "/assets/images/blog/blog-03.jpg"
-        },
-        {
-            date: "1 November 2024",
-            author: "Sarah Jenkins",
-            title: "The Future of GenAI: Integrating LLMs into Enterprise Workflows",
-            image: "/assets/images/blog/blog-04.jpg"
-        }
-    ];
-
     const nextSlide = () => {
-        if (currentIndex < blogs.length - itemsPerPage) {
+        if (currentIndex < blogData.length - itemsPerPage) {
             setCurrentIndex(prev => prev + 1);
         }
     };
@@ -98,18 +73,18 @@ export const HomeBlog: React.FC = () => {
                             </button>
                             <button
                                 onClick={nextSlide}
-                                disabled={currentIndex >= blogs.length - itemsPerPage}
+                                disabled={currentIndex >= blogData.length - itemsPerPage}
                                 style={{
                                     width: '45px',
                                     height: '45px',
                                     borderRadius: '50%',
                                     border: '1px solid #E2E8F0',
-                                    background: currentIndex >= blogs.length - itemsPerPage ? '#F1F5F9' : '#fff',
-                                    color: currentIndex >= blogs.length - itemsPerPage ? '#94A3B8' : '#3B82F6',
+                                    background: currentIndex >= blogData.length - itemsPerPage ? '#F1F5F9' : '#fff',
+                                    color: currentIndex >= blogData.length - itemsPerPage ? '#94A3B8' : '#3B82F6',
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
-                                    cursor: currentIndex >= blogs.length - itemsPerPage ? 'not-allowed' : 'pointer',
+                                    cursor: currentIndex >= blogData.length - itemsPerPage ? 'not-allowed' : 'pointer',
                                     transition: 'all 0.3s ease',
                                     fontSize: '18px'
                                 }}
@@ -126,7 +101,7 @@ export const HomeBlog: React.FC = () => {
                         transition: 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)',
                         transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)`,
                     }}>
-                        {blogs.map((blog, idx) => (
+                        {blogData.map((blog, idx) => (
                             <div key={idx} style={{
                                 flex: `0 0 ${100 / itemsPerPage}%`,
                                 padding: '0 15px',
@@ -143,7 +118,7 @@ export const HomeBlog: React.FC = () => {
                                     display: 'flex',
                                     flexDirection: 'column'
                                 }}>
-                                    <Link to="#" className="thumbnail" style={{
+                                    <Link to={`/blog/${blog.slug}`} className="thumbnail" style={{
                                         display: 'block',
                                         height: '220px',
                                         overflow: 'hidden',
@@ -192,7 +167,7 @@ export const HomeBlog: React.FC = () => {
                                                 {blog.author}
                                             </span>
                                         </div>
-                                        <Link to="#" style={{ textDecoration: 'none', marginBottom: 'auto' }}>
+                                        <Link to={`/blog/${blog.slug}`} style={{ textDecoration: 'none', marginBottom: 'auto' }}>
                                             <h3 className="title" style={{
                                                 fontSize: '20px',
                                                 fontWeight: 700,
@@ -206,7 +181,7 @@ export const HomeBlog: React.FC = () => {
                                             >{blog.title}</h3>
                                         </Link>
                                         <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid #F1F5F9' }}>
-                                            <Link to="#" style={{
+                                            <Link to={`/blog/${blog.slug}`} style={{
                                                 fontSize: '14px',
                                                 fontWeight: 600,
                                                 color: '#3B82F6',

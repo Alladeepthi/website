@@ -687,50 +687,88 @@ export const PlatformDetails = () => {
             {/* 10. Case Studies */}
             <div className="rts-case-area rts-section-gap" style={{ background: lightBg, padding: '100px 0' }}>
                 <div className="container">
-                    <div className="row mb--60">
-                        <div className="col-12 text-center">
+                    <div className="row mb--50 text-center">
+                        <div className="col-12">
                             <span style={{ color: primaryColor, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '14px' }}>Success Stories</span>
-                            <h2 className="title" style={{ fontSize: '38px', fontWeight: '800', color: darkColor, marginTop: '10px' }}>{platform.caseStudies.title}</h2>
+                            <h2 className="title" style={{ fontSize: '38px', fontWeight: '800', color: darkColor }}>{platform.caseStudies.title}</h2>
                         </div>
                     </div>
-                    <div className="row g-5">
+                    <div className="row g-4 justify-content-center">
                         {platform.caseStudies.items.map((study, i) => (
-                            <div className="col-lg-6 col-md-6" key={i}>
-                                <div className="custom-case-card">
-                                    <Link to="/contact" className="case-image">
+                            <div className="col-lg-4 col-md-6" key={i}>
+                                <div className="case-study-card-premium" style={{
+                                    background: '#fff',
+                                    borderRadius: '24px',
+                                    padding: '20px',
+                                    height: '100%',
+                                    boxShadow: '0 10px 30px rgba(0,0,0,0.04)',
+                                    border: '1px solid #E2E8F0',
+                                    transition: 'all 0.4s ease',
+                                    display: 'flex',
+                                    flexDirection: 'column'
+                                }}>
+                                    {/* Image Container with Inset background to frame illustration */}
+                                    <div style={{
+                                        background: '#F1F5F9',
+                                        borderRadius: '16px',
+                                        height: '200px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        overflow: 'hidden',
+                                        marginBottom: '20px'
+                                    }}>
                                         <img
                                             src={study.image || `/assets/images/case/0${(i % 3) + 6}.webp`}
                                             alt={study.title}
                                             style={{
-                                                width: '100%',
-                                                height: '250px',
+                                                maxWidth: '80%',
+                                                maxHeight: '80%',
                                                 objectFit: 'contain',
-                                                background: '#f8fafc',
-                                                padding: '20px'
+                                                transition: 'transform 0.5s ease'
                                             }}
+                                            className="study-img"
                                         />
-                                    </Link>
-                                    <div style={{ padding: '30px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                        <span style={{ color: primaryColor, fontSize: '14px', fontWeight: '600', textTransform: 'uppercase' }}>Use Case</span>
-                                        <h5 className="title" style={{ fontSize: '22px', fontWeight: '700', color: darkColor, margin: '10px 0 15px' }}>{study.title}</h5>
-                                        <p className="disc" style={{ fontSize: '15px', color: textColor, margin: '0 0 20px 0', lineHeight: '1.6', flex: 1 }}>
-                                            {study.description}
-                                        </p>
-                                        <Link to="/contact" style={{
+                                    </div>
+                                    <div className="content" style={{ padding: '0 5px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                                        <span style={{ color: primaryColor, fontSize: '12px', fontWeight: '700', textTransform: 'uppercase', marginBottom: '8px' }}>Use Case</span>
+                                        <h4 className="title" style={{ fontSize: '20px', fontWeight: '800', color: darkColor, marginBottom: '12px' }}>{study.title}</h4>
+                                        <p style={{ 
+                                            color: '#64748B', 
+                                            lineHeight: '1.6', 
+                                            marginBottom: '20px',
+                                            fontSize: '14px',
+                                            flex: 1
+                                        }}>{study.description}</p>
+                                        <Link to={`/case-studies/${study.title.toLowerCase().replace(/\s+/g, '-')}`} style={{
                                             color: primaryColor,
-                                            fontWeight: '600',
-                                            fontSize: '15px',
+                                            fontWeight: '700',
+                                            fontSize: '14px',
                                             display: 'inline-flex',
                                             alignItems: 'center',
-                                            gap: '8px'
-                                        }}>
-                                            Read More <i className="fa-regular fa-arrow-right"></i>
+                                            gap: '8px',
+                                            textDecoration: 'none'
+                                        }} className="study-link">
+                                            Read More <i className="fa-solid fa-arrow-right"></i>
                                         </Link>
                                     </div>
                                 </div>
                             </div>
                         ))}
                     </div>
+                    <style>{`
+                        .case-study-card-premium:hover {
+                            transform: translateY(-10px);
+                            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+                            border-color: ${primaryColor};
+                        }
+                        .case-study-card-premium:hover .study-img {
+                            transform: scale(1.08);
+                        }
+                        .case-study-card-premium:hover .study-link {
+                            gap: 12px;
+                        }
+                    `}</style>
                 </div>
             </div>
 

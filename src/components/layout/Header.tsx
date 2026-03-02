@@ -366,14 +366,14 @@ export const Header: React.FC = () => {
                     </ul>
                   </li>
 
-                  {/* Products */}
+                  {/* Solutions */}
                   <li className="main-nav has-dropdown project-a-after">
-                    <Link to="/products">Products</Link>
+                    <Link to="/solutions">Solutions</Link>
                     <ul className="submenu parent-nav">
-                      <li><Link to="/products">AI Platform</Link></li>
-                      <li><Link to="/products">ML Studio</Link></li>
-                      <li><Link to="/products">Data Analytics Suite</Link></li>
-                      <li><Link to="/products">Automation Tools</Link></li>
+                      <li><Link to="/solutions">Visual Monitoring</Link></li>
+                      <li><Link to="/solutions">Knowledge Automation</Link></li>
+                      <li><Link to="/solutions">Data Augmentation</Link></li>
+                      <li><Link to="/solutions">Edge Intelligence</Link></li>
                     </ul>
                   </li>
 

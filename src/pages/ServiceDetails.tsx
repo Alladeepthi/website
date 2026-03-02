@@ -310,15 +310,10 @@ export const ServiceDetails: React.FC = () => {
             {/* 4. Process Section */}
             <div className="rts-process-area" style={{ padding: '100px 0' }}>
                 <div className="container">
-                    <div className="row mb--60">
-                        <div className="col-lg-6">
+                    <div className="row mb--60 justify-content-center">
+                        <div className="col-lg-8 text-center">
                             <span style={{ color: primaryColor, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', display: 'block', marginBottom: '10px' }}>Working Process</span>
                             <h2 className="title" style={{ fontSize: '38px', fontWeight: '800', color: darkColor }}>Smooth & Creative <br /> Working Process</h2>
-                        </div>
-                        <div className="col-lg-6">
-                            <div className="process-image-right" style={{ textAlign: 'right' }}>
-                                {/* Optional Illustration could go here */}
-                            </div>
                         </div>
                     </div>
                     <div className="row g-5" style={{ position: 'relative' }}>
@@ -704,99 +699,76 @@ export const ServiceDetails: React.FC = () => {
                 </div>
             </div>
 
-            {/* 9. Case Studies (Moved to Bottom) */}
+            {/* 9. Case Studies (Refined Card Styling) */}
             {service.caseStudies && service.caseStudies.length > 0 && (
-                <div className="rts-case-study-area-bottom rts-section-gap" style={{ padding: '80px 0', background: '#F8FAFC', borderTop: '1px solid #e2e8f0' }}>
+                <div className="rts-case-study-area-bottom rts-section-gap" style={{ background: '#F8FAFC', padding: '100px 0' }}>
                     <div className="container">
-                        <div className="row mb--40">
-                            <div className="col-12 text-center">
-                                <span style={{
-                                    color: primaryColor,
-                                    fontWeight: '700',
-                                    textTransform: 'uppercase',
-                                    letterSpacing: '1px',
-                                    display: 'block',
-                                    marginBottom: '10px',
-                                    fontSize: '14px'
-                                }}>
-                                    Proven Results
-                                </span>
-                                <h2 className="title" style={{
-                                    fontSize: '32px',
-                                    fontWeight: '800',
-                                    color: darkColor,
-                                    marginBottom: '0'
-                                }}>
-                                    Related Success Stories
-                                </h2>
+                        <div className="row mb--50 text-center">
+                            <div className="col-12">
+                                <span style={{ color: primaryColor, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', display: 'block', marginBottom: '10px' }}>Proven Results</span>
+                                <h2 className="title" style={{ fontSize: '38px', fontWeight: '800', color: darkColor }}>Related Success Stories</h2>
                             </div>
                         </div>
                         <div className="row g-4 justify-content-center">
                             {service.caseStudies.map((study: any, index: number) => (
-                                <div className="col-lg-4 col-md-6 col-sm-12" key={index}>
-                                    <div className="case-study-card-compact" style={{
+                                <div className="col-lg-4 col-md-6" key={index}>
+                                    <div className="case-study-card-premium" style={{
                                         background: '#fff',
-                                        borderRadius: '12px',
-                                        overflow: 'hidden',
-                                        boxShadow: '0 4px 6px rgba(0,0,0,0.02)',
-                                        border: '1px solid #f1f5f9',
+                                        borderRadius: '24px',
+                                        padding: '20px',
                                         height: '100%',
-                                        transition: 'all 0.3s ease'
-                                    }}
-                                        onMouseEnter={(e) => {
-                                            e.currentTarget.style.transform = 'translateY(-5px)';
-                                            e.currentTarget.style.boxShadow = '0 15px 30px rgba(0,0,0,0.08)';
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.currentTarget.style.transform = 'translateY(0)';
-                                            e.currentTarget.style.boxShadow = '0 4px 6px rgba(0,0,0,0.02)';
+                                        boxShadow: '0 10px 30px rgba(0,0,0,0.04)',
+                                        border: '1px solid #E2E8F0',
+                                        transition: 'all 0.4s ease',
+                                        display: 'flex',
+                                        flexDirection: 'column'
+                                    }}>
+                                        {/* Image Container with Inset background to frame illustration */}
+                                        <div style={{
+                                            background: '#F1F5F9',
+                                            borderRadius: '16px',
+                                            height: '200px',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            overflow: 'hidden',
+                                            marginBottom: '20px'
                                         }}>
-                                        <div className="image-area" style={{ position: 'relative', paddingTop: '60%', overflow: 'hidden' }}>
                                             <img
                                                 src={study.image}
                                                 alt={study.title}
                                                 style={{
-                                                    position: 'absolute',
-                                                    top: 0,
-                                                    left: 0,
-                                                    width: '100%',
-                                                    height: '100%',
-                                                    objectFit: 'cover',
+                                                    maxWidth: '80%',
+                                                    maxHeight: '80%',
+                                                    objectFit: 'contain',
                                                     transition: 'transform 0.5s ease'
                                                 }}
+                                                className="study-img"
                                             />
                                         </div>
-                                        <div className="content" style={{ padding: '25px' }}>
-                                            <h4 className="title" style={{
-                                                fontSize: '20px',
-                                                fontWeight: '700',
-                                                color: darkColor,
-                                                marginBottom: '12px',
-                                                lineHeight: '1.4'
-                                            }}>
-                                                {study.title}
-                                            </h4>
-                                            <p style={{
-                                                fontSize: '14px',
-                                                color: textColor,
-                                                lineHeight: '1.6',
+                                        <div className="content" style={{ padding: '0 5px' }}>
+                                            <h4 className="title" style={{ 
+                                                fontSize: '20px', 
+                                                fontWeight: '800', 
+                                                color: darkColor, 
+                                                marginBottom: '12px' 
+                                            }}>{study.title}</h4>
+                                            <p style={{ 
+                                                color: '#64748B', 
+                                                lineHeight: '1.6', 
                                                 marginBottom: '20px',
-                                                display: '-webkit-box',
-                                                WebkitLineClamp: '3',
-                                                WebkitBoxOrient: 'vertical',
-                                                overflow: 'hidden'
-                                            }}>
-                                                {study.description}
-                                            </p>
-                                            <Link to={study.link || '#'} style={{
-                                                fontSize: '14px',
-                                                fontWeight: '600',
+                                                fontSize: '14px'
+                                            }}>{study.description}</p>
+                                            <Link to={study.link || `/case-studies/${study.title.toLowerCase().replace(/ /g, '-')}`} style={{
                                                 color: primaryColor,
+                                                fontWeight: '700',
+                                                fontSize: '14px',
                                                 display: 'inline-flex',
                                                 alignItems: 'center',
-                                                gap: '6px'
-                                            }}>
-                                                Read Case Study <i className="fa-regular fa-arrow-right" style={{ fontSize: '12px' }}></i>
+                                                gap: '8px',
+                                                textDecoration: 'none'
+                                            }} className="study-link">
+                                                Read Case Study <i className="fa-solid fa-arrow-right"></i>
                                             </Link>
                                         </div>
                                     </div>
@@ -804,6 +776,19 @@ export const ServiceDetails: React.FC = () => {
                             ))}
                         </div>
                     </div>
+                    <style>{`
+                        .case-study-card-premium:hover {
+                            transform: translateY(-10px);
+                            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+                            border-color: ${primaryColor};
+                        }
+                        .case-study-card-premium:hover .study-img {
+                            transform: scale(1.08);
+                        }
+                        .case-study-card-premium:hover .study-link {
+                            gap: 12px;
+                        }
+                    `}</style>
                 </div>
             )}
         </main >

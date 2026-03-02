@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
@@ -41,9 +41,9 @@ export const Footer: React.FC = () => {
                             <div className="single">
                                 <h6 className="title" style={{ marginBottom: '10px', fontSize: '16px' }}>Resources</h6>
                                 <ul style={{ fontSize: '13px' }}>
-                                    <li style={{ marginBottom: '6px' }}><Link to="#">Support</Link></li>
-                                    <li style={{ marginBottom: '6px' }}><Link to="/products#pricing-plan">Pricing</Link></li>
-                                    <li style={{ marginBottom: '0' }}><Link to="#">Docs</Link></li>
+                                    <li style={{ marginBottom: '6px' }}><Link to="/case-studies">Case Studies</Link></li>
+                                    <li style={{ marginBottom: '6px' }}><Link to="/solutions#pricing-plan">Pricing</Link></li>
+                                    <li style={{ marginBottom: '0' }}><Link to="#">Support</Link></li>
                                 </ul>
                             </div>
                             <div className="single">
