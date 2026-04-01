@@ -1,17 +1,66 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export const Contact: React.FC = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        lname: '',
+        email: '',
+        phone: '',
+        country: 'IND',
+        message: '',
+        checkbox: false
+    });
+
     useEffect(() => {
-        document.body.className = "demo-machine-learning";
-        const script = document.createElement('script');
-        script.src = "/assets/js/main.js?t=" + new Date().getTime();
-        script.async = true;
-        document.body.appendChild(script);
+        document.body.classList.add("demo-machine-learning");
+
+        let script = document.getElementById('main-js') as HTMLScriptElement;
+        if (!script) {
+            script = document.createElement('script');
+            script.id = 'main-js';
+            script.src = "/assets/js/main.js";
+            script.async = true;
+            document.body.appendChild(script);
+        }
+
         return () => {
-            document.body.className = "";
-            document.body.removeChild(script);
+            document.body.classList.remove("demo-machine-learning");
         };
     }, []);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const { name, value, type } = e.target;
+        const val = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
+        setFormData(prev => ({ ...prev, [name]: val }));
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (!formData.checkbox) {
+            alert("Please agree to the privacy policy.");
+            return;
+        }
+
+        // WhatsApp Number for NeuraltrixAI (+918142438759)
+        const companyPhone = "918142438759";
+
+        // Construct the Pre-filled Message
+        const msg = `Hello NeuraltrixAI,\n\n` +
+            `My name is: ${formData.name} ${formData.lname}\n` +
+            `Email: ${formData.email}\n` +
+            `Phone: ${formData.phone}\n` +
+            `Country: ${formData.country}\n\n` +
+            `Message: ${formData.message}`;
+
+        const whatsappUrl = `https://wa.me/${companyPhone}?text=${encodeURIComponent(msg)}`;
+
+        // Open WhatsApp in a new tab
+        window.open(whatsappUrl, '_blank');
+
+        // Optional: Reset form or show success
+        setFormData({ name: '', lname: '', email: '', phone: '', country: 'BAN', message: '', checkbox: false });
+    };
 
     return (
         <main>
@@ -45,7 +94,7 @@ export const Contact: React.FC = () => {
                                         </div>
                                         <h4 className="title">Our Location</h4>
                                     </div>
-                                    <p className="disc">VFSTR, N block, Guntur,Andhra Pradesh,India</p>
+                                    <p className="disc">VFSTR, N block, Guntur, Andhra Pradesh, India</p>
                                 </div>
                                 <div className="signle-contact-card">
                                     <div className="top-area">
@@ -70,42 +119,43 @@ export const Contact: React.FC = () => {
                             </div>
                         </div>
                         <div className="col-lg-8">
-                            <form className="contact-form-main-wrapper-contact form__content">
+                            <form className="contact-form-main-wrapper-contact form__content" onSubmit={handleSubmit}>
                                 <div className="single-input-wrapper">
                                     <div className="single-input">
                                         <label htmlFor="name">First Name</label>
-                                        <input name="name" id="name" type="text" placeholder="Your Name" required />
+                                        <input name="name" id="name" type="text" placeholder="Your Name" required value={formData.name} onChange={handleChange} />
                                     </div>
                                     <div className="single-input">
                                         <label htmlFor="lname">Last Name</label>
-                                        <input id="lname" type="text" placeholder="Last Name" />
+                                        <input name="lname" id="lname" type="text" placeholder="Last Name" value={formData.lname} onChange={handleChange} />
                                     </div>
                                 </div>
                                 <div className="single-input-wrapper">
                                     <div className="single-input">
                                         <label htmlFor="email">Email</label>
-                                        <input id="email" type="email" name="email" placeholder="example@gmail.com" required />
+                                        <input id="email" type="email" name="email" placeholder="example@gmail.com" required value={formData.email} onChange={handleChange} />
                                     </div>
                                     <div className="single-input">
                                         <label htmlFor="phone">Phone</label>
                                         <div className="input-with-country-selenct">
-                                            <select className="form-select" aria-label="Default select example">
-                                                <option defaultValue="BAN">BAN</option>
-                                                <option value="1">USA</option>
-                                                <option value="2">UAE</option>
-                                                <option value="3">ENG</option>
+                                            <select name="country" className="form-select" aria-label="Default select example" value={formData.country} onChange={handleChange}>
+                                                <option value="IND">IND</option>
+                                                <option value="BAN">BAN</option>
+                                                <option value="USA">USA</option>
+                                                <option value="UAE">UAE</option>
+                                                <option value="ENG">ENG</option>
                                             </select>
-                                            <input id="phone" type="tel" name="phone" placeholder="Phone" />
+                                            <input id="phone" type="tel" name="phone" placeholder="Phone" value={formData.phone} onChange={handleChange} />
                                         </div>
                                     </div>
                                 </div>
                                 <div className="single-input">
                                     <label htmlFor="message">How can we help you?</label>
-                                    <textarea name="message" id="message" placeholder="Your message..." required></textarea>
+                                    <textarea name="message" id="message" placeholder="Your message..." required value={formData.message} onChange={handleChange}></textarea>
                                 </div>
                                 <div className="single-input with-checkbox">
-                                    <input type="checkbox" name="checkbox" id="checkbox" />
-                                    <label htmlFor="checkbox">You agree to our friendly <a href="#">privacy policy</a></label>
+                                    <input type="checkbox" name="checkbox" id="checkbox" checked={formData.checkbox} onChange={handleChange} />
+                                    <label htmlFor="checkbox">You agree to our friendly <a href="#">privacy policy</a></label>
                                 </div>
                                 <button className="rts-btn btn-primary" type="submit">Send Message</button>
                             </form>
