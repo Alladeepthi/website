@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
@@ -19,14 +18,12 @@ import { PlatformDetails } from './pages/PlatformDetails';
 import { Solutions } from './pages/Solutions';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 
-function App() {
-  useEffect(() => {
-    // Force preloader removal in case main.js misses the window.load event
-    document.body.classList.add('loaded');
-  }, []);
+import { GlobalHacks } from './components/layout/GlobalHacks';
 
+function App() {
   return (
     <Router>
+      <GlobalHacks />
       <Header />
       <MobileMenu />
       <Routes>
@@ -37,6 +34,7 @@ function App() {
         <Route path="/case-studies-2" element={<CaseStudies2 />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/service-details" element={<ServiceDetails />} />
+        <Route path="/service/:id" element={<ServiceDetails />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/team" element={<Team />} />
         <Route path="/blog/:slug" element={<BlogDetails />} />

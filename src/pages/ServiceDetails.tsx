@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { servicesData } from '../data/services';
 
 export const ServiceDetails: React.FC = () => {
+    const { id } = useParams<{ id: string }>();
     const location = useLocation();
-    const service = location.state?.service || servicesData[0];
+
+    // Prioritize passed state (from Link clicks), then URL param, then default to first service
+    const service = location.state?.service ||
+        (id ? servicesData.find(s => s.id === parseInt(id)) : null) ||
+        servicesData[0];
+
     const [activeFeature, setActiveFeature] = useState(0);
 
     useEffect(() => {
-        document.body.className = "service-details-page";
+        document.body.classList.add("service-details-page");
         return () => {
-            document.body.className = "";
+            document.body.classList.remove("service-details-page");
         };
     }, []);
 
@@ -747,15 +753,15 @@ export const ServiceDetails: React.FC = () => {
                                             />
                                         </div>
                                         <div className="content" style={{ padding: '0 5px' }}>
-                                            <h4 className="title" style={{ 
-                                                fontSize: '20px', 
-                                                fontWeight: '800', 
-                                                color: darkColor, 
-                                                marginBottom: '12px' 
+                                            <h4 className="title" style={{
+                                                fontSize: '20px',
+                                                fontWeight: '800',
+                                                color: darkColor,
+                                                marginBottom: '12px'
                                             }}>{study.title}</h4>
-                                            <p style={{ 
-                                                color: '#64748B', 
-                                                lineHeight: '1.6', 
+                                            <p style={{
+                                                color: '#64748B',
+                                                lineHeight: '1.6',
                                                 marginBottom: '20px',
                                                 fontSize: '14px'
                                             }}>{study.description}</p>

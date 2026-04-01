@@ -4,14 +4,19 @@ import { servicesData } from '../data/services';
 
 export const Services: React.FC = () => {
     useEffect(() => {
-        document.body.className = "demo-machine-learning";
-        const script = document.createElement('script');
-        script.src = "/assets/js/main.js?t=" + new Date().getTime();
-        script.async = true;
-        document.body.appendChild(script);
+        document.body.classList.add("demo-machine-learning");
+
+        let script = document.getElementById('main-js') as HTMLScriptElement;
+        if (!script) {
+            script = document.createElement('script');
+            script.id = 'main-js';
+            script.src = "/assets/js/main.js";
+            script.async = true;
+            document.body.appendChild(script);
+        }
+
         return () => {
-            document.body.className = "";
-            document.body.removeChild(script);
+            document.body.classList.remove("demo-machine-learning");
         };
     }, []);
 

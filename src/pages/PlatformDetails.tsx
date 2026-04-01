@@ -9,20 +9,22 @@ export const PlatformDetails = () => {
 
 
     useEffect(() => {
-        document.body.className = "demo-data-science";
+        document.body.classList.add("demo-data-science");
 
-        const script = document.createElement('script');
-        script.src = "/assets/js/main.js?t=" + new Date().getTime();
-        script.async = true;
-        document.body.appendChild(script);
+        // Only inject main.js if it's not already there
+        let script = document.getElementById('main-js') as HTMLScriptElement;
+        if (!script) {
+            script = document.createElement('script');
+            script.id = 'main-js';
+            script.src = "/assets/js/main.js";
+            script.async = true;
+            document.body.appendChild(script);
+        }
 
         return () => {
-            document.body.className = "";
-            if (document.body.contains(script)) {
-                document.body.removeChild(script);
-            }
+            document.body.classList.remove("demo-data-science");
         };
-    }, [id]);
+    }, []);
 
     if (!platform) {
         return <Navigate to="/" replace />;
@@ -733,9 +735,9 @@ export const PlatformDetails = () => {
                                     <div className="content" style={{ padding: '0 5px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                                         <span style={{ color: primaryColor, fontSize: '12px', fontWeight: '700', textTransform: 'uppercase', marginBottom: '8px' }}>Use Case</span>
                                         <h4 className="title" style={{ fontSize: '20px', fontWeight: '800', color: darkColor, marginBottom: '12px' }}>{study.title}</h4>
-                                        <p style={{ 
-                                            color: '#64748B', 
-                                            lineHeight: '1.6', 
+                                        <p style={{
+                                            color: '#64748B',
+                                            lineHeight: '1.6',
                                             marginBottom: '20px',
                                             fontSize: '14px',
                                             flex: 1
