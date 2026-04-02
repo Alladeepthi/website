@@ -37,12 +37,12 @@ export const Header: React.FC = () => {
         <div className="row">
           <div className="col-lg-12">
             <div className="header-wrapper-main" style={wrapperStyle}>
-              <div className="logo-area">
+              <div className="logo-area" style={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
                 <Link to="/">
                   <img src="/assets/images/logo/nlogo%20(1).png" alt="NeuraltrixAI" style={{ height: '55px', width: 'auto' }} />
                 </Link>
               </div>
-              <div className="nav-area hidden lg:flex" style={{ flex: 1, justifyContent: 'flex-end' }}>
+              <div className="nav-area hidden lg:flex" style={{ flex: 0, justifyContent: 'center', whiteSpace: 'nowrap' }}>
                 <ul className="" style={{ display: 'flex', flexWrap: 'nowrap', gap: '45px', alignItems: 'center', margin: 0, padding: 0, listStyle: 'none' }}>
                   {/* Services - With Dropdown */}
                   <li className="main-nav has-dropdown mega-menu">
@@ -380,19 +380,8 @@ export const Header: React.FC = () => {
 
                 </ul>
               </div>
-              <div className="button-wrapper-flex">
-                <div className="select-area language hidden lg:flex">
-                  <ul>
-                    <li className="main-nav has-dropdown project-a-after">
-                      <img src="/assets/images/header/01.svg" alt="lang" />
-                      <Link to="#">EN</Link>
-                      <ul className="submenu parent-nav">
-                        <li><Link to="#">EN</Link></li>
-                        <li><Link to="#">BN</Link></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
+              <div className="button-wrapper-flex" style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', gap: '20px', alignItems: 'center' }}>
+
                 <Link to="/contact" className="rts-btn btn-primary hidden lg:flex">Connect Now</Link>
                 <div className="menu-btn-toggle white lg:hidden" onClick={() => {
                   document.getElementById('side-bar')?.classList.add('show');
