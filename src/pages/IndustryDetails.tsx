@@ -24,13 +24,13 @@ export const IndustryDetails: React.FC = () => {
 
 
     const illustrationMap: Record<string, string> = {
-        'healthcare': '/assets/images/feature/07.webp',
-        'finance': '/assets/images/feature/08.webp',
-        'retail': '/assets/images/feature/09.webp',
-        'manufacturing': '/assets/images/feature/10.webp',
-        'technology': '/assets/images/feature/11.webp',
+        'healthcare': '/assets/images/feature/07.svg',
+        'finance': '/assets/images/feature/08.svg',
+        'retail': '/assets/images/feature/09.svg',
+        'manufacturing': '/assets/images/feature/10.svg',
+        'technology': '/assets/images/feature/11.svg',
     };
-    const overviewImage = illustrationMap[industry.slug] || '/assets/images/feature/06.webp';
+    const overviewImage = illustrationMap[industry.slug] || '/assets/images/feature/06.svg';
 
 
     return (
@@ -96,11 +96,19 @@ export const IndustryDetails: React.FC = () => {
                             </div>
                         </div>
                         <div className="col-lg-6 mt_md--50 mt_sm--50 pl--30">
-                            <div className="thumbnail-image" style={{ position: 'relative', width: '85%', margin: '0 auto' }}>
+                            <div className="thumbnail-image" style={{
+                                position: 'relative',
+                                width: '100%',
+                                margin: '0 auto',
+                                background: '#fff', // Pure white background as requested
+                                padding: '40px',
+                                borderRadius: '30px',
+                                boxShadow: '0 25px 50px -12px rgba(0,0,0,0.05)'
+                            }}>
                                 <img
                                     src={overviewImage}
                                     alt="Overview"
-                                    style={{ width: '100%', borderRadius: '20px', boxShadow: '0 25px 50px rgba(0,0,0,0.1)' }}
+                                    style={{ width: '100%', objectFit: 'contain', height: 'auto' }}
                                 />
                                 {/* Floating Gradient Card */}
                                 <div className="cta-card absolute bottom-0 left-0 md:-bottom-8 md:-left-8" style={{
