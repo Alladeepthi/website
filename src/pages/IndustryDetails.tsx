@@ -41,7 +41,7 @@ export const IndustryDetails: React.FC = () => {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center center',
                 backgroundRepeat: 'no-repeat',
-                padding: '200px 0 120px',
+                padding: '160px 0 100px',
                 textAlign: 'center',
                 color: '#fff',
                 position: 'relative'
@@ -64,7 +64,7 @@ export const IndustryDetails: React.FC = () => {
             </div>
 
             {/* 2. Intro Section with Floating CTA (Overview) */}
-            <div className="rts-service-intro-area rts-section-gap" style={{ padding: '100px 0', position: 'relative', background: '#fff' }}>
+            <div className="rts-service-intro-area rts-section-gap" style={{ padding: '60px 0', position: 'relative', background: '#fff' }}>
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-6 pr--60 pr_md--15 pr_sm--15">
@@ -131,7 +131,7 @@ export const IndustryDetails: React.FC = () => {
             </div>
 
             {/* 3. Challenges Section - Compacted Layout */}
-            <div className="rts-challenges-area rts-section-gap" style={{ background: '#F8FAFC', padding: '60px 0' }}>
+            <div className="rts-challenges-area rts-section-gap" style={{ background: '#F8FAFC', padding: '40px 0' }}>
                 <div className="container">
                     <div className="row mb--40">
                         <div className="col-12 text-center">
@@ -303,7 +303,7 @@ export const IndustryDetails: React.FC = () => {
 
             {/* 4. Solutions Grid - Enhanced Design */}
             <div className="rts-process-area" style={{
-                padding: '100px 0',
+                padding: '60px 0',
                 background: 'linear-gradient(180deg, #f8fafc 0%, #fff 100%)',
                 position: 'relative'
             }}>
@@ -436,7 +436,7 @@ export const IndustryDetails: React.FC = () => {
             </div>
 
             {/* 5. Process / How It Works Section (New Addition) */}
-            <div className="rts-process-area rts-section-gap" style={{ padding: '80px 0 100px', background: '#fff' }}>
+            <div className="rts-process-area rts-section-gap" style={{ padding: '50px 0 70px', background: '#fff' }}>
                 <div className="container">
                     <div className="row mb--40">
                         <div className="col-12 text-center">
@@ -483,7 +483,7 @@ export const IndustryDetails: React.FC = () => {
             </div>
 
             {/* 6. CTA Gradient Section (Boxed & Premium) */}
-            <div className="rts-cta-gradient" style={{ padding: '0 0 120px' }}>
+            <div className="rts-cta-gradient" style={{ padding: '0 0 80px' }}>
                 <div className="container">
                     <div
                         style={{

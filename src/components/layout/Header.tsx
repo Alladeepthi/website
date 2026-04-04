@@ -1,13 +1,22 @@
-﻿import React, { useEffect } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { servicesData } from '../../data/services';
 
 export const Header: React.FC = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
+  const [hoverDisabled, setHoverDisabled] = useState(false);
 
   const leftServices = servicesData.slice(0, 4);
   const rightServices = servicesData.slice(4, 8);
+
+  const handleLinkClick = () => {
+    setHoverDisabled(true);
+  };
+
+  const handleMouseEnter = () => {
+    setHoverDisabled(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +35,7 @@ export const Header: React.FC = () => {
   }, []);
 
   const isPlatformDetails = location.pathname.startsWith('/platform/');
-  const headerClass = `header-one header--sticky ${!isHome ? 'header-relative' : ''} ${!isPlatformDetails ? 'machine-learning' : ''}`;
+  const headerClass = `header-one header--sticky ${!isHome ? 'header-relative' : ''} ${!isPlatformDetails ? 'machine-learning' : ''} ${hoverDisabled ? 'hover-disabled' : ''}`;
 
   const containerStyle = isPlatformDetails ? {} : { maxWidth: '1400px' };
   const wrapperStyle = { display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '30px', flexWrap: 'nowrap' as const };
@@ -38,16 +47,16 @@ export const Header: React.FC = () => {
           <div className="col-lg-12">
             <div className="header-wrapper-main" style={wrapperStyle}>
               <div className="logo-area" style={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
-                <Link to="/">
+                <Link to="/" onClick={handleLinkClick}>
                   <img src="/assets/images/logo/nlogo%20(1).png" alt="NeuraltrixAI" style={{ height: '55px', width: 'auto' }} />
                 </Link>
               </div>
               <div className="nav-area hidden lg:flex" style={{ flex: 0, justifyContent: 'center', whiteSpace: 'nowrap' }}>
                 <ul className="" style={{ display: 'flex', flexWrap: 'nowrap', gap: '45px', alignItems: 'center', margin: 0, padding: 0, listStyle: 'none' }}>
                   {/* Services - With Dropdown */}
-                  <li className="main-nav has-dropdown mega-menu">
-                    <Link to="/service-details">Services</Link>
-                    <div className="rts-mega-menu service-mega-menu-style">
+                  <li className="main-nav has-dropdown mega-menu" onMouseEnter={handleMouseEnter}>
+                    <Link to="/service-details" onClick={handleLinkClick}>Services</Link>
+                    <div className="rts-mega-menu service-mega-menu-style" onClick={handleLinkClick}>
                       <div className="wrapper">
                         <div className="container">
                           <div className="row g-5">
@@ -222,9 +231,9 @@ export const Header: React.FC = () => {
                   </li>
 
                   {/* Platforms */}
-                  <li className="main-nav has-dropdown mega-menu platforms-parent">
+                  <li className="main-nav has-dropdown mega-menu platforms-parent" onMouseEnter={handleMouseEnter}>
                     <Link to="#" onClick={(e) => e.preventDefault()}>Platforms</Link>
-                    <div className="rts-mega-menu service-mega-menu-style">
+                    <div className="rts-mega-menu service-mega-menu-style" onClick={handleLinkClick}>
                       <div className="wrapper">
                         <div className="container">
                           <div className="row g-5">
@@ -343,9 +352,9 @@ export const Header: React.FC = () => {
                   </li>
 
                   {/* Industry */}
-                  <li className="main-nav has-dropdown project-a-after">
+                  <li className="main-nav has-dropdown project-a-after" onMouseEnter={handleMouseEnter}>
                     <Link to="#" onClick={(e) => e.preventDefault()}>Industry</Link>
-                    <ul className="submenu parent-nav">
+                    <ul className="submenu parent-nav" onClick={handleLinkClick}>
                       <li><Link to="/industry/healthcare">Healthcare</Link></li>
                       <li><Link to="/industry/finance">Finance</Link></li>
                       <li><Link to="/industry/retail">Retail</Link></li>
@@ -357,9 +366,9 @@ export const Header: React.FC = () => {
 
 
                   {/* About */}
-                  <li className="main-nav has-dropdown project-a-after">
-                    <Link to="/about">About</Link>
-                    <ul className="submenu parent-nav">
+                  <li className="main-nav has-dropdown project-a-after" onMouseEnter={handleMouseEnter}>
+                    <Link to="/about" onClick={handleLinkClick}>About</Link>
+                    <ul className="submenu parent-nav" onClick={handleLinkClick}>
                       <li><Link to="/about">About Us</Link></li>
                       <li><Link to="/team">Our Team</Link></li>
                       <li><Link to="/privacy-policy">Privacy Policy</Link></li>
@@ -367,9 +376,9 @@ export const Header: React.FC = () => {
                   </li>
 
                   {/* Solutions */}
-                  <li className="main-nav has-dropdown project-a-after">
-                    <Link to="/solutions">Solutions</Link>
-                    <ul className="submenu parent-nav">
+                  <li className="main-nav has-dropdown project-a-after" onMouseEnter={handleMouseEnter}>
+                    <Link to="/solutions" onClick={handleLinkClick}>Solutions</Link>
+                    <ul className="submenu parent-nav" onClick={handleLinkClick}>
                       <li><Link to="/solutions">Visual Monitoring</Link></li>
                       <li><Link to="/solutions">Knowledge Automation</Link></li>
                       <li><Link to="/solutions">Data Augmentation</Link></li>
@@ -382,7 +391,7 @@ export const Header: React.FC = () => {
               </div>
               <div className="button-wrapper-flex" style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', gap: '20px', alignItems: 'center' }}>
 
-                <Link to="/contact" className="rts-btn btn-primary hidden lg:flex">Connect Now</Link>
+                <Link to="/contact" className="rts-btn btn-primary hidden lg:flex" onClick={handleLinkClick}>Connect Now</Link>
                 <div className="menu-btn-toggle white lg:hidden" onClick={() => {
                   document.getElementById('side-bar')?.classList.add('show');
                   document.getElementById('anywhere-home')?.classList.add('bgshow');
@@ -399,6 +408,14 @@ export const Header: React.FC = () => {
         </div>
       </div>
       <style>{`
+        /* Force close menus on link click by disabling hover state */
+        .header-one.hover-disabled .rts-mega-menu,
+        .header-one.hover-disabled .submenu {
+          display: none !important;
+          opacity: 0 !important;
+          visibility: hidden !important;
+        }
+
         /* Ensure visibility on white backgrounds (Inner Pages) by turning the white logo black */
         header.header-relative .logo-area img {
           filter: brightness(0);

@@ -141,7 +141,7 @@ export const PlatformDetails = () => {
             </div>
 
             {/* 2. Intro Section with Stats */}
-            <div className="rts-service-intro-area rts-section-gap" style={{ padding: '100px 0', position: 'relative', background: '#fff' }}>
+            <div className="rts-service-intro-area rts-section-gap" style={{ padding: '60px 0', position: 'relative', background: '#fff' }}>
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-6 pr--60 pr_md--15 pr_sm--15">
@@ -219,7 +219,7 @@ export const PlatformDetails = () => {
 
 
             {/* 4. Data Architecture Flow */}
-            <div className="rts-architecture-area rts-section-gap" style={{ background: lightBg, padding: '100px 0' }}>
+            <div className="rts-architecture-area rts-section-gap" style={{ background: lightBg, padding: '60px 0' }}>
                 <div className="container">
                     <div className="row mb--60">
                         <div className="col-12 text-center">
@@ -293,7 +293,7 @@ export const PlatformDetails = () => {
 
             {/* 5. Industry Use Cases with Icons */}
             {platform.industryUseCases && (
-                <div className="rts-use-cases-area rts-section-gap" style={{ padding: '100px 0', background: '#fff' }}>
+                <div className="rts-use-cases-area rts-section-gap" style={{ padding: '60px 0', background: '#fff' }}>
                     <div className="container">
                         <div className="row mb--60">
                             <div className="col-12 text-center">
@@ -343,7 +343,7 @@ export const PlatformDetails = () => {
             )}
 
             {/* 6. Platform vs Traditional Comparison */}
-            <div className="rts-comparison-area rts-section-gap" style={{ background: lightBg, padding: '100px 0' }}>
+            <div className="rts-comparison-area rts-section-gap" style={{ background: lightBg, padding: '60px 0' }}>
                 <div className="container">
                     <div className="row mb--60">
                         <div className="col-12 text-center">
@@ -450,7 +450,7 @@ export const PlatformDetails = () => {
             </div>
 
             {/* 7. Capabilities - Horizontal Accordion Cards */}
-            <div className="rts-capabilities-area rts-section-gap" style={{ padding: '100px 0', background: '#fff' }}>
+            <div className="rts-capabilities-area rts-section-gap" style={{ padding: '60px 0', background: '#fff' }}>
                 <div className="container">
                     <div className="row mb--60">
                         <div className="col-12 text-center">
@@ -598,7 +598,7 @@ export const PlatformDetails = () => {
             </div>
 
             {/* 8. Tech Stack Integration */}
-            <div className="rts-tech-stack-area" style={{ background: lightBg, padding: '80px 0' }}>
+            <div className="rts-tech-stack-area" style={{ background: lightBg, padding: '50px 0' }}>
                 <div className="container">
                     <div className="row mb--40">
                         <div className="col-12 text-center">
@@ -634,7 +634,7 @@ export const PlatformDetails = () => {
             </div>
 
             {/* 9. Why Choose Section */}
-            <div className="rts-feature-area rts-section-gap" style={{ padding: '100px 0' }}>
+            <div className="rts-feature-area rts-section-gap" style={{ padding: '60px 0' }}>
                 <div className="container">
                     <div className="row mb--60">
                         <div className="col-12 text-center">
@@ -687,7 +687,7 @@ export const PlatformDetails = () => {
             </div>
 
             {/* 10. Case Studies */}
-            <div className="rts-case-area rts-section-gap" style={{ background: lightBg, padding: '100px 0' }}>
+            <div className="rts-case-area rts-section-gap" style={{ background: lightBg, padding: '60px 0' }}>
                 <div className="container">
                     <div className="row mb--50 text-center">
                         <div className="col-12">
@@ -775,7 +775,7 @@ export const PlatformDetails = () => {
             </div>
 
             {/* 11. Final CTA */}
-            <div className="rts-call-to-action-area rts-section-gapBottom" style={{ padding: '80px 0' }}>
+            <div className="rts-call-to-action-area rts-section-gapBottom" style={{ padding: '60px 0' }}>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">

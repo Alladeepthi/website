@@ -47,7 +47,7 @@ export const Services: React.FC = () => {
             {/* rts about-breadcrumb-area-end */}
 
             {/* rts feature area start */}
-            <div className="rts-feature-area-three rts-section-gap">
+            <div className="rts-feature-area-three rts-section-gap" style={{ padding: '60px 0' }}>
                 <div className="container">
                     <div className="row g-5">
                         <div className="col-lg-12 mb--50">
@@ -92,7 +92,7 @@ export const Services: React.FC = () => {
             {/* rts feature area end */}
 
             {/* rts why choose us start */}
-            <div className="why-chooseus-area rts-section-gap bg-light-2">
+            <div className="why-chooseus-area rts-section-gap bg-light-2" style={{ padding: '60px 0' }}>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-5">
@@ -135,7 +135,7 @@ export const Services: React.FC = () => {
             {/* rts why choose us end */}
 
             {/* rts call to action area start */}
-            <div className="rts-call-to-action-area rts-section-gap">
+            <div className="rts-call-to-action-area rts-section-gap" style={{ padding: '60px 0' }}>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">

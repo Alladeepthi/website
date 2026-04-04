@@ -56,7 +56,7 @@ export const ServiceDetails: React.FC = () => {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center center',
                 backgroundRepeat: 'no-repeat',
-                padding: '250px 0 140px',
+                padding: '180px 0 100px',
                 textAlign: 'center',
                 color: '#fff',
                 position: 'relative'
@@ -78,7 +78,7 @@ export const ServiceDetails: React.FC = () => {
             </div>
 
             {/* 2. Intro Section with Floating CTA */}
-            <div className="rts-service-intro-area rts-section-gap" style={{ padding: '100px 0', position: 'relative' }}>
+            <div className="rts-service-intro-area rts-section-gap" style={{ padding: '60px 0', position: 'relative' }}>
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-6 pr--60 pr_md--15 pr_sm--15">
@@ -154,7 +154,7 @@ export const ServiceDetails: React.FC = () => {
             </div>
 
             {/* 3. Detailed Features Tab Section */}
-            <div className="rts-service-area rts-section-gap" style={{ background: '#F8FAFC', padding: '100px 0' }}>
+            <div className="rts-service-area rts-section-gap" style={{ background: '#F8FAFC', padding: '60px 0' }}>
                 <div className="container">
                     <div className="row mb--60">
                         <div className="col-12 text-center">
@@ -314,7 +314,7 @@ export const ServiceDetails: React.FC = () => {
             </div>
 
             {/* 4. Process Section */}
-            <div className="rts-process-area" style={{ padding: '100px 0' }}>
+            <div className="rts-process-area" style={{ padding: '60px 0' }}>
                 <div className="container">
                     <div className="row mb--60 justify-content-center">
                         <div className="col-lg-8 text-center">
@@ -429,7 +429,7 @@ export const ServiceDetails: React.FC = () => {
 
 
             {/* 6. Testimonials (Circular Layout Simulation) */}
-            <div className="rts-testimonial-area" style={{ background: `linear-gradient(135deg, ${lightBg} 0%, #fff 100%)`, padding: '100px 0' }}>
+            <div className="rts-testimonial-area" style={{ background: `linear-gradient(135deg, ${lightBg} 0%, #fff 100%)`, padding: '60px 0' }}>
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-6">
@@ -549,7 +549,7 @@ export const ServiceDetails: React.FC = () => {
             </div>
 
             {/* 7. Brand Logos (Enhanced Marquee) */}
-            <div className="rts-brand-area" style={{ padding: '80px 0', borderTop: '1px solid #f1f5f9', background: lightBg }}>
+            <div className="rts-brand-area" style={{ padding: '50px 0', borderTop: '1px solid #f1f5f9', background: lightBg }}>
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-12 text-center">
@@ -615,7 +615,7 @@ export const ServiceDetails: React.FC = () => {
             </div>
 
             {/* 8. FAQ Section */}
-            <div className="rts-faq-area" style={{ padding: '100px 0', background: '#fff' }}>
+            <div className="rts-faq-area" style={{ padding: '60px 0', background: '#fff' }}>
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-6">
@@ -707,7 +707,7 @@ export const ServiceDetails: React.FC = () => {
 
             {/* 9. Case Studies (Refined Card Styling) */}
             {service.caseStudies && service.caseStudies.length > 0 && (
-                <div className="rts-case-study-area-bottom rts-section-gap" style={{ background: '#F8FAFC', padding: '100px 0' }}>
+                <div className="rts-case-study-area-bottom rts-section-gap" style={{ background: '#F8FAFC', padding: '60px 0' }}>
                     <div className="container">
                         <div className="row mb--50 text-center">
                             <div className="col-12">
