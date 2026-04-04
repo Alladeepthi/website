@@ -56,10 +56,21 @@ export const Header: React.FC = () => {
                   {/* Services - With Dropdown */}
                   <li className="main-nav has-dropdown mega-menu" onMouseEnter={handleMouseEnter}>
                     <Link to="/service-details" onClick={handleLinkClick}>Services</Link>
-                    <div className="rts-mega-menu service-mega-menu-style" onClick={handleLinkClick}>
+                    <div className="rts-mega-menu service-mega-menu-style" onClick={handleLinkClick} style={{
+                      background: '#fff',
+                      borderRadius: '20px',
+                      padding: '20px',
+                      border: '1px solid #f1f5f9',
+                      boxShadow: '0 20px 50px rgba(0,0,0,0.1)',
+                      width: '1050px',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      position: 'absolute',
+                      top: '100%'
+                    }}>
                       <div className="wrapper">
-                        <div className="container">
-                          <div className="row g-5">
+                        <div className="container" style={{ maxWidth: '100%' }}>
+                          <div className="row g-2">
                             <div className="col-lg-4">
                               <ul className="mega-menu-item parent-nav" style={{ padding: 0, margin: 0 }}>
                                 {leftServices.map((service, idx) => (
@@ -178,12 +189,22 @@ export const Header: React.FC = () => {
                             <div className="col-lg-4">
                               <div className="menu-list">
                                 <h4 style={{
-                                  fontSize: '16px',
+                                  fontSize: '14px',
                                   fontWeight: 700,
-                                  marginBottom: '15px',
+                                  marginBottom: '10px',
                                   color: '#0F172A'
                                 }}>Our Approach</h4>
-                                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                <ul style={{ listStyle: 'none', padding: 0, margin: 0, position: 'relative' }}>
+                                  {/* Connecting Timeline Line */}
+                                  <div style={{
+                                    position: 'absolute',
+                                    left: '19px',
+                                    top: '10px',
+                                    bottom: '10px',
+                                    width: '1px',
+                                    background: '#e2e8f0',
+                                    zIndex: 0
+                                  }}></div>
                                   {[
                                     { title: 'Discovery & Analysis', icon: 'fa-magnifying-glass' },
                                     { title: 'Strategy Development', icon: 'fa-lightbulb' },
@@ -195,29 +216,56 @@ export const Header: React.FC = () => {
                                     { title: 'Optimization', icon: 'fa-chart-line' }
                                   ].map((item, idx) => (
                                     <li key={idx} style={{
-                                      fontSize: '14px',
-                                      padding: '8px 12px',
-                                      marginBottom: '4px',
-                                      borderRadius: '6px',
+                                      fontSize: '13px',
+                                      padding: '6px 10px',
+                                      marginBottom: '2px',
+                                      borderRadius: '8px',
                                       transition: 'all 0.3s ease',
                                       cursor: 'pointer',
                                       display: 'flex',
                                       alignItems: 'center',
-                                      gap: '10px',
-                                      color: '#64748B'
+                                      gap: '12px',
+                                      color: '#475569',
+                                      position: 'relative',
+                                      zIndex: 1
                                     }}
                                       onMouseEnter={(e) => {
-                                        e.currentTarget.style.background = '#EFF6FF';
+                                        e.currentTarget.style.background = '#f8fafc';
                                         e.currentTarget.style.color = '#3B82F6';
-                                        e.currentTarget.style.paddingLeft = '16px';
+                                        const icon = e.currentTarget.querySelector('.step-icon') as HTMLElement;
+                                        if (icon) {
+                                          icon.style.background = '#3B82F6';
+                                          icon.style.color = '#fff';
+                                          icon.style.borderColor = '#3B82F6';
+                                        }
                                       }}
                                       onMouseLeave={(e) => {
                                         e.currentTarget.style.background = 'transparent';
-                                        e.currentTarget.style.color = '#64748B';
-                                        e.currentTarget.style.paddingLeft = '12px';
+                                        e.currentTarget.style.color = '#475569';
+                                        const icon = e.currentTarget.querySelector('.step-icon') as HTMLElement;
+                                        if (icon) {
+                                          icon.style.background = '#fff';
+                                          icon.style.color = '#3B82F6';
+                                          icon.style.borderColor = '#e2e8f0';
+                                        }
                                       }}>
-                                      <i className={`fa-solid ${item.icon}`} style={{ fontSize: '12px', width: '16px' }}></i>
-                                      {item.title}
+                                      <div className="step-icon" style={{
+                                        width: '20px',
+                                        height: '20px',
+                                        background: '#fff',
+                                        border: '1px solid #e2e8f0',
+                                        borderRadius: '50%',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        fontSize: '9px',
+                                        color: '#3B82F6',
+                                        flexShrink: 0,
+                                        transition: 'all 0.3s ease'
+                                      }}>
+                                        <i className={`fa-solid ${item.icon}`}></i>
+                                      </div>
+                                      <span style={{ fontWeight: 500 }}>{item.title}</span>
                                     </li>
                                   ))}
                                 </ul>
@@ -232,121 +280,180 @@ export const Header: React.FC = () => {
 
                   {/* Platforms */}
                   <li className="main-nav has-dropdown mega-menu platforms-parent" onMouseEnter={handleMouseEnter}>
-                    <Link to="#" onClick={(e) => e.preventDefault()}>Platforms</Link>
-                    <div className="rts-mega-menu service-mega-menu-style" onClick={handleLinkClick}>
-                      <div className="wrapper">
-                        <div className="container">
-                          <div className="row g-5">
-                            {[
-                              {
-                                title: "DataLakes",
-                                items: [
-                                  { name: "Snowflake", link: "/platform/snowflake" },
-                                  { name: "RedShift", link: "/platform/redshift" },
-                                  { name: "Databricks", link: "/platform/databricks" },
-                                  { name: "MongoDB", link: "/platform/mongodb" },
-                                  { name: "Datadog", link: "/platform/datadog" }
-                                ]
-                              },
-                              {
-                                title: "RAG Tools",
-                                items: [
-                                  { name: "Unstructured", link: "/platform/unstructured" },
-                                  { name: "Airbyte", link: "/platform/airbyte" },
-                                  { name: "LlamaIndex", link: "/platform/llamaindex" },
-                                  { name: "LangChain", link: "/platform/langchain" }
-                                ]
-                              },
-                              {
-                                title: "Vector Database",
-                                items: [
-                                  { name: "Pinecone", link: "/platform/pinecone" },
-                                  { name: "Weaviate", link: "/platform/weaviate" },
-                                  { name: "Zilliz", link: "/platform/zilliz" },
-                                  { name: "Milvus", link: "/platform/milvus" },
-                                  { name: "Supabase", link: "/platform/supabase" }
-                                ]
-                              },
-                              {
-                                title: "Model Ecosystem",
-                                items: [
-                                  { name: "OpenAI", link: "/platform/openai" },
-                                  { name: "Gemini", link: "/platform/gemini" },
-                                  { name: "Llama 3.2", link: "/platform/llama-3.2" },
-                                  { name: "BERT", link: "/platform/bert" },
-                                  { name: "LaMDA", link: "/platform/lamda" },
-                                  { name: "Orca", link: "/platform/orca" },
-                                  { name: "Mistral", link: "/platform/mistral" },
-                                  { name: "PaLM2", link: "/platform/palm2" },
-                                  { name: "Claude", link: "/platform/claude" },
-                                  { name: "Hugging Face", link: "/platform/hugging-face" }
-                                ]
-                              }
-                            ].map((category, idx) => (
-                              <div className="col-lg-3" key={idx}>
-                                <h4 className="title mb--20">{category.title}</h4>
-                                <ul className="mega-menu-item parent-nav">
-                                  {category.items.map((item, i) => (
-                                    <li key={i} style={{ marginBottom: '5px', width: '100%' }}>
-                                      <Link to={item.link} style={{ textDecoration: 'none', display: 'block', width: '100%' }}>
-                                        <div className="single-service-menu" style={{
-                                          display: 'flex',
-                                          alignItems: 'center',
-                                          justifyContent: 'space-between',
-                                          padding: '8px 12px',
-                                          borderRadius: '8px',
-                                          transition: 'all 0.3s ease',
-                                          cursor: 'pointer',
-                                          width: '100%'
-                                        }}
-                                          onMouseEnter={(e) => {
-                                            e.currentTarget.style.background = '#EFF6FF';
-                                            const title = e.currentTarget.querySelector('.title') as HTMLElement;
-                                            if (title) title.style.color = '#3B82F6';
-                                            const icon = e.currentTarget.querySelector('.arrow-icon') as HTMLElement;
-                                            if (icon) {
-                                              icon.style.opacity = '1';
-                                              icon.style.transform = 'translateX(0)';
-                                            }
-                                          }}
-                                          onMouseLeave={(e) => {
-                                            e.currentTarget.style.background = 'transparent';
-                                            const title = e.currentTarget.querySelector('.title') as HTMLElement;
-                                            if (title) title.style.color = '#1e293b'; // Default clear text color
-                                            const icon = e.currentTarget.querySelector('.arrow-icon') as HTMLElement;
-                                            if (icon) {
-                                              icon.style.opacity = '0';
-                                              icon.style.transform = 'translateX(-5px)';
-                                            }
-                                          }}>
-                                          <div className="info" style={{ flex: 1 }}>
-                                            <h5 className="title" style={{
-                                              fontSize: '14px',
-                                              fontWeight: 500,
-                                              margin: 0,
-                                              color: '#1e293b',
-                                              transition: 'color 0.3s ease'
-                                            }}>{item.name}</h5>
-                                          </div>
-                                          <div className="arrow-icon" style={{
-                                            color: '#3B82F6',
-                                            opacity: 0,
-                                            transform: 'translateX(-5px)',
-                                            transition: 'all 0.3s ease',
-                                            fontSize: '12px',
-                                            marginLeft: '10px' // Added some spacing margin just in case
-                                          }}>
-                                            <i className="fa-solid fa-arrow-right"></i>
-                                          </div>
-                                        </div>
-                                      </Link>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            ))}
+                    <Link to="#" onClick={(e) => e.preventDefault()}>
+                      Platforms
+                    </Link>
+                    <div className="modern-platforms-dropdown" style={{
+                      position: 'absolute',
+                      top: '100%',
+                      left: '50%',
+                      transform: 'translateX(-50%) translateY(15px)',
+                      width: '1150px',
+                      maxWidth: '95vw',
+                      background: '#fff',
+                      borderRadius: '16px',
+                      boxShadow: '0 20px 60px rgba(0,0,0,0.12)',
+                      border: '1px solid #e2e8f0',
+                      padding: '25px 15px',
+                      zIndex: 1000,
+                      visibility: 'hidden',
+                      opacity: 0,
+                      transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                      pointerEvents: 'none'
+                    }}>
+                      <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(4, 1fr)',
+                        gap: '10px',
+                        width: '100%',
+                        margin: 0,
+                        padding: 0
+                      }}>
+                        {[
+                          {
+                            title: "Data Fabric Systems",
+                            subtitle: "Cloud storage & analytics",
+                            items: [
+                              { name: "Snowflake", link: "/platform/snowflake", desc: "Next-Gen Data Warehousing" },
+                              { name: "RedShift", link: "/platform/redshift", desc: "AWS Managed Data Storage" },
+                              { name: "Databricks", link: "/platform/databricks", desc: "Unified Analytics Platform" },
+                              { name: "MongoDB", link: "/platform/mongodb", desc: "Document-Based NoSQL" },
+                              { name: "Datadog", link: "/platform/datadog", desc: "Cloud Monitoring & Observability" }
+                            ]
+                          },
+                          {
+                            title: "Retrieval Architecture",
+                            subtitle: "Intelligent RAG pipelines",
+                            items: [
+                              { name: "Unstructured", link: "/platform/unstructured", desc: "Raw Data for AI Ingestion" },
+                              { name: "Airbyte", link: "/platform/airbyte", desc: "Automated Data Integration" },
+                              { name: "LlamaIndex", link: "/platform/llamaindex", desc: "AI Data Framework" },
+                              { name: "LangChain", link: "/platform/langchain", desc: "Agentic AI Orchestration" }
+                            ]
+                          },
+                          {
+                            title: "Semantic Vector Layer",
+                            subtitle: "Neural search engines",
+                            items: [
+                              { name: "Pinecone", link: "/platform/pinecone", desc: "Pro Managed Vector Search" },
+                              { name: "Weaviate", link: "/platform/weaviate", desc: "Neural Search System" },
+                              { name: "Zilliz", link: "/platform/zilliz", desc: "High-Density Vector Cloud" },
+                              { name: "Milvus", link: "/platform/milvus", desc: "Open Source Vector Database" },
+                              { name: "Supabase", link: "/platform/supabase", desc: "Backend & Vector Layer" }
+                            ]
+                          },
+                          {
+                            title: "Intelligence Hub",
+                            subtitle: "Foundational AI models",
+                            items: [
+                              { name: "OpenAI", link: "/platform/openai", desc: "Frontier GPT Models" },
+                              { name: "Gemini", link: "/platform/gemini", desc: "Google Multimodal AI" },
+                              { name: "Claude", link: "/platform/claude", desc: "Anthropic Safety Models" },
+                              { name: "Mistral", link: "/platform/mistral", desc: "Open-Weight Reasoning LLMs" },
+                              { name: "Llama 3.2", link: "/platform/llama-3.2", desc: "Meta Open Source Models" },
+                              { name: "Hugging Face", link: "/platform/hugging-face", desc: "Global AI Repository" },
+                              { name: "PaLM2", link: "/platform/palm2", desc: "Google Legacy LLM" },
+                              { name: "BERT", link: "/platform/bert", desc: "Contextual NLP Hub" },
+                              { name: "Orca", link: "/platform/orca", desc: "Microsoft Reasoning LLM" },
+                              { name: "LaMDA", link: "/platform/lamda", desc: "Dialogue Applications" }
+                            ]
+                          }
+                        ].map((group, idx) => (
+                          <div key={idx} style={{
+                            display: 'block',
+                            minWidth: 0,
+                            borderRight: idx < 3 ? '1px solid #f1f5f9' : 'none',
+                            paddingRight: '12px'
+                          }}>
+                            <h6 style={{
+                              fontSize: '11px',
+                              fontWeight: 900,
+                              color: '#3B82F6',
+                              textTransform: 'uppercase',
+                              letterSpacing: '1px',
+                              marginBottom: '2px',
+                              display: 'block'
+                            }}>{group.title}</h6>
+                            <p style={{ fontSize: '10px', color: '#94a3b8', marginBottom: '15px', lineHeight: '1.1', display: 'block' }}>{group.subtitle}</p>
+
+                            <ul className="custom-scrollbar" style={{
+                              listStyle: 'none',
+                              padding: 0,
+                              margin: 0,
+                              display: 'block',
+                              height: '245px', // Strict height to force scrollbars for everyone
+                              overflowY: 'scroll',
+                              paddingRight: '6px'
+                            }}>
+                              {group.items.map((item, i) => (
+                                <li key={i} style={{ marginBottom: '6px', display: 'block', width: '100%' }}>
+                                  <Link to={item.link} onClick={handleLinkClick} style={{ textDecoration: 'none', display: 'block', padding: 0 }}>
+                                    <div className="platform-nav-card" style={{
+                                      display: 'flex',
+                                      alignItems: 'center',
+                                      gap: '10px',
+                                      padding: '7px',
+                                      borderRadius: '8px',
+                                      transition: 'all 0.2s ease',
+                                      background: '#f8fafc',
+                                      border: '1px solid transparent'
+                                    }}
+                                      onMouseEnter={(e) => {
+                                        e.currentTarget.style.background = '#fff';
+                                        e.currentTarget.style.borderColor = '#e2e8f0';
+                                        e.currentTarget.style.transform = 'translateY(-1px)';
+                                        e.currentTarget.style.boxShadow = '0 5px 15px rgba(0,0,0,0.05)';
+                                      }}
+                                      onMouseLeave={(e) => {
+                                        e.currentTarget.style.background = '#f8fafc';
+                                        e.currentTarget.style.borderColor = 'transparent';
+                                        e.currentTarget.style.transform = 'translateY(0)';
+                                        e.currentTarget.style.boxShadow = 'none';
+                                      }}>
+                                      <div className="icon-wrapper" style={{
+                                        width: '32px',
+                                        height: '32px',
+                                        background: '#fff',
+                                        borderRadius: '6px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        color: '#3B82F6',
+                                        fontSize: '12px',
+                                        flexShrink: 0,
+                                        boxShadow: '0 2px 4px rgba(0,0,0,0.02)'
+                                      }}>
+                                        <i className={`fa-solid ${item.name.toLowerCase().includes('snowflake') ? 'fa-snowflake' :
+                                          item.name.toLowerCase().includes('redshift') ? 'fa-database' :
+                                            item.name.toLowerCase().includes('databricks') ? 'fa-cube' :
+                                              item.name.toLowerCase().includes('mongodb') ? 'fa-leaf' :
+                                                item.name.toLowerCase().includes('unstructured') ? 'fa-file-lines' :
+                                                  item.name.toLowerCase().includes('airbyte') ? 'fa-shuttle-space' :
+                                                    item.name.toLowerCase().includes('llamaindex') ? 'fa-brain' :
+                                                      item.name.toLowerCase().includes('langchain') ? 'fa-link' :
+                                                        item.name.toLowerCase().includes('pinecone') ? 'fa-tree' :
+                                                          item.name.toLowerCase().includes('weaviate') ? 'fa-network-wired' :
+                                                            item.name.toLowerCase().includes('supabase') ? 'fa-bolt' :
+                                                              item.name.toLowerCase().includes('openai') ? 'fa-robot' :
+                                                                item.name.toLowerCase().includes('gemini') ? 'fa-wand-magic-sparkles' :
+                                                                  item.name.toLowerCase().includes('datadog') ? 'fa-shield-halved' :
+                                                                    item.name.toLowerCase().includes('milvus') ? 'fa-microchip' :
+                                                                      item.name.toLowerCase().includes('claude') ? 'fa-feather' :
+                                                                        item.name.toLowerCase().includes('llama') ? 'fa-hippo' :
+                                                                          'fa-microchip'
+                                          }`}></i>
+                                      </div>
+                                      <div className="content">
+                                        <div style={{ fontSize: '12.5px', fontWeight: 700, color: '#0f172a', marginBottom: '0px', lineHeight: 1.1 }}>{item.name}</div>
+                                        <div style={{ fontSize: '9.5px', color: '#64748b', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '170px' }}>{item.desc}</div>
+                                      </div>
+                                    </div>
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
                           </div>
-                        </div>
+                        ))}
                       </div>
                     </div>
                   </li>
@@ -410,10 +517,48 @@ export const Header: React.FC = () => {
       <style>{`
         /* Force close menus on link click by disabling hover state */
         .header-one.hover-disabled .rts-mega-menu,
-        .header-one.hover-disabled .submenu {
+        .header-one.hover-disabled .submenu,
+        .header-one.hover-disabled .modern-platforms-dropdown {
           display: none !important;
           opacity: 0 !important;
           visibility: hidden !important;
+        }
+
+        /* Modern Platforms Mega Menu Animation */
+        .main-nav.has-dropdown.mega-menu:hover .modern-platforms-dropdown {
+          opacity: 1 !important;
+          visibility: visible !important;
+          transform: translateX(-50%) translateY(0) !important;
+          pointer-events: auto !important;
+        }
+
+        .modern-platforms-dropdown {
+          opacity: 0 !important;
+          visibility: hidden !important;
+          transform: translateX(-50%) translateY(15px) !important;
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease !important;
+        }
+
+        /* Custom Scrollbar for Mega Menu Columns */
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #e2e8f0;
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #cbd5e1;
+        }
+
+        /* Prevent link flicker on hover and ensure perfect vertical alignment across all items */
+        .main-nav.has-dropdown {
+          position: relative;
+          padding-bottom: 20px;
+          margin-bottom: -20px;
         }
 
         /* Ensure visibility on white backgrounds (Inner Pages) by turning the white logo black */
