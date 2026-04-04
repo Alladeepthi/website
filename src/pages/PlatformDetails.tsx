@@ -5,7 +5,20 @@ import { platformsData } from '../data/platformsData';
 export const PlatformDetails = () => {
     const { id } = useParams();
     const platform = platformsData.find(p => p.slug === id);
-    const [activeFeature, setActiveFeature] = useState(-1);
+
+    const getSolutionIcon = (title: string) => {
+        const t = title.toLowerCase();
+        if (t.includes('parsing') || t.includes('document')) return 'fa-file-lines';
+        if (t.includes('cleaning') || t.includes('data cleaning')) return 'fa-wand-magic-sparkles';
+        if (t.includes('rag') || t.includes('pipeline')) return 'fa-diagram-project';
+        if (t.includes('metadata') || t.includes('extraction')) return 'fa-tags';
+        if (t.includes('warehouse') || t.includes('architecture')) return 'fa-database';
+        if (t.includes('migration')) return 'fa-upload';
+        if (t.includes('analytics') || t.includes('bi')) return 'fa-chart-pie';
+        if (t.includes('performance') || t.includes('optimization')) return 'fa-bolt';
+        if (t.includes('security') || t.includes('governance')) return 'fa-shield-halved';
+        return 'fa-layer-group';
+    };
 
 
     useEffect(() => {
@@ -111,6 +124,68 @@ export const PlatformDetails = () => {
                 }
                 .custom-case-card:hover img {
                     transform: scale(1.05);
+                }
+                
+                .solution-card-modern {
+                    background: #fff;
+                    border: 1px solid #f1f5f9;
+                    border-radius: 20px;
+                    padding: 40px 30px;
+                    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                    height: 100%;
+                    position: relative;
+                    overflow: hidden;
+                    display: flex;
+                    flex-direction: column;
+                }
+                .solution-card-modern:hover {
+                    transform: translateY(-10px);
+                    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
+                    border-color: ${primaryColor}40;
+                }
+                .solution-card-modern .icon-box {
+                    width: 64px;
+                    height: 64px;
+                    background: #eff6ff;
+                    border-radius: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 25px;
+                    transition: all 0.3s ease;
+                    border: 1px solid #dbeafe;
+                }
+                .solution-card-modern:hover .icon-box {
+                    background: ${primaryColor};
+                    transform: scale(1.1) rotate(5deg);
+                }
+                .solution-card-modern:hover .icon-box i {
+                    color: #fff !important;
+                }
+                .solution-card-modern h4 {
+                    font-size: 22px;
+                    font-weight: 800;
+                    color: ${darkColor};
+                    margin-bottom: 15px;
+                    line-height: 1.4;
+                }
+                .solution-card-modern p {
+                    font-size: 15px;
+                    color: ${textColor};
+                    line-height: 1.7;
+                    margin: 0;
+                }
+                .solution-card-modern .bottom-accent {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 0;
+                    height: 4px;
+                    background: linear-gradient(90deg, ${primaryColor}, #60a5fa);
+                    transition: width 0.4s ease;
+                }
+                .solution-card-modern:hover .bottom-accent {
+                    width: 100%;
                 }
             `}</style>
 
@@ -449,7 +524,7 @@ export const PlatformDetails = () => {
                 </div>
             </div>
 
-            {/* 7. Capabilities - Horizontal Accordion Cards */}
+            {/* 7. Capabilities - Premium Cards Layout */}
             <div className="rts-capabilities-area rts-section-gap" style={{ padding: '60px 0', background: '#fff' }}>
                 <div className="container">
                     <div className="row mb--60">
@@ -462,137 +537,21 @@ export const PlatformDetails = () => {
                         </div>
                     </div>
                     <div className="row g-4">
-                        {platform.solutions.items.map((solution, index) => {
-                            const isActive = activeFeature === index;
-                            return (
-                                <div className="col-lg-6" key={index}>
-                                    <div
-                                        style={{
-                                            background: '#fff',
-                                            border: `2px solid ${isActive ? primaryColor : '#f1f5f9'}`,
-                                            borderRadius: '16px',
-                                            padding: '30px',
-                                            cursor: 'pointer',
-                                            transition: 'all 0.3s ease',
-                                            boxShadow: isActive ? '0 10px 40px rgba(59, 130, 246, 0.2)' : '0 4px 6px rgba(0,0,0,0.05)',
-                                            position: 'relative',
-                                            overflow: 'hidden'
-                                        }}
-                                        onClick={() => setActiveFeature(isActive ? -1 : index)}
-                                        onMouseEnter={(e) => {
-                                            if (!isActive) {
-                                                e.currentTarget.style.borderColor = '#cbd5e1';
-                                                e.currentTarget.style.transform = 'translateY(-3px)';
-                                            }
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            if (!isActive) {
-                                                e.currentTarget.style.borderColor = '#f1f5f9';
-                                                e.currentTarget.style.transform = 'translateY(0)';
-                                            }
-                                        }}
-                                    >
-                                        {/* Header Section */}
-                                        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px', marginBottom: isActive ? '20px' : '0' }}>
-                                            {/* Icon */}
-                                            <div style={{
-                                                minWidth: '56px',
-                                                height: '56px',
-                                                background: isActive ? `linear-gradient(135deg, ${primaryColor} 0%, #1d4ed8 100%)` : `${primaryColor}10`,
-                                                borderRadius: '12px',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                transition: 'all 0.3s'
-                                            }}>
-                                                <i className="fa-solid fa-database" style={{
-                                                    color: isActive ? '#fff' : primaryColor,
-                                                    fontSize: '24px'
-                                                }}></i>
-                                            </div>
-
-                                            {/* Title & Description */}
-                                            <div style={{ flex: 1 }}>
-                                                <h4 style={{
-                                                    fontSize: '20px',
-                                                    fontWeight: '700',
-                                                    color: darkColor,
-                                                    marginBottom: '8px',
-                                                    lineHeight: '1.3'
-                                                }}>
-                                                    {solution.title}
-                                                </h4>
-                                                <p style={{
-                                                    fontSize: '15px',
-                                                    color: textColor,
-                                                    lineHeight: '1.6',
-                                                    margin: 0,
-                                                    display: isActive ? 'block' : '-webkit-box',
-                                                    WebkitLineClamp: isActive ? 'unset' : 2,
-                                                    WebkitBoxOrient: 'vertical',
-                                                    overflow: isActive ? 'visible' : 'hidden'
-                                                }}>
-                                                    {solution.description}
-                                                </p>
-                                            </div>
-
-                                            {/* Toggle Icon */}
-                                            <div style={{
-                                                width: '32px',
-                                                height: '32px',
-                                                background: isActive ? `${primaryColor}15` : '#f8fafc',
-                                                borderRadius: '50%',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                transition: 'all 0.3s',
-                                                transform: isActive ? 'rotate(180deg)' : 'rotate(0deg)'
-                                            }}>
-                                                <i className="fa-solid fa-chevron-down" style={{
-                                                    color: isActive ? primaryColor : '#94a3b8',
-                                                    fontSize: '14px'
-                                                }}></i>
-                                            </div>
-                                        </div>
-
-                                        {/* Expandable Content */}
-                                        <div style={{
-                                            maxHeight: isActive ? '300px' : '0',
-                                            opacity: isActive ? 1 : 0,
-                                            overflow: 'hidden',
-                                            transition: 'all 0.4s ease',
-                                            paddingTop: isActive ? '20px' : '0',
-                                            borderTop: isActive ? '1px solid #f1f5f9' : 'none'
-                                        }}>
-                                            <h5 style={{ fontSize: '15px', fontWeight: '700', color: darkColor, marginBottom: '15px' }}>
-                                                Key Benefits
-                                            </h5>
-                                            <div className="row g-3">
-                                                {['Enterprise Grade', 'Scalable', '24/7 Support', 'Secure'].map((benefit, i) => (
-                                                    <div className="col-6" key={i}>
-                                                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                                            <div style={{
-                                                                width: '20px',
-                                                                height: '20px',
-                                                                background: `${primaryColor}15`,
-                                                                borderRadius: '50%',
-                                                                display: 'flex',
-                                                                alignItems: 'center',
-                                                                justifyContent: 'center',
-                                                                flexShrink: 0
-                                                            }}>
-                                                                <i className="fa-solid fa-check" style={{ color: primaryColor, fontSize: '10px' }}></i>
-                                                            </div>
-                                                            <span style={{ fontSize: '14px', color: textColor, fontWeight: '500' }}>{benefit}</span>
-                                                        </div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
+                        {platform.solutions.items.map((solution, index) => (
+                            <div className={platform.solutions.items.length <= 4 ? "col-lg-3 col-md-6" : "col-lg-4 col-md-6"} key={index}>
+                                <div className="solution-card-modern">
+                                    <div className="icon-box">
+                                        <i className={`fa-solid ${getSolutionIcon(solution.title)}`} style={{
+                                            color: primaryColor,
+                                            fontSize: '28px'
+                                        }}></i>
                                     </div>
+                                    <h4>{solution.title}</h4>
+                                    <p>{solution.description}</p>
+                                    <div className="bottom-accent"></div>
                                 </div>
-                            );
-                        })}
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
