@@ -536,8 +536,8 @@ export const IndustryDetails: React.FC = () => {
                             { step: '04', title: 'Optimization', desc: 'Continuous monitoring and refinement for maximum performance.' }
                         ].map((item, index) => (
                             <div className="col-lg-3 col-md-6" key={index}>
-                                <div style={{ textAlign: 'center', padding: '30px 20px', position: 'relative' }}>
-                                    <div style={{
+                                <div className={`process-step-wrapper step-${index + 1}`} style={{ textAlign: 'center', padding: '30px 20px', position: 'relative' }}>
+                                    <div className="step-number-box" style={{
                                         width: '60px',
                                         height: '60px',
                                         background: index % 2 === 0 ? '#EFF6FF' : '#F5F3FF',
@@ -549,17 +549,56 @@ export const IndustryDetails: React.FC = () => {
                                         fontSize: '20px',
                                         fontWeight: '800',
                                         margin: '0 auto 20px',
-                                        border: `1px solid ${index % 2 === 0 ? '#DBEAFE' : '#EDE9FE'}`
+                                        border: `1px solid ${index % 2 === 0 ? '#DBEAFE' : '#EDE9FE'}`,
+                                        position: 'relative',
+                                        zIndex: 2
                                     }}>
                                         {item.step}
                                     </div>
                                     <h4 style={{ fontSize: '20px', fontWeight: '700', color: darkColor, marginBottom: '10px' }}>{item.title}</h4>
                                     <p style={{ fontSize: '15px', color: textColor, lineHeight: '1.6' }}>{item.desc}</p>
+
+                                    {/* Connecting Lines for Desktop */}
+                                    {index < 3 && (
+                                        <div className="connecting-line d-none d-lg-block" style={{
+                                            position: 'absolute',
+                                            top: '60px',
+                                            left: 'calc(50% + 40px)',
+                                            width: 'calc(100% - 80px)',
+                                            height: '2px',
+                                            overflow: 'hidden',
+                                            zIndex: 1
+                                        }}>
+                                            <div style={{
+                                                width: '100%',
+                                                height: '100%',
+                                                borderTop: '2px dashed #94a3b8',
+                                                opacity: 0.4,
+                                                animation: 'dashMove 1s linear infinite'
+                                            }}></div>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
+                <style>{`
+                    @keyframes dashMove {
+                        0% { transform: translateX(0); }
+                        100% { transform: translateX(10px); }
+                    }
+                    .process-step-wrapper:hover .step-number-box {
+                        transform: scale(1.1);
+                        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                        transition: all 0.3s ease;
+                    }
+                    .process-step-wrapper:hover .connecting-line div {
+                        border-top-color: ${primaryColor} !important;
+                        opacity: 1 !important;
+                        animation: dashMove 0.5s linear infinite !important;
+                    }
+                `}</style>
             </div>
 
             {/* 6. CTA Gradient Section (Boxed & Premium) */}
