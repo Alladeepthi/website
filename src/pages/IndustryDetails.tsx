@@ -96,19 +96,11 @@ export const IndustryDetails: React.FC = () => {
                             </div>
                         </div>
                         <div className="col-lg-6 mt_md--50 mt_sm--50 pl--30">
-                            <div className="thumbnail-image" style={{
-                                position: 'relative',
-                                width: '100%',
-                                margin: '0 auto',
-                                background: '#fff', // Pure white background as requested
-                                padding: '40px',
-                                borderRadius: '30px',
-                                boxShadow: '0 25px 50px -12px rgba(0,0,0,0.05)'
-                            }}>
+                            <div className="thumbnail-image" style={{ position: 'relative', width: '85%', margin: '0 auto' }}>
                                 <img
                                     src={overviewImage}
                                     alt="Overview"
-                                    style={{ width: '100%', objectFit: 'contain', height: 'auto' }}
+                                    style={{ width: '100%', borderRadius: '20px', boxShadow: '0 25px 50px rgba(0,0,0,0.1)' }}
                                 />
                                 {/* Floating Gradient Card */}
                                 <div className="cta-card absolute bottom-0 left-0 md:-bottom-8 md:-left-8" style={{
