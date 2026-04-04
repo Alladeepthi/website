@@ -24,13 +24,13 @@ export const IndustryDetails: React.FC = () => {
 
 
     const illustrationMap: Record<string, string> = {
-        'healthcare': '/assets/images/feature/07.svg',
-        'finance': '/assets/images/feature/08.svg',
-        'retail': '/assets/images/feature/09.svg',
-        'manufacturing': '/assets/images/feature/10.svg',
-        'technology': '/assets/images/feature/11.svg',
+        'healthcare': '/assets/images/feature/07.webp',
+        'finance': '/assets/images/feature/08.webp',
+        'retail': '/assets/images/feature/09.webp',
+        'manufacturing': '/assets/images/feature/10.webp',
+        'technology': '/assets/images/feature/11.webp',
     };
-    const overviewImage = illustrationMap[industry.slug] || '/assets/images/feature/06.svg';
+    const overviewImage = illustrationMap[industry.slug] || '/assets/images/feature/06.webp';
 
 
     return (
