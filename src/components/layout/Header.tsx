@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { servicesData } from '../../data/services';
 
@@ -48,10 +48,10 @@ export const Header: React.FC = () => {
       top: 0,
       left: 0,
       width: '100%',
-      background: (isSticky || !isHome) ? '#0b1121' : 'rgba(11, 17, 33, 0.8)', // Semi-opaque to see it
-      backdropFilter: 'blur(10px)',
+      background: (isSticky || !isHome) ? '#0b1121' : 'transparent',
+      backdropFilter: (isSticky || !isHome) ? 'blur(10px)' : 'none',
       transition: 'all 0.3s ease',
-      borderBottom: '1px solid rgba(255,255,255,0.05)',
+      borderBottom: (isSticky || !isHome) ? '1px solid rgba(255,255,255,0.05)' : 'none',
       padding: isSticky ? '10px 0' : '15px 0'
     }}>
       <div className="container" style={containerStyle}>
@@ -67,7 +67,7 @@ export const Header: React.FC = () => {
                 <ul className="" style={{ display: 'flex', flexWrap: 'nowrap', gap: '35px', alignItems: 'center', margin: 0, padding: 0, listStyle: 'none' }}>
 
                   {/* About */}
-                  <li className="main-nav has-dropdown project-a-after" onMouseEnter={handleMouseEnter}>
+                  <li className="main-nav has-dropdown" onMouseEnter={handleMouseEnter}>
                     <Link to="/about" onClick={handleLinkClick} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       About <i className="fa-solid fa-chevron-down" style={{ fontSize: '10px' }}></i>
                     </Link>
@@ -80,7 +80,7 @@ export const Header: React.FC = () => {
 
                   {/* Services - With Dropdown */}
                   <li className="main-nav has-dropdown mega-menu" onMouseEnter={handleMouseEnter}>
-                    <Link to="/service-details" onClick={handleLinkClick} style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#6366f1' }}>
+                    <Link to="/service-details" onClick={handleLinkClick} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       Services <i className="fa-solid fa-chevron-down" style={{ fontSize: '10px' }}></i>
                     </Link>
                     <div className="rts-mega-menu service-mega-menu-style" onClick={handleLinkClick} style={{
@@ -486,7 +486,7 @@ export const Header: React.FC = () => {
                   </li>
 
                   {/* Industry */}
-                  <li className="main-nav has-dropdown project-a-after" onMouseEnter={handleMouseEnter}>
+                  <li className="main-nav has-dropdown" onMouseEnter={handleMouseEnter}>
                     <Link to="#" onClick={(e) => e.preventDefault()} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       Industry <i className="fa-solid fa-chevron-down" style={{ fontSize: '10px' }}></i>
                     </Link>
@@ -500,7 +500,7 @@ export const Header: React.FC = () => {
                   </li>
 
                   {/* Solutions */}
-                  <li className="main-nav has-dropdown project-a-after" onMouseEnter={handleMouseEnter}>
+                  <li className="main-nav has-dropdown" onMouseEnter={handleMouseEnter}>
                     <Link to="/solutions" onClick={handleLinkClick} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       Solutions <i className="fa-solid fa-chevron-down" style={{ fontSize: '10px' }}></i>
                     </Link>
@@ -526,14 +526,14 @@ export const Header: React.FC = () => {
                 }}>
                   Connect Now
                 </Link>
-                <div className="menu-btn-toggle white" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => {
+                <div className="menu-btn-toggle white" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', background: 'transparent', border: 'none', padding: 0 }} onClick={() => {
                   document.getElementById('side-bar')?.classList.add('show');
                   document.getElementById('anywhere-home')?.classList.add('bgshow');
                 }}>
-                  <svg width="22" height="16" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="0" width="18" height="1.5" fill="white" />
-                    <rect y="6" width="18" height="1.5" fill="white" />
-                    <rect x="0" y="12" width="18" height="1.5" fill="white" />
+                  <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="24" height="2" fill="white" style={{ fill: 'white !important' }} />
+                    <rect y="8" width="24" height="2" fill="white" style={{ fill: 'white !important' }} />
+                    <rect y="16" width="24" height="2" fill="white" style={{ fill: 'white !important' }} />
                   </svg>
                 </div>
               </div>
@@ -581,28 +581,42 @@ export const Header: React.FC = () => {
           background: #cbd5e1;
         }
 
-        /* Prevent link flicker on hover and ensure perfect vertical alignment across all items */
         .main-nav.has-dropdown {
           position: relative;
           padding-bottom: 20px;
           margin-bottom: -20px;
         }
 
-        /* Ensure visibility on white backgrounds (Inner Pages) by turning the white logo black */
-        header.header-relative .logo-area img {
-          filter: brightness(0);
+        /* Remove ALL redundant theme arrows/pseudo-elements from dropdowns */
+        /* Note: Theme adds arrows both to 'li.has-dropdown' and 'a' tags */
+        .header-one .main-nav.has-dropdown::after,
+        .header-one .main-nav.has-dropdown::before,
+        .header-one .main-nav.has-dropdown > a::after,
+        .header-one .main-nav.has-dropdown > a::before,
+        .header-one .main-nav.has-dropdown > a i:not(.fa-solid) {
+          display: none !important;
+          content: none !important;
+        }
+
+        /* Ensure visibility on dark backgrounds by keeping the white logo white */
+        header.header-relative .logo-area img,
+        header.sticky .logo-area img {
+          filter: none;
           transition: filter 0.3s ease;
         }
 
-        /* Nav link colors for transparent/dark backgrounds */
-        header:not(.header-relative):not(.sticky) .main-nav > a {
+        /* Nav link colors for ALL states (as they all have dark backgrounds now) */
+        header .main-nav > a {
           color: rgba(255, 255, 255, 0.9) !important;
         }
-        header:not(.header-relative):not(.sticky) .main-nav > a:hover {
+        header .main-nav > a:hover {
           color: #fff !important;
         }
-        header:not(.header-relative):not(.sticky) .main-nav > a i {
-          color: rgba(255, 255, 255, 0.6);
+        header .main-nav > a:hover i {
+          color: #fff !important;
+        }
+        header .main-nav > a i {
+          color: rgba(255, 255, 255, 0.6) !important;
         }
       `}</style>
     </header >
