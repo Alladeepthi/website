@@ -9,7 +9,7 @@ export const PlatformDetails = () => {
     const getSolutionIcon = (title: string) => {
         const t = title.toLowerCase();
         if (t.includes('parsing') || t.includes('document')) return 'fa-file-lines';
-        if (t.includes('cleaning') || t.includes('data cleaning')) return 'fa-wand-magic-sparkles';
+        if (t.includes('cleaning') || t.includes('data cleaning')) return 'fa-filter';
         if (t.includes('rag') || t.includes('pipeline')) return 'fa-diagram-project';
         if (t.includes('metadata') || t.includes('extraction')) return 'fa-tags';
         if (t.includes('warehouse') || t.includes('architecture')) return 'fa-database';
