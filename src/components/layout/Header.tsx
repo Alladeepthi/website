@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { servicesData } from '../../data/services';
 
@@ -6,6 +6,7 @@ export const Header: React.FC = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
   const [hoverDisabled, setHoverDisabled] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
 
   const leftServices = servicesData.slice(0, 4);
   const rightServices = servicesData.slice(4, 8);
@@ -21,12 +22,12 @@ export const Header: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector('.header--sticky');
-      if (header) {
-        if (window.scrollY > 150) {
-          header.classList.add('sticky');
-        } else {
-          header.classList.remove('sticky');
-        }
+      if (window.scrollY > 100) {
+        setIsSticky(true);
+        if (header) header.classList.add('sticky');
+      } else {
+        setIsSticky(false);
+        if (header) header.classList.remove('sticky');
       }
     };
 
@@ -41,7 +42,18 @@ export const Header: React.FC = () => {
   const wrapperStyle = { display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '30px', flexWrap: 'nowrap' as const };
 
   return (
-    <header className={headerClass} style={{ zIndex: 999, position: 'relative' }}>
+    <header className={headerClass} style={{
+      zIndex: 10000,
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      background: (isSticky || !isHome) ? '#0b1121' : 'rgba(11, 17, 33, 0.8)', // Semi-opaque to see it
+      backdropFilter: 'blur(10px)',
+      transition: 'all 0.3s ease',
+      borderBottom: '1px solid rgba(255,255,255,0.05)',
+      padding: isSticky ? '10px 0' : '15px 0'
+    }}>
       <div className="container" style={containerStyle}>
         <div className="row">
           <div className="col-lg-12">
@@ -51,11 +63,26 @@ export const Header: React.FC = () => {
                   <img src="/assets/images/logo/nlogo%20(1).png" alt="NeuraltrixAI" style={{ height: '55px', width: 'auto' }} />
                 </Link>
               </div>
-              <div className="nav-area hidden lg:flex" style={{ flex: 0, justifyContent: 'center', whiteSpace: 'nowrap' }}>
-                <ul className="" style={{ display: 'flex', flexWrap: 'nowrap', gap: '45px', alignItems: 'center', margin: 0, padding: 0, listStyle: 'none' }}>
+              <div className="nav-area hidden lg:flex" style={{ flex: 1, display: 'flex', justifyContent: 'center', whiteSpace: 'nowrap' }}>
+                <ul className="" style={{ display: 'flex', flexWrap: 'nowrap', gap: '35px', alignItems: 'center', margin: 0, padding: 0, listStyle: 'none' }}>
+
+                  {/* About */}
+                  <li className="main-nav has-dropdown project-a-after" onMouseEnter={handleMouseEnter}>
+                    <Link to="/about" onClick={handleLinkClick} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      About <i className="fa-solid fa-chevron-down" style={{ fontSize: '10px' }}></i>
+                    </Link>
+                    <ul className="submenu parent-nav" onClick={handleLinkClick}>
+                      <li><Link to="/about">About Us</Link></li>
+                      <li><Link to="/team">Our Team</Link></li>
+                      <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+                    </ul>
+                  </li>
+
                   {/* Services - With Dropdown */}
                   <li className="main-nav has-dropdown mega-menu" onMouseEnter={handleMouseEnter}>
-                    <Link to="/service-details" onClick={handleLinkClick}>Services</Link>
+                    <Link to="/service-details" onClick={handleLinkClick} style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#6366f1' }}>
+                      Services <i className="fa-solid fa-chevron-down" style={{ fontSize: '10px' }}></i>
+                    </Link>
                     <div className="rts-mega-menu service-mega-menu-style" onClick={handleLinkClick} style={{
                       background: '#fff',
                       borderRadius: '20px',
@@ -280,8 +307,8 @@ export const Header: React.FC = () => {
 
                   {/* Platforms */}
                   <li className="main-nav has-dropdown mega-menu platforms-parent" onMouseEnter={handleMouseEnter}>
-                    <Link to="#" onClick={(e) => e.preventDefault()}>
-                      Platforms
+                    <Link to="#" onClick={(e) => e.preventDefault()} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      Platforms <i className="fa-solid fa-chevron-down" style={{ fontSize: '10px' }}></i>
                     </Link>
                     <div className="modern-platforms-dropdown" style={{
                       position: 'absolute',
@@ -460,7 +487,9 @@ export const Header: React.FC = () => {
 
                   {/* Industry */}
                   <li className="main-nav has-dropdown project-a-after" onMouseEnter={handleMouseEnter}>
-                    <Link to="#" onClick={(e) => e.preventDefault()}>Industry</Link>
+                    <Link to="#" onClick={(e) => e.preventDefault()} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      Industry <i className="fa-solid fa-chevron-down" style={{ fontSize: '10px' }}></i>
+                    </Link>
                     <ul className="submenu parent-nav" onClick={handleLinkClick}>
                       <li><Link to="/industry/healthcare">Healthcare</Link></li>
                       <li><Link to="/industry/finance">Finance</Link></li>
@@ -470,21 +499,11 @@ export const Header: React.FC = () => {
                     </ul>
                   </li>
 
-
-
-                  {/* About */}
-                  <li className="main-nav has-dropdown project-a-after" onMouseEnter={handleMouseEnter}>
-                    <Link to="/about" onClick={handleLinkClick}>About</Link>
-                    <ul className="submenu parent-nav" onClick={handleLinkClick}>
-                      <li><Link to="/about">About Us</Link></li>
-                      <li><Link to="/team">Our Team</Link></li>
-                      <li><Link to="/privacy-policy">Privacy Policy</Link></li>
-                    </ul>
-                  </li>
-
                   {/* Solutions */}
                   <li className="main-nav has-dropdown project-a-after" onMouseEnter={handleMouseEnter}>
-                    <Link to="/solutions" onClick={handleLinkClick}>Solutions</Link>
+                    <Link to="/solutions" onClick={handleLinkClick} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      Solutions <i className="fa-solid fa-chevron-down" style={{ fontSize: '10px' }}></i>
+                    </Link>
                     <ul className="submenu parent-nav" onClick={handleLinkClick}>
                       <li><Link to="/solutions">Visual Monitoring</Link></li>
                       <li><Link to="/solutions">Knowledge Automation</Link></li>
@@ -493,20 +512,28 @@ export const Header: React.FC = () => {
                     </ul>
                   </li>
 
-
                 </ul>
               </div>
-              <div className="button-wrapper-flex" style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', gap: '20px', alignItems: 'center' }}>
-
-                <Link to="/contact" className="rts-btn btn-primary hidden lg:flex" onClick={handleLinkClick}>Connect Now</Link>
-                <div className="menu-btn-toggle white lg:hidden" onClick={() => {
+              <div className="button-wrapper-flex" style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', gap: '25px', alignItems: 'center' }}>
+                <Link to="/contact" className="rts-btn btn-primary" onClick={handleLinkClick} style={{
+                  padding: '12px 28px',
+                  borderRadius: '100px',
+                  background: '#5c67ff',
+                  border: 'none',
+                  fontSize: '15px',
+                  fontWeight: 600,
+                  boxShadow: '0 10px 20px rgba(92, 103, 255, 0.2)'
+                }}>
+                  Connect Now
+                </Link>
+                <div className="menu-btn-toggle white" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => {
                   document.getElementById('side-bar')?.classList.add('show');
                   document.getElementById('anywhere-home')?.classList.add('bgshow');
                 }}>
-                  <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="6" width="12" height="2" fill="white" />
-                    <rect y="6" width="18" height="2" fill="white" />
-                    <rect x="6" y="12" width="12" height="2" fill="white" />
+                  <svg width="22" height="16" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" width="18" height="1.5" fill="white" />
+                    <rect y="6" width="18" height="1.5" fill="white" />
+                    <rect x="0" y="12" width="18" height="1.5" fill="white" />
                   </svg>
                 </div>
               </div>
@@ -565,6 +592,17 @@ export const Header: React.FC = () => {
         header.header-relative .logo-area img {
           filter: brightness(0);
           transition: filter 0.3s ease;
+        }
+
+        /* Nav link colors for transparent/dark backgrounds */
+        header:not(.header-relative):not(.sticky) .main-nav > a {
+          color: rgba(255, 255, 255, 0.9) !important;
+        }
+        header:not(.header-relative):not(.sticky) .main-nav > a:hover {
+          color: #fff !important;
+        }
+        header:not(.header-relative):not(.sticky) .main-nav > a i {
+          color: rgba(255, 255, 255, 0.6);
         }
       `}</style>
     </header >
