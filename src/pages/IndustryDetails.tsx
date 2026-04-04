@@ -185,6 +185,62 @@ export const IndustryDetails: React.FC = () => {
                                         {activeChallenge === index && <i className="fa-solid fa-chevron-right ms-auto" style={{ fontSize: '10px', color: primaryColor }}></i>}
                                     </div>
                                 ))}
+
+                                {/* Space filler / Support Card */}
+                                <div style={{
+                                    marginTop: '25px',
+                                    padding: '30px 20px',
+                                    background: `linear-gradient(135deg, ${primaryColor}08 0%, ${primaryColor}15 100%)`,
+                                    borderRadius: '12px',
+                                    border: `1px dashed ${primaryColor}40`,
+                                    textAlign: 'center',
+                                    position: 'relative',
+                                    overflow: 'hidden'
+                                }}>
+                                    <div style={{
+                                        width: '48px',
+                                        height: '48px',
+                                        background: '#fff',
+                                        borderRadius: '50%',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        margin: '0 auto 15px',
+                                        boxShadow: '0 4px 12px rgba(59, 130, 246, 0.15)',
+                                        position: 'relative',
+                                        zIndex: 1
+                                    }}>
+                                        <i className="fa-solid fa-headset" style={{ color: primaryColor, fontSize: '20px' }}></i>
+                                    </div>
+                                    <h6 style={{ fontSize: '16px', fontWeight: '800', color: darkColor, marginBottom: '10px', position: 'relative', zIndex: 1 }}>Need a custom solution?</h6>
+                                    <p style={{ fontSize: '13px', color: textColor, marginBottom: '20px', lineHeight: '1.6', position: 'relative', zIndex: 1 }}>
+                                        Our engineering experts can help you architect and deploy mission-critical {industry.slug} solutions.
+                                    </p>
+                                    <Link to="/contact" style={{
+                                        fontSize: '14px',
+                                        fontWeight: '700',
+                                        color: '#fff',
+                                        background: primaryColor,
+                                        padding: '10px 24px',
+                                        borderRadius: '30px',
+                                        textDecoration: 'none',
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        gap: '8px',
+                                        transition: 'all 0.3s ease',
+                                        boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)'
+                                    }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.style.transform = 'translateY(-2px)';
+                                            e.currentTarget.style.boxShadow = '0 6px 15px rgba(59, 130, 246, 0.4)';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.transform = 'translateY(0)';
+                                            e.currentTarget.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.3)';
+                                        }}>
+                                        Contact Us <i className="fa-solid fa-arrow-right"></i>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
 
@@ -203,93 +259,117 @@ export const IndustryDetails: React.FC = () => {
                                 className="challenge-detail-content"
                                 style={{
                                     background: `linear-gradient(145deg, #ffffff 0%, ${lightBg} 100%)`,
-                                    borderRadius: '20px',
-                                    padding: '35px',
+                                    borderRadius: '24px',
+                                    padding: '40px',
                                     boxShadow: '0 20px 60px rgba(0,0,0,0.05)',
                                     border: '1px solid #fff',
                                     height: '100%',
                                     position: 'relative',
-                                    animation: 'fadeEffect 0.5s ease-out'
+                                    animation: 'fadeEffect 0.5s ease-out',
+                                    display: 'flex',
+                                    flexDirection: 'column'
                                 }}
                             >
                                 {/* Decorative BG Icon */}
                                 <div style={{
                                     position: 'absolute',
-                                    top: '20px',
-                                    right: '20px',
-                                    fontSize: '100px',
-                                    opacity: '0.03',
+                                    bottom: '40px',
+                                    right: '40px',
+                                    fontSize: '120px',
+                                    opacity: '0.04',
                                     color: darkColor,
                                     zIndex: 0,
                                     pointerEvents: 'none'
                                 }}>
-                                    <i className="fa-solid fa-triangle-exclamation"></i>
+                                    <i className="fa-solid fa-microchip"></i>
                                 </div>
 
-                                <div className="content-wrapper" style={{ position: 'relative', zIndex: 1 }}>
+                                <div className="content-wrapper" style={{ position: 'relative', zIndex: 1, flex: 1 }}>
                                     {/* Challenge Header */}
                                     <div className="mb-4">
-                                        <span style={{
-                                            background: '#fee2e2',
-                                            color: '#dc2626',
-                                            padding: '6px 14px',
-                                            borderRadius: '30px',
-                                            fontSize: '11px',
-                                            fontWeight: '700',
-                                            textTransform: 'uppercase',
-                                            letterSpacing: '1px',
-                                            display: 'inline-block',
-                                            marginBottom: '15px'
-                                        }}>
-                                            The Challenge
-                                        </span>
-                                        <h3 style={{ fontSize: '24px', fontWeight: '800', color: darkColor, marginBottom: '12px' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '15px' }}>
+                                            <span style={{
+                                                background: '#fee2e2',
+                                                color: '#dc2626',
+                                                padding: '6px 14px',
+                                                borderRadius: '30px',
+                                                fontSize: '11px',
+                                                fontWeight: '700',
+                                                textTransform: 'uppercase',
+                                                letterSpacing: '1px'
+                                            }}>
+                                                The Challenge
+                                            </span>
+                                            <div style={{ flex: 1, height: '1px', background: '#f1f5f9' }}></div>
+                                        </div>
+                                        <h3 style={{ fontSize: '28px', fontWeight: '800', color: darkColor, marginBottom: '15px', lineHeight: '1.3' }}>
                                             {industry.challenges.items[activeChallenge].title}
                                         </h3>
-                                        <p style={{ fontSize: '15px', lineHeight: '1.7', color: textColor, marginBottom: '15px' }}>
+                                        <p style={{ fontSize: '16px', lineHeight: '1.8', color: textColor, marginBottom: '0' }}>
                                             {industry.challenges.items[activeChallenge].description}
                                         </p>
                                     </div>
 
-                                    <hr style={{ borderColor: '#e2e8f0', margin: '25px 0', opacity: 0.5 }} />
+                                    {/* Expected Impact / Solution Highlights */}
+                                    <div className="row g-3 mb-4 mt-2">
+                                        {[
+                                            { label: 'Time to Resolution', value: '-40%', icon: 'fa-clock' },
+                                            { label: 'Operational Efficiency', value: '+25%', icon: 'fa-chart-pie' }
+                                        ].map((stat, i) => (
+                                            <div className="col-sm-6" key={i}>
+                                                <div style={{ background: '#fff', padding: '15px 20px', borderRadius: '12px', border: '1px solid #f1f5f9', display: 'flex', alignItems: 'center', gap: '15px' }}>
+                                                    <div style={{ width: '40px', height: '40px', background: `${primaryColor}10`, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                                        <i className={`fa-solid ${stat.icon}`} style={{ color: primaryColor, fontSize: '16px' }}></i>
+                                                    </div>
+                                                    <div>
+                                                        <div style={{ fontSize: '12px', color: textColor, fontWeight: '600' }}>{stat.label}</div>
+                                                        <div style={{ fontSize: '18px', color: darkColor, fontWeight: '800' }}>{stat.value}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
 
                                     {/* Solution Section */}
                                     <div style={{
-                                        padding: '25px',
+                                        padding: '30px',
                                         background: `linear-gradient(135deg, ${darkColor} 0%, #0f172a 100%)`,
-                                        borderRadius: '12px',
+                                        borderRadius: '16px',
                                         position: 'relative',
-                                        overflow: 'hidden'
+                                        overflow: 'hidden',
+                                        marginTop: 'auto',
+                                        boxShadow: '0 10px 30px rgba(15, 23, 42, 0.2)'
                                     }}>
                                         {/* Decoration */}
                                         <div style={{
                                             position: 'absolute',
                                             top: 0,
                                             right: 0,
-                                            width: '120px',
-                                            height: '120px',
-                                            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%)',
+                                            width: '150px',
+                                            height: '150px',
+                                            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 70%)',
                                             pointerEvents: 'none'
                                         }}></div>
 
                                         <div style={{ position: 'relative', zIndex: 1 }}>
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px' }}>
                                                 <div style={{
-                                                    width: '40px',
-                                                    height: '40px',
+                                                    width: '44px',
+                                                    height: '44px',
                                                     background: 'rgba(255,255,255,0.1)',
-                                                    borderRadius: '10px',
+                                                    borderRadius: '12px',
                                                     display: 'flex',
                                                     alignItems: 'center',
-                                                    justifyContent: 'center'
+                                                    justifyContent: 'center',
+                                                    border: '1px solid rgba(255,255,255,0.1)'
                                                 }}>
-                                                    <i className="fa-solid fa-lightbulb" style={{ color: primaryColor, fontSize: '20px' }}></i>
+                                                    <i className="fa-solid fa-lightbulb" style={{ color: primaryColor, fontSize: '22px' }}></i>
                                                 </div>
-                                                <h4 style={{ fontSize: '18px', fontWeight: '700', color: '#fff', margin: 0 }}>
+                                                <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#fff', margin: 0 }}>
                                                     Our Strategic Approach
                                                 </h4>
                                             </div>
-                                            <p style={{ fontSize: '15px', lineHeight: '1.6', color: 'rgba(255,255,255,0.95)', margin: 0 }}>
+                                            <p style={{ fontSize: '15px', lineHeight: '1.7', color: 'rgba(255,255,255,0.9)', margin: 0 }}>
                                                 {industry.challenges.items[activeChallenge].solution}
                                             </p>
                                         </div>
