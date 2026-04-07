@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { platformsData } from '../data/platformsData';
 
