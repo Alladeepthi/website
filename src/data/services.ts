@@ -411,6 +411,7 @@ export interface ServiceCaseStudy {
     title: string;
     description: string;
     image: string;
+    features: string[];
     link?: string;
 }
 
@@ -536,6 +537,15 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
                 question: 'Do you recommend specific models or vendors?',
                 answer: 'We are vendor-neutral. We evaluate OpenAI, Google Gemini, Anthropic Claude, and open-source models like Llama 3 to find the best fit for your specific cost and privacy constraints.'
             }
+        ],
+        caseStudies: [
+            {
+                title: "Scaling Fintech Infrastructure",
+                description: "Re-architected a legacy trading platform into microservices, handling 10x transaction volume with sub-millisecond latency.",
+                features: ["99.99% Uptime", "Real-time Data", "Auto-Compliance"],
+                image: "/assets/images/project/Laboratory-pana.png",
+                link: "/case-studies/fintech-scaling"
+            }
         ]
     },
     {
@@ -611,6 +621,15 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
                 description: 'Instant feedback loops using Vercel AI SDK and WebSockets to eliminate the perceived latency of large model responses.',
                 icon: 'fa-bolt-lightning',
                 image: '/assets/images/service/Application%20programming%20interface-amico.png'
+            }
+        ],
+        caseStudies: [
+            {
+                title: "FinTech App UI Overhaul",
+                description: "Redesigned a mobile banking app interface, boosting user engagement by 35% and upgrading store ratings to 4.8 stars.",
+                features: ["Modern Visual Identity", "Simplified Flows", "Dark Mode"],
+                image: "/assets/images/project/Laboratory-pana.png",
+                link: "/case-studies/fintech-ui-overhaul"
             }
         ]
     },
@@ -901,6 +920,15 @@ export const SERVICE_OFFERINGS: ServiceOffering[] = [
                 description: 'Managing everything from infrastructure and databases to frontend UI and product analytics.',
                 icon: 'fa-rocket',
                 image: '/assets/images/service/New%20employee-amico.png'
+            }
+        ],
+        caseStudies: [
+            {
+                title: "Custom ERP for Manufacturing",
+                description: "Developed a bespoke ERP solution integrating inventory, production planning, and logistics, reducing ops costs by 25%.",
+                features: ["Real-time Inventory", "Auto-Scheduling", "Vendor Portal"],
+                image: "/assets/images/project/Tax-bro.png",
+                link: "/case-studies/manufacturing-erp"
             }
         ]
     }

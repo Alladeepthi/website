@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { servicesData, type CaseStudy } from '../data/services';
+import { servicesData, type CaseStudy, ALL_SERVICE_OFFERINGS } from '../data/services';
 import { platformsData } from '../data/platformsData';
 
 const CaseStudyDetails = () => {
@@ -17,13 +17,29 @@ const CaseStudyDetails = () => {
             let found = null;
             let parentService = null;
 
-            // Search in servicesData
+            // Search in servicesData (old)
             for (const service of servicesData) {
                 if (service.caseStudies) {
                     found = service.caseStudies.find(study => study.link === searchLink);
                     if (found) {
                         parentService = service;
                         break;
+                    }
+                }
+            }
+
+            // Search in ALL_SERVICE_OFFERINGS (new)
+            if (!found) {
+                for (const offering of ALL_SERVICE_OFFERINGS) {
+                    if (offering.caseStudies) {
+                        found = offering.caseStudies.find(study =>
+                            study.link === searchLink ||
+                            (study.title && `/case-studies/${study.title.toLowerCase().replace(/\s+/g, '-')}` === searchLink)
+                        );
+                        if (found) {
+                            parentService = offering;
+                            break;
+                        }
                     }
                 }
             }
@@ -74,7 +90,7 @@ const CaseStudyDetails = () => {
     return (
         <main style={{ backgroundColor: '#F9FAFB' }}>
             {/* Premium Hero Section */}
-            <div className="rts-breadcrumb-area breadcrumb-bg-1 bg_image" style={{ 
+            <div className="rts-breadcrumb-area breadcrumb-bg-1 bg_image" style={{
                 padding: '140px 0 100px',
                 backgroundColor: '#0F172A',
                 backgroundImage: `linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.8) 100%), url(${caseStudy.image})`,
@@ -106,17 +122,17 @@ const CaseStudyDetails = () => {
                                     display: 'block',
                                     marginBottom: '20px'
                                 }}>Success Story</span>
-                                <h1 className="title" style={{ 
-                                    color: '#FFFFFF', 
-                                    fontSize: '56px', 
+                                <h1 className="title" style={{
+                                    color: '#FFFFFF',
+                                    fontSize: '56px',
                                     fontWeight: 800,
                                     marginBottom: '25px',
                                     lineHeight: '1.1'
                                 }}>{caseStudy.title}</h1>
-                                <ul style={{ 
-                                    display: 'flex', 
-                                    gap: '15px', 
-                                    listStyle: 'none', 
+                                <ul style={{
+                                    display: 'flex',
+                                    gap: '15px',
+                                    listStyle: 'none',
                                     padding: 0,
                                     color: 'rgba(255,255,255,0.7)',
                                     fontSize: '15px',
@@ -141,10 +157,10 @@ const CaseStudyDetails = () => {
                         <div className="col-lg-8">
                             <div className="project-details-content-inner">
                                 {/* Overview Section */}
-                                <div style={{ 
-                                    background: '#FFFFFF', 
-                                    padding: '50px', 
-                                    borderRadius: '24px', 
+                                <div style={{
+                                    background: '#FFFFFF',
+                                    padding: '50px',
+                                    borderRadius: '24px',
                                     boxShadow: '0 10px 30px rgba(0,0,0,0.03)',
                                     border: '1px solid #F1F5F9',
                                     marginBottom: '50px'
@@ -164,10 +180,10 @@ const CaseStudyDetails = () => {
                                 {/* Challenge & Solution */}
                                 <div className="row g-4 mb--50">
                                     <div className="col-md-6">
-                                        <div style={{ 
-                                            background: '#FFFFFF', 
-                                            padding: '40px', 
-                                            borderRadius: '20px', 
+                                        <div style={{
+                                            background: '#FFFFFF',
+                                            padding: '40px',
+                                            borderRadius: '20px',
                                             height: '100%',
                                             border: '1px solid #F1F5F9',
                                             boxShadow: '0 10px 30px rgba(0,0,0,0.02)'
@@ -177,17 +193,17 @@ const CaseStudyDetails = () => {
                                             </div>
                                             <h4 style={{ fontSize: '22px', fontWeight: 700, color: '#0F172A', marginBottom: '15px' }}>The Challenge</h4>
                                             <p style={{ fontSize: '15px', color: '#64748B', lineHeight: '1.7', margin: 0 }}>
-                                                The client was facing significant operational hurdles that limited their ability to scale. 
-                                                Manual processes were causing delays, and data silos were preventing real-time decision-making. 
+                                                The client was facing significant operational hurdles that limited their ability to scale.
+                                                Manual processes were causing delays, and data silos were preventing real-time decision-making.
                                                 They needed a robust, automated solution to modernize infrastructure.
                                             </p>
                                         </div>
                                     </div>
                                     <div className="col-md-6">
-                                        <div style={{ 
-                                            background: '#FFFFFF', 
-                                            padding: '40px', 
-                                            borderRadius: '20px', 
+                                        <div style={{
+                                            background: '#FFFFFF',
+                                            padding: '40px',
+                                            borderRadius: '20px',
                                             height: '100%',
                                             border: '1px solid #F1F5F9',
                                             boxShadow: '0 10px 30px rgba(0,0,0,0.02)'
@@ -197,8 +213,8 @@ const CaseStudyDetails = () => {
                                             </div>
                                             <h4 style={{ fontSize: '22px', fontWeight: 700, color: '#0F172A', marginBottom: '15px' }}>Our Solution</h4>
                                             <p style={{ fontSize: '15px', color: '#64748B', lineHeight: '1.7', margin: 0 }}>
-                                                We implemented a comprehensive strategy focused on automation and integration. 
-                                                Our team designed a custom architecture that addressed specific pain points, 
+                                                We implemented a comprehensive strategy focused on automation and integration.
+                                                Our team designed a custom architecture that addressed specific pain points,
                                                 ensuring seamless data flow and high availability across all systems.
                                             </p>
                                         </div>
@@ -206,26 +222,26 @@ const CaseStudyDetails = () => {
                                 </div>
 
                                 {/* Results Section */}
-                                <div style={{ 
-                                    background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)', 
-                                    padding: '50px', 
-                                    borderRadius: '24px', 
+                                <div style={{
+                                    background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
+                                    padding: '50px',
+                                    borderRadius: '24px',
                                     position: 'relative',
                                     overflow: 'hidden'
                                 }}>
                                     <div style={{ position: 'relative', zIndex: 1 }}>
                                         <h3 style={{ fontSize: '28px', fontWeight: 800, color: '#FFFFFF', marginBottom: '15px' }}>Key Results & Impact</h3>
                                         <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '16px', marginBottom: '40px', maxWidth: '600px' }}>
-                                            The implementation delivered immediate and measurable value. 
+                                            The implementation delivered immediate and measurable value.
                                             Key performance indicators showed significant improvement within the first quarter.
                                         </p>
                                         <div className="row g-4">
                                             {caseStudy.features.map((feature, index) => (
                                                 <div className="col-md-4" key={index}>
-                                                    <div style={{ 
-                                                        background: 'rgba(255,255,255,0.05)', 
-                                                        padding: '25px', 
-                                                        borderRadius: '16px', 
+                                                    <div style={{
+                                                        background: 'rgba(255,255,255,0.05)',
+                                                        padding: '25px',
+                                                        borderRadius: '16px',
                                                         border: '1px solid rgba(255,255,255,0.1)',
                                                         textAlign: 'center',
                                                         height: '100%'
@@ -247,10 +263,10 @@ const CaseStudyDetails = () => {
                         <div className="col-lg-4">
                             <div style={{ position: 'sticky', top: '100px' }}>
                                 {/* Project Info */}
-                                <div style={{ 
-                                    background: '#FFFFFF', 
-                                    padding: '40px', 
-                                    borderRadius: '24px', 
+                                <div style={{
+                                    background: '#FFFFFF',
+                                    padding: '40px',
+                                    borderRadius: '24px',
                                     boxShadow: '0 10px 30px rgba(0,0,0,0.03)',
                                     marginBottom: '30px',
                                     border: '1px solid #F1F5F9'
@@ -273,10 +289,10 @@ const CaseStudyDetails = () => {
                                 </div>
 
                                 {/* Call to Action Sidebar */}
-                                <div style={{ 
-                                    background: 'linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)', 
-                                    padding: '40px', 
-                                    borderRadius: '24px', 
+                                <div style={{
+                                    background: 'linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)',
+                                    padding: '40px',
+                                    borderRadius: '24px',
                                     color: '#FFFFFF',
                                     textAlign: 'center',
                                     position: 'relative',

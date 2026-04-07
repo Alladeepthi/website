@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { servicesData } from '../../data/services';
+import { OFFERING_MENU_COLUMNS, ALL_SERVICE_OFFERINGS } from '../../data/services';
 import { BRAND_LOGO_ALT, BRAND_LOGO_SRC } from '../../constants/brand';
 
 const platformCategories = [
@@ -51,15 +51,40 @@ const platformCategories = [
 ];
 
 export const MobileMenu: React.FC = () => {
-    const [openCategory, setOpenCategory] = useState<string | null>(null);
+    const [openCategory, setOpenDropdown] = useState<string | null>(null);
+    const [openSubCategory, setOpenSubCategory] = useState<string | null>(null);
 
     const closeMenu = () => {
         document.getElementById('side-bar')?.classList.remove('show');
         document.getElementById('anywhere-home')?.classList.remove('bgshow');
     };
 
-    const toggleCategory = (name: string) => {
-        setOpenCategory(prev => (prev === name ? null : name));
+    const toggleDropdown = (name: string) => {
+        setOpenDropdown(prev => (prev === name ? null : name));
+        setOpenSubCategory(null);
+    };
+
+    const toggleSubCategory = (name: string) => {
+        setOpenSubCategory(prev => (prev === name ? null : name));
+    };
+
+    const accordionSectionStyle = {
+        listStyle: 'none',
+        padding: '0 0 0 15px',
+        margin: '5px 0 15px 0',
+        background: 'rgba(255,255,255,0.03)',
+        borderRadius: '6px',
+        overflow: 'hidden'
+    };
+
+    const accordionLinkStyle = {
+        display: 'block',
+        color: '#ffffff',
+        fontSize: '14px',
+        padding: '10px 0',
+        textDecoration: 'none',
+        opacity: 0.8,
+        transition: 'all 0.2s'
     };
 
     return (
@@ -70,185 +95,154 @@ export const MobileMenu: React.FC = () => {
                         <Link className="logo" to="/"><img src={BRAND_LOGO_SRC} alt={BRAND_LOGO_ALT} style={{ height: '40px', width: 'auto' }} /></Link>
                         <button className="close-icon-menu" aria-label="footer_Button" onClick={closeMenu}><i className="far fa-times"></i></button>
                     </div>
-                    <div className="body d-none d-xl-block">
-                        <div className="about-us">
-                            <h4>About Us</h4>
-                            <p>
-                                We must explain to you how all seds this mistakens idea denouncing pleasures and praising account.
-                                All seds this mistakens idea denouncing pleasures.
-                            </p>
-                        </div>
-                        <div className="menu-list">
-                            <h4>Useful Links</h4>
-                            <ul>
-                                <li><Link to="/about" onClick={closeMenu}>About Company</Link></li>
-                                <li><Link to="/service-details" onClick={closeMenu}>Service</Link></li>
-                                <li><Link to="/case-studies" onClick={closeMenu}>Project Details</Link></li>
-                                <li><Link to="/solutions#pricing-plan" onClick={closeMenu}>Pricing</Link></li>
-                                <li><Link to="/contact" onClick={closeMenu}>Contact</Link></li>
-                            </ul>
-                        </div>
-                        <div className="get-in-touch">
-                            <h4>Get In Touch</h4>
-                            <div className="wrapper">
-                                <div className="single">
-                                    <i className="fas fa-phone-alt"></i>
-                                    <a href="#">+8801234566789</a>
-                                </div>
-                                <div className="single">
-                                    <i className="fas fa-envelope"></i>
-                                    <a href="#">example@gmail.com</a>
-                                </div>
-                                <div className="single">
-                                    <i className="fas fa-globe"></i>
-                                    <a href="#">www.webexample.com</a>
-                                </div>
-                                <div className="single">
-                                    <i className="fas fa-map-marker-alt"></i>
-                                    <a href="#">13/A, New Pro State, NYC</a>
-                                </div>
-                            </div>
-                            <div className="social-wrapper-two menu">
-                                <a href="#" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
-                                <a href="#" aria-label="twitter"><i className="fab fa-twitter"></i></a>
-                                <a href="#" aria-label="instagram"><i className="fab fa-instagram"></i></a>
-                                <a href="#" aria-label="linkdin"><i className="fa-brands fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div className="mobile-menu-main block lg:hidden">
-                    <nav className="nav-main mainmenu-nav mt--30">
-                        <ul className="mainmenu metismenu" id="mobile-menu-active">
-                            <li className="has-droupdown">
-                                <Link to="#" className="main">Services</Link>
-                                <ul className="submenu mm-collapse">
-                                    {servicesData.map((service) => (
-                                        <li key={service.id}>
-                                            <Link to="/service-details" state={{ service }} onClick={closeMenu}>
-                                                {service.title}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </li>
 
-                            {/* ---- PLATFORMS: React-controlled accordion, no jQuery dependency ---- */}
-                            <li className="has-droupdown">
-                                <Link to="#" className="main" onClick={(e) => e.preventDefault()}>Platforms</Link>
-                                <ul className="submenu mm-collapse">
-                                    {platformCategories.map((cat) => (
-                                        <li key={cat.name} style={{ borderBottom: 'none', margin: 0, padding: 0 }}>
-                                            {/* Category header — acts as toggle */}
-                                            <button
-                                                onClick={() => toggleCategory(cat.name)}
-                                                style={{
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    justifyContent: 'space-between',
-                                                    width: '100%',
-                                                    background: 'transparent',
-                                                    border: 'none',
-                                                    borderBottom: '1px solid rgba(255,255,255,0.15)',
-                                                    color: 'rgba(255,255,255,0.75)',
-                                                    fontSize: '14px',
-                                                    fontWeight: 500,
-                                                    padding: '10px 0',
-                                                    cursor: 'pointer',
-                                                    textAlign: 'left',
-                                                    fontFamily: 'inherit',
-                                                }}
-                                            >
-                                                {cat.name}
-                                                <span style={{ fontSize: '11px', marginLeft: '8px' }}>
-                                                    {openCategory === cat.name ? '▲' : '▼'}
-                                                </span>
-                                            </button>
+                <div className="mobile-menu-main block lg:hidden" style={{ padding: '20px' }}>
+                    <nav className="nav-main mainmenu-nav">
+                        <ul className="mainmenu" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
 
-                                            {/* Platform links — shown/hidden by React state */}
-                                            {openCategory === cat.name && (
-                                                <ul style={{
-                                                    listStyle: 'none',
-                                                    padding: '4px 0 4px 16px',
-                                                    margin: 0,
-                                                    background: 'rgba(255,255,255,0.03)',
-                                                    borderRadius: '4px',
+                            {/* Services */}
+                            <li className="has-droupdown">
+                                <button onClick={() => toggleDropdown('services')} style={{
+                                    display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%',
+                                    background: 'transparent', border: 'none', color: '#fff', fontSize: '16px', fontWeight: 600,
+                                    padding: '15px 0', borderBottom: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer'
+                                }}>
+                                    Services <span>{openCategory === 'services' ? '−' : '+'}</span>
+                                </button>
+                                {openCategory === 'services' && (
+                                    <ul style={accordionSectionStyle}>
+                                        {OFFERING_MENU_COLUMNS.map((col) => (
+                                            <li key={col.title}>
+                                                <button onClick={() => toggleSubCategory(col.title)} style={{
+                                                    display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%',
+                                                    background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.6)', fontSize: '14px',
+                                                    padding: '10px 0', cursor: 'pointer', textAlign: 'left'
                                                 }}>
-                                                    {cat.platforms.map((p) => (
-                                                        <li key={p.path} style={{ margin: 0, padding: 0, border: 'none' }}>
-                                                            <Link
-                                                                to={p.path}
-                                                                onClick={closeMenu}
-                                                                style={{
-                                                                    display: 'block',
-                                                                    color: '#ffffff',
-                                                                    fontSize: '13px',
-                                                                    padding: '7px 8px',
-                                                                    textDecoration: 'none',
-                                                                    borderBottom: 'none',
-                                                                    opacity: 0.85,
-                                                                    transition: 'opacity 0.2s, padding-left 0.2s',
-                                                                }}
-                                                                onMouseEnter={e => {
-                                                                    (e.currentTarget as HTMLAnchorElement).style.opacity = '1';
-                                                                    (e.currentTarget as HTMLAnchorElement).style.paddingLeft = '14px';
-                                                                    (e.currentTarget as HTMLAnchorElement).style.color = '#0F62FE';
-                                                                }}
-                                                                onMouseLeave={e => {
-                                                                    (e.currentTarget as HTMLAnchorElement).style.opacity = '0.85';
-                                                                    (e.currentTarget as HTMLAnchorElement).style.paddingLeft = '8px';
-                                                                    (e.currentTarget as HTMLAnchorElement).style.color = '#ffffff';
-                                                                }}
-                                                            >
-                                                                › {p.label}
-                                                            </Link>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            )}
-                                        </li>
-                                    ))}
-                                </ul>
+                                                    {col.title} <span style={{ fontSize: '10px' }}>{openSubCategory === col.title ? '▲' : '▼'}</span>
+                                                </button>
+                                                {openSubCategory === col.title && (
+                                                    <ul style={{ listStyle: 'none', padding: '0 0 10px 15px', margin: 0 }}>
+                                                        {col.items.map((item) => {
+                                                            const offering = ALL_SERVICE_OFFERINGS.find(o => o.slug === item.slug);
+                                                            return (
+                                                                <li key={item.slug}>
+                                                                    <Link to="/service-details" state={{ service: offering }} onClick={closeMenu} style={{ ...accordionLinkStyle, fontSize: '13px', opacity: 0.7 }}>
+                                                                        › {item.title}
+                                                                    </Link>
+                                                                </li>
+                                                            );
+                                                        })}
+                                                    </ul>
+                                                )}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
                             </li>
 
+                            {/* Platforms */}
                             <li className="has-droupdown">
-                                <Link to="/industry" className="main">Industry</Link>
-                                <ul className="submenu mm-collapse">
-                                    <li><Link to="/industry#healthcare" onClick={closeMenu}>Healthcare</Link></li>
-                                    <li><Link to="/industry#finance" onClick={closeMenu}>Finance</Link></li>
-                                    <li><Link to="/industry#retail" onClick={closeMenu}>Retail</Link></li>
-                                    <li><Link to="/industry#manufacturing" onClick={closeMenu}>Manufacturing</Link></li>
-                                    <li><Link to="/industry#technology" onClick={closeMenu}>Technology</Link></li>
-                                </ul>
+                                <button onClick={() => toggleDropdown('platforms')} style={{
+                                    display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%',
+                                    background: 'transparent', border: 'none', color: '#fff', fontSize: '16px', fontWeight: 600,
+                                    padding: '15px 0', borderBottom: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer'
+                                }}>
+                                    Platforms <span>{openCategory === 'platforms' ? '−' : '+'}</span>
+                                </button>
+                                {openCategory === 'platforms' && (
+                                    <ul style={accordionSectionStyle}>
+                                        {platformCategories.map((cat) => (
+                                            <li key={cat.name}>
+                                                <button onClick={() => toggleSubCategory(cat.name)} style={{
+                                                    display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%',
+                                                    background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.6)', fontSize: '14px',
+                                                    padding: '10px 0', cursor: 'pointer', textAlign: 'left'
+                                                }}>
+                                                    {cat.name} <span style={{ fontSize: '10px' }}>{openSubCategory === cat.name ? '▲' : '▼'}</span>
+                                                </button>
+                                                {openSubCategory === cat.name && (
+                                                    <ul style={{ listStyle: 'none', padding: '0 0 10px 15px', margin: 0 }}>
+                                                        {cat.platforms.map((p) => (
+                                                            <li key={p.path}>
+                                                                <Link to={p.path} onClick={closeMenu} style={{ ...accordionLinkStyle, fontSize: '13px', opacity: 0.7 }}>
+                                                                    › {p.label}
+                                                                </Link>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                )}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
                             </li>
 
+                            {/* Industry */}
                             <li className="has-droupdown">
-                                <Link to="#" className="main">About</Link>
-                                <ul className="submenu mm-collapse">
-                                    <li><Link to="/about" onClick={closeMenu}>About Us</Link></li>
-                                    <li><Link to="/team" onClick={closeMenu}>Our Team</Link></li>
-                                    <li><Link to="/privacy-policy" onClick={closeMenu}>Privacy Policy</Link></li>
-                                </ul>
-                            </li>
-                            <li className="has-droupdown">
-                                <Link to="#" className="main">Solutions</Link>
-                                <ul className="submenu mm-collapse">
-                                    <li><Link to="/solutions" onClick={closeMenu}>Visual Monitoring</Link></li>
-                                    <li><Link to="/solutions" onClick={closeMenu}>Knowledge Automation</Link></li>
-                                    <li><Link to="/solutions" onClick={closeMenu}>Data Augmentation</Link></li>
-                                    <li><Link to="/solutions" onClick={closeMenu}>Edge Intelligence</Link></li>
-                                </ul>
+                                <button onClick={() => toggleDropdown('industry')} style={{
+                                    display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%',
+                                    background: 'transparent', border: 'none', color: '#fff', fontSize: '16px', fontWeight: 600,
+                                    padding: '15px 0', borderBottom: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer'
+                                }}>
+                                    Industry <span>{openCategory === 'industry' ? '−' : '+'}</span>
+                                </button>
+                                {openCategory === 'industry' && (
+                                    <ul style={accordionSectionStyle}>
+                                        {['Healthcare', 'Finance', 'Retail', 'Manufacturing', 'Technology'].map((ind) => (
+                                            <li key={ind}>
+                                                <Link to={`/industry/${ind.toLowerCase()}`} onClick={closeMenu} style={accordionLinkStyle}>
+                                                    {ind}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
                             </li>
 
+                            {/* About */}
+                            <li className="has-droupdown">
+                                <button onClick={() => toggleDropdown('about')} style={{
+                                    display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%',
+                                    background: 'transparent', border: 'none', color: '#fff', fontSize: '16px', fontWeight: 600,
+                                    padding: '15px 0', borderBottom: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer'
+                                }}>
+                                    About <span>{openCategory === 'about' ? '−' : '+'}</span>
+                                </button>
+                                {openCategory === 'about' && (
+                                    <ul style={accordionSectionStyle}>
+                                        <li><Link to="/about" onClick={closeMenu} style={accordionLinkStyle}>About Us</Link></li>
+                                        <li><Link to="/team" onClick={closeMenu} style={accordionLinkStyle}>Our Team</Link></li>
+                                        <li><Link to="/privacy-policy" onClick={closeMenu} style={accordionLinkStyle}>Privacy Policy</Link></li>
+                                    </ul>
+                                )}
+                            </li>
+
+                            {/* Solutions */}
+                            <li className="has-droupdown">
+                                <button onClick={() => toggleDropdown('solutions')} style={{
+                                    display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%',
+                                    background: 'transparent', border: 'none', color: '#fff', fontSize: '16px', fontWeight: 600,
+                                    padding: '15px 0', borderBottom: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer'
+                                }}>
+                                    Solutions <span>{openCategory === 'solutions' ? '−' : '+'}</span>
+                                </button>
+                                {openCategory === 'solutions' && (
+                                    <ul style={accordionSectionStyle}>
+                                        {['Visual Monitoring', 'Knowledge Automation', 'Data Augmentation', 'Edge Intelligence'].map((sol) => (
+                                            <li key={sol}>
+                                                <Link to="/solutions" onClick={closeMenu} style={accordionLinkStyle}>{sol}</Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </li>
 
                         </ul>
                     </nav>
                 </div>
             </div>
-            <div id="anywhere-home" onClick={() => {
-                document.getElementById('side-bar')?.classList.remove('show');
-                document.getElementById('anywhere-home')?.classList.remove('bgshow');
-            }}></div>
+            <div id="anywhere-home" onClick={closeMenu}></div>
         </>
     );
 };

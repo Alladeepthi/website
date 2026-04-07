@@ -8,6 +8,16 @@ export const Header: React.FC = () => {
   const isHome = location.pathname === '/';
   const [hoverDisabled, setHoverDisabled] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  const toggleDropdown = (name: string, e: React.MouseEvent) => {
+    // Enable click-to-toggle for touch devices OR smaller screens
+    const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    if (window.innerWidth < 1200 || isTouch) {
+      e.stopPropagation(); // Prevent event bubbling
+      setOpenDropdown(prev => (prev === name ? null : name));
+    }
+  };
 
   const handleLinkClick = () => {
     setHoverDisabled(true);
@@ -55,7 +65,7 @@ export const Header: React.FC = () => {
         <div className="row">
           <div className="col-lg-12">
             <div className="header-wrapper-main" style={wrapperStyle}>
-              <div className="logo-area" style={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
+              <div className="logo-area" style={{ flex: '0 0 auto', display: 'flex', justifyContent: 'flex-start' }}>
                 <Link to="/" onClick={handleLinkClick}>
                   <img
                     src={BRAND_LOGO_SRC}
@@ -71,15 +81,18 @@ export const Header: React.FC = () => {
                   />
                 </Link>
               </div>
-              <div className="nav-area hidden lg:flex" style={{ flex: 1, display: 'flex', justifyContent: 'center', whiteSpace: 'nowrap' }}>
+              <div className="nav-area hidden lg:flex" style={{ flex: '1 1 auto', display: 'flex', justifyContent: 'center', whiteSpace: 'nowrap' }}>
                 <ul className="" style={{ display: 'flex', flexWrap: 'nowrap', gap: '35px', alignItems: 'center', margin: 0, padding: 0, listStyle: 'none' }}>
 
                   {/* About */}
-                  <li className="main-nav has-dropdown" onMouseEnter={handleMouseEnter}>
-                    <Link to="/about" onClick={handleLinkClick} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <li className={`main-nav has-dropdown ${openDropdown === 'about' ? 'active' : ''}`} onMouseEnter={handleMouseEnter} onClick={(e) => toggleDropdown('about', e)}>
+                    <Link to="/about" onClick={(e) => {
+                      if (window.innerWidth >= 1024) handleLinkClick();
+                      else e.preventDefault();
+                    }} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       About <i className="fa-solid fa-chevron-down" style={{ fontSize: '10px' }}></i>
                     </Link>
-                    <ul className="submenu parent-nav" onClick={handleLinkClick}>
+                    <ul className={`submenu parent-nav ${openDropdown === 'about' ? 'show' : ''}`} onClick={handleLinkClick}>
                       <li><Link to="/about">About Us</Link></li>
                       <li><Link to="/team">Our Team</Link></li>
                       <li><Link to="/privacy-policy">Privacy Policy</Link></li>
@@ -87,8 +100,11 @@ export const Header: React.FC = () => {
                   </li>
 
                   {/* Services - Updated to match Platforms (4 Columns) */}
-                  <li className="main-nav has-dropdown mega-menu services-parent" onMouseEnter={handleMouseEnter}>
-                    <Link to="/service-details" onClick={handleLinkClick} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <li className={`main-nav has-dropdown mega-menu services-parent ${openDropdown === 'services' ? 'active' : ''}`} onMouseEnter={handleMouseEnter} onClick={(e) => toggleDropdown('services', e)}>
+                    <Link to="/service-details" onClick={(e) => {
+                      if (window.innerWidth >= 1024) handleLinkClick();
+                      else e.preventDefault();
+                    }} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       Services <i className="fa-solid fa-chevron-down" style={{ fontSize: '10px' }}></i>
                     </Link>
                     <div className="modern-services-dropdown" style={{
@@ -203,7 +219,7 @@ export const Header: React.FC = () => {
 
 
                   {/* Platforms */}
-                  <li className="main-nav has-dropdown mega-menu platforms-parent" onMouseEnter={handleMouseEnter}>
+                  <li className={`main-nav has-dropdown mega-menu platforms-parent ${openDropdown === 'platforms' ? 'active' : ''}`} onMouseEnter={handleMouseEnter} onClick={(e) => toggleDropdown('platforms', e)}>
                     <Link to="#" onClick={(e) => e.preventDefault()} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       Platforms <i className="fa-solid fa-chevron-down" style={{ fontSize: '10px' }}></i>
                     </Link>
@@ -383,7 +399,7 @@ export const Header: React.FC = () => {
                   </li>
 
                   {/* Industry */}
-                  <li className="main-nav has-dropdown" onMouseEnter={handleMouseEnter}>
+                  <li className={`main-nav has-dropdown ${openDropdown === 'industry' ? 'active' : ''}`} onMouseEnter={handleMouseEnter} onClick={(e) => toggleDropdown('industry', e)}>
                     <Link to="#" onClick={(e) => e.preventDefault()} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       Industry <i className="fa-solid fa-chevron-down" style={{ fontSize: '10px' }}></i>
                     </Link>
@@ -397,8 +413,11 @@ export const Header: React.FC = () => {
                   </li>
 
                   {/* Solutions */}
-                  <li className="main-nav has-dropdown" onMouseEnter={handleMouseEnter}>
-                    <Link to="/solutions" onClick={handleLinkClick} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <li className={`main-nav has-dropdown ${openDropdown === 'solutions' ? 'active' : ''}`} onMouseEnter={handleMouseEnter} onClick={(e) => toggleDropdown('solutions', e)}>
+                    <Link to="/solutions" onClick={(e) => {
+                      if (window.innerWidth >= 1024) handleLinkClick();
+                      else e.preventDefault();
+                    }} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       Solutions <i className="fa-solid fa-chevron-down" style={{ fontSize: '10px' }}></i>
                     </Link>
                     <ul className="submenu parent-nav" onClick={handleLinkClick}>
@@ -411,7 +430,7 @@ export const Header: React.FC = () => {
 
                 </ul>
               </div>
-              <div className="button-wrapper-flex" style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', gap: '25px', alignItems: 'center' }}>
+              <div className="button-wrapper-flex" style={{ flex: '0 0 auto', display: 'flex', justifyContent: 'flex-end', gap: '25px', alignItems: 'center' }}>
                 <Link to="/contact" className="rts-btn" onClick={handleLinkClick} style={{
                   padding: '10px 25px',
                   borderRadius: '100px',
@@ -522,69 +541,73 @@ export const Header: React.FC = () => {
         header .main-nav > a i {
           color: #3b82f6 !important;
         }
-        /* Services Mega Menu - Approach Animation */
+
+        /* Responsive Fixes & Toggle States */
+        @media (max-width: 1024px) {
+          .nav-area {
+            display: none !important;
+          }
+          .header-wrapper-main {
+            gap: 15px !important;
+            justify-content: space-between !important;
+            padding: 0 10px !important;
+          }
+          .logo-area {
+            flex: unset !important;
+          }
+          .button-wrapper-flex {
+            flex: unset !important;
+            gap: 12px !important;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .button-wrapper-flex .rts-btn {
+            padding: 8px 16px !important;
+            font-size: 13px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .logo-area img {
+            height: 36px !important;
+            max-width: 200px !important;
+          }
+          .button-wrapper-flex .rts-btn {
+            display: none !important;
+          }
+        }
+
+        /* Mobile Click States for mega-menus/dropdowns */
+        .main-nav.has-dropdown.active .modern-services-dropdown,
+        .main-nav.has-dropdown.active .modern-platforms-dropdown,
+        .main-nav.has-dropdown.active .submenu {
+          opacity: 1 !important;
+          visibility: visible !important;
+          transform: translateX(-50%) translateY(0) !important;
+          pointer-events: auto !important;
+          display: block !important;
+        }
+
+        /* Handle scroll for sticky */
+        header.sticky {
+          box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        /* Approach Animation triggers - added support for active class */
+        .services-parent.active .timeline-line-active,
         .services-parent:hover .timeline-line-active {
           animation: lineGrow 2.5s ease-out forwards;
         }
 
+        .services-parent.active .approach-step,
         .services-parent:hover .approach-step {
           animation: stepHighlight 0.5s ease-out forwards;
         }
 
-        .services-parent:hover .approach-step:nth-child(3) { animation-delay: 0.1s; }
-        .services-parent:hover .approach-step:nth-child(4) { animation-delay: 0.4s; }
-        .services-parent:hover .approach-step:nth-child(5) { animation-delay: 0.7s; }
-        .services-parent:hover .approach-step:nth-child(6) { animation-delay: 1.0s; }
-        .services-parent:hover .approach-step:nth-child(7) { animation-delay: 1.3s; }
-        .services-parent:hover .approach-step:nth-child(8) { animation-delay: 1.6s; }
-        .services-parent:hover .approach-step:nth-child(9) { animation-delay: 1.9s; }
-        .services-parent:hover .approach-step:nth-child(10) { animation-delay: 2.2s; }
-
-        @keyframes lineGrow {
-          0% { height: 0; }
-          100% { height: calc(100% - 20px); }
-        }
-
-        @keyframes stepHighlight {
-          0% { 
-            opacity: 0.7;
-            transform: translateX(0);
-          }
-          100% { 
-            opacity: 1;
-            transform: translateX(5px);
-            color: #3B82F6;
-          }
-        }
-
+        .services-parent.active .approach-step .step-icon,
         .services-parent:hover .approach-step .step-icon {
           animation: iconPop 0.5s ease-out forwards;
-        }
-
-        .services-parent:hover .approach-step:nth-child(3) .step-icon { animation-delay: 0.1s; }
-        .services-parent:hover .approach-step:nth-child(4) .step-icon { animation-delay: 0.4s; }
-        .services-parent:hover .approach-step:nth-child(5) .step-icon { animation-delay: 0.7s; }
-        .services-parent:hover .approach-step:nth-child(6) .step-icon { animation-delay: 1.0s; }
-        .services-parent:hover .approach-step:nth-child(7) .step-icon { animation-delay: 1.3s; }
-        .services-parent:hover .approach-step:nth-child(8) .step-icon { animation-delay: 1.6s; }
-        .services-parent:hover .approach-step:nth-child(9) .step-icon { animation-delay: 1.9s; }
-        .services-parent:hover .approach-step:nth-child(10) .step-icon { animation-delay: 2.2s; }
-
-        @keyframes iconPop {
-          0% { 
-            background: #fff;
-            color: #3B82F6;
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.2);
-          }
-          100% { 
-            background: #3B82F6;
-            color: #fff;
-            transform: scale(1.1);
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
-          }
         }
       `}</style>
     </header >

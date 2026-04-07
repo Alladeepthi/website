@@ -80,9 +80,10 @@ export const Footer: React.FC = () => {
                             <div className="single">
                                 <h6 className="title" style={{ marginBottom: '20px', fontSize: '16px', fontWeight: 700, color: '#0F172A' }}>Services</h6>
                                 <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                                    <li style={{ marginBottom: '12px' }}><Link to="/services" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>Mobile App</Link></li>
-                                    <li style={{ marginBottom: '12px' }}><Link to="/services" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>Web Dev</Link></li>
-                                    <li style={{ marginBottom: '0' }}><Link to="/services" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>Software</Link></li>
+                                    <li style={{ marginBottom: '12px' }}><Link to="/services" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>Artificial Intelligence</Link></li>
+                                    <li style={{ marginBottom: '12px' }}><Link to="/services" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>Data Engineering</Link></li>
+                                    <li style={{ marginBottom: '12px' }}><Link to="/services" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>Generative AI</Link></li>
+                                    <li style={{ marginBottom: '0' }}><Link to="/services" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>DevOps & Development</Link></li>
                                 </ul>
                             </div>
                             <div className="single">

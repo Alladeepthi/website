@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { servicesData } from '../data/services';
+import { SERVICE_OFFERINGS } from '../data/services';
 
 export const Services: React.FC = () => {
     useEffect(() => {
@@ -62,26 +62,45 @@ export const Services: React.FC = () => {
                                 </p>
                             </div>
                         </div>
-                        {servicesData.map((service) => (
-                            <div className="col-lg-4 col-md-6" key={service.id}>
-                                <div className="single-feature-area-three" style={{ height: '100%' }}>
-                                    <div className="icon">
-                                        <img src={`/assets/images/service/${service.icon?.replace(/ /g, '%20')}`} alt={service.title} />
+                        {SERVICE_OFFERINGS.map((service) => (
+                            <div className="col-lg-4 col-md-6" key={service.slug}>
+                                <div className="single-feature-area-three" style={{
+                                    height: '100%',
+                                    padding: '30px',
+                                    background: '#fff',
+                                    borderRadius: '8px',
+                                    boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
+                                    display: 'flex',
+                                    flexDirection: 'column'
+                                }}>
+                                    <div className="icon" style={{ marginBottom: '20px' }}>
+                                        <i className={`fa-solid ${service.detailedFeatures?.[0]?.icon || 'fa-microchip'}`} style={{ fontSize: '32px', color: '#3A70FF' }}></i>
                                     </div>
-                                    <div className="content">
-                                        <h3 className="title">{service.title}</h3>
-                                        <p className="disc" style={{ marginBottom: '15px' }}>{service.description}</p>
-                                        <ul style={{ listStyle: 'none', padding: 0, marginBottom: '20px' }}>
-                                            {service.subCategories.slice(0, 3).map((sub, i) => (
-                                                <li key={i} style={{ fontSize: '14px', marginBottom: '5px', color: '#5D666F' }}>
-                                                    <i className="fa-solid fa-check" style={{ marginRight: '8px', color: '#3A70FF' }}></i>
-                                                    {sub}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                        <Link to="/service-details" state={{ service }} className="round-btn">
-                                            <i className="fa-sharp-duotone fa-light fa-arrow-right"></i>
-                                        </Link>
+                                    <div className="content" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                                        <h3 className="title" style={{ fontSize: '20px', fontWeight: 700, marginBottom: '15px' }}>{service.title}</h3>
+                                        <p className="disc" style={{ marginBottom: '20px', fontSize: '15px', color: '#64748B', lineHeight: '1.6' }}>
+                                            {service.summary}
+                                        </p>
+                                        <div style={{ marginTop: 'auto' }}>
+                                            <ul style={{ listStyle: 'none', padding: 0, marginBottom: '25px' }}>
+                                                {service.outcomes.slice(0, 3).map((outcome, i) => (
+                                                    <li key={i} style={{ fontSize: '13.5px', marginBottom: '8px', color: '#475569', display: 'flex', alignItems: 'flex-start' }}>
+                                                        <i className="fa-solid fa-circle-check" style={{ marginRight: '10px', color: '#3A70FF', marginTop: '4px' }}></i>
+                                                        {outcome}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                            <Link to="/service-details" state={{ service }} className="rts-btn btn-primary" style={{
+                                                width: '100%',
+                                                textAlign: 'center',
+                                                padding: '12px',
+                                                borderRadius: '6px',
+                                                fontSize: '14px',
+                                                fontWeight: 600
+                                            }}>
+                                                Explore Details
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
