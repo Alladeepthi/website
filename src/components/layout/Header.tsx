@@ -78,232 +78,278 @@ export const Header: React.FC = () => {
                     </ul>
                   </li>
 
-                  {/* Services - With Dropdown */}
-                  <li className="main-nav has-dropdown mega-menu" onMouseEnter={handleMouseEnter}>
+                  {/* Services - Updated to match Platforms layout */}
+                  <li className="main-nav has-dropdown mega-menu services-parent" onMouseEnter={handleMouseEnter}>
                     <Link to="/service-details" onClick={handleLinkClick} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       Services <i className="fa-solid fa-chevron-down" style={{ fontSize: '10px' }}></i>
                     </Link>
-                    <div className="rts-mega-menu service-mega-menu-style" onClick={handleLinkClick} style={{
-                      background: '#fff',
-                      borderRadius: '20px',
-                      padding: '20px',
-                      border: '1px solid #f1f5f9',
-                      boxShadow: '0 20px 50px rgba(0,0,0,0.1)',
-                      width: '1050px',
-                      left: '50%',
-                      transform: 'translateX(-50%)',
+                    <div className="modern-services-dropdown" style={{
                       position: 'absolute',
-                      top: '100%'
+                      top: '100%',
+                      left: '50%',
+                      transform: 'translateX(-50%) translateY(15px)',
+                      width: '1000px',
+                      maxWidth: '95vw',
+                      background: '#fff',
+                      borderRadius: '16px',
+                      boxShadow: '0 20px 60px rgba(0,0,0,0.12)',
+                      border: '1px solid #e2e8f0',
+                      padding: '25px 30px',
+                      zIndex: 1000,
+                      visibility: 'hidden',
+                      opacity: 0,
+                      transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                      pointerEvents: 'none',
+                      overflow: 'hidden'
                     }}>
-                      <div className="wrapper">
-                        <div className="container" style={{ maxWidth: '100%' }}>
-                          <div className="row g-2">
-                            <div className="col-lg-4">
-                              <ul className="mega-menu-item parent-nav" style={{ padding: 0, margin: 0 }}>
-                                {leftServices.map((service, idx) => (
-                                  <li key={service.id} style={{ marginBottom: '4px' }}>
-                                    <Link to="/service-details" state={{ service }} style={{ textDecoration: 'none' }}>
-                                      <div className="single-service-menu-compact" style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '12px',
-                                        padding: '8px 12px',
-                                        borderRadius: '8px',
-                                        transition: 'all 0.3s ease',
-                                        background: 'transparent'
-                                      }}
-                                        onMouseEnter={(e) => {
-                                          e.currentTarget.style.background = '#EFF6FF';
-                                          const title = e.currentTarget.querySelector('.title') as HTMLElement;
-                                          if (title) title.style.color = '#3B82F6';
-                                          const icon = e.currentTarget.querySelector('.nav-icon') as HTMLElement;
-                                          if (icon) icon.style.transform = 'scale(1.1)';
-                                        }}
-                                        onMouseLeave={(e) => {
-                                          e.currentTarget.style.background = 'transparent';
-                                          const title = e.currentTarget.querySelector('.title') as HTMLElement;
-                                          if (title) title.style.color = '#0F172A';
-                                          const icon = e.currentTarget.querySelector('.nav-icon') as HTMLElement;
-                                          if (icon) icon.style.transform = 'scale(1)';
-                                        }}>
-                                        <div className="nav-icon" style={{
-                                          width: '32px',
-                                          height: '32px',
-                                          background: '#EFF6FF',
-                                          borderRadius: '6px',
-                                          display: 'flex',
-                                          alignItems: 'center',
-                                          justifyContent: 'center',
-                                          color: '#3B82F6',
-                                          fontSize: '14px',
-                                          transition: 'all 0.3s ease'
-                                        }}>
-                                          <i className={idx === 0 ? 'fa-solid fa-plug' : idx === 1 ? 'fa-solid fa-building' : idx === 2 ? 'fa-solid fa-palette' : 'fa-solid fa-chart-line'}></i>
-                                        </div>
-                                        <div className="info">
-                                          <h5 className="title" style={{
-                                            fontSize: '14px',
-                                            fontWeight: 600,
-                                            margin: 0,
-                                            color: '#0F172A',
-                                            transition: 'color 0.3s ease'
-                                          }}>{service.title}</h5>
-                                        </div>
-                                      </div>
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                            <div className="col-lg-4">
-                              <ul className="mega-menu-item parent-nav" style={{ padding: 0, margin: 0 }}>
-                                {rightServices.map((service, idx) => (
-                                  <li key={service.id} style={{ marginBottom: '4px' }}>
-                                    <Link to="/service-details" state={{ service }} style={{ textDecoration: 'none' }}>
-                                      <div className="single-service-menu-compact" style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '12px',
-                                        padding: '8px 12px',
-                                        borderRadius: '8px',
-                                        transition: 'all 0.3s ease',
-                                        background: 'transparent'
-                                      }}
-                                        onMouseEnter={(e) => {
-                                          e.currentTarget.style.background = '#EFF6FF';
-                                          const title = e.currentTarget.querySelector('.title') as HTMLElement;
-                                          if (title) title.style.color = '#3B82F6';
-                                          const icon = e.currentTarget.querySelector('.nav-icon') as HTMLElement;
-                                          if (icon) icon.style.transform = 'scale(1.1)';
-                                        }}
-                                        onMouseLeave={(e) => {
-                                          e.currentTarget.style.background = 'transparent';
-                                          const title = e.currentTarget.querySelector('.title') as HTMLElement;
-                                          if (title) title.style.color = '#0F172A';
-                                          const icon = e.currentTarget.querySelector('.nav-icon') as HTMLElement;
-                                          if (icon) icon.style.transform = 'scale(1)';
-                                        }}>
-                                        <div className="nav-icon" style={{
-                                          width: '32px',
-                                          height: '32px',
-                                          background: '#EFF6FF',
-                                          borderRadius: '6px',
-                                          display: 'flex',
-                                          alignItems: 'center',
-                                          justifyContent: 'center',
-                                          color: '#3B82F6',
-                                          fontSize: '14px',
-                                          transition: 'all 0.3s ease'
-                                        }}>
-                                          <i className={idx === 0 ? 'fa-solid fa-mobile-screen' : idx === 1 ? 'fa-solid fa-brain' : idx === 2 ? 'fa-solid fa-database' : 'fa-solid fa-rocket'}></i>
-                                        </div>
-                                        <div className="info">
-                                          <h5 className="title" style={{
-                                            fontSize: '14px',
-                                            fontWeight: 600,
-                                            margin: 0,
-                                            color: '#0F172A',
-                                            transition: 'color 0.3s ease'
-                                          }}>{service.title}</h5>
-                                        </div>
-                                      </div>
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
+                      <div className="services-grid-container" style={{
+                        display: 'grid',
+                        gridTemplateColumns: '1.1fr 1.1fr 0.8fr',
+                        gap: '30px',
+                        width: '100%',
+                        margin: 0,
+                        padding: 0
+                      }}>
+                        <div className="modern-dropdown-col" style={{
+                          display: 'block',
+                          width: '100%',
+                          minWidth: 0,
+                          borderRight: '1px solid #f1f5f9',
+                          paddingRight: '20px'
+                        }}>
+                          <h6 style={{
+                            fontSize: '11px',
+                            fontWeight: 900,
+                            color: '#3B82F6',
+                            textTransform: 'uppercase',
+                            letterSpacing: '1px',
+                            marginBottom: '2px',
+                            display: 'block'
+                          }}>Core Engineering</h6>
+                          <p style={{ fontSize: '10px', color: '#94a3b8', marginBottom: '15px', lineHeight: '1.1', display: 'block' }}>Scalable backend & systems</p>
 
-                            <div className="col-lg-4">
-                              <div className="menu-list">
-                                <h4 style={{
-                                  fontSize: '14px',
-                                  fontWeight: 700,
-                                  marginBottom: '10px',
-                                  color: '#0F172A'
-                                }}>Our Approach</h4>
-                                <ul style={{ listStyle: 'none', padding: 0, margin: 0, position: 'relative' }}>
-                                  {/* Connecting Timeline Line */}
-                                  <div style={{
-                                    position: 'absolute',
-                                    left: '19px',
-                                    top: '10px',
-                                    bottom: '10px',
-                                    width: '1px',
-                                    background: '#e2e8f0',
-                                    zIndex: 0
-                                  }}></div>
-                                  {[
-                                    { title: 'Discovery & Analysis', icon: 'fa-magnifying-glass' },
-                                    { title: 'Strategy Development', icon: 'fa-lightbulb' },
-                                    { title: 'Solution Design', icon: 'fa-pen-ruler' },
-                                    { title: 'Implementation', icon: 'fa-code' },
-                                    { title: 'Testing & Validation', icon: 'fa-flask' },
-                                    { title: 'Deployment', icon: 'fa-rocket' },
-                                    { title: 'Ongoing Support', icon: 'fa-headset' },
-                                    { title: 'Optimization', icon: 'fa-chart-line' }
-                                  ].map((item, idx) => (
-                                    <li key={idx} style={{
-                                      fontSize: '13px',
-                                      padding: '6px 10px',
-                                      marginBottom: '2px',
+                          <ul style={{
+                            listStyle: 'none',
+                            padding: 0,
+                            margin: 0,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '6px'
+                          }}>
+                            {leftServices.map((s, i) => (
+                              <li key={s.id} style={{ display: 'block', width: '100%', margin: 0 }}>
+                                <Link to="/service-details" state={{ service: s }} onClick={handleLinkClick} style={{ textDecoration: 'none', display: 'block', padding: 0 }}>
+                                  <div className="service-nav-card" style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '10px',
+                                    padding: '8px',
+                                    borderRadius: '10px',
+                                    transition: 'all 0.2s ease',
+                                    background: '#f8fafc',
+                                    border: '1px solid transparent'
+                                  }}
+                                    onMouseEnter={(e) => {
+                                      e.currentTarget.style.background = '#fff';
+                                      e.currentTarget.style.borderColor = '#e2e8f0';
+                                      e.currentTarget.style.transform = 'translateY(-1px)';
+                                      e.currentTarget.style.boxShadow = '0 5px 15px rgba(0,0,0,0.05)';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                      e.currentTarget.style.background = '#f8fafc';
+                                      e.currentTarget.style.borderColor = 'transparent';
+                                      e.currentTarget.style.transform = 'translateY(0)';
+                                      e.currentTarget.style.boxShadow = 'none';
+                                    }}>
+                                    <div className="icon-wrapper" style={{
+                                      width: '32px',
+                                      height: '32px',
+                                      background: '#fff',
                                       borderRadius: '8px',
-                                      transition: 'all 0.3s ease',
-                                      cursor: 'pointer',
                                       display: 'flex',
                                       alignItems: 'center',
-                                      gap: '12px',
-                                      color: '#475569',
-                                      position: 'relative',
-                                      zIndex: 1
-                                    }}
-                                      onMouseEnter={(e) => {
-                                        e.currentTarget.style.background = '#f8fafc';
-                                        e.currentTarget.style.color = '#3B82F6';
-                                        const icon = e.currentTarget.querySelector('.step-icon') as HTMLElement;
-                                        if (icon) {
-                                          icon.style.background = '#3B82F6';
-                                          icon.style.color = '#fff';
-                                          icon.style.borderColor = '#3B82F6';
-                                        }
-                                      }}
-                                      onMouseLeave={(e) => {
-                                        e.currentTarget.style.background = 'transparent';
-                                        e.currentTarget.style.color = '#475569';
-                                        const icon = e.currentTarget.querySelector('.step-icon') as HTMLElement;
-                                        if (icon) {
-                                          icon.style.background = '#fff';
-                                          icon.style.color = '#3B82F6';
-                                          icon.style.borderColor = '#e2e8f0';
-                                        }
-                                      }}>
-                                      <div className="step-icon" style={{
-                                        width: '20px',
-                                        height: '20px',
-                                        background: '#fff',
-                                        border: '1px solid #e2e8f0',
-                                        borderRadius: '50%',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        fontSize: '9px',
-                                        color: '#3B82F6',
-                                        flexShrink: 0,
-                                        transition: 'all 0.3s ease'
-                                      }}>
-                                        <i className={`fa-solid ${item.icon}`}></i>
-                                      </div>
-                                      <span style={{ fontWeight: 500 }}>{item.title}</span>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            </div>
+                                      justifyContent: 'center',
+                                      color: '#3B82F6',
+                                      fontSize: '12px',
+                                      flexShrink: 0,
+                                      boxShadow: '0 2px 4px rgba(0,0,0,0.02)'
+                                    }}>
+                                      <i className={`fa-solid ${i === 0 ? 'fa-plug' : i === 1 ? 'fa-building' : i === 2 ? 'fa-palette' : 'fa-chart-line'}`}></i>
+                                    </div>
+                                    <div className="content">
+                                      <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#0f172a', marginBottom: '1px', lineHeight: 1.1 }}>{s.title}</div>
+                                      <div style={{ fontSize: '9px', color: '#64748b', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '170px' }}>{s.subtitle.split(' ').slice(0, 3).join(' ')}...</div>
+                                    </div>
+                                  </div>
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
 
-                          </div>
+                        <div className="modern-dropdown-col" style={{
+                          display: 'block',
+                          width: '100%',
+                          minWidth: 0,
+                          borderRight: '1px solid #f1f5f9',
+                          paddingRight: '20px'
+                        }}>
+                          <h6 style={{
+                            fontSize: '11px',
+                            fontWeight: 900,
+                            color: '#3B82F6',
+                            textTransform: 'uppercase',
+                            letterSpacing: '1px',
+                            marginBottom: '2px',
+                            display: 'block'
+                          }}>Experience & Intelligence</h6>
+                          <p style={{ fontSize: '10px', color: '#94a3b8', marginBottom: '15px', lineHeight: '1.1', display: 'block' }}>Design & AI solutions</p>
+
+                          <ul style={{
+                            listStyle: 'none',
+                            padding: 0,
+                            margin: 0,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '6px'
+                          }}>
+                            {rightServices.map((s, i) => (
+                              <li key={s.id} style={{ display: 'block', width: '100%', margin: 0 }}>
+                                <Link to="/service-details" state={{ service: s }} onClick={handleLinkClick} style={{ textDecoration: 'none', display: 'block', padding: 0 }}>
+                                  <div className="service-nav-card" style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '10px',
+                                    padding: '8px',
+                                    borderRadius: '10px',
+                                    transition: 'all 0.2s ease',
+                                    background: '#f8fafc',
+                                    border: '1px solid transparent'
+                                  }}
+                                    onMouseEnter={(e) => {
+                                      e.currentTarget.style.background = '#fff';
+                                      e.currentTarget.style.borderColor = '#e2e8f0';
+                                      e.currentTarget.style.transform = 'translateY(-1px)';
+                                      e.currentTarget.style.boxShadow = '0 5px 15px rgba(0,0,0,0.05)';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                      e.currentTarget.style.background = '#f8fafc';
+                                      e.currentTarget.style.borderColor = 'transparent';
+                                      e.currentTarget.style.transform = 'translateY(0)';
+                                      e.currentTarget.style.boxShadow = 'none';
+                                    }}>
+                                    <div className="icon-wrapper" style={{
+                                      width: '32px',
+                                      height: '32px',
+                                      background: '#fff',
+                                      borderRadius: '8px',
+                                      display: 'flex',
+                                      alignItems: 'center',
+                                      justifyContent: 'center',
+                                      color: '#3B82F6',
+                                      fontSize: '12px',
+                                      flexShrink: 0,
+                                      boxShadow: '0 2px 4px rgba(0,0,0,0.02)'
+                                    }}>
+                                      <i className={`fa-solid ${i === 0 ? 'fa-mobile-screen' : i === 1 ? 'fa-brain' : i === 2 ? 'fa-database' : 'fa-rocket'}`}></i>
+                                    </div>
+                                    <div className="content">
+                                      <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#0f172a', marginBottom: '1px', lineHeight: 1.1 }}>{s.title}</div>
+                                      <div style={{ fontSize: '9px', color: '#64748b', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '170px' }}>{s.subtitle.split(' ').slice(0, 3).join(' ')}...</div>
+                                    </div>
+                                  </div>
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        <div className="modern-dropdown-col approach-col" style={{
+                          display: 'block',
+                          width: '100%',
+                          minWidth: 0,
+                          paddingLeft: '5px'
+                        }}>
+                          <h6 style={{
+                            fontSize: '11px',
+                            fontWeight: 900,
+                            color: '#3B82F6',
+                            textTransform: 'uppercase',
+                            letterSpacing: '1px',
+                            marginBottom: '2px',
+                            display: 'block'
+                          }}>Our Approach</h6>
+                          <p style={{ fontSize: '10px', color: '#94a3b8', marginBottom: '15px', lineHeight: '1.1', display: 'block' }}>Strategy & execution framework</p>
+                          <ul className="approach-timeline" style={{ listStyle: 'none', padding: 0, margin: 0, position: 'relative', display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                            {/* Static Background Line */}
+                            <div className="timeline-line-bg" style={{
+                              position: 'absolute',
+                              left: '12px',
+                              top: '10px',
+                              bottom: '10px',
+                              width: '1px',
+                              background: '#e2e8f0',
+                              zIndex: 0
+                            }}></div>
+                            {/* Animated Life Line */}
+                            <div className="timeline-line-active" style={{
+                              position: 'absolute',
+                              left: '12px',
+                              top: '10px',
+                              width: '1px',
+                              background: '#3B82F6',
+                              zIndex: 1,
+                              height: '0'
+                            }}></div>
+                            {[
+                              { title: 'Discovery & Analysis', icon: 'fa-magnifying-glass' },
+                              { title: 'Strategy Development', icon: 'fa-lightbulb' },
+                              { title: 'Solution Design', icon: 'fa-pen-ruler' },
+                              { title: 'Implementation', icon: 'fa-code' },
+                              { title: 'Testing & Validation', icon: 'fa-flask' },
+                              { title: 'Deployment', icon: 'fa-rocket' },
+                              { title: 'Ongoing Support', icon: 'fa-headset' },
+                              { title: 'Optimization', icon: 'fa-chart-line' }
+                            ].map((item, idx) => (
+                              <li key={idx} className="approach-step" style={{
+                                fontSize: '11px',
+                                padding: '5px 8px',
+                                borderRadius: '8px',
+                                transition: 'all 0.3s ease',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '12px',
+                                color: '#475569',
+                                position: 'relative',
+                                zIndex: 1,
+                                opacity: 0.7,
+                                transform: 'translateX(0)'
+                              }}>
+                                <div className="step-icon" style={{
+                                  width: '18px',
+                                  height: '18px',
+                                  background: '#fff',
+                                  border: '1px solid #e2e8f0',
+                                  borderRadius: '50%',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  fontSize: '8px',
+                                  color: '#3B82F6',
+                                  flexShrink: 0,
+                                  transition: 'all 0.4s ease'
+                                }}>
+                                  <i className={`fa-solid ${item.icon}`}></i>
+                                </div>
+                                <span style={{ fontWeight: 600 }}>{item.title}</span>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       </div>
                     </div>
                   </li>
+
 
                   {/* Platforms */}
                   <li className="main-nav has-dropdown mega-menu platforms-parent" onMouseEnter={handleMouseEnter}>
@@ -545,21 +591,24 @@ export const Header: React.FC = () => {
         /* Force close menus on link click by disabling hover state */
         .header-one.hover-disabled .rts-mega-menu,
         .header-one.hover-disabled .submenu,
-        .header-one.hover-disabled .modern-platforms-dropdown {
+        .header-one.hover-disabled .modern-platforms-dropdown,
+        .header-one.hover-disabled .modern-services-dropdown {
           display: none !important;
           opacity: 0 !important;
           visibility: hidden !important;
         }
 
-        /* Modern Platforms Mega Menu Animation */
-        .main-nav.has-dropdown.mega-menu:hover .modern-platforms-dropdown {
+        /* Modern Mega Menu Animation (Platforms & Services) */
+        .main-nav.has-dropdown.mega-menu:hover .modern-platforms-dropdown,
+        .main-nav.has-dropdown.mega-menu:hover .modern-services-dropdown {
           opacity: 1 !important;
           visibility: visible !important;
           transform: translateX(-50%) translateY(0) !important;
           pointer-events: auto !important;
         }
 
-        .modern-platforms-dropdown {
+        .modern-platforms-dropdown,
+        .modern-services-dropdown {
           opacity: 0 !important;
           visibility: hidden !important;
           transform: translateX(-50%) translateY(15px) !important;
@@ -617,6 +666,70 @@ export const Header: React.FC = () => {
         }
         header .main-nav > a i {
           color: rgba(255, 255, 255, 0.6) !important;
+        }
+        /* Services Mega Menu - Approach Animation */
+        .services-parent:hover .timeline-line-active {
+          animation: lineGrow 2.5s ease-out forwards;
+        }
+
+        .services-parent:hover .approach-step {
+          animation: stepHighlight 0.5s ease-out forwards;
+        }
+
+        .services-parent:hover .approach-step:nth-child(3) { animation-delay: 0.1s; }
+        .services-parent:hover .approach-step:nth-child(4) { animation-delay: 0.4s; }
+        .services-parent:hover .approach-step:nth-child(5) { animation-delay: 0.7s; }
+        .services-parent:hover .approach-step:nth-child(6) { animation-delay: 1.0s; }
+        .services-parent:hover .approach-step:nth-child(7) { animation-delay: 1.3s; }
+        .services-parent:hover .approach-step:nth-child(8) { animation-delay: 1.6s; }
+        .services-parent:hover .approach-step:nth-child(9) { animation-delay: 1.9s; }
+        .services-parent:hover .approach-step:nth-child(10) { animation-delay: 2.2s; }
+
+        @keyframes lineGrow {
+          0% { height: 0; }
+          100% { height: calc(100% - 20px); }
+        }
+
+        @keyframes stepHighlight {
+          0% { 
+            opacity: 0.7;
+            transform: translateX(0);
+          }
+          100% { 
+            opacity: 1;
+            transform: translateX(5px);
+            color: #3B82F6;
+          }
+        }
+
+        .services-parent:hover .approach-step .step-icon {
+          animation: iconPop 0.5s ease-out forwards;
+        }
+
+        .services-parent:hover .approach-step:nth-child(3) .step-icon { animation-delay: 0.1s; }
+        .services-parent:hover .approach-step:nth-child(4) .step-icon { animation-delay: 0.4s; }
+        .services-parent:hover .approach-step:nth-child(5) .step-icon { animation-delay: 0.7s; }
+        .services-parent:hover .approach-step:nth-child(6) .step-icon { animation-delay: 1.0s; }
+        .services-parent:hover .approach-step:nth-child(7) .step-icon { animation-delay: 1.3s; }
+        .services-parent:hover .approach-step:nth-child(8) .step-icon { animation-delay: 1.6s; }
+        .services-parent:hover .approach-step:nth-child(9) .step-icon { animation-delay: 1.9s; }
+        .services-parent:hover .approach-step:nth-child(10) .step-icon { animation-delay: 2.2s; }
+
+        @keyframes iconPop {
+          0% { 
+            background: #fff;
+            color: #3B82F6;
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.2);
+          }
+          100% { 
+            background: #3B82F6;
+            color: #fff;
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+          }
         }
       `}</style>
     </header >
