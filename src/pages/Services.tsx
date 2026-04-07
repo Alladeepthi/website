@@ -66,7 +66,7 @@ export const Services: React.FC = () => {
                             <div className="col-lg-4 col-md-6" key={service.id}>
                                 <div className="single-feature-area-three" style={{ height: '100%' }}>
                                     <div className="icon">
-                                        <img src={`/assets/images/feature/${service.icon}`} alt={service.title} />
+                                        <img src={`/assets/images/service/${service.icon?.replace(/ /g, '%20')}`} alt={service.title} />
                                     </div>
                                     <div className="content">
                                         <h3 className="title">{service.title}</h3>

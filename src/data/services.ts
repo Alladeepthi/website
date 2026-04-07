@@ -24,7 +24,7 @@ export const servicesData: ServiceItem[] = [
         title: "API & Integration Services",
         subtitle: "Seamless Connectivity for Modern Enterprises",
         description: "We architect high-performance API layers that serve as the backbone of your digital infrastructure. Our solutions ensure secure, reliable data flow between your internal systems, partners, and third-party platforms, eliminating silos and enabling real-time operational visibility.",
-        icon: "Business.png",
+        icon: "Investment data-amico.png",
         subCategories: [
             "Telephony APIs (Telecalling, IVR, Voice Bots)",
             "Messaging APIs (WhatsApp, SMS, Email)",
@@ -77,7 +77,7 @@ export const servicesData: ServiceItem[] = [
         title: "Enterprise Software Solutions",
         subtitle: "Robust Licensing & Operational Platforms",
         description: "We build mission-critical software tailored to your specific business logic and operational needs. Our engineering team delivers scalable, secure applications that streamline complex workflows, reduce manual overhead, and support your organization’s growth without technical debt.",
-        icon: "Memory.png",
+        icon: "Programmer-amico.png",
         subCategories: [
             "CRM Platforms",
             "ERP Systems",
@@ -123,7 +123,7 @@ export const servicesData: ServiceItem[] = [
         title: "Digital Experience Studio",
         subtitle: "User-Centric Interfaces that Convert",
         description: "Our design process balances aesthetic excellence with functional precision. We create intuitive, accessible, and engaging digital experiences that reduce user friction, increase adoption rates, and directly support your core business metrics and conversion goals.",
-        icon: "Onconsulting.png",
+        icon: "Consultative sales-amico.png",
         subCategories: [
             "UI/UX Design Systems",
             "Corporate Website Design",
@@ -169,7 +169,7 @@ export const servicesData: ServiceItem[] = [
         title: "Growth & Automation",
         subtitle: "Automated Systems for Customer Acquisition",
         description: "Scale your marketing efforts without increasing headcount. We implement intelligent automation frameworks that track user behavior, manage customer lifecycles, and deliver personalized experiences at scale, ensuring you capture and retain value at every touchpoint.",
-        icon: "service-ai.png",
+        icon: "Investment data-amico.png",
         subCategories: [
             "Marketing Automation Workflows",
             "Lead Scoring & Segmentation",
@@ -215,7 +215,7 @@ export const servicesData: ServiceItem[] = [
         title: "Mobile & App Engineering",
         subtitle: "High-Performance Native & Cross-Platform Apps",
         description: "We engineer responsive, feature-rich mobile applications that extend your business capabilities to the edge. Whether for consumer engagement or enterprise mobility, our apps are built for speed, stability, and seamless performance across all devices.",
-        icon: "service-digital.png",
+        icon: "Application programming interface-amico.png",
         subCategories: [
             "Android App Development",
             "iOS App Development",
@@ -261,7 +261,7 @@ export const servicesData: ServiceItem[] = [
         title: "AI & Machine Intelligence",
         subtitle: "Practical AI for Measurable Efficiency",
         description: "We move beyond hype to deploy functional machine learning models that solve specific operational bottlenecks. From automating repetitive tasks to predicting resource needs, our AI solutions are designed to deliver tangible ROI and operational cost reductions.",
-        icon: "service-enterprise.png",
+        icon: "At the office-amico.png",
         subCategories: [
             "Predictive Intelligence Models",
             "Recommendation Engines",
@@ -307,7 +307,7 @@ export const servicesData: ServiceItem[] = [
         title: "Data & Insight Services",
         subtitle: "Turning Raw Data into Strategic Assets",
         description: "We design robust data pipelines and warehousing architectures that centralize your information for accurate analysis. Our systems provide stakeholders with real-time, actionable insights, enabling evidence-based decision-making and precise performance tracking.",
-        icon: "service-stats.png",
+        icon: "Investment data-amico.png",
         subCategories: [
             "Data Engineering & Preparation",
             "Exploratory Data Analysis",
@@ -353,7 +353,7 @@ export const servicesData: ServiceItem[] = [
         title: "SaaS Demo & Launch Systems",
         subtitle: "Technical Infrastructure for Successful Launches",
         description: "We provide the technical backbone for your go-to-market strategy. From high-converting landing pages to stable beta environments and launch analytics, we ensure your product enters the market smoothly and gains traction immediately.",
-        icon: "world.png",
+        icon: "New employee-amico.png",
         subCategories: [
             "SaaS Landing Page Design",
             "Interactive Solution Demos",
@@ -395,3 +395,553 @@ export const servicesData: ServiceItem[] = [
         ]
     }
 ];
+export interface ServiceFeature {
+    title: string;
+    description: string;
+    icon: string;
+    image: string;
+}
+
+export interface ServiceFAQ {
+    question: string;
+    answer: string;
+}
+
+export interface ServiceCaseStudy {
+    title: string;
+    description: string;
+    image: string;
+    link?: string;
+}
+
+export interface ServiceOffering {
+    slug: string;
+    title: string;
+    category: string;
+    summary: string;
+    description: string;
+    outcomes: string[];
+    detailedFeatures?: ServiceFeature[];
+    faqs?: ServiceFAQ[];
+    caseStudies?: ServiceCaseStudy[];
+}
+
+export interface OfferingMenuItem {
+    slug: string;
+    title: string;
+    /** Short line under the title (mega menu card, matches Platforms pattern) */
+    desc: string;
+    /** Font Awesome 6 solid icon class without the `fa-solid` prefix */
+    icon: string;
+}
+
+export interface OfferingMenuColumn {
+    title: string;
+    subtitle: string;
+    items: OfferingMenuItem[];
+}
+
+export const OFFERING_MENU_COLUMNS: OfferingMenuColumn[] = [
+    {
+        title: 'Artificial Intelligence',
+        subtitle: 'Strategy through production AI',
+        items: [
+            { slug: 'ai-consulting', title: 'AI Consulting', desc: 'Roadmaps & responsible adoption', icon: 'fa-lightbulb' },
+            { slug: 'rag-development', title: 'RAG Development', desc: 'Grounded retrieval pipelines', icon: 'fa-database' },
+            { slug: 'llm-development', title: 'LLM Development', desc: 'Custom models & prompts', icon: 'fa-brain' },
+            { slug: 'ai-app-development', title: 'AI App Development', desc: 'Product-grade AI interfaces', icon: 'fa-mobile-screen' },
+            { slug: 'ai-software-development', title: 'AI Software Development', desc: 'Full-stack intelligent systems', icon: 'fa-code' },
+            { slug: 'ai-integration', title: 'AI Integration', desc: 'Connect AI to your stack', icon: 'fa-plug' },
+        ],
+    },
+    {
+        title: 'Data Engineering',
+        subtitle: 'Pipelines, warehouses, quality',
+        items: [
+            { slug: 'data-analytics', title: 'Data Analytics', desc: 'Insights & decision support', icon: 'fa-chart-line' },
+            { slug: 'data-warehousing', title: 'Data Warehousing', desc: 'Scalable analytics stores', icon: 'fa-warehouse' },
+            { slug: 'data-pipeline-development', title: 'Data Pipeline Development', desc: 'ETL, ELT & orchestration', icon: 'fa-diagram-project' },
+            { slug: 'data-integration', title: 'Data Integration', desc: 'Connect systems & APIs', icon: 'fa-network-wired' },
+            { slug: 'real-time-streaming', title: 'Real-Time Streaming', desc: 'Events, Kafka & stream processing', icon: 'fa-bolt' },
+            { slug: 'data-quality-governance', title: 'Data Quality & Governance', desc: 'Trust, lineage & policies', icon: 'fa-shield-halved' },
+            { slug: 'data-annotation-services', title: 'Data Annotation Services', desc: 'Quality labels for ML', icon: 'fa-tags' },
+            { slug: 'master-data-management', title: 'Master Data Management', desc: 'Golden records & stewardship', icon: 'fa-sitemap' },
+        ],
+    },
+    {
+        title: 'Generative AI',
+        subtitle: 'Agents, chatbots, fine-tuning',
+        items: [
+            { slug: 'ai-agent-development', title: 'AI Agent Development', desc: 'Autonomous task agents', icon: 'fa-robot' },
+            { slug: 'ai-chatbot-development', title: 'AI Chatbot Development', desc: 'Conversational experiences', icon: 'fa-comments' },
+            { slug: 'llm-finetuning', title: 'LLM Finetuning', desc: 'Domain-tuned language models', icon: 'fa-sliders' },
+            { slug: 'chatgpt-integration', title: 'Chat GPT Integration', desc: 'OpenAI in your workflows', icon: 'fa-comment-dots' },
+            { slug: 'generative-ai-integration', title: 'Generative AI Integration', desc: 'GenAI across products', icon: 'fa-wand-magic-sparkles' },
+            { slug: 'adaptive-ai', title: 'Adaptive AI', desc: 'Systems that learn in context', icon: 'fa-arrows-spin' },
+            { slug: 'ai-copilot', title: 'AI Copilot', desc: 'Assistive AI for your teams', icon: 'fa-user-astronaut' },
+        ],
+    },
+    {
+        title: 'DevOps & Development',
+        subtitle: 'Reliability, automation, and delivery',
+        items: [
+            { slug: 'aiops', title: 'AIOps', desc: 'AI for operations & alerts', icon: 'fa-gears' },
+            { slug: 'devops-consulting', title: 'DevOps Consulting', desc: 'Culture, tools, and flow', icon: 'fa-people-group' },
+            { slug: 'devops-automation', title: 'DevOps Automation', desc: 'CI/CD & infrastructure as code', icon: 'fa-screwdriver-wrench' },
+            { slug: 'site-reliability-engineering', title: 'Site Reliability Engineering', desc: 'SLOs, resilience, on-call', icon: 'fa-server' },
+            { slug: 'llm-observability', title: 'LLM Observability', desc: 'Trace, eval, and monitor LLMs', icon: 'fa-eye' },
+            { slug: 'mobile-app-development', title: 'Mobile App Development', desc: 'iOS, Android, cross-platform', icon: 'fa-mobile-screen-button' },
+            { slug: 'software-development', title: 'Software Development', desc: 'End-to-end engineering', icon: 'fa-laptop-code' },
+            { slug: 'staff-augmentation', title: 'Staff Augmentation', desc: 'Embed experts with your team', icon: 'fa-users' },
+            { slug: 'product-engineering', title: 'Product Engineering', desc: 'Discovery through delivery', icon: 'fa-diagram-project' },
+            { slug: 'api-development', title: 'API Development', desc: 'REST, GraphQL, events', icon: 'fa-code-branch' },
+        ],
+    },
+];
+
+export const SERVICE_OFFERINGS: ServiceOffering[] = [
+    {
+        slug: 'ai-consulting',
+        title: 'AI Consulting',
+        category: 'Artificial Intelligence',
+        summary: 'Strategic roadmaps and responsible AI adoption frameworks to drive measurable ROI.',
+        description: 'Our AI consulting methodology bridges the gap between executive vision and technical implementation. We conduct deep-dive audits of your existing data infrastructure, identify high-impact AI use cases, and design a phased roadmap that prioritizes quick wins while building long-term competitive advantage.',
+        outcomes: ['3-Year AI Maturity Roadmap', 'High-Confidence ROI Models', 'Ethical AI Governance Framework'],
+        detailedFeatures: [
+            {
+                title: 'Strategic Roadmap Development',
+                description: 'We define the technical milestones, resource requirements, and vendor selection criteria needed to transition from pilot to production.',
+                icon: 'fa-map-location-dot',
+                image: '/assets/images/service/Consultative%20sales-amico.png'
+            },
+            {
+                title: 'Data Readiness Assessment',
+                description: 'An exhaustive analysis of your data quality, accessibility, and governance to ensure your infrastructure can support advanced model training.',
+                icon: 'fa-database',
+                image: '/assets/images/service/Investment%20data-amico.png'
+            },
+            {
+                title: 'AI Governance & Ethics',
+                description: 'Implementation of guardrails for data privacy, model bias mitigation, and compliance with emerging global AI regulations.',
+                icon: 'fa-shield-halved',
+                image: '/assets/images/service/At%20the%20office-amico.png'
+            }
+        ],
+        faqs: [
+            {
+                question: 'How do you measure the ROI of AI consulting?',
+                answer: 'We define specific KPIs relative to your business—such as reduction in operational toil, increased developer velocity, or higher customer conversion rates—and track them throughout the implementation phases.'
+            },
+            {
+                question: 'Do you recommend specific models or vendors?',
+                answer: 'We are vendor-neutral. We evaluate OpenAI, Google Gemini, Anthropic Claude, and open-source models like Llama 3 to find the best fit for your specific cost and privacy constraints.'
+            }
+        ]
+    },
+    {
+        slug: 'rag-development',
+        title: 'RAG Development',
+        category: 'Artificial Intelligence',
+        summary: 'Retrieval-Augmented Generation systems that connect LLMs to your private enterprise data.',
+        description: 'Retrieval-Augmented Generation (RAG) is the gold standard for reducing LLM hallucinations. We build sophisticated pipelines that index your custom knowledge base, retrieve the most relevant context in real-time, and provide grounded, cited answers that your employees and customers can trust.',
+        outcomes: ['Zero-Hallucination AI Responses', 'Secure Private Knowledge Access', 'Automated Document Citation'],
+        detailedFeatures: [
+            {
+                title: 'Vector Database Orchestration',
+                description: 'High-performance indexing strategies using Pinecone, Weaviate, or Milvus to ensure millisecond-latency retrieval of relevant context.',
+                icon: 'fa-network-wired',
+                image: '/assets/images/service/Investment%20data-amico.png'
+            },
+            {
+                title: 'Advanced Chunking Strategies',
+                description: 'Context-aware document parsing that preserves semantic meaning across complex PDFs, spreadsheets, and technical docs.',
+                icon: 'fa-scissors',
+                image: '/assets/images/process/design.png'
+            },
+            {
+                title: 'Hybrid Search Implementation',
+                description: 'Combining keyword-based (BM25) and semantic (Vector) search to achieve maximum accuracy across diverse query types.',
+                icon: 'fa-magnifying-glass-chart',
+                image: '/assets/images/process/Research.png'
+            }
+        ],
+        faqs: [
+            {
+                question: 'How do you handle data privacy in RAG?',
+                answer: 'We implement VPC-level security and metadata filtering to ensure the LLM only accesses documents that the querying user has specific permissions to see.'
+            },
+            {
+                question: 'Can RAG handle real-time streaming data?',
+                answer: 'Yes, we specialize in high-frequency indexing pipelines that can ingest new data and make it available for AI retrieval within seconds.'
+            }
+        ]
+    },
+    {
+        slug: 'llm-development',
+        title: 'LLM Development',
+        category: 'Artificial Intelligence',
+        summary: 'Custom prompt engineering, agent orchestration, and fine-tuning for domain-specific tasks.',
+        description: 'Going beyond simple API calls, we engineer the systems surrounding LLMs. This includes sophisticated prompt chaining, autonomous agent loops (ReAct/Plan-and-Execute), and fine-tuning models on your specific proprietary datasets to outperform GPT-4 in niche domains.',
+        outcomes: ['High-Accuracy Task Agents', 'Proprietary Fine-tuned Models', 'Latency-Optimized Inference'],
+        detailedFeatures: [
+            {
+                title: 'Prompt Engineering & DSLs',
+                description: 'Crafting robust, versioned prompt templates with automated evaluation (LLM-as-a-judge) to ensure consistent production performance.',
+                icon: 'fa-comment-dots',
+                image: '/assets/images/process/development.png'
+            },
+            {
+                title: 'Agentic Orchestration',
+                description: 'Building autonomous loops with LangChain and LlamaIndex that can plan, execute, and self-correct multi-step business workflows.',
+                icon: 'fa-robot',
+                image: '/assets/images/service/Programmer-amico.png'
+            }
+        ]
+    },
+    {
+        slug: 'ai-app-development',
+        title: 'AI App Development',
+        category: 'Artificial Intelligence',
+        summary: 'Product-ready web and mobile interfaces that put the power of AI in your users’ hands.',
+        description: 'We build high-fidelity applications with AI-first UX. From streaming chat interfaces and canvas-based AI editors to assistive copilots embedded in your existing dashboard, we ensure the interface feels snappy and the AI features are discoverable.',
+        outcomes: ['Low-Latency AI UX', 'Multi-Modal Interfaces', 'Streaming Response Architecture'],
+        detailedFeatures: [
+            {
+                title: 'Streaming & Async UI',
+                description: 'Instant feedback loops using Vercel AI SDK and WebSockets to eliminate the perceived latency of large model responses.',
+                icon: 'fa-bolt-lightning',
+                image: '/assets/images/service/Application%20programming%20interface-amico.png'
+            }
+        ]
+    },
+    {
+        slug: 'data-analytics',
+        title: 'Data Analytics',
+        category: 'Data Engineering',
+        summary: 'Transform raw data into strategic insights with advanced modeling and visualization.',
+        description: 'Standard dashboards aren’t enough. We build intelligent analytics layers that use diagnostic and predictive modeling to tell you what happened and why it will happen again. We specialize in semantic layers that provide a single source of truth for your entire organization.',
+        outcomes: ['Predictive KPI Dashboards', 'Self-Serve Business Intelligence', 'Anomaly Detection Alerts'],
+        detailedFeatures: [
+            {
+                title: 'Semantic Layer Design',
+                description: 'Centralized metric definitions using dbt Semantic Layer or Cube.js to prevent "metric drift" between different business units.',
+                icon: 'fa-diagram-project',
+                image: '/assets/images/service/Investment%20data-amico.png'
+            }
+        ]
+    },
+    {
+        slug: 'data-warehousing',
+        title: 'Data Warehousing',
+        category: 'Data Engineering',
+        summary: 'Scalable cloud storage and Lakehouse architectures optimized for cost and speed.',
+        description: 'We design and implement modern cloud data warehouses using Snowflake, BigQuery, or Databricks. Our architectures follow industry-best Medallion (Bronze/Silver/Gold) patterns to ensure data lineage, quality, and high-performance querying for analysts and ML engineers.',
+        outcomes: ['90% Faster Query Performance', 'Linear Scalability', 'Cost-Optimized Auto-Scaling'],
+        detailedFeatures: [
+            {
+                title: 'Cloud Warehouse Migration',
+                description: 'Seamlessly moving legacy on-prem workloads to cloud-native platforms with zero downtime and verified data parity.',
+                icon: 'fa-cloud-arrow-up',
+                image: '/assets/images/process/deployment.png'
+            }
+        ]
+    },
+    {
+        slug: 'ai-agent-development',
+        title: 'AI Agent Development',
+        category: 'Generative AI',
+        summary: 'Autonomous AI agents capable of planning and executing complex multi-step workflows.',
+        description: 'Our agents don’t just chat; they act. Using advanced reasoning loops (Chain-of-Thought) and tool-calling capabilities, we build agents that can browse the web, interact with your CRM, and solve complex customer tickets with minimal human intervention.',
+        outcomes: ['Autonomous Ticket Resolution', '24/7 Cognitive Workers', 'Reduced Operational Toil'],
+        detailedFeatures: [
+            {
+                title: 'Tool-Calling & Function Apps',
+                description: 'Securely connecting AI models to your internal APIs and databases to enable read/write actions in business systems.',
+                icon: 'fa-gears',
+                image: '/assets/images/service/Application%20programming%20interface-amico.png'
+            }
+        ]
+    },
+    {
+        slug: 'aiops',
+        title: 'AIOps',
+        category: 'DevOps',
+        summary: 'AI-driven incident detection and automated remediation for mission-critical systems.',
+        description: 'AIOps transforms your NOC into an intelligent operations center. We implement anomaly detection on telemetry data, automated root-cause analysis for outages, and "self-healing" infrastructure that can restart services or scale capacity before users even notice an issue.',
+        outcomes: ['99.99% Availability', 'MTTR Reduction by 60%', 'Zero Alert Fatigue'],
+        detailedFeatures: [
+            {
+                title: 'Anomaly Detection Loops',
+                description: 'Using temporal machine learning to identify deviations from normal traffic patterns before they escalate into incidents.',
+                icon: 'fa-tower-broadcast',
+                image: '/assets/images/process/testing.png'
+            }
+        ]
+    },
+    {
+        slug: 'ai-software-development',
+        title: 'AI Software Development',
+        category: 'Artificial Intelligence',
+        summary: 'Full-stack engineering of high-performance, intelligent systems tailored for scale.',
+        description: 'Going beyond standalone models, we architect the entire software ecosystem required to make AI work in production. This includes high-throughput microservices, real-time data ingestion layers, and responsive UI/UX that makes intelligent features intuitive for the end-user.',
+        outcomes: ['Production-Scale AI Backends', 'Service-Oriented AI Pipelines', 'Low-Latency Intelligent Apps'],
+        detailedFeatures: [
+            {
+                title: 'High-Throughput Microservices',
+                description: 'Building containerized GO or Python backends optimized for GPU-accelerated inference and high-concurrency user loads.',
+                icon: 'fa-cubes',
+                image: '/assets/images/service/Programmer-amico.png'
+            },
+            {
+                title: 'Streaming Data Ingestion',
+                description: 'Real-time event processing using Kafka or RabbitMQ to feed live data into your intelligent decision-making loops.',
+                icon: 'fa-bridge-water',
+                image: '/assets/images/service/Investment%20data-amico.png'
+            }
+        ],
+        faqs: [
+            {
+                question: 'What tech stack do you use for AI software?',
+                answer: 'We typically use FastAPI or Go for performance-critical AI services, combined with Kubernetes for orchestration and specialized vector stores for memory.'
+            }
+        ]
+    },
+    {
+        slug: 'ai-integration',
+        title: 'AI Integration',
+        category: 'Artificial Intelligence',
+        summary: 'Seamlessly embedding AI capabilities into your existing legacy and modern software stacks.',
+        description: 'Don’t rebuild from scratch—augment. We specialize in retrofitting existing enterprise platforms (ERP, CRM, LMS) with AI capabilities like auto-summarization, sentiment analysis, and intelligent search without disrupting your current operations.',
+        outcomes: ['AI-Augmented Workflows', 'Legacy System Modernization', 'Instant Productivity Gains'],
+        detailedFeatures: [
+            {
+                title: 'Zero-Downtime Augmentation',
+                description: 'Using sidecar architectures and API gateways to inject AI logic into legacy systems without modifying core monolithic code.',
+                icon: 'fa-plug-circle-bolt',
+                image: '/assets/images/service/Application%20programming%20interface-amico.png'
+            }
+        ]
+    },
+    {
+        slug: 'data-pipeline-development',
+        title: 'Data Pipeline Development',
+        category: 'Data Engineering',
+        summary: 'Resilient ETL/ELT pipelines that ensure your AI models always have fresh, high-quality data.',
+        description: 'Data is the fuel for AI. We build automated, observable pipelines using dbt, Airflow, and Fivetran that handle schema evolution, deduplication, and backfills automatically, ensuring a "clean stream" of data into your warehouse or lake.',
+        outcomes: ['Real-Time Data Availability', '99.9% Pipeline Reliability', 'Automated Data Lineage'],
+        detailedFeatures: [
+            {
+                title: 'Modern ELT Orchestration',
+                description: 'Replacing brittle legacy ETL with modern, code-based orchestration that supports version control and automated testing.',
+                icon: 'fa-code-branch',
+                image: '/assets/images/service/agile%20method-bro.png'
+            },
+            {
+                title: 'Change Data Capture (CDC)',
+                description: 'Implementing low-impact CDC from production databases to ensure your analytics are never more than seconds out of sync.',
+                icon: 'fa-bolt',
+                image: '/assets/images/service/Investment%20data-amico.png'
+            }
+        ]
+    },
+    {
+        slug: 'real-time-streaming',
+        title: 'Real-Time Streaming',
+        category: 'Data Engineering',
+        summary: 'Sub-second data processing and event-driven architectures for instant business response.',
+        description: 'In many industries, a minute late is too late. We build high-velocity streaming architectures using Kafka, Flink, or Spark Streaming that process millions of events per second, enabling instant fraud detection, dynamic pricing, and real-time user personalization.',
+        outcomes: ['Sub-Second Insight Latency', 'Event-Driven Agility', 'High-Volume Stream Processing'],
+        detailedFeatures: [
+            {
+                title: 'Kafka Cluster Optimization',
+                description: 'Tuning partition strategies and consumer groups to handle massive throughput while maintaining strict ordering and exactly-once semantics.',
+                icon: 'fa-network-wired',
+                image: '/assets/images/service/Application%20programming%20interface-amico.png'
+            }
+        ]
+    },
+    {
+        slug: 'ai-chatbot-development',
+        title: 'AI Chatbot Development',
+        category: 'Generative AI',
+        summary: 'Context-aware, conversational AI that handles customer inquiries with human-like precision.',
+        description: 'Move beyond "if-else" bots. We build GenAI-powered agents that understand nuanced intent, maintain multi-turn context, and can actually perform actions like checking order status or booking appointments by integrating directly with your APIs.',
+        outcomes: ['70% Automation of Support', '24/7 Multi-Lingual Support', 'Bespoke Brand Voice Retention'],
+        detailedFeatures: [
+            {
+                title: 'Nuanced Intent Discovery',
+                description: 'Using semantic embeddings to understand user goals even when phrasing is ambiguous or informal.',
+                icon: 'fa-comments',
+                image: '/assets/images/service/At%20the%20office-amico.png'
+            }
+        ]
+    },
+    {
+        slug: 'llm-finetuning',
+        title: 'LLM Finetuning',
+        category: 'Generative AI',
+        summary: 'Training foundation models on your proprietary data to exceed GPT-4 performance in specialized domains.',
+        description: 'When general models aren’t enough, we fine-tune open-source models (Llama 3, Mistral, Qwen) on your specific datasets—legal, medical, or technical—to achieve superior accuracy, lower latency, and significantly reduced token costs.',
+        outcomes: ['Domain-Specific Expertise', 'Drastic Latency Reduction', 'Privacy-Safe Local Inference'],
+        detailedFeatures: [
+            {
+                title: 'Parameter-Efficient Fine-Tuning (PEFT)',
+                description: 'Implementing LoRA and QLoRA to fine-tune massive models on consumer-grade hardware with professional-grade results.',
+                icon: 'fa-sliders',
+                image: '/assets/images/service/FAQs-amico.png'
+            }
+        ]
+    },
+    {
+        slug: 'devops-automation',
+        title: 'DevOps Automation',
+        category: 'DevOps',
+        summary: 'Eliminating manual toil with intelligent CI/CD and Infrastructure-as-Code (IaC).',
+        description: 'We turn infrastructure into code. Our DevOps experts implement self-healing CI/CD pipelines, automated security scanning, and "push-to-deploy" environments that let your developers focus on features, not fire-fighting.',
+        outcomes: ['Zero-Manual Deployments', 'Instant Environment Spin-up', 'Automated Compliance Guardrails'],
+        detailedFeatures: [
+            {
+                title: 'GitOps Workflow Design',
+                description: 'Managing infrastructure and application state through Git using ArgoCD or Flux for total auditability and easy rollbacks.',
+                icon: 'fa-code-commit',
+                image: '/assets/images/service/Application%20programming%20interface-amico.png'
+            }
+        ]
+    },
+    {
+        slug: 'data-integration',
+        title: 'Data Integration',
+        category: 'Data Engineering',
+        summary: 'Unifying disparate data sources into a single, cohesive truth for your enterprise.',
+        description: 'Move past data silos. We specialize in complex data orchestration that unifies CRM, ERP, and legacy mainframe data into a unified platform. Our solutions ensure high availability and data consistency across your entire application ecosystem.',
+        outcomes: ['360-Degree Customer View', 'Synchronized Multi-Cloud Data', 'Real-Time Operational Sync'],
+        detailedFeatures: [
+            {
+                title: 'Multi-Source Replication',
+                description: 'Using high-performance CDC and event-driven architectures to keep disparate systems in perfect harmony.',
+                icon: 'fa-layer-group',
+                image: '/assets/images/service/Application%20programming%20interface-amico.png'
+            }
+        ]
+    },
+    {
+        slug: 'data-quality-governance',
+        title: 'Data Quality & Governance',
+        category: 'Data Engineering',
+        summary: 'Ensuring your data is accurate, compliant, and trustworthy for AI training.',
+        description: 'Bad data leads to bad AI. We implement automated data quality checks, lineage tracking, and governance guardrails that ensure your enterprise data meets the highest standards of accuracy and regulatory compliance (GDPR, HIPAA).',
+        outcomes: ['Certified Data Accuracy', 'Automated Lineage Tracking', 'Regulatory Compliance'],
+        detailedFeatures: [
+            {
+                title: 'Automated DQ Observability',
+                description: 'Real-time monitoring of data freshness, volume, and schema drift using Monte Carlo or Great Expectations.',
+                icon: 'fa-clipboard-check',
+                image: '/assets/images/service/Investment%20data-amico.png'
+            }
+        ]
+    },
+    {
+        slug: 'chatgpt-integration',
+        title: 'ChatGPT Integration',
+        category: 'Generative AI',
+        summary: 'Expert implementation of OpenAI’s most powerful models into your specific business workflows.',
+        description: 'We go beyond basic API calls. Our team specializes in building "wrapper-plus" solutions that combine ChatGPT’s reasoning with your proprietary business logic, custom tool-calling, and enterprise-grade security layers.',
+        outcomes: ['Instant GenAI Capabilities', 'Secure Enterprise Proxies', 'Domain-Specific Prompt Libraries'],
+        detailedFeatures: [
+            {
+                title: 'Enterprise API Proxying',
+                description: 'Adding rate-limiting, PII filtering, and cost-tracking layers on top of standard LLM APIs.',
+                icon: 'fa-shield-halved',
+                image: '/assets/images/service/At%20the%20office-amico.png'
+            }
+        ]
+    },
+    {
+        slug: 'adaptive-ai',
+        title: 'Adaptive AI',
+        category: 'Generative AI',
+        summary: 'AI systems that learn and adjust in real-time based on new data and user feedback.',
+        description: 'Standard AI is static; Adaptive AI is alive. We implement online learning systems and reinforcement learning loops that allow your models to adapt to changing market conditions and user behaviors without manual retraining.',
+        outcomes: ['Continuously Improving Models', 'Real-Time Trend Adoption', 'Reduced Retraining Overhead'],
+        detailedFeatures: [
+            {
+                title: 'Online Learning Loops',
+                description: 'Implementing streaming inference pipelines that update model weights or context windows based on live user interactions.',
+                icon: 'fa-arrows-spin',
+                image: '/assets/images/service/agile%20method-bro.png'
+            }
+        ]
+    },
+    {
+        slug: 'mobile-app-development',
+        title: 'Mobile App Development',
+        category: 'DevOps & Development',
+        summary: 'Native and cross-platform mobile experiences optimized for speed and engagement.',
+        description: 'We build mobile apps that feel like they belong on the device. Whether it’s high-performance native iOS/Android or efficient React Native/Flutter, our apps are built with offline-first capabilities and seamless AI integrations.',
+        outcomes: ['Offline-First Functionality', '5-Star App Store Performance', 'Seamless AI Interactions'],
+        detailedFeatures: [
+            {
+                title: 'Cross-Platform Excellence',
+                description: 'Single-codebase efficiency with native performance using modern frameworks like Flutter and React Native.',
+                icon: 'fa-mobile-screen-button',
+                image: '/assets/images/service/Application%20programming%20interface-amico.png'
+            }
+        ]
+    },
+    {
+        slug: 'product-engineering',
+        title: 'Product Engineering',
+        category: 'DevOps & Development',
+        summary: 'End-to-end lifecycle management of your digital product from concept to scale.',
+        description: 'We are your technical co-founders. From MVP scoping to global scaling, we provide the full-stack engineering, design, and product thinking required to build world-class digital products that win markets.',
+        outcomes: ['Rapid MVP Timelines', 'Scalable Product Architecture', 'Market-Driven Feature Velocity'],
+        detailedFeatures: [
+            {
+                title: 'Full-Lifecycle Engineering',
+                description: 'Managing everything from infrastructure and databases to frontend UI and product analytics.',
+                icon: 'fa-rocket',
+                image: '/assets/images/service/New%20employee-amico.png'
+            }
+        ]
+    }
+];
+
+// Fallback logic for any services not explicitly defined above
+const DEFAULT_FEATURE = (service: string) => ({
+    title: 'Core Implementation',
+    description: `High-performance implementation of ${service} tailored to your enterprise security and scalability needs.`,
+    icon: 'fa-check-double',
+    image: '/assets/images/service/At%20the%20office-amico.png'
+});
+
+const getRemainingServices = (): ServiceOffering[] => {
+    const existingSlugs = SERVICE_OFFERINGS.map(s => s.slug);
+    const columns = OFFERING_MENU_COLUMNS.flatMap(c => c.items);
+
+    return columns.filter(c => !existingSlugs.includes(c.slug)).map(c => ({
+        slug: c.slug,
+        title: c.title,
+        category: 'Consulting & Engineering',
+        summary: `Professional ${c.title} services for modern enterprises.`,
+        description: `Our ${c.title} practice focuses on delivering high-impact, scalable results using the latest industry standards and frameworks. We combine domain expertise with engineering rigor to solve your most complex technical challenges.`,
+        outcomes: ['Operational Excellence', 'Scalable Performance', 'Technical Reliability'],
+        detailedFeatures: [DEFAULT_FEATURE(c.title)],
+        faqs: []
+    }));
+};
+
+export const ALL_SERVICE_OFFERINGS = [
+    ...SERVICE_OFFERINGS,
+    ...getRemainingServices()
+];
+
+const bySlug: Record<string, ServiceOffering> = Object.fromEntries(
+    ALL_SERVICE_OFFERINGS.map((o) => [o.slug, o])
+);
+
+export function getServiceOfferingBySlug(slug: string | undefined): ServiceOffering | undefined {
+    if (!slug) return undefined;
+    return bySlug[slug];
+}
+
+export const SERVICE_OFFERING_SLUGS = ALL_SERVICE_OFFERINGS.map((o) => o.slug);

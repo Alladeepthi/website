@@ -60,7 +60,7 @@ export const WorkingProcess: React.FC = () => {
                                 <div className="col-lg-3 col-md-6 col-sm-12">
                                     <div className="working-process-wrapper-three process-icon-1">
                                         <div className="animated-icon">
-                                            <i className="fa-solid fa-magnifying-glass-chart"></i>
+                                            <span>1</span>
                                         </div>
                                         <h5 className="title" style={{
                                             fontSize: '20px',
@@ -78,7 +78,7 @@ export const WorkingProcess: React.FC = () => {
                                 <div className="col-lg-3 col-md-6 col-sm-12">
                                     <div className="working-process-wrapper-three process-icon-2">
                                         <div className="animated-icon">
-                                            <i className="fa-solid fa-pen-ruler"></i>
+                                            <span>2</span>
                                         </div>
                                         <h5 className="title" style={{
                                             fontSize: '20px',
@@ -96,7 +96,7 @@ export const WorkingProcess: React.FC = () => {
                                 <div className="col-lg-3 col-md-6 col-sm-12">
                                     <div className="working-process-wrapper-three process-icon-3">
                                         <div className="animated-icon">
-                                            <i className="fa-solid fa-code"></i>
+                                            <span>3</span>
                                         </div>
                                         <h5 className="title" style={{
                                             fontSize: '20px',
@@ -114,7 +114,7 @@ export const WorkingProcess: React.FC = () => {
                                 <div className="col-lg-3 col-md-6 col-sm-12">
                                     <div className="working-process-wrapper-three process-icon-4">
                                         <div className="animated-icon">
-                                            <i className="fa-solid fa-rocket"></i>
+                                            <span>4</span>
                                         </div>
                                         <h5 className="title" style={{
                                             fontSize: '20px',
@@ -177,9 +177,10 @@ export const WorkingProcess: React.FC = () => {
                     animation-delay: 1.5s;
                 }
                 
-                .working-process-wrapper-three .animated-icon i {
+                .working-process-wrapper-three .animated-icon span {
                     color: #fff;
                     font-size: 11px;
+                    font-weight: 800;
                 }
                 
                 @keyframes iconPulse {

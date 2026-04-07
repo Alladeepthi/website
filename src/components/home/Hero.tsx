@@ -61,12 +61,8 @@ export const Hero: React.FC = () => {
                         display: 'block'
                     }}
                 >
-                    {/* Primary Source: We are switching back to a high-quality, web-optimized MP4 
-                        that LOOKS exactly like the requested 'Close up business teamwork' file but loads instantly.
-                        The user's local file (865MB .mov) is failing to play in browser. 
-                    */}
-                    <source src="https://videos.pexels.com/video-files/3253736/3253736-hd_1920_1080_25fps.mp4" type="video/mp4" />
-                    <source src="https://videos.pexels.com/video-files/3129957/3129957-uhd_2560_1440_25fps.mp4" type="video/mp4" />
+                    {/* Local High-Quality Video Source as requested by the user */}
+                    <source src="/assets/images/Untitled.mp4" type="video/mp4" />
 
                     Your browser does not support the video tag.
                 </video>

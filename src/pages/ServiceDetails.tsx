@@ -1,24 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { servicesData } from '../data/services';
+import { servicesData, getServiceOfferingBySlug, SERVICE_OFFERINGS } from '../data/services';
 
 export const ServiceDetails: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const location = useLocation();
 
-    // Prioritize passed state (from Link clicks), then URL param, then default to first service
+    // 1. Try fetching from state (Link click)
+    // 2. Try fetching from SERVICE_OFFERINGS by slug (id param can be slug)
+    // 3. Try fetching from old servicesData by ID (for backward compatibility)
+    // 4. Default to first service
     const service = location.state?.service ||
+        getServiceOfferingBySlug(id) ||
         (id ? servicesData.find(s => s.id === parseInt(id)) : null) ||
-        servicesData[0];
+        SERVICE_OFFERINGS[0];
 
     const [activeFeature, setActiveFeature] = useState(0);
 
     useEffect(() => {
         document.body.classList.add("service-details-page");
+        window.scrollTo(0, 0);
         return () => {
             document.body.classList.remove("service-details-page");
         };
-    }, []);
+    }, [id]);
 
     // Theme Colors
     const primaryColor = '#3B82F6';
@@ -33,18 +38,19 @@ export const ServiceDetails: React.FC = () => {
         setActiveFAQ(activeFAQ === index ? null : index);
     };
 
-    const faqData = [
+    // Use individual service FAQs or a cleaner default if missing
+    const faqData = (service as any).faqs || [
         {
-            question: "What types of IT consulting services do you offer?",
-            answer: "Each pricing plan offers a unique combination of services such as web design, SEO, social media management, content marketing, & more."
+            question: `How does your ${service.title} process work?`,
+            answer: `Our ${service.title} engagement begins with a deep dive into your current technical landscape and business objectives, followed by a phased execution plan.`
         },
         {
-            question: "Do I need to make an initial deposit?",
-            answer: "Yes, we typically require an initial deposit to start the project. The amount depends on the specific service and project scope."
+            question: "What outcomes can I expect from this service?",
+            answer: `You can expect a ${service.summary.toLowerCase() || 'comprehensive solution'} that aligns with your strategic goals and technical requirements.`
         },
         {
-            question: "What types of accounts can I open online?",
-            answer: "You can open various types of accounts including savings, checking, and business accounts directly through our secure online portal."
+            question: "How long is a typical engagement?",
+            answer: "Durations vary based on complexity, but most initial engagements range from 4 to 12 weeks for strategy and pilot phases."
         }
     ];
 
@@ -122,7 +128,7 @@ export const ServiceDetails: React.FC = () => {
                         <div className="col-lg-6 mt_md--50 mt_sm--50 pl--30">
                             <div className="thumbnail-image" style={{ position: 'relative', width: '75%', margin: '0 auto' }}>
                                 <img
-                                    src={service.detailedFeatures?.[0]?.image ? service.detailedFeatures[0].image.replace(/ /g, '%20') : "/assets/images/service/13.webp"}
+                                    src={service.detailedFeatures?.[0]?.image ? service.detailedFeatures[0].image.replace(/ /g, '%20') : "/assets/images/service/At%20the%20office-amico.png"}
                                     alt="Service Intro"
                                     style={{
                                         width: '100%',
@@ -260,7 +266,7 @@ export const ServiceDetails: React.FC = () => {
                                                 border: '4px solid #fff'
                                             }}>
                                                 <img
-                                                    src={service.detailedFeatures?.[activeFeature]?.image?.replace(/ /g, '%20') || "/assets/images/service/big-image-1.jpg"}
+                                                    src={service.detailedFeatures?.[activeFeature]?.image?.replace(/ /g, '%20') || "/assets/images/service/At%20the%20office-amico.png"}
                                                     alt={service.detailedFeatures?.[activeFeature]?.title}
                                                     className="img-fluid"
                                                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
@@ -644,7 +650,7 @@ export const ServiceDetails: React.FC = () => {
                                 </p>
 
                                 <div className="accordion-wrapper">
-                                    {faqData.map((item, index) => (
+                                    {faqData.map((item: any, index: number) => (
                                         <div key={index} className="accordion-item" style={{
                                             borderBottom: '1px solid #e2e8f0',
                                             padding: '24px 0',
@@ -694,7 +700,7 @@ export const ServiceDetails: React.FC = () => {
                         </div>
                         <div className="col-lg-6 mt_md--50 mt_sm--50 pl--50 pl_sm--15">
                             <div className="thumbnail-image" style={{ position: 'relative' }}>
-                                <img src="/assets/images/faq/01.webp" alt="FAQ" style={{
+                                <img src="/assets/images/service/FAQs-amico.png" alt="FAQ" style={{
                                     width: '100%',
                                     borderRadius: '20px',
                                     boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15)'

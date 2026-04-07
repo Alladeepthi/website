@@ -1,79 +1,133 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { BRAND_LOGO_ALT, BRAND_LOGO_SRC } from '../../constants/brand';
 
 export const Footer: React.FC = () => {
-    const footerClass = `rts-footer-one bg_dark`;
+    const footerClass = `rts-footer-one nt-footer-light`;
 
     return (
-        <div className={footerClass} style={{ paddingTop: '30px', position: 'relative', zIndex: 50, backgroundColor: '#0F172A' }}>
-            <div className="container" style={{ paddingBottom: '20px' }}>
-                <div className="row">
+        <div
+            className={footerClass}
+            style={{
+                paddingTop: '40px',
+                position: 'relative',
+                zIndex: 100,
+                isolation: 'isolate',
+                backgroundColor: '#ffffff',
+                width: '100%',
+                borderTop: '1px solid #f1f5f9'
+            }}
+        >
+            <div className="container" style={{ paddingBottom: '30px' }}>
+                <div className="row g-4">
                     <div className="col-lg-3">
                         <div className="left-wiget">
                             <Link className="logo" to="/">
-                                <img src="/assets/images/logo/nlogo (1).png" alt="NeuraltrixAI" style={{ height: '32px', width: 'auto', marginBottom: '10px' }} />
+                                <img
+                                    src={BRAND_LOGO_SRC}
+                                    alt={BRAND_LOGO_ALT}
+                                    style={{
+                                        height: 'auto',
+                                        maxHeight: 48,
+                                        width: 'auto',
+                                        maxWidth: 'min(260px, 85vw)',
+                                        marginBottom: '15px',
+                                        display: 'block',
+                                        objectFit: 'contain'
+                                    }}
+                                />
                             </Link>
-                            <p className="disc" style={{ marginBottom: '10px', fontSize: '13px', lineHeight: '1.4' }}>High-performance data platforms & automated workflows.</p>
-                            <form action="#" className="footer-form" onClick={(e) => e.preventDefault()} style={{ marginTop: '0' }}>
-                                <input type="text" placeholder="Email..." required style={{ height: '36px', fontSize: '13px', padding: '0 15px' }} />
-                                <button className="rts-btn btn-primary" type="submit" style={{ padding: '0 15px', height: '36px', fontSize: '13px', lineHeight: '36px' }}>Send</button>
-                            </form>
+                            <p className="disc" style={{ marginBottom: '15px', fontSize: '14px', lineHeight: '1.6', color: '#3B82F6', fontWeight: 500 }}>
+                                High-performance data platforms & automated workflows.
+                            </p>
+                            <div className="footer-form-wrapper" style={{ maxWidth: '240px' }}>
+                                <form action="#" className="footer-form" onClick={(e) => e.preventDefault()} style={{ marginTop: '0', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                                    <input type="text" placeholder="Email..." required style={{
+                                        height: '42px',
+                                        fontSize: '14px',
+                                        padding: '0 15px',
+                                        backgroundColor: '#fff',
+                                        border: '1px solid #e2e8f0',
+                                        borderRadius: '4px',
+                                        color: '#0F172A'
+                                    }} />
+                                    <button className="rts-btn btn-primary" type="submit" style={{
+                                        padding: '0 20px',
+                                        height: '42px',
+                                        fontSize: '14px',
+                                        fontWeight: 700,
+                                        borderRadius: '6px',
+                                        backgroundColor: '#3B82F6',
+                                        color: '#fff',
+                                        border: 'none',
+                                        width: 'fit-content'
+                                    }}>Send</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    <div className="offset-lg-1 col-lg-8 mt_md--20 mt_sm--20">
-                        <div className="footer-wized-wrapper" style={{ gap: '30px' }}>
+
+                    <div className="col-lg-8 offset-lg-1 mt_md--30 mt_sm--30">
+                        <div className="footer-wized-wrapper" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '30px' }}>
                             <div className="single">
-                                <h6 className="title" style={{ marginBottom: '10px', fontSize: '16px' }}>Company</h6>
-                                <ul style={{ fontSize: '13px' }}>
-                                    <li style={{ marginBottom: '6px' }}><Link to="/about">About Us</Link></li>
-                                    <li style={{ marginBottom: '6px' }}><Link to="#">Careers</Link></li>
-                                    <li style={{ marginBottom: '0' }}><Link to="/contact">Contact</Link></li>
+                                <h6 className="title" style={{ marginBottom: '20px', fontSize: '16px', fontWeight: 700, color: '#0F172A' }}>Company</h6>
+                                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                    <li style={{ marginBottom: '12px' }}><Link to="/about" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>About Us</Link></li>
+                                    <li style={{ marginBottom: '12px' }}><Link to="/team" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>Careers / Team</Link></li>
+                                    <li style={{ marginBottom: '0' }}><Link to="/contact" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>Contact</Link></li>
                                 </ul>
                             </div>
                             <div className="single">
-                                <h6 className="title" style={{ marginBottom: '10px', fontSize: '16px' }}>Services</h6>
-                                <ul style={{ fontSize: '13px' }}>
-                                    <li style={{ marginBottom: '6px' }}><Link to="#">Mobile App</Link></li>
-                                    <li style={{ marginBottom: '6px' }}><Link to="#">Web Dev</Link></li>
-                                    <li style={{ marginBottom: '0' }}><Link to="#">Software</Link></li>
+                                <h6 className="title" style={{ marginBottom: '20px', fontSize: '16px', fontWeight: 700, color: '#0F172A' }}>Services</h6>
+                                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                    <li style={{ marginBottom: '12px' }}><Link to="/services" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>Mobile App</Link></li>
+                                    <li style={{ marginBottom: '12px' }}><Link to="/services" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>Web Dev</Link></li>
+                                    <li style={{ marginBottom: '0' }}><Link to="/services" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>Software</Link></li>
                                 </ul>
                             </div>
                             <div className="single">
-                                <h6 className="title" style={{ marginBottom: '10px', fontSize: '16px' }}>Resources</h6>
-                                <ul style={{ fontSize: '13px' }}>
-                                    <li style={{ marginBottom: '6px' }}><Link to="/case-studies">Case Studies</Link></li>
-                                    <li style={{ marginBottom: '6px' }}><Link to="/solutions#pricing-plan">Pricing</Link></li>
-                                    <li style={{ marginBottom: '0' }}><Link to="#">Support</Link></li>
+                                <h6 className="title" style={{ marginBottom: '20px', fontSize: '16px', fontWeight: 700, color: '#0F172A' }}>Resources</h6>
+                                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                    <li style={{ marginBottom: '12px' }}><Link to="/case-studies" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>Case Studies</Link></li>
+                                    <li style={{ marginBottom: '12px' }}><Link to="/blog" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>Blog</Link></li>
+                                    <li style={{ marginBottom: '12px' }}><Link to="/faq" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>FAQ</Link></li>
+                                    <li style={{ marginBottom: '12px' }}><Link to="/pricing" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>Pricing</Link></li>
+                                    <li style={{ marginBottom: '0' }}><Link to="/contact" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>Support</Link></li>
                                 </ul>
                             </div>
                             <div className="single">
-                                <h6 className="title" style={{ marginBottom: '10px', fontSize: '16px' }}>Social</h6>
-                                <ul style={{ fontSize: '13px' }}>
-                                    <li style={{ marginBottom: '6px' }}><a href="#" target="_blank" rel="noreferrer">Facebook</a></li>
-                                    <li style={{ marginBottom: '6px' }}><a href="#" target="_blank" rel="noreferrer">Twitter</a></li>
-                                    <li style={{ marginBottom: '0' }}><a href="#" target="_blank" rel="noreferrer">LinkedIn</a></li>
+                                <h6 className="title" style={{ marginBottom: '20px', fontSize: '16px', fontWeight: 700, color: '#0F172A' }}>Social</h6>
+                                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                    <li style={{ marginBottom: '12px' }}><a href="#" target="_blank" rel="noreferrer" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>Facebook</a></li>
+                                    <li style={{ marginBottom: '12px' }}><a href="#" target="_blank" rel="noreferrer" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>Twitter</a></li>
+                                    <li style={{ marginBottom: '0' }}><a href="#" target="_blank" rel="noreferrer" style={{ color: '#3B82F6', fontSize: '14px', fontWeight: 500 }}>LinkedIn</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="copyright-area" style={{ padding: '10px 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+
+            {/* Bottom Bar */}
+            <div className="copyright-area" style={{ padding: '15px 0', borderTop: '1px solid #f1f5f9', backgroundColor: '#fff' }}>
                 <div className="container">
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <div className="copyright-1" style={{ paddingTop: '0', borderTop: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                <p className="disc" style={{ fontSize: '12px', margin: 0 }}>© {new Date().getFullYear()} NeuraltrixAI.</p>
-                                <ul style={{ margin: 0, gap: '20px' }}>
-                                    <li><Link to="/privacy" style={{ fontSize: '12px' }}>Privacy</Link></li>
-                                    <li><Link to="/terms" style={{ fontSize: '12px' }}>Terms</Link></li>
-                                </ul>
+                    <div className="row align-items-center">
+                        <div className="col-md-6">
+                            <p style={{ fontSize: '13px', margin: 0, color: '#64748B', fontWeight: 500 }}>
+                                © {new Date().getFullYear()} NeuraltrixAI.
+                            </p>
+                        </div>
+                        <div className="col-md-6 text-md-end">
+                            <div style={{ display: 'inline-flex', gap: '25px' }}>
+                                <Link to="/privacy-policy" style={{ fontSize: '13px', color: '#64748B', fontWeight: 500 }}>Privacy</Link>
+                                <Link to="/terms" style={{ fontSize: '13px', color: '#64748B', fontWeight: 500 }}>Terms</Link>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
     );
 };
-

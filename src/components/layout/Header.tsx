@@ -1,15 +1,13 @@
 ﻿import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { servicesData } from '../../data/services';
+import { OFFERING_MENU_COLUMNS } from '../../data/services';
+import { BRAND_LOGO_ALT, BRAND_LOGO_SRC } from '../../constants/brand';
 
 export const Header: React.FC = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
   const [hoverDisabled, setHoverDisabled] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
-
-  const leftServices = servicesData.slice(0, 4);
-  const rightServices = servicesData.slice(4, 8);
 
   const handleLinkClick = () => {
     setHoverDisabled(true);
@@ -48,10 +46,9 @@ export const Header: React.FC = () => {
       top: 0,
       left: 0,
       width: '100%',
-      background: (isSticky || !isHome) ? '#0b1121' : 'transparent',
-      backdropFilter: (isSticky || !isHome) ? 'blur(10px)' : 'none',
+      background: '#FFFFFF',
       transition: 'all 0.3s ease',
-      borderBottom: (isSticky || !isHome) ? '1px solid rgba(255,255,255,0.05)' : 'none',
+      borderBottom: '1px solid #f1f5f9',
       padding: isSticky ? '10px 0' : '15px 0'
     }}>
       <div className="container" style={containerStyle}>
@@ -60,7 +57,18 @@ export const Header: React.FC = () => {
             <div className="header-wrapper-main" style={wrapperStyle}>
               <div className="logo-area" style={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
                 <Link to="/" onClick={handleLinkClick}>
-                  <img src="/assets/images/logo/nlogo%20(1).png" alt="NeuraltrixAI" style={{ height: '55px', width: 'auto' }} />
+                  <img
+                    src={BRAND_LOGO_SRC}
+                    alt={BRAND_LOGO_ALT}
+                    style={{
+                      height: isSticky ? '42px' : '50px',
+                      maxWidth: 'min(280px, 46vw)',
+                      width: 'auto',
+                      aspectRatio: 'auto',
+                      transition: 'height 0.3s ease, max-width 0.3s ease',
+                      display: 'block'
+                    }}
+                  />
                 </Link>
               </div>
               <div className="nav-area hidden lg:flex" style={{ flex: 1, display: 'flex', justifyContent: 'center', whiteSpace: 'nowrap' }}>
@@ -78,7 +86,7 @@ export const Header: React.FC = () => {
                     </ul>
                   </li>
 
-                  {/* Services - Updated to match Platforms layout */}
+                  {/* Services - Updated to match Platforms (4 Columns) */}
                   <li className="main-nav has-dropdown mega-menu services-parent" onMouseEnter={handleMouseEnter}>
                     <Link to="/service-details" onClick={handleLinkClick} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       Services <i className="fa-solid fa-chevron-down" style={{ fontSize: '10px' }}></i>
@@ -88,13 +96,13 @@ export const Header: React.FC = () => {
                       top: '100%',
                       left: '50%',
                       transform: 'translateX(-50%) translateY(15px)',
-                      width: '1000px',
+                      width: '1150px',
                       maxWidth: '95vw',
                       background: '#fff',
                       borderRadius: '16px',
                       boxShadow: '0 20px 60px rgba(0,0,0,0.12)',
                       border: '1px solid #e2e8f0',
-                      padding: '25px 30px',
+                      padding: '25px 15px',
                       zIndex: 1000,
                       visibility: 'hidden',
                       opacity: 0,
@@ -102,250 +110,93 @@ export const Header: React.FC = () => {
                       pointerEvents: 'none',
                       overflow: 'hidden'
                     }}>
-                      <div className="services-grid-container" style={{
+                      <div style={{
                         display: 'grid',
-                        gridTemplateColumns: '1.1fr 1.1fr 0.8fr',
-                        gap: '30px',
+                        gridTemplateColumns: 'repeat(4, 1fr)',
+                        gap: '10px',
                         width: '100%',
                         margin: 0,
                         padding: 0
                       }}>
-                        <div className="modern-dropdown-col" style={{
-                          display: 'block',
-                          width: '100%',
-                          minWidth: 0,
-                          borderRight: '1px solid #f1f5f9',
-                          paddingRight: '20px'
-                        }}>
-                          <h6 style={{
-                            fontSize: '11px',
-                            fontWeight: 900,
-                            color: '#3B82F6',
-                            textTransform: 'uppercase',
-                            letterSpacing: '1px',
-                            marginBottom: '2px',
-                            display: 'block'
-                          }}>Core Engineering</h6>
-                          <p style={{ fontSize: '10px', color: '#94a3b8', marginBottom: '15px', lineHeight: '1.1', display: 'block' }}>Scalable backend & systems</p>
-
-                          <ul style={{
-                            listStyle: 'none',
-                            padding: 0,
-                            margin: 0,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '6px'
+                        {OFFERING_MENU_COLUMNS.map((col, idx) => (
+                          <div className="modern-dropdown-col" key={idx} style={{
+                            display: 'block',
+                            width: '100%',
+                            minWidth: 0,
+                            borderRight: idx < 3 ? '1px solid #f1f5f9' : 'none',
+                            paddingRight: '12px'
                           }}>
-                            {leftServices.map((s, i) => (
-                              <li key={s.id} style={{ display: 'block', width: '100%', margin: 0 }}>
-                                <Link to="/service-details" state={{ service: s }} onClick={handleLinkClick} style={{ textDecoration: 'none', display: 'block', padding: 0 }}>
-                                  <div className="service-nav-card" style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '10px',
-                                    padding: '8px',
-                                    borderRadius: '10px',
-                                    transition: 'all 0.2s ease',
-                                    background: '#f8fafc',
-                                    border: '1px solid transparent'
-                                  }}
-                                    onMouseEnter={(e) => {
-                                      e.currentTarget.style.background = '#fff';
-                                      e.currentTarget.style.borderColor = '#e2e8f0';
-                                      e.currentTarget.style.transform = 'translateY(-1px)';
-                                      e.currentTarget.style.boxShadow = '0 5px 15px rgba(0,0,0,0.05)';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                      e.currentTarget.style.background = '#f8fafc';
-                                      e.currentTarget.style.borderColor = 'transparent';
-                                      e.currentTarget.style.transform = 'translateY(0)';
-                                      e.currentTarget.style.boxShadow = 'none';
-                                    }}>
-                                    <div className="icon-wrapper" style={{
-                                      width: '32px',
-                                      height: '32px',
-                                      background: '#fff',
-                                      borderRadius: '8px',
+                            <h6 style={{
+                              fontSize: '11px',
+                              fontWeight: 900,
+                              color: '#3B82F6',
+                              textTransform: 'uppercase',
+                              letterSpacing: '1px',
+                              marginBottom: '2px',
+                              display: 'block'
+                            }}>{col.title}</h6>
+                            <p style={{ fontSize: '10px', color: '#94a3b8', marginBottom: '15px', lineHeight: '1.1', display: 'block' }}>{col.subtitle}</p>
+
+                            <ul className="custom-scrollbar" style={{
+                              listStyle: 'none',
+                              padding: 0,
+                              margin: 0,
+                              display: 'block',
+                              height: '350px',
+                              overflowY: 'scroll',
+                              paddingRight: '6px'
+                            }}>
+                              {col.items.map((item, i) => (
+                                <li key={i} style={{ marginBottom: '6px', display: 'block', width: '100%' }}>
+                                  <Link to={`/service/${item.slug}`} onClick={handleLinkClick} style={{ textDecoration: 'none', display: 'block', padding: 0 }}>
+                                    <div className="service-nav-card" style={{
                                       display: 'flex',
                                       alignItems: 'center',
-                                      justifyContent: 'center',
-                                      color: '#3B82F6',
-                                      fontSize: '12px',
-                                      flexShrink: 0,
-                                      boxShadow: '0 2px 4px rgba(0,0,0,0.02)'
-                                    }}>
-                                      <i className={`fa-solid ${i === 0 ? 'fa-plug' : i === 1 ? 'fa-building' : i === 2 ? 'fa-palette' : 'fa-chart-line'}`}></i>
-                                    </div>
-                                    <div className="content">
-                                      <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#0f172a', marginBottom: '1px', lineHeight: 1.1 }}>{s.title}</div>
-                                      <div style={{ fontSize: '9px', color: '#64748b', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '170px' }}>{s.subtitle.split(' ').slice(0, 3).join(' ')}...</div>
-                                    </div>
-                                  </div>
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        <div className="modern-dropdown-col" style={{
-                          display: 'block',
-                          width: '100%',
-                          minWidth: 0,
-                          borderRight: '1px solid #f1f5f9',
-                          paddingRight: '20px'
-                        }}>
-                          <h6 style={{
-                            fontSize: '11px',
-                            fontWeight: 900,
-                            color: '#3B82F6',
-                            textTransform: 'uppercase',
-                            letterSpacing: '1px',
-                            marginBottom: '2px',
-                            display: 'block'
-                          }}>Experience & Intelligence</h6>
-                          <p style={{ fontSize: '10px', color: '#94a3b8', marginBottom: '15px', lineHeight: '1.1', display: 'block' }}>Design & AI solutions</p>
-
-                          <ul style={{
-                            listStyle: 'none',
-                            padding: 0,
-                            margin: 0,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '6px'
-                          }}>
-                            {rightServices.map((s, i) => (
-                              <li key={s.id} style={{ display: 'block', width: '100%', margin: 0 }}>
-                                <Link to="/service-details" state={{ service: s }} onClick={handleLinkClick} style={{ textDecoration: 'none', display: 'block', padding: 0 }}>
-                                  <div className="service-nav-card" style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '10px',
-                                    padding: '8px',
-                                    borderRadius: '10px',
-                                    transition: 'all 0.2s ease',
-                                    background: '#f8fafc',
-                                    border: '1px solid transparent'
-                                  }}
-                                    onMouseEnter={(e) => {
-                                      e.currentTarget.style.background = '#fff';
-                                      e.currentTarget.style.borderColor = '#e2e8f0';
-                                      e.currentTarget.style.transform = 'translateY(-1px)';
-                                      e.currentTarget.style.boxShadow = '0 5px 15px rgba(0,0,0,0.05)';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                      e.currentTarget.style.background = '#f8fafc';
-                                      e.currentTarget.style.borderColor = 'transparent';
-                                      e.currentTarget.style.transform = 'translateY(0)';
-                                      e.currentTarget.style.boxShadow = 'none';
-                                    }}>
-                                    <div className="icon-wrapper" style={{
-                                      width: '32px',
-                                      height: '32px',
-                                      background: '#fff',
+                                      gap: '10px',
+                                      padding: '7px',
                                       borderRadius: '8px',
-                                      display: 'flex',
-                                      alignItems: 'center',
-                                      justifyContent: 'center',
-                                      color: '#3B82F6',
-                                      fontSize: '12px',
-                                      flexShrink: 0,
-                                      boxShadow: '0 2px 4px rgba(0,0,0,0.02)'
-                                    }}>
-                                      <i className={`fa-solid ${i === 0 ? 'fa-mobile-screen' : i === 1 ? 'fa-brain' : i === 2 ? 'fa-database' : 'fa-rocket'}`}></i>
+                                      transition: 'all 0.2s ease',
+                                      background: '#f8fafc',
+                                      border: '1px solid transparent'
+                                    }}
+                                      onMouseEnter={(e) => {
+                                        e.currentTarget.style.background = '#fff';
+                                        e.currentTarget.style.borderColor = '#e2e8f0';
+                                        e.currentTarget.style.transform = 'translateY(-1px)';
+                                        e.currentTarget.style.boxShadow = '0 5px 15px rgba(0,0,0,0.05)';
+                                      }}
+                                      onMouseLeave={(e) => {
+                                        e.currentTarget.style.background = '#f8fafc';
+                                        e.currentTarget.style.borderColor = 'transparent';
+                                        e.currentTarget.style.transform = 'translateY(0)';
+                                        e.currentTarget.style.boxShadow = 'none';
+                                      }}>
+                                      <div className="icon-wrapper" style={{
+                                        width: '32px',
+                                        height: '32px',
+                                        background: '#fff',
+                                        borderRadius: '6px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        color: '#3B82F6',
+                                        fontSize: '12px',
+                                        flexShrink: 0,
+                                        boxShadow: '0 2px 4px rgba(0,0,0,0.02)'
+                                      }}>
+                                        <i className={`fa-solid ${item.icon}`}></i>
+                                      </div>
+                                      <div className="content">
+                                        <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#0f172a', marginBottom: '1px', lineHeight: 1.1 }}>{item.title}</div>
+                                        <div style={{ fontSize: '9px', color: '#64748b', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '170px' }}>{item.desc}</div>
+                                      </div>
                                     </div>
-                                    <div className="content">
-                                      <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#0f172a', marginBottom: '1px', lineHeight: 1.1 }}>{s.title}</div>
-                                      <div style={{ fontSize: '9px', color: '#64748b', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '170px' }}>{s.subtitle.split(' ').slice(0, 3).join(' ')}...</div>
-                                    </div>
-                                  </div>
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        <div className="modern-dropdown-col approach-col" style={{
-                          display: 'block',
-                          width: '100%',
-                          minWidth: 0,
-                          paddingLeft: '5px'
-                        }}>
-                          <h6 style={{
-                            fontSize: '11px',
-                            fontWeight: 900,
-                            color: '#3B82F6',
-                            textTransform: 'uppercase',
-                            letterSpacing: '1px',
-                            marginBottom: '2px',
-                            display: 'block'
-                          }}>Our Approach</h6>
-                          <p style={{ fontSize: '10px', color: '#94a3b8', marginBottom: '15px', lineHeight: '1.1', display: 'block' }}>Strategy & execution framework</p>
-                          <ul className="approach-timeline" style={{ listStyle: 'none', padding: 0, margin: 0, position: 'relative', display: 'flex', flexDirection: 'column', gap: '2px' }}>
-                            {/* Static Background Line */}
-                            <div className="timeline-line-bg" style={{
-                              position: 'absolute',
-                              left: '12px',
-                              top: '10px',
-                              bottom: '10px',
-                              width: '1px',
-                              background: '#e2e8f0',
-                              zIndex: 0
-                            }}></div>
-                            {/* Animated Life Line */}
-                            <div className="timeline-line-active" style={{
-                              position: 'absolute',
-                              left: '12px',
-                              top: '10px',
-                              width: '1px',
-                              background: '#3B82F6',
-                              zIndex: 1,
-                              height: '0'
-                            }}></div>
-                            {[
-                              { title: 'Discovery & Analysis', icon: 'fa-magnifying-glass' },
-                              { title: 'Strategy Development', icon: 'fa-lightbulb' },
-                              { title: 'Solution Design', icon: 'fa-pen-ruler' },
-                              { title: 'Implementation', icon: 'fa-code' },
-                              { title: 'Testing & Validation', icon: 'fa-flask' },
-                              { title: 'Deployment', icon: 'fa-rocket' },
-                              { title: 'Ongoing Support', icon: 'fa-headset' },
-                              { title: 'Optimization', icon: 'fa-chart-line' }
-                            ].map((item, idx) => (
-                              <li key={idx} className="approach-step" style={{
-                                fontSize: '11px',
-                                padding: '5px 8px',
-                                borderRadius: '8px',
-                                transition: 'all 0.3s ease',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '12px',
-                                color: '#475569',
-                                position: 'relative',
-                                zIndex: 1,
-                                opacity: 0.7,
-                                transform: 'translateX(0)'
-                              }}>
-                                <div className="step-icon" style={{
-                                  width: '18px',
-                                  height: '18px',
-                                  background: '#fff',
-                                  border: '1px solid #e2e8f0',
-                                  borderRadius: '50%',
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  justifyContent: 'center',
-                                  fontSize: '8px',
-                                  color: '#3B82F6',
-                                  flexShrink: 0,
-                                  transition: 'all 0.4s ease'
-                                }}>
-                                  <i className={`fa-solid ${item.icon}`}></i>
-                                </div>
-                                <span style={{ fontWeight: 600 }}>{item.title}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </li>
@@ -561,25 +412,26 @@ export const Header: React.FC = () => {
                 </ul>
               </div>
               <div className="button-wrapper-flex" style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', gap: '25px', alignItems: 'center' }}>
-                <Link to="/contact" className="rts-btn btn-primary" onClick={handleLinkClick} style={{
-                  padding: '12px 28px',
+                <Link to="/contact" className="rts-btn" onClick={handleLinkClick} style={{
+                  padding: '10px 25px',
                   borderRadius: '100px',
-                  background: '#5c67ff',
-                  border: 'none',
-                  fontSize: '15px',
-                  fontWeight: 600,
-                  boxShadow: '0 10px 20px rgba(92, 103, 255, 0.2)'
+                  background: 'transparent',
+                  border: '1.5px solid #3b82f6',
+                  color: '#3b82f6',
+                  fontSize: '14px',
+                  fontWeight: 700,
+                  transition: 'all 0.3s ease'
                 }}>
                   Connect Now
                 </Link>
-                <div className="menu-btn-toggle white" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', background: 'transparent', border: 'none', padding: 0 }} onClick={() => {
+                <div className="menu-btn-toggle" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', background: 'transparent', border: 'none', padding: 0 }} onClick={() => {
                   document.getElementById('side-bar')?.classList.add('show');
                   document.getElementById('anywhere-home')?.classList.add('bgshow');
                 }}>
                   <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="24" height="2" fill="white" style={{ fill: 'white !important' }} />
-                    <rect y="8" width="24" height="2" fill="white" style={{ fill: 'white !important' }} />
-                    <rect y="16" width="24" height="2" fill="white" style={{ fill: 'white !important' }} />
+                    <rect width="24" height="2" fill="#3B82F6" />
+                    <rect y="8" width="24" height="2" fill="#3B82F6" />
+                    <rect y="16" width="24" height="2" fill="#3B82F6" />
                   </svg>
                 </div>
               </div>
@@ -655,17 +507,20 @@ export const Header: React.FC = () => {
         }
 
         /* Nav link colors for ALL states (as they all have dark backgrounds now) */
+        /* Nav link colors for global white header */
         header .main-nav > a {
-          color: rgba(255, 255, 255, 0.9) !important;
+          color: #0F172A !important;
+          font-weight: 600 !important;
+          font-size: 15px !important;
         }
         header .main-nav > a:hover {
-          color: #fff !important;
+          color: #3b82f6 !important;
         }
         header .main-nav > a:hover i {
-          color: #fff !important;
+          color: #3b82f6 !important;
         }
         header .main-nav > a i {
-          color: rgba(255, 255, 255, 0.6) !important;
+          color: #3b82f6 !important;
         }
         /* Services Mega Menu - Approach Animation */
         .services-parent:hover .timeline-line-active {

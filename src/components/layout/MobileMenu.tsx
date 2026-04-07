@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { servicesData } from '../../data/services';
+import { BRAND_LOGO_ALT, BRAND_LOGO_SRC } from '../../constants/brand';
 
 const platformCategories = [
     {
@@ -66,7 +67,7 @@ export const MobileMenu: React.FC = () => {
             <div id="side-bar" className="side-bar header-two">
                 <div className="rts-sidebar-menu-desktop">
                     <div className="logo-area">
-                        <Link className="logo" to="/"><img src="/assets/images/logo/nlogo (1).png" alt="NeuraltrixAI" style={{ height: '45px', width: 'auto' }} /></Link>
+                        <Link className="logo" to="/"><img src={BRAND_LOGO_SRC} alt={BRAND_LOGO_ALT} style={{ height: '40px', width: 'auto' }} /></Link>
                         <button className="close-icon-menu" aria-label="footer_Button" onClick={closeMenu}><i className="far fa-times"></i></button>
                     </div>
                     <div className="body d-none d-xl-block">
